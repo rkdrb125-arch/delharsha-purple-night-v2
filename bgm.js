@@ -8,6 +8,7 @@ const names={musicbox:'보랏빛 밤 · 오르골',piano:'보랏빛 밤 · 피�
 const channels=[new Audio(),new Audio()];channels.forEach(a=>{a.preload='none';a.loop=true;a.volume=0;});
 const endingAudio=new Audio('assets/audio/purple_night_alt.mp3');endingAudio.preload='none';endingAudio.loop=false;
 const badEndings=new Set(['alex_fracture']);
+let v89Blocked=false,v89Unlocked=false;
 let slot=-1,current='',desired='prologue',lastContext='',generation=0,fadeTimer=null,settleTimer=null,manualPaused=false,ending=false,volume=Number(vol.value)/100,scene=null;
 const active=()=>game.classList.contains('active');
 const clamp=x=>Math.max(0,Math.min(1,x));
@@ -48,10 +49,10 @@ async function transition(key){
  next.pause();next.src=tracks[key];next.volume=0;current=key;slot=nextSlot;
  try{
   await next.play();
-  if(token!==generation||!active()||ending||manualPaused){next.pause();return;}
+  if(token!==generation||!active()||ending||manualPaused){next.pause();return;}v89Blocked=false;v89Unlocked=true;
   if(old&&old!==next&&!old.paused){fade(old,next,volume,token,1250);update('전환 중 · '+names[key]);}
   else{if(old&&old!==next){old.pause();old.volume=0;}fade(null,next,volume,token,750);update('재생 중 · '+names[key]);}
- }catch(_){if(token===generation){next.pause();slot=old?1-nextSlot:-1;current='';update('재생이 차단되었습니다 · ▶ 재생을 눌러 주세요');}}
+ }catch(_){if(token===generation){next.pause();slot=old?1-nextSlot:-1;current='';v89Blocked=true;update('자동 재생 대기 · 화면을 터치하면 음악이 시작됩니다');}}
 }
 function sync(){if(!active()||ending||manualPaused)return;const key=sel.value==='auto'?desired:sel.value;
  if(!key){stopChannels();update('음악 없음');return;}
@@ -62,7 +63,24 @@ function queueScene(){cancelSettle();if(sel.value!=='auto'||manualPaused||ending
  // Avoid switching tracks for consecutive dialogue lines within the same narrative beat.
  settleTimer=setTimeout(()=>{settleTimer=null;sync();},280);
 }
-sel.value='auto';update('장면별 자동 BGM · 시작 후 재생');
+sel.value='auto';panel.open=false;update('장면에 따라 자동 재생');
+// Browsers require a real user gesture before audible playback. Use the first game gesture
+// to unlock audio; no extra music-play button should be necessary.
+const v89TryUnlock=()=>{if(!active()||ending||manualPaused)return;
+ if(v89Blocked||slot<0||channels[slot].paused){v89Blocked=false;sync();}
+};
+document.addEventListener('pointerdown',v89TryUnlock,{capture:true});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '||e.key==='ArrowRight')v89TryUnlock();},{capture:true});
+// The game's Settings button is the only place to open detailed audio controls.
+const v89Settings=document.getElementById('gameSettingsBtn');
+if(v89Settings)v89Settings.addEventListener('click',()=>{
+ const content=document.getElementById('modalContent');if(!content)return;
+ const b=document.createElement('button');b.type='button';b.textContent='♫ 배경음악 세부 설정';b.className='v89-audio-settings';
+ b.addEventListener('click',()=>{document.getElementById('closeModal')?.click();panel.classList.add('v89-visible');panel.open=true;});
+ content.append(b);
+});
+document.addEventListener('pointerdown',e=>{if(panel.classList.contains('v89-visible')&&!panel.contains(e.target)&&e.target?.id!=='gameSettingsBtn'){panel.classList.remove('v89-visible');panel.open=false;}},true);
+
 sel.addEventListener('change',()=>{manualPaused=false;stopChannels();if(!ending)sync();});
 play.addEventListener('click',()=>{if(ending){const p=endingAudio.play();if(p?.catch)p.catch(()=>update('엔딩곡 재생이 차단되었습니다'));return;}manualPaused=false;sync();});
 pause.addEventListener('click',()=>{manualPaused=true;stopChannels(false);endingAudio.pause();update('일시정지');});
@@ -75,9 +93,9 @@ document.addEventListener('delharsha:ending',e=>{stopChannels();endingAudio.paus
  endingAudio.volume=volume;const p=endingAudio.play();update('배드 엔딩 전용곡 재생 중');if(p?.catch)p.catch(()=>update('엔딩곡 재생이 차단되었습니다 · ▶ 재생을 눌러 주세요'));
 });
 document.addEventListener('delharsha:game-audio-stop',()=>{stopAll();panel.open=false;});
-const observer=new MutationObserver(()=>{if(!active()){stopAll();panel.open=false;}else if(!ending){queueScene();}});
+const observer=new MutationObserver(()=>{if(!active()){stopAll();panel.open=false;panel.classList.remove('v89-visible');}else if(!ending){manualPaused=false;panel.open=false;panel.classList.remove('v89-visible');queueScene();}});
 observer.observe(game,{attributes:true,attributeFilter:['class']});
 document.getElementById('titleBtn')?.addEventListener('click',()=>{stopAll();panel.open=false;});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){manualPaused=true;stopChannels(false);endingAudio.pause();update('일시정지 · ▶ 재생으로 재개');}});
-document.addEventListener('click',e=>{const t=e.target;if(t instanceof HTMLElement&&/다음 회차 시작|새로운 이야기/.test(t.textContent||'')){ending=false;endingAudio.pause();try{endingAudio.currentTime=0;}catch(_){}}},true);
+document.addEventListener('click',e=>{if(active()&&!ending&&!manualPaused&&slot<0)sync();const t=e.target;if(t instanceof HTMLElement&&/다음 회차 시작|새로운 이야기/.test(t.textContent||'')){ending=false;endingAudio.pause();try{endingAudio.currentTime=0;}catch(_){}}},true);
 })();

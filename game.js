@@ -2779,3 +2779,320 @@ $('loreHomeBtn').onclick=loreLibrary;$('loreBtn').onclick=loreLibrary;
   else if(!e.shiftKey&&document.activeElement===focusable.at(-1)){e.preventDefault();focusable[0].focus();}
  });
 })();
+
+
+// v87: dialogue pagination and character-by-character reveal. No save-schema changes.
+(function(){
+ const line=document.getElementById('line'),next=document.getElementById('nextBtn'),choices=document.getElementById('choices');
+ if(!line||!next||!choices)return;
+ let pages=[],page=0,timer=null,letters=[],position=0,typing=false,token=0,lastTap=0;
+ const original=v67RenderNarrative;
+ const segmenter=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter('ko',{granularity:'grapheme'}):null;
+ const graphemes=s=>segmenter?Array.from(segmenter.segment(s),v=>v.segment):Array.from(s);
+ function splitText(s,thought){
+  const output=[];
+  for(const para of String(s||'').split(/\n\s*\n|\n/)){
+   const trimmed=para.trim();if(!trimmed)continue;
+   const sentences=trimmed.match(/[^.!?。！？]+(?:[.!?。！？]+|$)/g)||[trimmed];
+   let buffer='';
+   for(const sentence of sentences){const t=sentence.trim();if(!t)continue;
+    if(buffer && graphemes(buffer+' '+t).length>85){output.push({text:buffer,thought});buffer=t;}
+    else buffer+=(buffer?' ':'')+t;
+   }
+   if(buffer)output.push({text:buffer,thought});
+  }
+  return output;
+ }
+ function stop(){if(timer!==null){clearTimeout(timer);timer=null;}typing=false;token++;}
+ function syncNavigation(){
+  const hasMore=page<pages.length-1;
+  next.classList.toggle('hidden',!hasMore&&!!(NODES[state.node]||{}).choices);
+  next.textContent=hasMore?'다음 문단 ›':'다음 ›';
+  // Choices become visible only after the last paragraph finishes.
+  choices.classList.toggle('v87-waiting',hasMore||typing);
+  const indicator=document.getElementById('v87PageCount');
+  if(indicator)indicator.textContent=pages.length>1?(page+1)+' / '+pages.length:'';
+ }
+ function finish(){if(!typing)return;stop();line.textContent='';const span=document.createElement('span');span.className=pages[page].thought?'v67-inner-thought':'v67-prose';span.textContent=pages[page].text;line.append(span);syncNavigation();}
+ function showPage(){
+  stop();line.replaceChildren();position=0;
+  const item=pages[page];if(!item){syncNavigation();return;}
+  const span=document.createElement('span');span.className=item.thought?'v67-inner-thought':'v67-prose';line.append(span);
+  letters=graphemes(item.text);typing=true;const current=token;
+  syncNavigation();
+  function tick(){if(current!==token)return;
+   const amount=1;span.textContent+=letters.slice(position,position+amount).join('');position+=amount;
+   if(position>=letters.length){typing=false;timer=null;syncNavigation();return;}
+   timer=setTimeout(tick,40);
+  }
+  timer=setTimeout(tick,170);
+ }
+ v67RenderNarrative=function(node){
+  pages=[...splitText(node.text,false),...splitText(node.thought? '('+String(node.thought).replace(/^\(|\)$/g,'')+')':'',true)];
+  if(!pages.length)pages=[{text:'',thought:false}];
+  page=0;showPage();
+ };
+ // Capture prevents the legacy next handler from advancing the story prematurely.
+ next.addEventListener('click',function(e){
+  if(typing||page<pages.length-1){e.preventDefault();e.stopImmediatePropagation();
+   if(typing)finish();else{page++;showPage();}
+  }
+ },true);
+ // A quick double tap reveals the entire current paragraph; single tap also reveals while typing.
+ const dialog=line.closest('.dialogue')||line;
+ dialog.addEventListener('click',e=>{
+  if(e.target.closest('button,a,input,select,textarea'))return;
+  const now=Date.now();const double=now-lastTap<360;lastTap=now;
+  if(typing)finish();else if(double&&page<pages.length-1){page++;showPage();}
+ });
+ // Prevent choice activation while text is still being revealed.
+ choices.addEventListener('click',e=>{if(typing||page<pages.length-1){e.preventDefault();e.stopImmediatePropagation();if(typing)finish();}},true);
+ const indicator=document.createElement('span');indicator.id='v87PageCount';indicator.setAttribute('aria-label','문단 진행도');
+ next.parentElement?.insertBefore(indicator,next);
+ // New node rendering may insert choice buttons after the narrative; keep them hidden until appropriate.
+ const observer=new MutationObserver(()=>syncNavigation());observer.observe(choices,{childList:true});
+ window.addEventListener('pagehide',stop);
+})();
+
+
+// v88 — KARMA: explicit consequence choices, persistent state and additional endings.
+// All preexisting story IDs, saves and endings are preserved.
+const V88_ENDINGS=[
+ {id:'blood_vow',title:'피로 물든 맹세',kind:'BAD',text:'다니엘은 미겔을 잃는 두려움을 사랑이라고 불렀다. 그가 돌이킬 수 없는 선택을 내린 밤, 장미 화원에는 더 이상 두 사람의 미래가 남지 않았다.\n\n미겔은 마지막까지 그를 똑바로 바라보았다.\n\n“이것이 당신이 바라던 영원인가요?”',thought:'영원히 내 곁에 있을 거라고 믿었는데.'},
+ {id:'three_moons',title:'세 번째 달이 지는 밤',kind:'TRAGIC',text:'도망칠 길이 끊어진 탑 위, 미겔과 다니엘은 서로의 손을 놓지 않았다. 세 개의 달은 여전히 하늘에 떠 있었다.\n\n다음 날, 사람들은 두 사람의 행방을 찾지 못했다. 남은 것은 창가에 놓인 노란 장미 한 송이뿐이었다.',thought:'다음 생에는 평범한 밤을 함께 걷고 싶었다.'},
+ {id:'brother_funeral',title:'형제의 장례식',kind:'BAD',text:'알렉스는 끝까지 가문과 약혼자를 지키려 했다. 다니엘은 그 앞에서 칼을 거두지 않았다.\n\n장례식 날, 남색과 금색의 깃발이 내려왔다. 다니엘은 형이 없는 집에서 처음으로 자신의 죄를 똑바로 보았다.',thought:'형님이 없으면 모든 게 해결될 줄 알았어.'},
+ {id:'lie_of_love',title:'사랑하지 않았다는 거짓말',kind:'BITTER',text:'미겔은 다니엘을 살리기 위해 그를 사랑한 적 없다고 말했다.\n\n그녀는 정중하게 미소 지었고, 다니엘은 그 말이 거짓이라는 사실을 평생 알지 못했다.',thought:'차라리 진실을 몰랐으면 좋겠다고 생각했다.'},
+ {id:'survivors_penalty',title:'살아남은 자의 벌',kind:'TRAGIC',text:'알렉스는 동생을 지키려다 돌아오지 못했다.\n\n그가 마지막으로 남긴 말은 원망이 아니라 걱정이었다. 다니엘은 그 다정함을 용서받지 못할 벌처럼 품었다.',thought:'차라리 나를 미워하지, 형님.'},
+ {id:'heavy_crown',title:'왕관보다 무거운 것',kind:'BAD',text:'다니엘은 권력을 손에 넣었다. 황궁의 문은 그를 위해 열렸지만, 함께 들어설 사람은 없었다.\n\n그가 바라던 모든 것을 얻은 밤, 세 개의 달만이 텅 빈 왕좌를 비추었다.',thought:'모든 걸 가졌는데, 왜 아무도 없는 거지?'},
+ {id:'unsent_letter',title:'보내지 못한 편지',kind:'BITTER',text:'세 사람은 모두 살아남았다. 그러나 미겔과 알렉스의 약혼에 남은 균열은 회복되지 않았다.\n\n다니엘은 끝내 부치지 못한 편지를 서랍 깊숙이 넣었다.',thought:'살아남는 것만으로는 충분하지 않았다.'},
+ {id:'world_without_you',title:'당신이 없는 세계',kind:'SECRET',text:'비극을 막을 마지막 선택은 두 사람의 인연을 지우는 일이었다.\n\n미겔은 노란 장미 사이에서 웃고 있었다. 다니엘을 알아보지 못한 채로.\n\n그는 아무 말 없이 돌아섰다.',thought:'당신이 행복하다면, 나를 기억하지 않아도 괜찮아.'}
+];
+const V88_KARMA_KEY='delharsha_v88_karma_gallery';
+function v88Default(){return{obsession:0,guilt:0,madness:0,truth:0,miguel:0,alex:0,flags:{},log:[]};}
+function v88Karma(){if(!state.karma||typeof state.karma!=='object')state.karma=v88Default();const k=state.karma;for(const [name,val] of Object.entries(v88Default()))if(k[name]===undefined)k[name]=val;return k;}
+function v88Change(delta,label){const k=v88Karma();for(const [name,v] of Object.entries(delta)){if(typeof k[name]==='number')k[name]=Math.max(0,Math.min(100,k[name]+v));}k.log.push({day:state.day,label,delta});if(k.log.length>120)k.log.shift();}
+function v88Unlocked(){try{const d=JSON.parse(localStorage.getItem(V88_KARMA_KEY)||'[]');return Array.isArray(d)?d:[];}catch{return[];}}
+function v88Record(id){const old=v88Unlocked();if(!old.includes(id)){old.push(id);try{localStorage.setItem(V88_KARMA_KEY,JSON.stringify(old));}catch{}}}
+function v88Can(id){const k=v88Karma();const f=k.flags||{};switch(id){
+ case 'blood_vow':return k.obsession>=65&&k.madness>=70&&f.ignoredMiguel;
+ case 'three_moons':return k.miguel>=50&&k.guilt>=45&&f.sharedFate;
+ case 'brother_funeral':return k.madness>=65&&k.alex>=40&&f.defiedAlex;
+ case 'lie_of_love':return k.miguel>=45&&k.truth>=45;
+ case 'survivors_penalty':return k.alex>=50&&k.guilt>=45;
+ case 'heavy_crown':return k.obsession>=50&&k.madness>=45;
+ case 'unsent_letter':return k.guilt>=35&&k.miguel>=30&&k.alex>=30;
+ case 'world_without_you':return k.truth>=75&&k.guilt>=65&&k.madness<60;
+ }return false;}
+function v88AddNode(id){const e=V88_ENDINGS.find(x=>x.id===id);if(!e)return;
+ NODES['v88_ending_'+id]={speaker:'ENDING · '+e.kind,chapter:'KARMA · '+e.title,text:e.text,thought:e.thought,choices:[{text:'엔딩 도감 확인',v88Gallery:true,next:'v88_crossroads'},{text:'운명의 갈림길로 돌아가기',next:'v88_crossroads'},{text:'타이틀로 돌아가기',action:'home'}]};
+}
+V88_ENDINGS.forEach(e=>v88AddNode(e.id));
+NODES.v88_crossroads={speaker:'KARMA · 운명의 갈림길',chapter:'KARMA',text:'어떤 선택은 지나간 뒤에도 사라지지 않는다.\n\n세 개의 달 아래, 다니엘은 자신의 선택이 남긴 흔적을 마주한다.',choices:[]};
+function v88Crossroads(){const k=v88Karma();const choices=[];
+ const paths=[
+ ['미겔의 뜻을 무시하고 붙잡는다',{obsession:24,madness:22,guilt:6},'ignoredMiguel'],
+ ['미겔의 결정을 존중한다',{truth:14,guilt:8,miguel:15},null],
+ ['미겔과 어떤 운명도 함께하겠다고 맹세한다',{miguel:24,guilt:16,obsession:8},'sharedFate'],
+ ['알렉스의 경고를 거스른다',{madness:21,alex:15,obsession:10},'defiedAlex'],
+ ['알렉스에게 사과하고 형제의 의무를 돌아본다',{alex:23,guilt:16,truth:10},null],
+ ['왕궁의 비밀을 조사한다',{truth:26,guilt:7},null],
+ ['자신의 잘못을 인정하고 속죄한다',{guilt:24,truth:12,madness:-10},null],
+ ['권력을 위해 타인을 희생한다',{madness:22,obsession:20,guilt:-5},null]
+ ];
+ paths.forEach(([text,effects,flag],i)=>choices.push({text,effects,v88Action:i,v88Flag:flag,next:'v88_crossroads'}));
+ for(const e of V88_ENDINGS){if(v88Can(e.id))choices.push({text:'✦ '+e.kind+' · '+e.title,v88Ending:e.id,next:'v88_ending_'+e.id});}
+ choices.push({text:'엔딩 도감 보기',v88Gallery:true,next:'v88_crossroads'});
+ choices.push({text:'원래 이야기로 돌아가기',v88Return:true,next:'explore'});
+ NODES.v88_crossroads.choices=choices;
+}
+const v88OriginalRender=render;
+render=function(){if(state.node==='v88_crossroads')v88Crossroads();if(state.node&&state.node.startsWith('v88_ending_'))v88Record(state.node.slice('v88_ending_'.length));v88OriginalRender();};
+const v88OriginalFresh=fresh;
+fresh=function(){return{...v88OriginalFresh(),karma:v88Default()};};
+const v88OriginalSave=save;
+save=function(){v88Karma();v88OriginalSave();};
+const v88OriginalLoad=load;
+load=function(){v88OriginalLoad();v88Karma();};
+// Capture only explicit v88 story choices; existing branches remain unchanged.
+const v88ChoiceRoot=document.getElementById('choices');
+if(v88ChoiceRoot)v88ChoiceRoot.addEventListener('click',function(ev){
+ const btn=ev.target.closest('button');if(!btn)return;
+ const node=NODES[state.node];if(!node||!node.choices)return;
+ const buttons=Array.from(v88ChoiceRoot.querySelectorAll('button'));const i=buttons.indexOf(btn);const choice=node.choices[i];if(!choice)return;
+ if(choice.v88Action!==undefined){v88Change(choice.effects||{},choice.text);if(choice.v88Flag)v88Karma().flags[choice.v88Flag]=true;}
+ if(choice.v88Gallery){ev.preventDefault();ev.stopImmediatePropagation();v88Gallery();}
+ if(choice.v88Return){state.node=state.v88ReturnNode&&NODES[state.v88ReturnNode]?state.v88ReturnNode:'explore';ev.preventDefault();ev.stopImmediatePropagation();render();}
+},true);
+function v88Open(){if(document.getElementById('game')?.classList.contains('active')===false)return;const current=state.node;if(!current.startsWith('v88_'))state.v88ReturnNode=current;state.node='v88_crossroads';render();}
+function v88Gallery(){const unlocked=v88Unlocked();const content=document.createElement('div');content.className='v88-gallery';
+ const note=document.createElement('p');note.textContent='추가 엔딩 '+unlocked.length+' / '+V88_ENDINGS.length+' 해금 · 기존 엔딩은 별도로 유지됩니다.';content.append(note);
+ V88_ENDINGS.forEach(e=>{const item=document.createElement('div');item.className='v88-gallery-item';const yes=unlocked.includes(e.id);item.textContent=yes?'✦ '+e.kind+' · '+e.title:'◇ 미해금 엔딩';content.append(item);});
+ modal('KARMA · 엔딩 도감','');const target=document.getElementById('modalContent');if(target)target.replaceChildren(content);
+}
+function v88Status(){const k=v88Karma();const wrap=document.createElement('div');wrap.className='v88-stats';
+ [['obsession','집착'],['guilt','죄책감'],['madness','광기'],['truth','진실'],['miguel','미겔과의 관계'],['alex','알렉스와의 관계']].forEach(([key,label])=>{const row=document.createElement('div');row.className='v88-stat';const span=document.createElement('span');span.textContent=label+' · '+k[key]+'/100';const meter=document.createElement('progress');meter.max=100;meter.value=k[key];row.append(span,meter);wrap.append(row);});
+ const p=document.createElement('p');p.textContent='선택의 결과가 누적됩니다. 특정 선택을 거쳐야 열리는 엔딩도 있습니다.';wrap.append(p);
+ modal('KARMA · 업보','');document.getElementById('modalContent')?.replaceChildren(wrap);
+}
+(function(){const hud=document.querySelector('#game .hud');if(!hud)return;
+ const b=document.createElement('button');b.type='button';b.id='v88KarmaBtn';b.textContent='⚖ 업보';b.addEventListener('click',v88Status);hud.append(b);
+ const g=document.createElement('button');g.type='button';g.textContent='✦ 엔딩 도감';g.addEventListener('click',v88Gallery);hud.append(g);
+ const x=document.createElement('button');x.type='button';x.textContent='☾ 운명의 갈림길';x.addEventListener('click',v88Open);hud.append(x);
+})();
+
+
+// v89: positive resolutions use the same karma state, choice flow and persistent gallery.
+const V89_HAPPY=[
+ {id:'rose_dawn',title:'장미가 피는 새벽',kind:'HAPPY',text:'다니엘은 미겔의 대답을 재촉하지 않았다. 코트리먼가의 노란 장미 화원에서 두 사람은 오래도록 이야기를 나누었다.\n\n미겔은 자신의 뜻으로 그의 손을 잡았다. 멀리서 세 개의 달이 지고, 그들 앞에 새로운 아침이 열렸다.',thought:'서두르지 않아도 돼. 이제는 그녀의 마음을 기다릴 수 있어.'},
+ {id:'brothers_promise',title:'형제의 약속',kind:'HAPPY',text:'알렉스는 다니엘의 사과를 쉽게 받아들이지 않았다. 대신 동생이 달라진 행동을 끝까지 지켜보았다.\n\n봄이 왔을 때, 두 형제는 다시 나란히 레온하르트가의 문을 나섰다. 가문의 명예도, 서로에 대한 믿음도 지켜 낸 채로.',thought:'형님과 다시 웃을 수 있어서 다행이다.'},
+ {id:'three_hearts',title:'세 사람의 봄',kind:'TRUE',text:'다니엘은 자신의 마음을 숨기지 않았지만, 미겔과 알렉스가 서로에게 약속한 미래를 존중했다.\n\n상처가 없었던 것은 아니다. 그러나 세 사람은 진실을 외면하지 않았고, 저마다의 자리에서 서로의 행복을 빌어 줄 수 있게 되었다.',thought:'사랑이 반드시 빼앗는 일은 아니라는 걸 이제 알았다.'},
+ {id:'free_sky',title:'나의 이름으로',kind:'HAPPY',text:'다니엘은 누군가의 인정이나 사랑을 얻기 위해 자신을 잃지 않기로 했다.\n\n그는 황궁을 나와 자신이 선택한 길을 걸었다. 세 개의 달 아래서도, 새벽의 햇살 아래서도, 그의 앞날은 이제 그 자신의 것이었다.',thought:'오늘은 누구의 동생도 아닌, 다니엘로서 시작하자.'},
+ {id:'violet_vow',title:'보랏빛 밤의 맹세',kind:'SECRET HAPPY',text:'왕궁의 비밀을 밝혀 낸 뒤, 다니엘은 자신이 저지른 잘못을 인정하고 책임을 졌다.\n\n그를 용서할지 결정하는 것은 다른 사람들의 몫이었다. 긴 시간이 흐른 뒤, 미겔과 알렉스는 다시 그에게 미소 지었다. 세 개의 달이 떠 있는 밤, 모두는 각자의 선택으로 같은 정원에 모였다.',thought:'이 행복은 빼앗은 것이 아니라 함께 지켜 낸 것이다.'}
+];
+V89_HAPPY.forEach(e=>{V88_ENDINGS.push(e);v88AddNode(e.id);});
+const v89OldCan=v88Can;
+v88Can=function(id){const k=v88Karma(),f=k.flags||{};switch(id){
+ case 'rose_dawn':return k.miguel>=65&&k.truth>=35&&k.madness<=35&&f.respectedMiguel;
+ case 'brothers_promise':return k.alex>=65&&k.guilt>=25&&k.madness<=35&&f.apologizedAlex;
+ case 'three_hearts':return k.miguel>=55&&k.alex>=55&&k.truth>=65&&k.madness<=30&&f.respectedMiguel&&f.apologizedAlex;
+ case 'free_sky':return k.truth>=55&&k.madness<=25&&f.choseFreedom;
+ case 'violet_vow':return k.truth>=80&&k.guilt>=65&&k.miguel>=60&&k.alex>=60&&k.madness<=25&&f.respectedMiguel&&f.apologizedAlex;
+ default:return v89OldCan(id);
+}};
+const v89OldCrossroads=v88Crossroads;
+v88Crossroads=function(){v89OldCrossroads();const node=NODES.v88_crossroads;const at=node.choices.findIndex(c=>c.v88Ending!==undefined);const options=[
+ {text:'미겔의 의사를 존중하며 기다린다',effects:{miguel:20,truth:12,madness:-12,obsession:-8},v88Action:89,v88Flag:'respectedMiguel',next:'v88_crossroads'},
+ {text:'알렉스에게 진심으로 사과하고 행동으로 증명한다',effects:{alex:22,guilt:12,truth:8,madness:-10},v88Action:90,v88Flag:'apologizedAlex',next:'v88_crossroads'},
+ {text:'타인의 삶을 존중하며 자신의 길을 선택한다',effects:{truth:18,madness:-12,obsession:-10},v88Action:91,v88Flag:'choseFreedom',next:'v88_crossroads'}
+ ];node.choices.splice(at<0?node.choices.length-2:at,0,...options);
+};
+
+
+// v90 — THE SCALES OF FATE. Independent irreversible virtue / wrongdoing ledgers.
+// Disclosure is unlocked only on the NEW playthrough after an ending has been reached.
+const V90_META_KEY='delharsha_v90_scales_meta';
+function v90Meta(){try{const m=JSON.parse(localStorage.getItem(V90_META_KEY)||'{}');return {completed:Number(m.completed)||0,events:Array.isArray(m.events)?m.events:[],runs:Array.isArray(m.runs)?m.runs:[],coins:Number.isFinite(m.coins)?m.coins:100};}catch{return {completed:0,events:[],runs:[],coins:100};}}
+function v90Store(m){try{localStorage.setItem(V90_META_KEY,JSON.stringify(m));}catch(e){console.warn('V90 ledger could not be persisted',e);}}
+function v90Data(){if(!state.scales||typeof state.scales!=='object')state.scales={virtue:0,karma:0,events:[],daily:{},coins:100,completed:false,revealed:false,runId:'run-'+Date.now()};const d=state.scales;d.events=Array.isArray(d.events)?d.events:[];d.daily=d.daily||{};return d;}
+function v90Add(kind,amount,label){if(!['virtue','karma'].includes(kind)||amount<=0)return;const d=v90Data(),m=v90Meta(),event={kind,amount,day:state.day||1,label,runId:d.runId||'legacy',at:new Date().toISOString()};d[kind]+=amount;d.events.push(event);m.events.push(event);v90Store(m);if(d.revealed){v90Flash((kind==='virtue'?'선행':'업보')+' +'+amount);}else{v90Flash('어딘가에서 저울이 미세하게 움직였다.');}}
+function v90Flash(message){let n=document.getElementById('v90Flash');if(!n){n=document.createElement('div');n.id='v90Flash';n.setAttribute('role','status');document.body.append(n);}n.textContent=message;n.classList.add('v90-visible');clearTimeout(v90Flash.t);v90Flash.t=setTimeout(()=>n.classList.remove('v90-visible'),2500);}
+function v90Complete(id){const d=v90Data();if(d.completed)return;d.completed=true;const m=v90Meta();m.completed+=1;m.runs.push({id,karma:d.karma,virtue:d.virtue,events:d.events.length,at:new Date().toISOString()});v90Store(m);if(!d.revealed)v90Flash('첫 번째 운명이 기록되었습니다. 다음 회차에서 저울의 진실이 드러납니다.');}
+const v90FreshOriginal=fresh;
+fresh=function(){const s=v90FreshOriginal();s.scales={virtue:0,karma:0,events:[],daily:{},coins:100,completed:false,revealed:v90Meta().completed>0,runId:'run-'+Date.now()};return s;};
+const v90RenderOriginal=render;
+render=function(){const id=state.node||'';if(id.startsWith('v88_ending_'))v90Complete(id.slice('v88_ending_'.length));if(!v90Data().revealed&&id==='v88_crossroads'){NODES.v88_crossroads.speaker='운명의 갈림길';NODES.v88_crossroads.chapter='???';}v90RenderOriginal();v90UpdateButtons();};
+const v90FinishOriginal=v48Finish;
+v48Finish=function(id){const was=v49Finished();v90FinishOriginal(id);if(!was&&v49Finished())v90Complete(id);};
+// v88 event choices still apply their existing relationship/psychology effects.
+// v90 records their moral consequences independently and never offsets them.
+const v90Choices=document.getElementById('choices');
+if(v90Choices)v90Choices.addEventListener('click',function(ev){const btn=ev.target.closest('button');if(!btn)return;const node=NODES[state.node];if(!node?.choices)return;const index=Array.from(v90Choices.querySelectorAll('button')).indexOf(btn);const c=node.choices[index];if(!c||c.v88Action===undefined)return;const bad=['ignoredMiguel','defiedAlex'].includes(c.v88Flag)||/희생|무시|거스른다|권력을 위해/.test(c.text);const good=['respectedMiguel','apologizedAlex','choseFreedom'].includes(c.v88Flag)||/존중|사과|속죄|진실|비밀을 조사/.test(c.text);if(bad)v90Add('karma',c.v88Flag==='ignoredMiguel'?8:5,c.text);else if(good)v90Add('virtue',4,c.text);},true);
+function v90UpdateButtons(){const b=document.getElementById('v88KarmaBtn');if(b)b.textContent=v90Data().revealed?'⚖ 운명의 저울':'⚖ ???';}
+// Keep the first-playthrough status opaque, including all numeric morality values.
+v88Status=function(){v90Scales();};
+function v90Scales(){const d=v90Data(),m=v90Meta(),wrap=document.createElement('div');wrap.className='v90-scales';const heading=document.createElement('h3');heading.textContent=d.revealed?'운명의 저울':'???';wrap.append(heading);const balance=document.createElement('div');balance.className='v90-balance';balance.textContent='⚖';wrap.append(balance);
+ const msg=document.createElement('p');msg.textContent=d.revealed?'선행과 업보는 서로를 지우지 않습니다. 두 기록은 각각 영원히 남습니다.':'어떤 선택은 지나간 뒤에도 사라지지 않는다. 아직 저울의 의미를 알 수 없다.';wrap.append(msg);
+ if(d.revealed){const values=document.createElement('div');values.className='v90-values';for(const [label,value] of [['업보 · KARMA',d.karma],['선행 · VIRTUE',d.virtue]]){const el=document.createElement('div');el.textContent=label+' · '+value;values.append(el);}wrap.append(values);const past=document.createElement('p');past.textContent='이전 회차: '+m.runs.length+'회 기록 · 영구 기록 '+m.events.length+'건';wrap.append(past);const list=document.createElement('div');list.className='v90-ledger';m.events.slice(-24).reverse().forEach(e=>{const row=document.createElement('div');row.textContent=(e.kind==='karma'?'업보':'선행')+' +'+e.amount+' · '+e.label+' (DAY '+e.day+')';list.append(row);});wrap.append(list);}
+ modal(d.revealed?'운명의 저울':'???','');document.getElementById('modalContent')?.replaceChildren(wrap);
+}
+function v90Activity(){const d=v90Data();const wrap=document.createElement('div');wrap.className='v90-activities';const p=document.createElement('p');p.textContent='성당과 구호 활동은 선택에 따라 기록됩니다. 하루에 할 수 있는 활동은 제한됩니다.';wrap.append(p);
+ const activities=[{id:'prayer',name:'성당에서 기도한다',amount:1,cost:0,desc:'자신의 행동을 돌아보고 조용히 기도한다.'},{id:'donation',name:'구호 기금을 기부한다 (20G)',amount:4,cost:20,desc:'도움이 필요한 이들을 위해 금화를 기부한다.'},{id:'help',name:'곤경에 처한 사람을 돕는다',amount:5,cost:0,desc:'보상을 바라지 않고 시간을 들여 타인을 돕는다.'}];
+ for(const a of activities){const b=document.createElement('button');b.type='button';b.textContent=a.name;b.disabled=!!d.daily[(state.day||1)+'_'+a.id]||d.coins<a.cost;b.onclick=()=>{if(b.disabled)return;d.daily[(state.day||1)+'_'+a.id]=true;d.coins-=a.cost;v90Add('virtue',a.amount,a.name);v90Activity();};wrap.append(b);const desc=document.createElement('small');desc.textContent=a.desc;wrap.append(desc);}
+ const funds=document.createElement('p');funds.textContent='이번 회차 소지금: '+d.coins+'G';wrap.append(funds);const scale=document.createElement('button');scale.textContent=d.revealed?'⚖ 운명의 저울 보기':'⚖ ???';scale.onclick=v90Scales;wrap.append(scale);modal('성당 · 선행 활동','');document.getElementById('modalContent')?.replaceChildren(wrap);
+}
+(function(){const hud=document.querySelector('#game .hud');if(!hud)return;const old=document.getElementById('v88KarmaBtn');if(old){const replacement=old.cloneNode(true);old.replaceWith(replacement);replacement.addEventListener('click',v90Scales);}const b=document.createElement('button');b.type='button';b.id='v90VirtueBtn';b.textContent='✧ 성당 · 선행';b.onclick=v90Activity;hud.append(b);v90UpdateButtons();})();
+
+
+// v91 — Main-story morality integration and consequence-aware endings.
+// Never subtract from the independent V90 ledgers. Prior runs remain in V90_META_KEY.
+(function(){
+ const oldCan=v88Can;
+ const moralRules={
+  blood_vow:{karma:28,virtueMax:24},three_moons:{karma:14},brother_funeral:{karma:26,virtueMax:24},
+  lie_of_love:{karma:6},survivors_penalty:{karma:12},heavy_crown:{karma:23,virtueMax:26},
+  unsent_letter:{karma:8},world_without_you:{virtue:15},
+  rose_dawn:{virtue:15,karmaMax:22},brothers_promise:{virtue:12,karmaMax:24},
+  three_hearts:{virtue:22,karmaMax:20},free_sky:{virtue:12,karmaMax:24},
+  violet_vow:{virtue:30,karmaMax:18}
+ };
+ v88Can=function(id){
+  if(!oldCan(id))return false;
+  const d=v90Data(),r=moralRules[id];if(!r)return true;
+  return (r.karma===undefined||d.karma>=r.karma)&&
+   (r.virtue===undefined||d.virtue>=r.virtue)&&
+   (r.karmaMax===undefined||d.karma<=r.karmaMax)&&
+   (r.virtueMax===undefined||d.virtue<=r.virtueMax);
+ };
+ const choiceRoot=document.getElementById('choices');
+ const scenePositive=/돕|구하|보호|배려|존중|사과|책임|진실|솔직|정직|돌려주|양보|구호|위로|지키|도와|선의|고백/;
+ const sceneNegative=/협박|강요|속이|거짓|모함|배신|희생시키|죽이|살해|위협|빼앗|모욕|침묵을 강요|억지|착취|폭력/;
+ function classify(choice){
+  const label=String(choice.text||'');
+  if(choice.v88Action!==undefined||choice.v88Ending||choice.v88Gallery||choice.v88Return)return null;
+  if(choice.action==='home'||choice.reset||choice.action==='restartExplore'||choice.action==='nextDay')return null;
+  if(choice.v91Moral==='virtue'||choice.v91Moral==='karma')return choice.v91Moral;
+  // Use explicit player decisions rather than all text containing a keyword.
+  if(sceneNegative.test(label))return 'karma';
+  if(scenePositive.test(label))return 'virtue';
+  if(choice.v20ErrandMode==='help'||choice.v22RumorMode==='correct'||choice.v22NpcMode==='warm'||choice.v26Alex==='apologize'||choice.v27Alex==='repair')return 'virtue';
+  if(choice.v20ErrandMode==='decline'&&/외면|버리/.test(label))return 'karma';
+  return null;
+ }
+ if(choiceRoot)choiceRoot.addEventListener('click',function(ev){
+  if(ev.defaultPrevented)return;
+  const btn=ev.target.closest('button');if(!btn||!choiceRoot.contains(btn)||btn.disabled)return;
+  const node=NODES[state.node];if(!node||!Array.isArray(node.choices))return;
+  const idx=Array.from(choiceRoot.children).filter(x=>x.tagName==='BUTTON').indexOf(btn);
+  if(idx<0)return;
+  const choice=node.choices[idx];if(!choice)return;
+  const kind=classify(choice);if(!kind)return;
+  const d=v90Data();d.v91Seen=d.v91Seen||{};
+  const id=String(state.node)+'#'+idx+'#'+String(state.day||1);
+  if(d.v91Seen[id])return;
+  d.v91Seen[id]=true;
+  v90Add(kind,kind==='karma'?5:3,'본편 · '+choice.text);
+ },true);
+ // Refresh the crossroads with the newly restricted ending conditions.
+ const oldCrossroads=v88Crossroads;
+ v88Crossroads=function(){oldCrossroads();const d=v90Data();
+  if(!d.revealed){
+   NODES.v88_crossroads.speaker='???';NODES.v88_crossroads.chapter='???';
+   NODES.v88_crossroads.choices=NODES.v88_crossroads.choices.map(c=>{
+    if(c.v88Ending!==undefined)return {...c,text:'✦ 운명의 결말을 마주한다'};
+    if(c.v88Gallery)return {...c,text:'기억의 기록'};
+    return c;
+   });
+  }else{
+   NODES.v88_crossroads.speaker='운명의 저울';NODES.v88_crossroads.chapter='KARMA · VIRTUE';
+  }
+ };
+ // On first run, never expose ending categories through the gallery or scene header.
+ const oldGallery=v88Gallery;
+ v88Gallery=function(){
+  if(v90Data().revealed)return oldGallery();
+  const wrap=document.createElement('div');wrap.className='v88-gallery';
+  const p=document.createElement('p');p.textContent='아직 이름을 알 수 없는 운명의 기록이 남아 있다. 첫 번째 이야기를 마친 뒤 다시 찾아오세요.';wrap.append(p);
+  modal('???','');document.getElementById('modalContent')?.replaceChildren(wrap);
+ };
+ const oldRender=render;
+ render=function(){
+  const id=String(state.node||'');
+  if(id.startsWith('v88_ending_')&&!v90Data().revealed){
+   const node=NODES[id];if(node){node.speaker='운명의 결말';node.chapter='???';}
+  }
+  oldRender();
+ };
+ // Explain conditions in NG+ without altering the underlying ending records.
+ const hud=document.querySelector('#game .hud');
+ if(hud){const b=document.createElement('button');b.type='button';b.id='v91DestinyBtn';b.textContent='✦ 운명의 조건';b.addEventListener('click',()=>{
+  const d=v90Data();if(!d.revealed){modal('???','아직 저울의 이름을 알 수 없습니다.');return;}
+  const wrap=document.createElement('div');wrap.className='v90-scales';
+  const note=document.createElement('p');note.textContent='현재 회차 · 업보 '+d.karma+' / 선행 '+d.virtue+' (서로 상쇄되지 않음)';wrap.append(note);
+  for(const e of V88_ENDINGS){const r=moralRules[e.id];if(!r)continue;const p=document.createElement('p');
+   const parts=[];if(r.karma!==undefined)parts.push('업보 '+r.karma+' 이상');if(r.virtue!==undefined)parts.push('선행 '+r.virtue+' 이상');
+   if(r.karmaMax!==undefined)parts.push('업보 '+r.karmaMax+' 이하');if(r.virtueMax!==undefined)parts.push('선행 '+r.virtueMax+' 이하');
+   p.textContent=(v88Unlocked().includes(e.id)?e.title:'미해금 결말')+' · '+parts.join(' / ')+' · 인물 관계와 선택 조건 별도';wrap.append(p);
+  }
+  modal('운명의 조건','');document.getElementById('modalContent')?.replaceChildren(wrap);
+ });hud.append(b);}
+})();
