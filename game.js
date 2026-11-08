@@ -2619,6 +2619,12 @@ function v111LetterMount(){
  v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=2;root.dataset.phase='2';narration.textContent='봉랍을 눌러 초대장을 펼쳐 주세요.';},1900);
  root.querySelector('.v111-letter-action').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==2||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=3;root.dataset.phase='3';narration.textContent='';advance(3,650);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token)return;v111Letter.locked=false;root.dataset.phase='3';},650);});
  root.querySelector('.v111-letter-continue').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==3||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=4;root.dataset.phase='4';document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';v111Letter.locked=false;});
+ // v118: the final thought must accept a click/tap to advance the real story.
+ root.addEventListener('click',e=>{
+  if(v111Letter.phase!==4||v111Letter.locked||e.target.closest('button'))return;
+  e.preventDefault();e.stopPropagation();
+  document.getElementById('nextBtn')?.click();
+ });
 }
 
 function renderStage(node){

@@ -445,3 +445,13 @@ body.v111-letter-active .dialogue{visibility:hidden}body.v111-letter-thought .di
 .modal-head h2{color:#e7cfa6;letter-spacing:.055em}
 @media(max-width:600px){#game .dialogue{border-width:19px 19px 17px!important;border-image-width:19px 19px 17px!important;padding:13px 11px 9px!important}#game .dialogue .speaker{min-width:135px;min-height:42px;margin:-46px 0 6px -7px!important;padding:7px 23px;font-size:.78rem}#game .choices button{border-width:10px 17px!important;border-image-width:10px 17px!important;min-height:48px}.modal-panel{border-width:23px!important;border-image-width:23px!important;padding:10px 12px!important}}
 @media(prefers-reduced-motion:reduce){#game .choices button{transition:none}}
+
+/* v118 — cinematic text is presentation, not selectable document text. */
+#pvIntro, #pvIntro *,
+#game .v111-letter-overlay, #game .v111-letter-overlay *,
+#game .v110-royal-letter, #game .v110-royal-letter * {
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+/* The final invitation thought remains tappable to progress to the next story node. */
+.v111-letter-overlay[data-phase='4']{pointer-events:auto;cursor:pointer}
+.v111-letter-overlay[data-phase='4'] .v111-letter-narration{pointer-events:none}
