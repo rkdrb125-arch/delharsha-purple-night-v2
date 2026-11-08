@@ -1,0 +1,15 @@
+/* v137: prevent native text selection in game UI on touch devices. */
+html, body, #app, #app *, .game-viewport, .game-viewport * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Keep form editing, text entry and accessible selection available. */
+#app input:not([type="range"]), #app textarea, #app [contenteditable="true"],
+input:not([type="range"]), textarea, [contenteditable="true"] {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+}
+#app img, .game-viewport img { -webkit-user-drag: none; user-drag: none; }

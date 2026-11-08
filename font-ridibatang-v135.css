@@ -1,0 +1,5 @@
+/* DELHARSA v135 — user-provided RIDIBatang. Loaded after all other CSS. */
+@font-face{font-family:"DELHARSA RIDIBatang";src:url("assets/fonts/RIDIBatang-9.otf") format("opentype");font-style:normal;font-weight:100 900;font-display:swap}
+:root{--delharsha-ui-font:"DELHARSA RIDIBatang","Noto Serif KR","Malgun Gothic",serif}
+html,body,body *,body *::before,body *::after{font-family:var(--delharsha-ui-font)!important}
+/* Keep pictographic symbols and emoji in a compatible fallback when needed. */

@@ -1,0 +1,26 @@
+/* DELHARSA v136 — heading/choice/nameplate font override; body dialogue remains RIDIBatang. */
+@font-face{font-family:"DELHARSA Heir of Light";src:url("assets/fonts/HeirofLightOTFRegular.otf") format("opentype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"DELHARSA Heir of Light";src:url("assets/fonts/HeirofLightOTFBold.otf") format("opentype");font-weight:700;font-style:normal;font-display:swap}
+:root{--delharsha-display-font:"DELHARSA Heir of Light","DELHARSA RIDIBatang",serif}
+/* Deliberately override v135's global !important font rule only on display UI. */
+#home .menu button, #home .menu button:hover, #home .menu button:focus-visible,
+#game #choices > button, #game #choicePager,
+#game #speaker, #game .dialogue .speaker,
+#game .scene-top #chapter, #game .scene-top #day,
+#modal #modalTitle, #modal .modal-head h2,
+#app header .brand, #app header .brand small,
+.pv-headline, #pvHeadline, .pv-start-card h2, .pv-start-overline,
+#app h1, #app h2, #app h3,
+#game .v126-menu button, #game .v126-menu,
+#app .screen button:not(#nextBtn):not(.v126-tool),
+#modal button, #modal .modal-panel strong {
+ font-family:var(--delharsha-display-font)!important;
+}
+#game #speaker, #game .dialogue .speaker, #modal #modalTitle,
+#home .menu button, #pvHeadline, .pv-start-card h2 {font-weight:700!important}
+#game #choices > button {font-weight:400!important}
+/* Preserve body prose, long-form dialogue, and input readability in RIDIBatang. */
+#game #line, #game #line *, #app p:not(.foot), #modal p,
+#modal textarea, #modal input, #app textarea, #app input {
+ font-family:var(--delharsha-ui-font)!important;
+}
