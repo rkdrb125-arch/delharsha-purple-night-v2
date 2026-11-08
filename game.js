@@ -2585,10 +2585,11 @@ function v82SceneMusic(node){
 }
 
 // v111 — independent royal letter scene; state.node remains cinematic_moons until normal Next.
-const v111Letter={phase:-1,token:0,timer:null,locked:false,globalTap:null};
+const v111Letter={phase:-1,token:0,timer:null,timers:[],locked:false,globalTap:null};
 function v111LetterClear(){
  if(v111Letter.globalTap){document.removeEventListener('pointerup',v111Letter.globalTap,true);document.removeEventListener('click',v111Letter.globalTap,true);v111Letter.globalTap=null;}
  v111Letter.token++;clearTimeout(v111Letter.timer);v111Letter.timer=null;
+ (v111Letter.timers||[]).forEach(clearTimeout);v111Letter.timers=[];
  const old=document.getElementById('v111LetterOverlay');if(old)old.remove();
  document.body.classList.remove('v111-letter-active','v111-letter-thought');
 }
@@ -2603,27 +2604,29 @@ function v111LetterAdvanceGate(){
  v111LetterClear();v111Letter.phase=-1;return false;
 }
 function v111LetterMount(){
- v111LetterClear();const token=v111Letter.token;
- const root=document.createElement('section');root.id='v111LetterOverlay';root.className='v111-letter-overlay';
+ v111LetterClear();
+ const token=v111Letter.token;
+ v111Letter.locked=false;
+ const root=document.createElement('section');
+ root.id='v111LetterOverlay';root.className='v111-letter-overlay';
  root.setAttribute('aria-label','아셀 왕실 초대장');
  root.innerHTML=`<div class="v111-letter-vignette"></div><div class="v111-letter-desk"></div>
  <div class="v111-letter-envelope" aria-hidden="true"><div class="v111-letter-flap"></div><div class="v111-letter-monogram">ASEL · ROYAL COURT</div><div class="v111-letter-wax">♛</div></div>
  <article class="v111-letter-paper" aria-label="왕실 초청장"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><h2>왕실 초청장</h2><p>레온하르트 가문에<br>아셀 왕국의 일곱 날을 초대합니다.</p><p class="v111-letter-detail">일곱 날의 연회<br>마지막 밤의 대무도회</p><div class="v111-letter-emblem">♛</div><small>BY ORDER OF THE ROYAL COURT</small></article>
- <div class="v111-letter-narration" aria-live="polite"></div>
- <button type="button" class="v111-letter-action" aria-label="왕실 봉랍을 눌러 편지를 개봉하기">봉랍을 눌러 개봉하기　✦</button>
- <button type="button" class="v111-letter-continue" aria-label="편지를 다 읽고 다음으로">편지를 접는다　›</button>
-`;
+ <div class="v111-letter-narration" aria-live="polite"></div>`;
  const screen=document.getElementById('game')||document.querySelector('main')||document.body;
  screen.append(root);document.body.classList.add('v111-letter-active');
  const narration=root.querySelector('.v111-letter-narration');
- const advance=(phase,delay=0)=>{clearTimeout(v111Letter.timer);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=phase;root.dataset.phase=String(phase);if(phase===1)narration.textContent='아셀 왕국에서 편지가 도착했다.';if(phase===2)narration.textContent='보랏빛 봉랍 아래, 일곱 날의 초대가 기다리고 있었다.';if(phase===3)narration.textContent='';if(phase===4){document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';}},delay)};
- root.dataset.phase='0';advance(1,850);
- v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=2;root.dataset.phase='2';narration.textContent='봉랍을 눌러 초대장을 펼쳐 주세요.';},1900);
- root.querySelector('.v111-letter-action').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==2||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=3;root.dataset.phase='3';narration.textContent='';advance(3,650);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token)return;v111Letter.locked=false;root.dataset.phase='3';},650);});
- root.querySelector('.v111-letter-continue').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==3||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=4;root.dataset.phase='4';document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';v111Letter.locked=false;});
- // v119: advance directly, independent of hidden dialogue and overlay stacking.
- const finishInvitation=()=>{
-  if(state.node!=='cinematic_moons'||v111Letter.phase!==4||v111Letter.locked)return;
+ const valid=()=>token===v111Letter.token&&state.node==='cinematic_moons'&&root.isConnected;
+ const schedule=(ms,fn)=>{const id=setTimeout(()=>{if(valid())fn();},ms);v111Letter.timers.push(id);};
+ const phase=(n,message)=>{if(!valid())return;v111Letter.phase=n;root.dataset.phase=String(n);narration.textContent=message;};
+ phase(0,'');
+ schedule(850,()=>phase(1,'아셀 왕국에서 편지가 도착했다.'));
+ schedule(1900,()=>phase(2,'보랏빛 봉랍 아래, 일곱 날의 초대가 기다리고 있었다.'));
+ schedule(3600,()=>phase(3,''));
+ schedule(7600,()=>{phase(4,'미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.');document.body.classList.add('v111-letter-thought');});
+ schedule(11900,()=>{
+  if(v111Letter.locked)return;
   const next=NODES[state.node]?.next;
   if(!next)return;
   v111Letter.locked=true;
@@ -2631,21 +2634,7 @@ function v111LetterMount(){
   state.node=next;
   v111LetterClear();v111Letter.phase=-1;
   render();
- };
- // v122: capture the tap at document level, even when the letter is covered by another layer.
- // A single interaction commits the next node exactly once; no visible continuation button.
- let committed=false;
- const tapToContinue=e=>{
-  if(committed||state.node!=='cinematic_moons'||v111Letter.phase!==4||v111Letter.locked)return;
-  if(!document.getElementById('v111LetterOverlay'))return;
-  committed=true;
-  e.preventDefault();e.stopImmediatePropagation();
-  finishInvitation();
- };
- v111Letter.globalTap=tapToContinue;
- document.addEventListener('pointerup',tapToContinue,true);
- document.addEventListener('click',tapToContinue,true);
-
+ });
 }
 
 function renderStage(node){

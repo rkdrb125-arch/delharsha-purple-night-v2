@@ -516,3 +516,7 @@ body.v111-letter-active .hud,body.v111-letter-thought .hud{visibility:hidden!imp
 /* v122: the final invitation is a clean full-screen touch target. */
 #v111LetterOverlay[data-phase="4"]{pointer-events:auto!important;touch-action:manipulation!important}
 body.v111-letter-thought #game .dialogue,body.v111-letter-thought #game .hud{visibility:hidden!important;pointer-events:none!important}
+
+/* v123: automatic invitation sequence, no visible action controls */
+.v111-letter-action,.v111-letter-continue{display:none!important}
+.v111-letter-overlay,.v111-letter-overlay *{user-select:none!important;-webkit-user-select:none!important;-webkit-touch-callout:none!important}
