@@ -2585,8 +2585,9 @@ function v82SceneMusic(node){
 }
 
 // v111 — independent royal letter scene; state.node remains cinematic_moons until normal Next.
-const v111Letter={phase:-1,token:0,timer:null,locked:false};
+const v111Letter={phase:-1,token:0,timer:null,locked:false,globalTap:null};
 function v111LetterClear(){
+ if(v111Letter.globalTap){document.removeEventListener('pointerup',v111Letter.globalTap,true);document.removeEventListener('click',v111Letter.globalTap,true);v111Letter.globalTap=null;}
  v111Letter.token++;clearTimeout(v111Letter.timer);v111Letter.timer=null;
  const old=document.getElementById('v111LetterOverlay');if(old)old.remove();
  document.body.classList.remove('v111-letter-active','v111-letter-thought');
@@ -2631,16 +2632,19 @@ function v111LetterMount(){
   v111LetterClear();v111Letter.phase=-1;
   render();
  };
- // v120: the entire final cinematic frame is a tap surface, with no visible UI.
- // Capture on the game screen as well as the overlay to avoid a higher dialogue layer stealing taps.
+ // v122: capture the tap at document level, even when the letter is covered by another layer.
+ // A single interaction commits the next node exactly once; no visible continuation button.
+ let committed=false;
  const tapToContinue=e=>{
-  if(v111Letter.phase!==4||state.node!=='cinematic_moons'||v111Letter.locked)return;
-  if(e.type==='click' && root.dataset.tapHandled==='1')return;
-  e.preventDefault();e.stopPropagation();
-  root.dataset.tapHandled='1';finishInvitation();
+  if(committed||state.node!=='cinematic_moons'||v111Letter.phase!==4||v111Letter.locked)return;
+  if(!document.getElementById('v111LetterOverlay'))return;
+  committed=true;
+  e.preventDefault();e.stopImmediatePropagation();
+  finishInvitation();
  };
- root.addEventListener('pointerup',tapToContinue,true);
- root.addEventListener('click',tapToContinue,true);
+ v111Letter.globalTap=tapToContinue;
+ document.addEventListener('pointerup',tapToContinue,true);
+ document.addEventListener('click',tapToContinue,true);
 
 }
 

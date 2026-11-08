@@ -512,3 +512,7 @@ body.v111-letter-active .hud,body.v111-letter-thought .hud{visibility:hidden!imp
   #game .choices button{min-height:51px;padding:10px 16px!important}
   .modal-panel{padding:12px 14px!important}
 }
+
+/* v122: the final invitation is a clean full-screen touch target. */
+#v111LetterOverlay[data-phase="4"]{pointer-events:auto!important;touch-action:manipulation!important}
+body.v111-letter-thought #game .dialogue,body.v111-letter-thought #game .hud{visibility:hidden!important;pointer-events:none!important}
