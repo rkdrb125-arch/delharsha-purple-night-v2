@@ -3,55 +3,105 @@
 const SAVE_KEY='delharsha_purple_night_v1'; // v1 save compatibility retained
 const NODES={
  // v70 opening sequence: new games only; older saves retain their node IDs.
- cinematic_moons:{speaker:'서막 · 세 개의 달',chapter:'INTRO · 세 개의 달',text:'델하르사의 밤에는 언제나 세 개의 달이 뜬다. 서로 다른 높이에서 떠오른 달빛은 제국의 첨탑과 오래된 지붕을 은빛으로 덮고, 궁전의 유리창에는 옅은 보랏빛 그림자를 드리웠다.\n\n사람들은 그 빛 아래에서 축복을 이야기했다. 그러나 축복이라는 말이 언제나 모두에게 같은 뜻은 아니었다.',next:'cinematic_palace'},
- cinematic_palace:{speaker:'서막 · 황궁',chapter:'INTRO · 세 개의 달',text:'황궁의 문이 다시 열리고 있었다. 마물의 습격이 남긴 상흔이 아직 도시의 골목에 남아 있었지만, 황실은 성대한 무도회를 열어 제국의 안녕을 선포하고자 했다.\n\n수많은 초대장이 귀족들의 저택으로 향했다. 봉인된 종이 한 장이 어떤 이에게는 영광이었고, 또 다른 이에게는 피할 수 없는 의무였다.',next:'cinematic_daniel'},
- cinematic_daniel:{speaker:'다니엘 레온하르트',chapter:'INTRO · 세 개의 달',text:'레온하르트가의 막내아들 다니엘은 창가에 서서 저무는 하늘을 바라보았다. 익숙한 저택의 정원에도 곧 세 개의 달빛이 내릴 터였다.\n\n문밖에서 시종의 발소리가 멎었다. 황실의 인장이 찍힌 초대장이 도착했다는 소식이었다. 다니엘은 곧장 문을 열지 못하고 손끝으로 소매의 주름부터 폈다.',thought:'무도회라니. 형님들은 이런 자리에 익숙하시겠지만…… 나는 실수 없이 인사나 드릴 수 있을까.',next:'cinematic_invitation'},
- cinematic_invitation:{speaker:'서막 · 초대장',chapter:'INTRO · 세 개의 달',text:'문이 열리고, 짙은 봉랍이 찍힌 봉투가 조심스레 건네졌다. 다니엘은 그것을 두 손으로 받았다. 얇은 종이의 무게는 보잘것없었지만, 그 안에 적힌 황궁의 이름은 유난히 무겁게 느껴졌다.\n\n그날 밤, 다니엘이 마주할 것은 화려한 연회뿐만이 아니었다. 아직 이름 붙이지 못한 마음과, 쉽게 헤아릴 수 없는 사람들의 선택도 그를 기다리고 있었다.',thought:'……우선 읽어 보자. 초대장을 받았다고 해서, 벌써 겁부터 먹을 필요는 없잖아.',next:'intro'},
- intro:{speaker:'SYSTEM',text:'황실의 인장이 찍힌 초대장이 델하르사 제국의 귀족 저택마다 도착했다. 봉랍을 뜯은 자리에는 옅은 향이 남아 있었다.\n마물의 습격이 지나간 뒤, 제국은 평화를 기원한다는 명목으로 성대한 무도회를 준비하고 있었다. 그러나 궁정의 화려한 불빛이 모든 상처를 가려 줄 수 있는 것은 아니었다.',next:'invitation'},
- invitation:{speaker:'초대장',text:'황실 무도회 초대장\n\n제국의 안녕과 화합을 기원하는 밤, 귀하를 황궁 연회장으로 초대합니다.\n세 개의 달이 떠오르는 저녁, 보라색 장식을 갖추어 참석해 주십시오.\n\n얇고 단단한 종이 끝에 금빛 문장이 정교하게 새겨져 있었다.',next:'daniel'},
- daniel:{speaker:'다니엘 레온하르트',text:'다니엘은 초대장을 책상 위에 내려놓았다가 다시 집어 들었다. 손가락이 스친 자리를 따라 종이의 가장자리가 조금 휘었다.\n무도회는 낯설지 않았다. 다만 사람들의 시선과 예법을 한꺼번에 감당해야 하는 자리는 언제나 그를 긴장시켰다.',thought:'황실 무도회라. 괜한 실수로 가문에 누를 끼치지만 않으면 좋겠는데. 형님들처럼 자연스럽게 행동할 수 있을까.',next:'decision'},
+ cinematic_moons:{speaker:'다니엘 레온하르트',chapter:'PRELUDE · 왕실의 초대',text:'아셀 왕국에서 편지가 도착한 것은, 비가 그친 늦은 오후였다.\n\n백색 봉투 위에 내려앉은 보랏빛 봉랍. 금박으로 새겨진 왕실의 문장은 지나치게 아름다워서, 도리어 불길했다.\n\n일곱 날의 연회. 그리고 마지막 밤의 대무도회.\n\n그 이름을 읽는 데는 한순간이면 충분했다.\n\n미겔 코트리먼.\n\n형님의 약혼녀. 삼 년 동안 애써 외면해 온 내 마음의 유일한 이름.\n\n초대장을 접었는데도, 손끝에는 여전히 보랏빛 밀랍의 감촉이 남아 있었다.',next:'v108_intro_entrance'},
+ cinematic_palace:{"speaker":"서막 · 아셀 왕국","chapter":"PROLOGUE · 아셀의 초대장","text":"아셀 왕국에서 봉인된 초대장이 도착했다. 보랏빛 문장과 정교한 봉랍 아래에는 왕실 연회에 참석해 달라는 정중한 청이 적혀 있었다.\n\n누군가에게 연회는 외교의 장이고, 누군가에게는 가문을 드러낼 무대였다. 내게는 오직 한 사람을 다시 보게 될 밤이었다.","next":"cinematic_daniel"},
+ cinematic_daniel:{"speaker":"다니엘 레온하르트","chapter":"PROLOGUE · 아셀의 초대장","text":"시종이 아셀 왕국의 초대장을 가져왔다. 나는 봉투를 받아 들고도 한동안 열지 못했다. 왕실의 인장 때문이 아니었다.\n\n알렉스 형님은 틀림없이 코트리먼과 함께 참석하실 것이다. 그것을 생각하는 것만으로 손끝이 차가워졌다.","thought":"삼 년을 참았다. 오늘 밤도 그녀를 보고 아무렇지 않은 얼굴을 할 수 있을까.","next":"cinematic_invitation"},
+ cinematic_invitation:{"speaker":"서막 · 초대장","chapter":"PROLOGUE · 아셀의 초대장","text":"보랏빛 봉랍을 뜯자 아셀 왕실의 초대 문구가 드러났다. 연회에 참석해 왕국의 환대를 빛내 달라는 내용이었다.\n\n나는 편지를 접었다. 초대장이 두려운 것이 아니었다. 형님의 약혼녀를 바라보는 내 눈을 누군가 알아차릴까 두려웠다.","thought":"코트리먼. 오늘만큼은…… 제발.","next":"intro"},
+ intro:{"speaker":"SYSTEM","chapter":"PROLOGUE · 아셀의 초대장","text":"아셀 왕국 왕실에서 레온하르트가로 공식 초대장이 도착했다. 이 연회는 귀족과 사절들이 한자리에 모이는 사교의 밤이었다.\n\n다니엘은 이미 삼 년 동안 형님의 약혼녀 미겔 코트리먼을 사랑해 왔다. 연회는 그 감정의 시작이 아니라, 더는 감출 수 없을지 모르는 순간이었다.","next":"invitation"},
+ invitation:{"speaker":"아셀 왕실의 초대장","chapter":"PROLOGUE · 아셀의 초대장","text":"아셀 왕국 왕실 연회 초대장\n\n레온하르트가의 귀빈을 아셀 왕실 연회에 정중히 초대합니다.\n\n보랏빛 장식으로 꾸며진 연회장에 귀하의 참석을 청합니다.\n\n[원작 초대장 문구 수령 시 정확한 문장으로 교체 예정]","next":"daniel"},
+ daniel:{"speaker":"다니엘 레온하르트","text":"나는 초대장을 책상 위에 내려놓았다가 다시 집어 들었다. 연회 예법은 익숙했다. 그러나 형님의 팔에 손을 얹은 코트리먼을 태연히 바라보는 법은 삼 년 동안 한 번도 익히지 못했다.","thought":"오늘은 그녀를 찾지 말자. ……그런 다짐을 하면서도 벌써 그녀를 기다리고 있다.","next":"decision"},
  decision:{speaker:'SYSTEM',text:'초대장을 접어 두려던 다니엘은 잠시 손을 멈췄다. 황궁으로 향하기 전, 마음을 가다듬을 시간이 조금은 남아 있었다.',choices:[{text:'초대장을 다시 읽는다.',thought:'서두르지 말자. 차근차근 준비하면 괜찮을 거야.',next:'read',effects:{resolve:1}},{text:'연회 준비를 시작한다.',next:'prepare',effects:{resolve:2}},{text:'잠시 생각에 잠긴다.',next:'reflect',effects:{resolve:1}}]},
  read:{speaker:'다니엘',text:'그는 초대장의 마지막 문장을 다시 읽었다. 세 개의 달이 떠오르는 밤이라는 표현이 유독 눈에 걸렸다. 종이 위의 금빛 장식이 촛불을 받아 작게 반짝였다.',thought:'보랏빛 밤이라니. 오늘 밤은 평소와 조금 다를지도 모르겠어.',next:'end'},
  prepare:{speaker:'SYSTEM',text:'다니엘은 옷장 문을 열고 예복의 주름부터 살폈다. 소매 단추를 가지런히 맞추는 단순한 일에도 생각보다 오랜 시간이 걸렸다.\n거울 속 자신을 바라보다가 그는 어깨를 펴고, 다시 한번 옷깃을 정리했다.',thought:'이 정도면 괜찮겠지. 너무 눈에 띄지도, 무례해 보이지도 않을 거야.',next:'end'},
- reflect:{speaker:'다니엘',text:'창가에 선 다니엘은 저택의 정원을 내려다보았다. 해가 기울고 있었고, 바람에 흔들리는 나뭇잎 사이로 저녁의 서늘함이 스며들었다.',thought:'모든 일이 평온하게 지나가면 좋겠다. 그저 무사히 인사하고 돌아오면 되는 밤이니까.',next:'end'},
- end:{speaker:'SYSTEM',text:'황궁으로 향할 시간이 되었다. 마차가 준비되었다는 시종의 목소리가 문밖에서 들려왔다. 다니엘은 마지막으로 초대장을 확인한 뒤 자리에서 일어섰다.',choices:[{text:'황실 연회장으로 향한다.',next:'ball_arrival'},{text:'처음부터 다시 보기',next:'intro',reset:true},{text:'타이틀로 돌아가기',action:'home'}]},
- ball_arrival:{speaker:'SYSTEM',text:'CHAPTER 01 · 보라색의 밤\n\n세 개의 달이 차례로 모습을 드러내자 황궁의 높은 창마다 불빛이 켜졌다. 마차에서 내린 손님들이 대리석 계단을 오르고, 열린 문 너머에서는 현악기의 선율이 흘러나왔다.\n다니엘은 그 화려한 광경 앞에서 잠시 발을 멈췄다.',thought:'이렇게 사람이 많을 줄은 몰랐는데. 괜찮아, 인사부터 제대로 하자.',next:'ball_daniel',day:1,chapter:'CHAPTER 01'},
- ball_daniel:{speaker:'다니엘 레온하르트',text:'다니엘은 소매 끝에 달린 보라색 장식을 조심스럽게 고쳐 매었다. 반듯하게 다듬어진 옷깃과 낯선 향수 냄새가 어쩐지 자기 것이 아닌 듯했다.\n주변의 귀족들은 웃으며 대화를 나누고 있었다. 그들 사이에 서 있자니 자신의 손을 어디에 두어야 할지조차 새삼 의식되었다.',thought:'실수하지 말자. 이 옷이 어색해도 티를 내서는 안 돼. 약혼자가 마음에 들어 했던 차림이니, 괜한 불평은 삼가야겠지.',next:'ball_choice',chapter:'CHAPTER 01'},
- ball_choice:{speaker:'SYSTEM',text:'연회장의 안쪽에서는 웃음소리와 잔 부딪치는 소리가 끊이지 않았다. 다니엘은 익숙한 얼굴을 찾으려 주변을 살폈다. 어느 쪽으로 먼저 발을 옮겨야 할까.',chapter:'CHAPTER 01',choices:[{text:'연회장 안쪽으로 들어간다.',next:'ball_miguel',effects:{resolve:1}},{text:'주변 귀족들에게 인사한다.',next:'ball_greeting',effects:{reputation:2}},{text:'잠시 숨을 고른다.',next:'ball_rest',effects:{resolve:2}}]},
- ball_greeting:{speaker:'SYSTEM',text:'다니엘은 먼저 눈이 마주친 귀족들에게 정중히 인사를 건넸다. 처음에는 목소리가 조금 굳었지만, 상대가 웃으며 답하자 숨을 고를 수 있었다.\n짧은 대화가 끝나고 나서야 그는 자신이 줄곧 잔의 받침을 꽉 쥐고 있었다는 사실을 깨달았다.',thought:'생각보다 어렵지는 않았어. 다음에도 이렇게 하면 되겠지.',next:'ball_miguel',chapter:'CHAPTER 01'},
- ball_rest:{speaker:'다니엘 레온하르트',text:'다니엘은 사람들의 동선에서 조금 비켜섰다. 대리석 기둥에 기대지는 않은 채 조용히 숨을 골랐다. 멀리서 들려오는 음악은 여전히 우아했지만, 가까운 곳에서는 수많은 목소리가 뒤섞여 있었다.',thought:'괜찮아. 잠깐만 숨을 고르면 돼. 아무도 나를 이상하게 보지 않았을 거야.',next:'ball_miguel',chapter:'CHAPTER 01'},
- ball_miguel:{speaker:'SYSTEM',text:'연회장 건너편에서 익숙한 모습이 눈에 들어왔다. 미겔 코트리먼이었다.\n그녀는 화려한 장식 사이에서도 지나치게 자신을 드러내지 않았다. 누군가 말을 건네면 고개를 기울여 듣고, 적당한 순간에 부드럽게 미소 지었다. 다니엘은 자신도 모르게 걸음을 늦췄다.\n그녀는 둘째 형 알렉스의 약혼자였다.',thought:'아, 후작님이다. 인사를 드려야 하는데…… 지금 다가가도 괜찮을까.',next:'ball_meeting',chapter:'CHAPTER 01'},
+ reflect:{speaker:'다니엘',text:'창가에 선 다니엘은 저택의 정원을 내려다보았다. 해가 기울고 있었고, 바람에 흔들리는 나뭇잎 사이로 저녁의 서늘함이 스며들었다.',thought:'오늘만은 코트리먼을 찾지 말자. 눈을 마주쳐도 평소처럼 인사하고, 형님 곁에 있는 모습을 견디자. 몇 번이나 다짐했지만 믿음은 가지 않았다.',next:'end'},
+ end:{"speaker":"SYSTEM","text":"아셀 왕국의 연회장으로 향할 시간이 되었다. 마차가 준비되었다는 시종의 목소리에 나는 마지막으로 예복의 목깃을 정리했다.","choices":[{"text":"아셀 왕국 연회장으로 향한다.","next":"ball_arrival"},{"text":"처음부터 다시 보기","next":"intro","reset":true},{"text":"타이틀로 돌아가기","action":"home"}]},
+ ball_arrival:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 아셀의 보랏빛 밤","day":1,"text":"아셀 왕국의 연회장에는 금빛 샹들리에와 보랏빛 휘장이 드리워져 있었다. 높은 창 너머로 세 개의 달이 떠올랐다.\n\n나는 홀로 입장했다. 곁에는 약혼녀도 동행인도 없었다. 차가운 잔을 쥔 채 기둥의 그늘에 멈춰 섰다. 사람들의 인사는 익숙했지만, 시선은 한 사람을 찾아 헤맸다.","thought":"코트리먼. 어디 계십니까.","next":"asel_entrance_watch"},
+ ball_daniel:{speaker:'다니엘 레온하르트',text:'다니엘은 소매 끝에 달린 보라색 장식을 조심스럽게 고쳐 매었다. 반듯하게 다듬어진 옷깃과 낯선 향수 냄새가 어쩐지 자기 것이 아닌 듯했다.\n주변의 귀족들은 웃으며 대화를 나누고 있었다. 그들 사이에 서 있자니 자신의 손을 어디에 두어야 할지조차 새삼 의식되었다.',thought:'실수하지 말자. 이 옷이 어색해도 티를 내서는 안 돼. 코트리먼이 이 차림을 본다면 무슨 말을 할까. ……또 그런 생각부터 하는군.',next:'ball_choice',chapter:'CHAPTER 01'},
+
+ asel_entrance_watch:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 빛과 그림자","text":"왈츠가 연회장을 채웠다. 나는 보랏빛 휘장과 귀족들의 어깨 너머로 문가를 바라보았다.\n\n그리고 그녀를 발견했다. 미겔 코트리먼. 남들 앞에서 한 치의 흐트러짐도 허락하지 않는, 익숙하고도 낯선 미소.\n\n나는 무의식중에 넥타이를 고쳐 매고 한 걸음을 내디뎠다.","thought":"삼 년이다. 이미 사랑하고 있다는 사실을 알면서도 참아 온 시간이. 오늘은 그저 인사만 하자.","next":"asel_entrance_alex"},
+ asel_entrance_alex:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 형님의 자리","text":"그 순간 알렉스 형님이 그녀의 곁에 섰다. 형님은 익숙한 몸짓으로 코트리먼에게 팔을 내밀었다.\n\n“안색이 좋지 않군, 미겔. 불편한가?”\n\n“설마요. 제가 오늘을 얼마나 기다렸는지 모르시나요?”\n\n그녀의 대답은 매끄러웠다. 사교계가 기대하는 정략 약혼녀의 미소. 나는 그것을 알면서도 가슴이 조여 왔다.","thought":"형님께서는 아무렇지도 않게 그녀의 곁에 서신다. 나는 한 걸음 다가가는 것조차 망설이는데.","next":"asel_entrance_announce"},
+ asel_entrance_announce:{"speaker":"연회 사회자","chapter":"CHAPTER 01 · 화려한 입장","text":"“귀빈 여러분, 알렉스 레온하르트 님과 미겔 코트리먼 님께서 입장하십니다!”\n\n문이 활짝 열리고 박수가 쏟아졌다. 알렉스 형님은 코트리먼과 팔짱을 낀 채 빛이 쏟아지는 중앙으로 걸어 나갔다.\n\n나는 기둥의 그림자에 남았다. 모두가 두 사람을 축복하는 동안, 내 눈에는 형님의 손과 그녀의 팔이 맞닿은 자리만 보였다.","thought":"그 자리에 서 있는 사람이 왜 나는 아닐까.","next":"asel_entrance_kiss"},
+ asel_entrance_kiss:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 입맞춤","text":"“드디어 온 세상에 전하는군. 그대가 내 약혼녀라는 사실을.”\n\n형님이 웃으며 코트리먼의 뺨에 입을 맞췄다. 그녀는 예의 바르게 미소 지었다.\n\n“……그렇지도 몰라요.”\n\n잔의 테두리가 내 손가락을 파고들었다. 환호는 멀어지고, 내 귀에는 심장이 뛰는 소리만 남았다.\n\n그녀가 형님을 사랑하는지 나는 알지 못한다. 다만 형님은 세상의 허락을 받아 그녀에게 닿을 수 있고, 나는 그 장면을 숨죽여 바라봐야 한다.","thought":"형님은 좋으시겠습니다. ……이런 생각을 하는 제가 싫습니다.","next":"asel_entrance_choice"},
+ asel_entrance_choice:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 이성 / 본능 / 경계 침범","text":"삼 년 동안 참아 왔다. 형님의 동생으로, 코트리먼의 귀여운 아이로.\n\n그녀가 나를 향해 꾸밈없이 웃어 주던 순간들을 나는 기억한다. 그러나 그 친밀함이 그녀를 내 것으로 만들어 주지는 않는다.\n\n지금 내 안에서 무언가가 끊어질 듯 팽팽해졌다. 나는 이 감정을 어떻게 다룰 것인가.","thought":"사랑은 이미 시작되었다. 이제 남은 건, 그 마음으로 무엇을 하느냐뿐이다.","choices":[{"text":"【이성】 아무렇지 않은 얼굴로 축복한다.","next":"asel_reason","v91Moral":"virtue","effects":{"resolve":2}},{"text":"【본능】 그녀가 나를 보기를 바라며 빛 쪽으로 걸어간다.","next":"asel_instinct","effects":{"risk":2}},{"text":"【경계 침범】 두 사람 사이를 갈라놓을 명분을 찾는다.","next":"asel_boundary","v91Moral":"karma","effects":{"risk":4}}]},
+ asel_reason:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 이성","text":"나는 잔을 내려놓고 천천히 숨을 골랐다. 형님의 약혼을 축하하는 박수에 조용히 손을 보탰다.\n\n손바닥이 아팠다. 코트리먼의 웃음을 바라보는 것보다, 그 웃음이 내게 향하지 않는다는 사실을 인정하는 것이 더 아팠다.","thought":"그녀가 행복할 권리와 내가 그녀를 사랑하는 마음은 별개다. 그 사실을 잊지 말자.","next":"v108_title"},
+ asel_instinct:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 본능","text":"나는 기둥의 그림자에서 나와 사람들 사이로 한 걸음 옮겼다. 코트리먼이 나를 발견할 수 있는 자리였다.\n\n그녀의 시선이 이쪽을 스친 듯했다. 우연일지도 모른다. 그럼에도 나는 그 짧은 순간을 놓지 못했다.","thought":"한 번만. 형님의 약혼녀가 아니라, 나를 아는 코트리먼으로 나를 봐 주시면 안 됩니까.","next":"v108_title"},
+ asel_boundary:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 경계 침범","text":"박수 소리 속에서 나는 생각했다. 형님을 잠시 다른 곳으로 부를 수 있다면, 그녀와 단둘이 이야기할 기회가 생길 것이다.\n\n그것이 그녀의 뜻인지 나는 묻지 않았다. 내 마음이 급하다는 이유로 그녀의 선택을 뒤로 미루는 순간이었다.","thought":"그저 한 번만 내 쪽을 보게 하면 된다. ……나는 지금 무엇을 정당화하고 있는 거지.","next":"v108_title"},
+ v108_intro_entrance:{"speaker": "다니엘 레온하르트", "chapter": "INTRO · 사슬의 시작", "text": "아셀 연회의 마지막 밤. 대무도회장의 빛은 눈부셨고, 나는 기둥의 그늘에 홀로 서 있었다.\n\n세 개의 달이 뜬 창 너머로, 내 시선은 단 한 사람을 찾았다.\n\n미겔 코트리먼. 삼 년 동안 사랑해 온, 형님의 약혼녀.", "next": "asel_entrance_watch", "day": 7},
+ v108_title:{"speaker": "SYSTEM", "chapter": "DELHARSA · 보라색의 밤", "text": "《 DELHARSA : 보라색의 밤 》\n\n그날 밤의 마지막 불꽃이 사그라지기 전, 이야기는 연회가 시작된 첫날로 돌아간다.", "next": "v108_prologue_invite", "day": 1},
+ v108_prologue_invite:{"speaker": "아셀 왕실의 초대장", "chapter": "PROLOGUE · 아셀의 7일", "text": "처음 아셀의 편지를 받았던 날이 떠올랐다. 일주일간의 연회, 그리고 마지막 날의 대무도회.\n\n그때는 종이 위의 글자에 지나지 않았던 시간이 이제 내 앞에 펼쳐져 있었다. 이야기는 연회 첫날로 돌아간다.", "next": "v108_day1", "day": 1},
+ v108_day1:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 1 / 개막", "text": "아셀의 보랏빛 휘장 아래, 귀족들은 저마다의 가면을 쓰고 인사했다. 나는 사람들 사이에서 코트리먼을 보았다.\n\n그녀는 완벽하게 웃었다. 누구에게나 공평하게, 속내를 조금도 드러내지 않는 미소였다.", "next": "v108_day2", "day": 1},
+ v108_day2:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 2 / 오래된 기억", "text": "그녀의 목소리를 듣자 삼 년 전의 기억이 떠올랐다. 그때 나는 그저 형님의 약혼녀를 예의 바르게 대하려 했다.\n\n하지만 어느 순간부터 그녀가 내 이름을 부르는 방식과, 다른 이들이 떠난 뒤 조금 느슨해지는 표정을 기다리게 되었다.\n\n어느 한순간의 기적이 아니라, 되풀이되는 작은 순간들이 나를 바꾸었다.", "next": "v108_day3", "day": 2},
+ v108_day3:{"speaker": "미겔 코트리먼", "chapter": "PROLOGUE · DAY 3 / 가면 아래", "text": "사람들이 떠난 작은 회랑에서 코트리먼이 어깨를 가볍게 풀었다.\n\n“아아, 오늘도 긴 하루였구나. 다니엘, 너는 아직도 그렇게 반듯하게 서 있을 셈이니?”\n\n나는 웃음을 참았다. 사교계가 아는 영애와 내 앞의 그녀는 조금 달랐다. 그 사실이 내게 어떤 권리도 주지 않는다는 것을 알면서도.", "next": "v108_day4", "day": 3},
+ v108_day4:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 4 / 사랑의 이름", "text": "삼 년 전, 나는 깨달았다. 그녀를 만나지 못한 날에도 그녀의 말과 표정을 떠올리고 있다는 사실을.\n\n그것을 사랑이라고 부르는 순간, 가장 먼저 떠오른 것은 기쁨이 아니었다. 형님이었다.\n\n그때부터 나는 형님의 동생으로 남기 위해 내 마음을 숨겼다.", "next": "v108_day5", "day": 4},
+ v108_day5:{"speaker": "알렉스 레온하르트", "chapter": "PROLOGUE · DAY 5 / 형의 부재", "text": "“영지에 일이 생겼어. 직접 가서 정리하고 오지.”\n\n알렉스 형님은 성가신 일을 처리하러 가는 사람답게 빠르고 자신 있게 결정을 내렸다.\n\n“다니엘, 내가 없는 동안 미겔이 불편하지 않게 신경 좀 써 줘. 마지막 무도회 전에는 돌아올 테니까.”\n\n“……알겠습니다, 형님.”\n\n그 신뢰가 내게는 잔인했다.", "next": "v108_day6", "day": 5},
+ v108_day6:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 6 / 두 사람의 거리", "text": "형님이 없는 동안, 코트리먼과 나는 잠시 정원에 나란히 섰다.\n\n“귀여운 아이. 무슨 걱정이 그리 많니?”\n\n그녀는 남들 앞에서의 미소 대신, 피곤하고 솔직한 얼굴로 나를 바라보았다.\n\n나는 그 얼굴을 사랑했다. 그래서 더욱, 그녀가 허락하지 않은 의미를 멋대로 붙이지 않으려 애썼다.", "next": "v108_day7", "day": 6},
+ v108_day7:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 7 / 마지막 대무도회", "text": "형님은 약속대로 돌아왔다. 대무도회장의 문이 열리고, 형님은 코트리먼에게 손을 내밀었다.\n\n두 사람이 함께 빛 속으로 걸어가는 모습을 바라보자, 첫날부터 쌓아 온 일주일의 기억이 한꺼번에 되살아났다.\n\n이제야 나는 인트로에서 보았던 그 밤의 끝에 도착했다.", "next": "v108_fireworks", "day": 7},
+ v108_fireworks:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · FIN / 보라색의 밤", "text": "테라스 너머로 마법의 불꽃들이 솟아올랐다. 세 개의 달 아래, 보라색 밤하늘에 흰 불꽃이 부서졌다.\n\n일주일이라는 길고도 짧은 시간. 누군가에게는 찬란한 축제였을 그 밤들이 내게는 끝나지 않을 형벌과도 같았다.\n\n아셀의 연회는 끝났다. 그러나 내 안의 밤은 이제 막 시작되었을 뿐이었다.", "next": "v108_after_ball", "day": 7},
+ v108_after_ball:{"speaker": "알렉스 레온하르트", "chapter": "ACT 01 · 영지로 향하는 길", "text": "연회가 끝난 뒤, 형님은 내게 코트리먼 영지의 수로와 관개 상태를 살펴 달라고 부탁했다. 자신의 일정이 겹친다는 이유였다.\n\n“미겔에게도 이야기해 뒀어. 네가 가 주면 마음이 놓이겠군.”\n\n나는 형님의 부탁을 거절하지 못했다.", "next": "rose_intro", "day": 8},
+ ball_choice:{speaker:'SYSTEM',text:'연회장의 안쪽에서는 웃음소리와 잔 부딪치는 소리가 끊이지 않았다. 다니엘은 익숙한 얼굴을 찾으려 주변을 살폈다. 어느 쪽으로 먼저 발을 옮겨야 할까.',chapter:'CHAPTER 01',choices:[{text:'연회장 안쪽으로 들어간다.',next:'v92_court_whispers',effects:{resolve:1}},{text:'주변 귀족들에게 인사한다.',next:'ball_greeting',effects:{reputation:2}},{text:'잠시 숨을 고른다.',next:'ball_rest',effects:{resolve:2}}]},
+ ball_greeting:{speaker:'SYSTEM',text:'다니엘은 먼저 눈이 마주친 귀족들에게 정중히 인사를 건넸다. 처음에는 목소리가 조금 굳었지만, 상대가 웃으며 답하자 숨을 고를 수 있었다.\n짧은 대화가 끝나고 나서야 그는 자신이 줄곧 잔의 받침을 꽉 쥐고 있었다는 사실을 깨달았다.',thought:'생각보다 어렵지는 않았어. 다음에도 이렇게 하면 되겠지.',next:'v92_court_whispers',chapter:'CHAPTER 01'},
+ ball_rest:{speaker:'다니엘 레온하르트',text:'다니엘은 사람들의 동선에서 조금 비켜섰다. 대리석 기둥에 기대지는 않은 채 조용히 숨을 골랐다. 멀리서 들려오는 음악은 여전히 우아했지만, 가까운 곳에서는 수많은 목소리가 뒤섞여 있었다.',thought:'괜찮아. 잠깐만 숨을 고르면 돼. 아무도 나를 이상하게 보지 않았을 거야.',next:'v92_court_whispers',chapter:'CHAPTER 01'},
+ v92_court_whispers:{speaker:'서술',chapter:'CHAPTER 01 · 황궁의 속삭임',text:'연회장의 서쪽 회랑에는 향초의 달콤한 냄새가 감돌았다. 다니엘은 샹들리에 아래를 지나려다 자기 가문의 문장이 수놓인 소매를 보고 시선을 피하는 귀족 둘을 발견했다.\n\n“레온하르트가의 막내라지요.”\n\n“알렉스 경의 약혼녀와도 친분이 있다던데. 코트리먼 후작 영애 말이에요.”\n\n이름 하나가 입 밖으로 나오자 두 사람의 목소리가 낮아졌다. 다니엘은 자신이 아직 아무 말도 하지 않았다는 사실이 오히려 불편했다.',thought:'형님과 코트리먼 이야기를 왜 저렇게 하는 거지. 모르는 척 지나가야 하나.',next:'v92_court_choice'},
+ v92_court_choice:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 황궁의 속삭임',text:'기둥 너머에서 누군가의 잔이 가볍게 부딪혔다. 소문은 사실을 묻기 전에 사람을 먼저 판단한다. 다니엘은 발걸음을 옮기려다 멈췄다.',choices:[{text:'근거 없는 소문을 정중하게 바로잡는다.',next:'v92_court_correct',v91Moral:'virtue',effects:{reputation:1}},{text:'아무 말 없이 자리를 떠난다.',next:'v92_court_leave',effects:{resolve:1}},{text:'그들의 말을 이용해 미겔을 압박할 생각을 한다.',next:'v92_court_shadow',v91Moral:'karma'}]},
+ v92_court_correct:{speaker:'서술',chapter:'CHAPTER 01',text:'“실례합니다. 두 분께서 말씀하시는 일에 제가 관련되어 있는 듯합니다.”\n\n다니엘은 목소리가 떨리지 않도록 천천히 숨을 골랐다. “코트리먼과 형님의 약혼을 두고 확인되지 않은 이야기를 퍼뜨리는 건 삼가 주셨으면 합니다.”\n\n두 귀족은 불편한 표정으로 고개를 돌렸다. 다니엘은 그들의 사과를 강요하지 않았다. 다만 한 번 꺼낸 말은 주워 담을 수 없다는 사실을, 자신부터 기억하기로 했다.',thought:'괜한 참견이었을까. 그래도 형님이 이 말을 들으셨다면 나처럼 하셨을 거야.',next:'v92_servant_event'},
+ v92_court_leave:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 소리가 나지 않도록 걸음을 옮겼다. 자신을 향한 시선이 사라진 뒤에도 귀 끝이 뜨거웠다.\n\n소문을 바로잡을 용기가 없었다는 사실과, 누군가의 약혼을 가벼운 화제로 삼는 이들에게 화가 났다는 사실은 동시에 참일 수 있었다.',thought:'지금은 끼어들지 않는 편이 낫겠지. 그렇지만 나중에는…….',next:'v92_servant_event'},
+ v92_court_shadow:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 두 귀족의 목소리를 끝까지 들었다. 그들이 두려워하는 이름, 궁정에서 통하는 소문, 누구의 눈치를 보는지까지.\n\n누군가의 평판은 생각보다 쉽게 흔들린다. 그 사실을 알아차린 순간 다니엘은 스스로가 낯설어졌다. 아직 아무 일도 하지 않았는데도, 마음 한쪽에 차가운 계산이 자리 잡았다.',thought:'이런 말 한마디에도 사람은 움직이는구나. ……내가 왜 그런 생각을 했지.',next:'v92_servant_event'},
+ v92_servant_event:{speaker:'서술',chapter:'CHAPTER 01 · 작은 선택',text:'회랑 끝에서 유리잔이 깨지는 소리가 났다. 어린 시종이 무릎을 꿇은 채 파편을 줍고 있었다. 바닥에 번진 포도주가 고급 융단으로 스며들자, 근처의 귀족이 노골적으로 얼굴을 찌푸렸다.\n\n“그 융단 값은 네 평생 품삯으로도 모자라겠구나.”\n\n시종은 대답 대신 손등으로 눈가를 문질렀다. 다니엘은 그 아이의 손가락에 작은 상처가 난 것을 보았다.',next:'v92_servant_choice'},
+ v92_servant_choice:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 작은 선택',text:'지금 손을 내밀면 사람들의 눈길이 자신에게 쏠릴 것이다. 반대로 그냥 지나치면 누구도 그를 탓하지 않을 터였다.',choices:[{text:'시종을 일으키고 치료를 부탁한다.',next:'v92_servant_help',v91Moral:'virtue',effects:{trust:1}},{text:'관리인에게 조용히 상황을 알린다.',next:'v92_servant_report',effects:{resolve:1}},{text:'시종에게 책임을 떠넘기며 귀족의 비위를 맞춘다.',next:'v92_servant_betray',v91Moral:'karma',effects:{reputation:1}}]},
+ v92_servant_help:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 손수건을 꺼내 아이의 손을 감쌌다. “파편은 제가 치우겠습니다. 먼저 치료를 받으세요.”\n\n“도련님, 저는…….”\n\n“다친 사람이 먼저입니다.”\n\n그가 고개를 들자 몇몇 귀족이 어색하게 시선을 돌렸다. 시종은 몇 번이나 허리를 숙였다. 다니엘은 감사 인사를 받을 때마다 자신이 한 일이 거창하지 않다는 생각만 들었다.',thought:'누구든 다치면 도와야지. 그런데 왜 이런 일에까지 용기가 필요할까.',next:'v92_alex_foreshadow'},
+ v92_servant_report:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 가까운 관리인을 불러 시종이 다쳤다고 알렸다. 아이를 혼내려던 귀족은 관리인이 다가오자 입을 다물었다.\n\n다니엘은 직접 나서지는 못했지만, 시종이 치료실로 향하는 것을 끝까지 지켜보았다. 아무것도 하지 않은 것과, 할 수 있는 만큼 한 것은 다르다고 믿고 싶었다.',thought:'더 잘할 수도 있었겠지. 그래도 저 아이가 다친 채 남아 있지는 않겠어.',next:'v92_alex_foreshadow'},
+ v92_servant_betray:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 시종에게 눈길을 주지 않은 채 귀족의 말에 동조했다. 상대는 만족스럽게 웃었고, 잠시 뒤 그에게 잔을 건넸다.\n\n그러나 깨진 유리 조각이 치워진 자리에는 붉은 얼룩이 남았다. 다니엘은 잔을 받으면서도 손끝을 감추었다. 방금 자신이 무엇을 얻었는지, 그 대가로 누가 울었는지 알 수 없었다.',thought:'고작 이런 일로 호의를 얻었어. ……기뻐해야 하는 걸까.',next:'v92_alex_foreshadow'},
+ v92_alex_foreshadow:{speaker:'서술',chapter:'CHAPTER 01 · 형의 약속',text:'“다니엘.”\n\n익숙한 목소리에 돌아보니 알렉스가 회랑 입구에 서 있었다. 둘째 형은 연회장에서도 여유를 잃지 않는 사람이었다. 하지만 동생의 얼굴을 살피는 눈길만큼은 조금도 가볍지 않았다.\n\n“얼굴이 굳었네. 누가 우리 막내를 괴롭혔어?”\n\n장난스러운 말투였다. 다니엘은 그 말 뒤에 숨은 걱정을 알아차렸다.',next:'v92_alex_choice'},
+ v92_alex_choice:{speaker:'알렉스 레온하르트',chapter:'CHAPTER 01 · 형의 약속',text:'“미겔도 오늘 왔어. 나중에 같이 인사하자. 그 사람은 네가 긴장하면 더 신경 써 줄 거야.”\n\n알렉스는 웃었다. 다니엘은 그 웃음에 아무런 의심이 없다는 사실이 문득 두려웠다.',choices:[{text:'형에게 연회장에서 들은 소문을 솔직히 말한다.',next:'v92_alex_truth',v91Moral:'virtue',effects:{trust:1}},{text:'괜찮다며 웃어 보인다.',next:'v92_alex_silence',effects:{resolve:1}},{text:'미겔과의 약혼이 정말 행복한지 날카롭게 묻는다.',next:'v92_alex_question',effects:{resolve:1}}]},
+ v92_alex_truth:{speaker:'알렉스 레온하르트',chapter:'CHAPTER 01',text:'다니엘의 설명을 들은 알렉스는 잠시 웃음을 거두었다. 그러나 화를 내는 대신 동생의 어깨에 손을 올렸다.\n\n“네가 그 말을 혼자 듣게 해서 미안하다. 하지만 소문은 소문일 뿐이야. 미겔과 나는 서로에게 책임질 말을 하고 있어.”\n\n알렉스는 이내 눈을 휘었다. “그리고 넌 내 동생이잖아. 혼자 다 짊어지지 마.”',thought:'형님은 언제나 이렇게 쉽게 나를 믿는다. 그 믿음을 잃게 된다면…….',next:'ball_miguel'},
+ v92_alex_silence:{speaker:'서술',chapter:'CHAPTER 01',text:'“그럼 다행이고.”\n\n알렉스는 다니엘의 옷깃을 한 번 매만졌다. 어릴 적부터 해 오던 버릇이었다. 다니엘은 형의 손이 떨어진 자리를 한참 내려다보았다.\n\n말하지 않은 것이 거짓말이 되는 순간이 있을까. 그는 아직 답을 알지 못했다.',thought:'형님께는 걱정을 끼치고 싶지 않아. 적어도 오늘 밤만큼은.',next:'ball_miguel'},
+ v92_alex_question:{speaker:'알렉스 레온하르트',chapter:'CHAPTER 01',text:'알렉스는 놀란 듯 눈썹을 올렸다가, 다니엘의 얼굴을 가만히 살폈다.\n\n“행복하냐고? 물론이지. 그렇다고 미겔이 내 뜻대로만 움직이는 사람이라는 뜻은 아니야.”\n\n그는 잠시 연회장 쪽을 돌아보았다. “우리는 서로 다른 사람이니까. 그래서 더 오래 이야기하려고 해.”\n\n다니엘은 형이 자신을 꾸짖지 않았다는 사실에 오히려 가슴이 답답해졌다.',thought:'형님은 미겔을 소유하려 하지 않는다. ……그런데 나는 왜 그 말을 듣고 마음이 불편하지.',next:'ball_miguel'},
+ ball_miguel:{speaker:'SYSTEM',text:'연회장 건너편에서 익숙한 모습이 눈에 들어왔다. 미겔 코트리먼이었다.\n그녀는 화려한 장식 사이에서도 지나치게 자신을 드러내지 않았다. 누군가 말을 건네면 고개를 기울여 듣고, 적당한 순간에 부드럽게 미소 지었다. 다니엘은 자신도 모르게 걸음을 늦췄다.\n그녀는 둘째 형 알렉스의 약혼자였다. 처음 알게 된 사실도, 새삼 깨달은 사실도 아니었다. 다니엘은 그 사실을 알고도 오래도록 그녀를 사랑해 왔다.',thought:'코트리먼이다. 형님과 함께 오셨겠지. 저 얼굴을 보려고 연회장을 몇 번이나 훑었는지 들키면 안 돼.',next:'ball_meeting',chapter:'CHAPTER 01'},
  ball_meeting:{speaker:'SYSTEM',text:'다니엘은 손에 쥔 잔을 내려다보았다. 이쪽에서 몇 걸음만 옮기면 그녀에게 닿을 거리였다. 그러나 그 짧은 거리가 이상하리만치 멀게 느껴졌다.',chapter:'CHAPTER 01',choices:[{text:'정중히 인사를 건넨다.',thought:'괜히 대화를 방해하는 건 아닐까. 그래도 못 본 척 지나치는 건 예의가 아니겠지.',next:'ball_hello',effects:{trust:2}},{text:'적당한 거리를 유지한다.',next:'ball_distance',effects:{resolve:2}},{text:'먼저 주변 상황을 살핀다.',next:'ball_watch',effects:{reputation:1}}]},
- ball_hello:{speaker:'SYSTEM',text:'다니엘은 자세를 바로잡고 미겔 앞에서 고개를 숙였다.\n“코트리먼 후작님. ……안녕하십니까.”\n인사 자체는 무난했다. 그런데도 고개를 드는 순간, 그녀가 어떤 표정을 짓고 있을지 괜히 신경이 쓰였다.',thought:'목소리가 너무 작았나? 호칭은 틀리지 않았겠지. 왜 이렇게 긴장하는 거야.',next:'demo_end',chapter:'CHAPTER 01'},
+ ball_hello:{speaker:'SYSTEM',text:'다니엘은 자세를 바로잡고 미겔 앞에서 고개를 숙였다.\n“코트리먼. ……안녕하십니까.”\n인사 자체는 무난했다. 그런데도 고개를 드는 순간, 그녀가 어떤 표정을 짓고 있을지 괜히 신경이 쓰였다.',thought:'평소처럼 인사했을 뿐이다. 그런데도 저 사람이 나를 바라보는 순간, 준비한 말이 전부 사라져 버린다.',next:'demo_end',chapter:'CHAPTER 01'},
  ball_distance:{speaker:'SYSTEM',text:'다니엘은 인사를 건넬 기회를 기다리며 한 발 물러섰다. 그녀가 대화를 마칠 때까지 서둘러 끼어들 생각은 없었다.\n하지만 기다리는 동안에도 시선은 자꾸만 같은 곳으로 향했다.',thought:'지금은 방해하지 않는 편이 낫겠어. 조금 뒤에 다시 기회가 있겠지.',next:'demo_end',chapter:'CHAPTER 01'},
  ball_watch:{speaker:'SYSTEM',text:'다니엘은 주변의 움직임부터 살폈다. 시종들이 빈 잔을 거두고, 손님들은 음악이 바뀔 때마다 자리를 옮겼다.\n미겔에게 다가갈 적당한 순간을 찾는 일이 이렇게 어려울 줄은 몰랐다.',thought:'너무 갑작스럽게 다가가면 실례일 테니까. 자연스러운 때를 기다리자.',next:'demo_end',chapter:'CHAPTER 01'},
  demo_end:{speaker:'다니엘 레온하르트',text:'다니엘은 연회장 너머로 시선을 돌렸다. 조금 전까지 보이던 미겔의 모습은 어느새 사람들 사이로 사라지고 없었다.\n그는 무심코 발을 옮겼다가, 자신의 행동을 깨닫고 멈춰 섰다.',chapter:'CHAPTER 01',thought:'어디로 가셨지? 아니, 굳이 찾는 건 아니야. 아직 제대로 인사를 드리지 못했을 뿐이니까.',next:'explore'},
  explore:{speaker:'SYSTEM',text:'황궁 탐색 · 미겔의 행방을 찾아보세요.\n장소를 이동하면 시간이 흐릅니다. 단서를 모으면 특별한 장소가 열립니다.',chapter:'CHAPTER 01',explore:true},
  explore_hint:{speaker:'SYSTEM',text:'회랑의 시종에게 조심스레 행방을 묻자 최근 목격 장소를 알려주었다.\n하지만 미겔도 계속 이동하고 있다. 너무 늦으면 단서가 빗나갈지도 모른다.',chapter:'CHAPTER 01',next:'explore'},
  explore_empty:{speaker:'다니엘 레온하르트',text:'다니엘은 텅 빈 회랑을 다시 한번 둘러보았다. 멀리서 문이 닫히는 소리가 들렸지만, 기다리던 발소리는 아니었다.\n그는 조금 전 지나온 길을 떠올리며 소매 끝을 만지작거렸다.',chapter:'CHAPTER 01',thought:'여기도 안 계시는군. 형님의 약혼자에게 인사를 드리는 건 당연한 일인데…… 같은 길을 몇 번이나 돌아다닐 필요까지 있을까.',next:'explore'},
- explore_alex:{speaker:'SYSTEM',text:'회랑 건너편에서 알렉스 레온하르트가 모습을 드러냈다. 사람들과 여유롭게 인사를 나누던 둘째 형은 다니엘을 발견하자 익숙한 얼굴로 고개를 돌렸다.\n다니엘은 반사적으로 자세를 바로잡았다. 평소라면 반가웠을 만남이 오늘만큼은 묘하게 당황스러웠다.',chapter:'CHAPTER 01',choices:[{text:'정중하게 인사한다.',thought:'형님께서 왜 여기 계시지? 미겔 후작님을 찾고 있었다고 말씀드리면 이상하게 생각하실까.',next:'alex_greeting',effects:{reputation:2}},{text:'연회장에 관한 이야기로 화제를 돌린다.',next:'alex_smalltalk',effects:{resolve:1}},{text:'잠시 자리를 피해도 되는지 양해를 구한다.',next:'alex_excuse',effects:{risk:1}}]},
+ explore_alex:{speaker:'SYSTEM',text:'회랑 건너편에서 알렉스 레온하르트가 모습을 드러냈다. 사람들과 여유롭게 인사를 나누던 둘째 형은 다니엘을 발견하자 익숙한 얼굴로 고개를 돌렸다.\n다니엘은 반사적으로 자세를 바로잡았다. 평소라면 반가웠을 만남이 오늘만큼은 묘하게 당황스러웠다.',chapter:'CHAPTER 01',choices:[{text:'정중하게 인사한다.',thought:'형님께서 왜 여기 계시지? 코트리먼을 찾고 있었다고 말씀드리면 이상하게 생각하실까.',next:'alex_greeting',effects:{reputation:2}},{text:'연회장에 관한 이야기로 화제를 돌린다.',next:'alex_smalltalk',effects:{resolve:1}},{text:'잠시 자리를 피해도 되는지 양해를 구한다.',next:'alex_excuse',effects:{risk:1}}]},
  alex_greeting:{speaker:'다니엘 레온하르트',text:'“형님. ……안녕하십니까.”\n다니엘은 정중하게 고개를 숙였다. 알렉스가 자연스럽게 인사를 받아 주는 동안에도 그는 소매를 한번 고쳐 잡았다.',chapter:'CHAPTER 01',thought:'평소처럼 행동하면 돼. 형님은 아무것도 이상하게 여기지 않으실 거야.',next:'explore'},
  alex_smalltalk:{speaker:'다니엘 레온하르트',text:'“오늘 연회는…… 성대하군요.”\n다니엘의 말에 알렉스는 가볍게 웃으며 연회장 쪽을 돌아보았다. 평범한 대화였지만, 다니엘은 괜히 자신이 지나치게 말을 고르고 있다고 느꼈다.',chapter:'CHAPTER 01',thought:'왜 이렇게 뻔한 말밖에 떠오르지 않지. 형님 앞인데도.',next:'explore'},
  alex_excuse:{speaker:'다니엘 레온하르트',text:'“죄송합니다. 잠시 실례해도 되겠습니까?”\n알렉스가 선선히 길을 비켜 주자 다니엘은 고개를 숙이고 회랑 끝으로 걸음을 옮겼다. 발소리가 멀어진 뒤에야 어깨에 들어간 힘이 조금 풀렸다.',chapter:'CHAPTER 01',thought:'갑자기 자리를 뜬 건 무례했을까. 다음에 만나면 다시 인사를 드려야겠어.',next:'explore'},
- alex_miguel:{speaker:'SYSTEM',text:'미겔의 곁에는 알렉스가 서 있었다. 두 사람은 오래 알고 지낸 사이답게 자연스럽게 대화를 이어 갔다.\n“알렉.”\n미겔이 익숙한 호칭으로 그를 부르는 소리에 다니엘은 잠시 멈췄다. 형과 그의 약혼자. 두 사람의 관계는 분명하고 당연한 것이었다.',chapter:'CHAPTER 01',choices:[{text:'두 사람에게 정중히 인사한다.',thought:'두 분이 함께 계시는군. 당연한 일인데…… 내가 지금 끼어들어도 괜찮을까.',next:'alex_miguel_greet',effects:{reputation:2,trust:1}},{text:'방해하지 않고 조용히 물러선다.',next:'alex_miguel_leave',effects:{resolve:1}},{text:'급히 발걸음을 돌린다.',next:'alex_miguel_flee',effects:{risk:2}}]},
- alex_miguel_greet:{speaker:'다니엘 레온하르트',text:'“형님, 코트리먼 후작님. ……좋은 밤입니다.”\n다니엘은 두 사람에게 차례로 고개를 숙였다. 알렉스는 평소와 다름없이 반갑게 응했고, 미겔 역시 온화한 미소를 지었다.\n그것만으로도 다니엘은 조금 안도했다.',chapter:'CHAPTER 01',thought:'괜찮아. 평범한 인사였어. 그런데 왜 이렇게 심장이 빨리 뛰는 거지.',next:'explore'},
+ alex_miguel:{speaker:'SYSTEM',text:'미겔의 곁에는 알렉스가 서 있었다. 두 사람은 오래 알고 지낸 사이답게 자연스럽게 대화를 이어 갔다.\n“알렉.”\n미겔이 익숙한 호칭으로 그를 부르는 소리에 다니엘은 잠시 멈췄다. 형님과 코트리먼. 두 사람의 약혼은 오래전부터 분명한 사실이었다.',chapter:'CHAPTER 01',choices:[{text:'두 사람에게 정중히 인사한다.',thought:'두 분이 함께 계시는군. 당연한 일인데…… 내가 지금 끼어들어도 괜찮을까.',next:'alex_miguel_greet',effects:{reputation:2,trust:1}},{text:'방해하지 않고 조용히 물러선다.',next:'alex_miguel_leave',effects:{resolve:1}},{text:'급히 발걸음을 돌린다.',next:'alex_miguel_flee',effects:{risk:2}}]},
+ alex_miguel_greet:{speaker:'다니엘 레온하르트',text:'“형님, 코트리먼. ……좋은 밤입니다.”\n다니엘은 두 사람에게 차례로 고개를 숙였다. 알렉스는 평소와 다름없이 반갑게 응했고, 미겔 역시 온화한 미소를 지었다.\n그것만으로도 다니엘은 조금 안도했다.',chapter:'CHAPTER 01',thought:'괜찮아. 평범한 인사였어. 그런데 왜 이렇게 심장이 빨리 뛰는 거지.',next:'explore'},
  alex_miguel_leave:{speaker:'SYSTEM',text:'다니엘은 두 사람에게 방해가 되지 않도록 조용히 물러섰다. 뒤편에서 이어지는 대화 소리가 한동안 귓가에 남았다.\n회랑으로 접어든 뒤에도 그는 쉽게 발걸음을 재촉하지 못했다.',chapter:'CHAPTER 01',thought:'인사는 다음에 드려도 돼. 지금은 두 분만의 시간을 방해하지 않는 편이 낫겠지.',next:'explore'},
  alex_miguel_flee:{speaker:'다니엘 레온하르트',text:'“……아.”\n다니엘은 무심코 방향을 틀었다. 너무 급한 움직임이었다는 사실을 깨달은 것은 이미 몇 걸음이나 멀어진 뒤였다.\n그는 천천히 속도를 늦추며 아무 일도 없었던 듯 옷깃을 정리했다.',chapter:'CHAPTER 01',thought:'오히려 더 눈에 띄었을지도 몰라. 왜 이렇게 서둘렀지.',next:'explore'},
- explore_found:{speaker:'SYSTEM',text:'온실 입구에는 노란 장미가 가지런히 심겨 있었다. 유리 천장 너머로 스며든 달빛이 꽃잎 위에 희미한 윤곽을 남겼다.\n조용한 발소리에 미겔 코트리먼이 고개를 돌렸다.\n“레온하르트 경. 이곳에서 뵙는군요.”\n다니엘은 준비해 둔 인사말을 순간 잊어버렸다.',chapter:'CHAPTER 01',choices:[{text:'“우연히 지나던 길이었습니다.”',thought:'드디어 뵈었다. 그런데 이제 무슨 말씀을 드려야 하지.',next:'found_shy',effects:{affection:2,risk:1}},{text:'“인사를 드리고 싶었습니다.”',next:'found_honest',effects:{trust:3,resolve:2}},{text:'“불편하셨다면 물러나겠습니다.”',next:'found_polite',effects:{trust:2}}]},
+ explore_found:{speaker:'SYSTEM',text:'온실 입구에는 노란 장미가 가지런히 심겨 있었다. 유리 천장 너머로 스며든 달빛이 꽃잎 위에 희미한 윤곽을 남겼다.\n조용한 발소리에 미겔 코트리먼이 고개를 돌렸다.\n“어머, 다니엘 공자님. 여기까지 오셨구나. 밤바람이 차니 안으로 들어오렴.”\n다니엘은 준비해 둔 인사말을 순간 잊어버렸다.',chapter:'CHAPTER 01',choices:[{text:'“우연히 지나던 길이었습니다.”',thought:'드디어 뵈었다. 그런데 이제 무슨 말씀을 드려야 하지.',next:'found_shy',effects:{affection:2,risk:1}},{text:'“인사를 드리고 싶었습니다.”',next:'found_honest',effects:{trust:3,resolve:2}},{text:'“불편하셨다면 물러나겠습니다.”',next:'found_polite',effects:{trust:2}}]},
  found_shy:{speaker:'다니엘 레온하르트',text:'“우연히 지나던 길이었습니다.”\n입 밖으로 나온 말을 듣고 다니엘은 속으로 한숨을 삼켰다. 이미 같은 복도를 여러 번 지나왔으면서도 하필 이런 변명을 고른 것이다.\n그는 미겔의 눈을 오래 마주하지 못하고 시선을 내렸다.',chapter:'CHAPTER 01',thought:'우연이라니. 정말 어설픈 변명이야. 그저 인사를 드리고 싶었다고 말하면 될 텐데.',next:'miguel_conversation'},
- found_honest:{speaker:'미겔 코트리먼',text:'“그랬구나. 네가 어떤 마음으로 찾아왔는지, 굳이 서둘러 말하지 않아도 된단다.”\n미겔은 다니엘이 말을 고를 수 있도록 조용히 기다렸다. 재촉하지 않는 태도가 오히려 그를 조금 편안하게 했다.',chapter:'CHAPTER 01',thought:'이상하게 생각하지 않으시는 걸까. 조금은 안심해도 되겠지.',next:'miguel_conversation'},
- found_polite:{speaker:'미겔 코트리먼',text:'“괜찮아. 잠시 머물다 가렴. 이곳은 바람이 제법 온화하거든.”\n미겔은 온실 안쪽으로 시선을 돌렸다. 유리창에 비친 달빛이 그녀의 옆얼굴을 부드럽게 밝혔다. 다니엘은 물러서려던 발을 조심스럽게 멈췄다.',chapter:'CHAPTER 01',thought:'머물러도 된다고 하셨으니까. 잠깐만 더 있어도 괜찮겠지.',next:'miguel_conversation'},
- miguel_conversation:{speaker:'미겔 코트리먼',text:'“오늘은 알렉과 함께 왔단다. 혹시 그를 찾고 있니?”\n미겔은 담담하게 물었다. 그녀에게는 자연스러운 질문이었다. 다니엘은 형의 이름을 듣고 자신도 모르게 손끝에 힘을 주었다.',chapter:'CHAPTER 01',choices:[{text:'“아닙니다. 후작님께 인사를 드리고 싶었습니다.”',thought:'형님을 찾고 있었던 건 아닌데. 그렇다고 후작님을 찾아다녔다고 솔직하게 말씀드려도 될까.',next:'miguel_truth',effects:{trust:2,affection:1,risk:1}},{text:'“형님께서 어디 계신지 여쭈려 했습니다.”',next:'miguel_alex',effects:{reputation:1,resolve:1}},{text:'“실례했습니다. 이만 물러나겠습니다.”',next:'miguel_retreat',effects:{resolve:2}}]},
- miguel_truth:{speaker:'미겔 코트리먼',text:'“그랬구나.”\n미겔은 그 이상 캐묻지 않았다. 잠시 그의 소매를 살피던 그녀가 부드럽게 말을 이었다.\n“오늘은 평소와 다른 옷을 입었구나, 다니엘. 네게 잘 어울려.”\n다니엘은 얼른 감사 인사를 해야 한다는 걸 알면서도 잠깐 말을 잃었다.',chapter:'CHAPTER 01',thought:'이런 작은 변화까지 알아보셨구나. 괜히 얼굴이 뜨거워지는 것 같아.',next:'explore_finish'},
- miguel_alex:{speaker:'미겔 코트리먼',text:'“알렉이라면 연회장 안쪽에 있을 거야.”\n미겔은 자연스럽게 방향을 알려 주었다. 다니엘은 정중히 감사 인사를 했지만, 정작 그가 찾아 헤매던 사람은 눈앞에 있었다.',chapter:'CHAPTER 01',thought:'형님께서 어디 계시는지 궁금했던 건 아닌데. 이제 와서 말을 바꿀 수도 없겠지.',next:'explore_finish'},
+ found_honest:{speaker:'미겔 코트리먼',text:'“그랬구나, 귀여운 아이. 어떤 마음으로 찾아왔는지 굳이 서둘러 말하지 않아도 된단다.”\n미겔은 다니엘이 말을 고를 수 있도록 조용히 기다렸다. 재촉하지 않는 태도가 오히려 그를 조금 편안하게 했다.',chapter:'CHAPTER 01',thought:'이상하게 생각하지 않으시는 걸까. 조금은 안심해도 되겠지.',next:'miguel_conversation'},
+ found_polite:{speaker:'미겔 코트리먼',text:'“괜찮단다. 잠시 머물다 가렴. 이곳은 바람이 제법 온화하거든.”\n미겔은 온실 안쪽으로 시선을 돌렸다. 유리창에 비친 달빛이 그녀의 옆얼굴을 부드럽게 밝혔다. 다니엘은 물러서려던 발을 조심스럽게 멈췄다.',chapter:'CHAPTER 01',thought:'머물러도 된다고 하셨으니까. 잠깐만 더 있어도 괜찮겠지.',next:'miguel_conversation'},
+ miguel_conversation:{speaker:'미겔 코트리먼',text:'“오늘은 알렉과 함께 왔단다. 혹시 그를 찾고 있니?”\n미겔은 담담하게 물었다. 그녀에게는 자연스러운 질문이었다. 다니엘은 형의 이름을 듣고 자신도 모르게 손끝에 힘을 주었다.',chapter:'CHAPTER 01',choices:[{text:'“아닙니다. 코트리먼께 인사를 드리고 싶었습니다.”',thought:'형님을 찾고 있었던 건 아닌데. 그렇다고 코트리먼을 찾아다녔다고 솔직하게 말씀드려도 될까.',next:'miguel_truth',effects:{trust:2,affection:1,risk:1}},{text:'“형님께서 어디 계신지 여쭈려 했습니다.”',next:'miguel_alex',effects:{reputation:1,resolve:1}},{text:'“실례했습니다. 이만 물러나겠습니다.”',next:'miguel_retreat',effects:{resolve:2}}]},
+ miguel_truth:{speaker:'미겔 코트리먼',text:'“그랬구나, 귀여운 아이.”\n미겔은 그 이상 캐묻지 않았다. 잠시 그의 소매를 살피던 그녀가 부드럽게 말을 이었다.\n“오늘은 평소와 다른 옷을 입었구나, 다니엘. 네게 잘 어울려.”\n다니엘은 얼른 감사 인사를 해야 한다는 걸 알면서도 잠깐 말을 잃었다.',chapter:'CHAPTER 01',thought:'이런 작은 변화까지 알아보셨구나. 괜히 얼굴이 뜨거워지는 것 같아.',next:'v93_temptation_open'},
+ miguel_alex:{speaker:'미겔 코트리먼',text:'“알렉이라면 연회장 안쪽에 있을 거란다.”\n미겔은 자연스럽게 방향을 알려 주었다. 다니엘은 정중히 감사 인사를 했지만, 정작 그가 찾아 헤매던 사람은 눈앞에 있었다.',chapter:'CHAPTER 01',thought:'형님께서 어디 계시는지 궁금했던 건 아닌데. 이제 와서 말을 바꿀 수도 없겠지.',next:'v93_temptation_open'},
+
+ v93_temptation_open:{speaker:'서술',chapter:'CHAPTER 01 · 미겔의 유혹',text:'온실 안쪽에서 바람이 불자 노란 장미의 향이 두 사람 사이로 번졌다. 미겔은 떨어진 꽃잎 하나를 집어 손바닥 위에 올려놓았다.\n\n“어머, 다니엘 공자님. 그리 긴장하지 않아도 된단다. 내가 그렇게 무서워 보이니?”\n\n그녀가 장난스럽게 눈을 휘었다. 다니엘은 대답 대신 숨을 삼켰다. 미겔의 말은 다정한 농담에 가까웠다. 그런데도 그에게는 한 발 가까이 다가오라는 유혹처럼 들렸다.\n\n그 순간 연회장 쪽에서 알렉스의 웃음소리가 희미하게 들려왔다. 다니엘은 형님께서 이곳에 계시지 않다는 사실에 안도한 자신을 깨닫고 흠칫했다.',thought:'형님의 약혼자야. 알고 있어. 그런데 왜…… 이 순간이 끝나지 않았으면 좋겠지.',next:'v93_temptation_rose'},
+ v93_temptation_rose:{speaker:'미겔 코트리먼',chapter:'CHAPTER 01 · 미겔의 유혹',text:'“꽃잎이 네 어깨에 붙었구나.”\n\n미겔은 손을 뻗으려다 다니엘이 굳어 있는 것을 보고 잠시 멈췄다. “떼어 줘도 되겠니?”\n\n다니엘이 고개를 끄덕이자 그녀는 어깨 위의 꽃잎만 조심스럽게 집어 들었다. 손끝이 스쳐 지나간 것은 한순간이었다.\n\n“이제 됐단다.”\n\n미겔은 아무 일도 없었다는 듯 웃었다. 다니엘에게는 그 짧은 순간이 오래 남았다. 다정함과 허락, 그리고 그 너머의 욕망을 구별해야 한다는 사실을 그는 알고 있었다.',thought:'그분은 내게 친절했을 뿐이야. 하지만 내 마음은 그렇게 간단하지 않아.',next:'v93_temptation_choice'},
+ v93_temptation_choice:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 이성과 본능',text:'미겔이 온실 문을 향해 몸을 돌렸다. 한 걸음만 더 내디디면 그녀를 붙잡을 수 있을 것 같았다.\n\n다니엘은 손을 들어 올리다 멈췄다.\n\n이성은 말한다. 오래전부터 알고 있었다. 그녀는 형님의 약혼녀이고, 그녀의 다정함은 약속이 아니다. 오늘도 참아야 한다.\n\n본능은 속삭인다. 이미 수없이 참았으니, 이번 한 번만큼은 마음을 드러내도 되지 않겠느냐고.\n\n다니엘은 어느 쪽의 목소리를 따를 것인가.',thought:'선택해야 해. 그분의 마음을 멋대로 정하지 않고도, 내 마음을 인정할 수 있을까.',choices:[{text:'【이성】 마음을 가라앉히고 미겔의 뜻과 약속을 존중한다.',next:'v93_reason',v91Moral:'virtue',effects:{trust:2,resolve:3}},{text:'【본능】 한 걸음 다가가 솔직하게 마음을 드러낸다.',next:'v93_instinct',effects:{affection:2,risk:3}},{text:'【경계 침범】 떠나려는 미겔의 손목을 붙잡는다.',next:'v93_crossed_line',v91Moral:'karma',effects:{risk:5,trust:-3}}]},
+ v93_reason:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 이성',text:'“코트리먼. 오늘도 저를 다정히 대해 주셔서 감사합니다.”\n\n다니엘은 들려 있던 손을 천천히 내렸다. “형님과 함께 돌아가셔야 할 시간이겠지요. 제가 배웅해 드리겠습니다.”\n\n미겔은 그를 잠시 바라보다 온화하게 고개를 끄덕였다. “고맙구나, 다니엘. 알렉도 네가 함께 오면 좋아할 거야.”\n\n그녀가 먼저 걸었다. 다니엘은 조금 뒤에서 보폭을 맞췄다. 아쉬움이 사라진 것은 아니었다. 다만 그 감정을 누군가의 자유보다 앞세우지 않기로 했다.',thought:'좋아하는 마음까지 없앨 수는 없어. 하지만 그 마음으로 무엇을 할지는 내가 정할 수 있어.',next:'v93_afterglow'},
+ v93_instinct:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 본능',text:'“잠깐만요, 코트리먼.”\n\n다니엘은 충동적으로 한 걸음 다가섰다. “저는…… 오늘 밤에도 코트리먼을 뵙고 싶었습니다. 늘 그랬던 것처럼요. 더는 아무렇지 않은 척하기가 어렵습니다.”\n\n말을 끝내자 심장이 요란하게 뛰었다. 미겔은 놀란 듯 그를 바라보았다. 그러나 물러서지도, 다가오지도 않았다.\n\n“네 마음을 솔직히 말해 줘서 고맙구나. 하지만 다니엘, 나는 알렉의 약혼녀란다. 그 사실을 잊어서는 안 돼. 네가 상처받지 않도록 분명히 말해 두마.”\n\n다니엘은 고개를 숙였다. 본능을 따른 대가는 고백 그 자체가 아니라, 대답을 받아들일 용기였다.',thought:'말해 버렸어. 돌아갈 수는 없겠지. 그래도 그분의 대답까지 내 뜻대로 만들 수는 없어.',next:'v93_instinct_accept'},
+ v93_instinct_accept:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 본능의 대가',text:'미겔의 눈빛은 여전히 다정했다. 그래서 더 아팠다. 다니엘은 한참 만에 입을 열었다.',choices:[{text:'“알겠습니다. 제 마음은 제가 책임지겠습니다.”',next:'v93_accept',v91Moral:'virtue',effects:{trust:2,resolve:2}},{text:'“그래도 오늘 밤만은 제 마음을 기억해 주세요.”',next:'v93_linger',effects:{risk:2,affection:1}}]},
+ v93_accept:{speaker:'미겔 코트리먼',chapter:'CHAPTER 01',text:'“그래. 그 말이라면 믿을 수 있겠구나.”\n\n미겔은 다니엘의 말을 가볍게 여기지 않았다. 그 마음을 받아 줄 수 없다는 사실과, 그 마음이 진실하다는 사실은 서로 모순되지 않았다.\n\n다니엘은 그녀와 나란히 온실을 나섰다. 비밀을 털어놓았는데도 마음이 홀가분하지만은 않았다. 그래도 자신이 넘지 말아야 할 선을 분명히 보았다.',thought:'아프지만, 이게 대답이야. 나는 들었고, 받아들여야 해.',next:'v93_afterglow'},
+ v93_linger:{speaker:'미겔 코트리먼',chapter:'CHAPTER 01',text:'“기억해 두마. 하지만 그걸 약속으로 여기지는 말아 주렴.”\n\n미겔은 부드럽지만 흔들림 없는 목소리로 말했다. 다니엘은 그녀가 자신을 달래기 위해 거짓 희망을 주지 않는다는 것을 깨달았다.\n\n유리 천장 위로 세 개의 달빛이 겹쳤다. 다니엘은 한동안 그 자리에 서 있었다.',thought:'기억해 주겠다고 하셨어. 그런데 나는 왜 그 한마디에 또 기대를 걸고 있지.',next:'v93_afterglow'},
+ v93_crossed_line:{speaker:'서술',chapter:'CHAPTER 01 · 넘지 말아야 할 선',text:'다니엘의 손이 미겔의 손목을 붙잡았다. 미겔의 미소가 사라졌다.\n\n“다니엘, 놓아주렴. 지금 당장.”\n\n짧고 단호한 말이었다. 다니엘은 곧바로 손을 놓았다. 그녀의 손목에 남은 붉은 자국을 보고서야 자신이 무엇을 했는지 실감했다.\n\n“네 마음이 어떻든, 내 뜻을 대신 정할 수는 없어.”\n\n미겔은 그를 더 꾸짖지 않았다. 다만 한 걸음 물러서며 분명한 거리를 두었다.',thought:'내가…… 무슨 짓을 한 거지. 그분이 웃어 주셨다는 이유로 어디까지 허락받았다고 생각한 거야.',next:'v93_crossed_choice'},
+ v93_crossed_choice:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01 · 선택의 흔적',text:'사과한다고 방금 전의 일이 없던 일이 되지는 않는다. 다니엘은 그것을 알면서도 입을 열어야 했다.',choices:[{text:'즉시 사과하고 더는 다가가지 않는다.',next:'v93_crossed_apology',v91Moral:'virtue',effects:{resolve:1}},{text:'변명하지 못한 채 고개를 숙이고 물러난다.',next:'v93_crossed_silence',effects:{risk:1}}]},
+ v93_crossed_apology:{speaker:'다니엘 레온하르트',chapter:'CHAPTER 01',text:'“죄송합니다. 제가 선을 넘었습니다.”\n\n미겔은 사과를 들었다. 그러나 곧바로 웃어 주지는 않았다. “다시는 그러지 않기를 바란단다.”\n\n다니엘은 고개를 끄덕였다. 사과는 잘못을 지우지 않는다. 다음 행동을 바꿀 책임만 남긴다.',thought:'사과했어도 내가 한 일은 남아. 앞으로 어떻게 행동하는지가 중요해.',next:'v93_afterglow'},
+ v93_crossed_silence:{speaker:'서술',chapter:'CHAPTER 01',text:'다니엘은 아무 말도 하지 못했다. 미겔은 그를 지나 온실을 떠났다.\n\n다니엘은 자신의 손을 내려다보았다. 조금 전까지 아름답게만 보였던 밤이 낯설게 느껴졌다.',thought:'모른 척한다고 사라지지 않아. 내가 한 일은 내가 알고 있어.',next:'v93_afterglow'},
+ v93_afterglow:{speaker:'서술',chapter:'CHAPTER 01 · 남겨진 향기',text:'온실 문이 닫히자 장미 향이 희미해졌다. 세 개의 달이 유리창 위로 길게 번졌다.\n\n다니엘은 오늘의 선택이 다른 누구에게는 사소한 장면일지 몰라도, 자신에게는 오래 남으리라는 것을 알았다.\n\n이성도 본능도 그의 일부였다. 하지만 선택한 행동은 그 자신이 책임져야 했다.',thought:'이 밤을 어떻게 기억하게 될까. 언젠가 오늘의 나를 다시 마주하게 되겠지.',next:'explore_finish'},
  miguel_retreat:{speaker:'다니엘 레온하르트',text:'“……실례했습니다.”\n다니엘은 고개를 숙이고 돌아섰다. 온실 문턱을 넘어서자 서늘한 공기가 뺨에 닿았다. 그는 조금 전 자신이 지나치게 서둘렀던 것은 아닌지 생각했다.',chapter:'CHAPTER 01',thought:'조금 더 이야기해도 됐을까. 아니, 무리하게 시간을 빼앗는 건 예의가 아니야.',next:'explore_finish'},
  explore_finish:{speaker:'SYSTEM',text:'CHAPTER 01 · 탐색 완료\n오늘 밤의 만남은 여기까지입니다. 아직 할 말이 남은 듯하지만, 다니엘은 예를 갖추어 물러납니다.',chapter:'CHAPTER 01',choices:[{text:'다음 날 연회에 참석한다.',next:'explore',action:'nextDay'},{text:'오늘 밤 다시 둘러보기',next:'explore',action:'restartExplore'},{text:'타이틀로 돌아가기',action:'home'}]},
- wine_accident:{speaker:'SYSTEM',text:'사람들 사이를 빠져나오던 다니엘의 손목이 누군가의 팔꿈치에 스쳤다. 잔이 기울고, 붉은 와인이 허공에 짧은 곡선을 그렸다.\n미겔의 연보랏빛 드레스 위로 선명한 얼룩이 번졌다. 음악과 대화는 여전히 이어졌지만 다니엘에게는 주변 소리가 갑자기 멀어진 듯했다.',chapter:'CHAPTER 01',thought:'큰일 났다. 하필 후작님의 드레스에…… 어떻게 사과드려야 하지.',next:'wine_apology'},
+ wine_accident:{speaker:'SYSTEM',text:'사람들 사이를 빠져나오던 다니엘의 손목이 누군가의 팔꿈치에 스쳤다. 잔이 기울고, 붉은 와인이 허공에 짧은 곡선을 그렸다.\n미겔의 연보랏빛 드레스 위로 선명한 얼룩이 번졌다. 음악과 대화는 여전히 이어졌지만 다니엘에게는 주변 소리가 갑자기 멀어진 듯했다.',chapter:'CHAPTER 01',thought:'큰일 났다. 하필 코트리먼의 드레스에…… 어떻게 사과드려야 하지.',next:'wine_apology'},
  wine_apology:{speaker:'다니엘 레온하르트',text:'“……죄, 죄송합니다. 괜찮으십니까?”\n다니엘은 황급히 손수건을 꺼냈다. 그러나 드레스에 손을 뻗으려던 순간 멈칫했다. 직접 닦으려 드는 것은 더 큰 실례일지도 몰랐다.\n그는 손수건을 두 손으로 정중히 내밀었다.',chapter:'CHAPTER 01',choices:[{text:'손수건을 정중히 건넨다.',thought:'침착하자. 먼저 사과드리고, 허락 없이 손을 대지 말자.',next:'wine_handoff',effects:{trust:3,resolve:1}},{text:'당황한 채 변상을 약속한다.',next:'wine_compensate',effects:{trust:1,reputation:1}},{text:'어째서 서둘렀는지 솔직히 말한다.',next:'wine_confess',effects:{affection:2,risk:2}}]},
- wine_handoff:{speaker:'미겔 코트리먼',text:'“손수건을 주시겠습니까?”\n미겔은 건네받은 천으로 드레스의 와인을 조용히 눌렀다. “크게 상한 곳은 없습니다. 너무 염려하지 않으셔도 됩니다.”',chapter:'CHAPTER 01',next:'wine_question'},
- wine_compensate:{speaker:'다니엘 레온하르트',text:'“그…… 드레스는 제가 변상하겠습니다. 반드시.”\n미겔은 잠시 그의 손에 쥐어진 손수건을 보았다. “우선 그것부터 주시겠습니까, 레온하르트 경.”',chapter:'CHAPTER 01',next:'wine_question'},
- wine_confess:{speaker:'다니엘 레온하르트',text:'“후작님께 인사를…… 드리려 했습니다. 그뿐입니다.”\n말을 끝내자마자 스스로도 변명처럼 들렸다. 미겔은 잠시 침묵하다 손수건을 청했다.',chapter:'CHAPTER 01',next:'wine_question'},
- wine_question:{speaker:'미겔 코트리먼',text:'“어디를 그리 급히 가시던 중이었습니까?”\n그녀의 목소리는 낮고 차분했다. 다니엘은 대답하기 전 옷깃을 한 번 고쳐 잡았다.',chapter:'CHAPTER 01',choices:[{text:'“속이 좋지 않아 잠시 바람을 쐬려 했습니다.”',next:'wine_after',effects:{trust:1}},{text:'“……후작님을 찾고 있었습니다.”',next:'wine_after',effects:{affection:2,risk:2}},{text:'“부주의했습니다. 다시 한번 사과드립니다.”',next:'wine_after',effects:{reputation:1}}]},
+ wine_handoff:{speaker:'미겔 코트리먼',text:'“손수건을 건네주겠니?”\n미겔은 건네받은 천으로 드레스의 와인을 조용히 눌렀다. “크게 상한 곳은 없단다. 그리 걱정하지 않아도 돼.”',chapter:'CHAPTER 01',next:'wine_question'},
+ wine_compensate:{speaker:'다니엘 레온하르트',text:'“그…… 드레스는 제가 변상하겠습니다. 반드시.”\n미겔은 잠시 그의 손에 쥐어진 손수건을 보았다. “우선 손수건부터 건네주겠니, 다니엘 공자님?”',chapter:'CHAPTER 01',next:'wine_question'},
+ wine_confess:{speaker:'다니엘 레온하르트',text:'“코트리먼께 인사를…… 드리려 했습니다. 그뿐입니다.”\n말을 끝내자마자 스스로도 변명처럼 들렸다. 미겔은 잠시 침묵하다 손수건을 청했다.',chapter:'CHAPTER 01',next:'wine_question'},
+ wine_question:{speaker:'미겔 코트리먼',text:'“어디를 그리 급히 가던 중이었니, 다니엘 공자님?”\n그녀의 목소리는 낮고 차분했다. 다니엘은 대답하기 전 옷깃을 한 번 고쳐 잡았다.',chapter:'CHAPTER 01',choices:[{text:'“속이 좋지 않아 잠시 바람을 쐬려 했습니다.”',next:'wine_after',effects:{trust:1}},{text:'“……코트리먼을 찾고 있었습니다.”',next:'wine_after',effects:{affection:2,risk:2}},{text:'“부주의했습니다. 다시 한번 사과드립니다.”',next:'wine_after',effects:{reputation:1}}]},
  wine_after:{speaker:'다니엘 레온하르트',text:'미겔은 더 이상 그를 추궁하지 않았다. 차분한 태도에 다니엘은 오히려 고개를 들기 어려웠다.\n주변의 시선이 다른 곳으로 옮겨 간 뒤에도 그는 드레스의 붉은 얼룩이 마음에 걸렸다.\n“……다시 한번 죄송합니다.”',chapter:'CHAPTER 01',thought:'화를 내셔도 이상하지 않을 텐데. 이렇게 배려해 주시니 더 죄송해.',next:'explore_finish'},
  explore_timeout:{speaker:'SYSTEM',text:'연회의 밤이 깊어 가자 복도의 촛불이 하나둘 짧아졌다. 다니엘은 소매 끝을 만지며 오늘 있었던 일들을 천천히 떠올렸다.\n찾던 사람을 만나지 못했더라도 황궁의 밤은 끝나지 않았다. 세 개의 달이 떠 있는 하늘 아래, 내일은 또 다른 만남이 기다릴지도 몰랐다.',chapter:'CHAPTER 01',choices:[{text:'다음 날 연회에 참석한다.',thought:'오늘은 여기까지인가 봐. 다음에는 조금 더 자연스럽게 인사를 드릴 수 있으면 좋겠어.',next:'explore',action:'nextDay'},{text:'오늘 밤 다시 둘러보기',next:'explore',action:'restartExplore'},{text:'타이틀로 돌아가기',action:'home'}]}
 };
@@ -274,7 +324,7 @@ const V17_ATMOSPHERE={
  garden:['장미 잎에 맺힌 이슬이 보랏빛 달빛을 받았다. 다니엘은 꽃을 건드리지 않으려 소매를 거두었다.','정원 깊숙한 곳에서는 흙과 잎의 냄새가 났다. 노란 장미를 보고 그는 코트리먼 영지를 떠올렸다.']
 };
 const V17_THOUGHTS=[
- '형의 약혼자를 찾고 있다. 그렇게 생각하는 것만으로도 다니엘은 목덜미가 뜨거워졌다. ……그저 예의를 갖추려는 것뿐인데.',
+ '형님의 약혼녀를 또 찾고 있다. 예의를 핑계 삼는 일도 이제 지겹다. ……그런데도 멈출 수가 없다.',
  '어디를 가든 누군가에게 도움이 되어야 한다는 생각부터 들었다. 그래야 이곳에 있어도 괜찮을 것 같았다.',
  '누군가를 기다리는 일과 누군가를 찾아다니는 일은 다를까. 그는 답을 알면서도 모른 척했다.',
  '무례하게 보였을까. 다니엘은 조금 전 자신의 말을 머릿속으로 다시 읽었다. 읽을수록 더 어색해졌다.',
@@ -825,7 +875,7 @@ function v23AlexAfter(loc){
  const tier=past.high?'high':past.medium?'medium':null;
  if(!tier||d.alexAfter[tier]||state.day<=past[tier].day)return false;
  d.alexAfter[tier]={day:state.day,loc};
- const text=tier==='high'?'형과 눈이 마주쳤다. 전날의 어색한 대화가 다시 떠올랐다. 알렉은 곧장 추궁하지 않았다. “다니엘, 오늘은 좀 나아졌느냐?”\n\n그 배려가 오히려 마음을 무겁게 했다.':'알렉은 지나가던 다니엘을 잠시 불렀다. “어제는 표정이 좋지 않더구나.”\n\n다니엘은 자신이 생각보다 쉽게 마음을 드러내는 사람이라는 사실을 깨달았다.';
+ const text=tier==='high'?'형님과 눈이 마주쳤다. 전날의 어색한 대화가 다시 떠올랐다. 알렉은 곧장 추궁하지 않았다. “다니엘, 오늘은 좀 나아졌느냐?”\n\n그 배려가 오히려 마음을 무겁게 했다.':'알렉은 지나가던 다니엘을 잠시 불렀다. “어제는 표정이 좋지 않더구나.”\n\n다니엘은 자신이 생각보다 쉽게 마음을 드러내는 사람이라는 사실을 깨달았다.';
  v23Remember('alex_'+tier,'형과 다시 마주한 날',text);
  return v18Scene('v23alex','알렉 레온하르트',text,[{text:'“걱정해 주셔서 감사합니다, 형님.”',next:'explore',effects:{reputation:1,resolve:1},v23Alex:'courtesy'},{text:'“제 경솔함을 돌아보고 있습니다.”',next:'explore',effects:{trust:1,resolve:2},v23Alex:'reflection'},{text:'“……아직 말씀드릴 준비가 되지 않았습니다.”',next:'explore',effects:{risk:1},v23Alex:'hesitation'}]);
 }
@@ -959,7 +1009,7 @@ function v25AlexScene(loc){
  const tier=t>=14?3:t>=9?2:t>=5?1:0;
  if(!tier||d.alex.scenes.includes(tier)||tier>1&&!d.alex.scenes.includes(tier-1))return false;
  d.alex.scenes.push(tier);
- const lines={1:'알렉은 동생의 표정을 잠시 살폈다. “다니엘, 오늘은 무슨 일이 있느냐?”\n\n그 물음이 다정한지 엄격한지 판단하기도 전에 다니엘은 자세를 바로잡았다.',2:'“요즘 네가 말을 아끼는구나.” 알렉의 말에 다니엘은 손끝을 굳혔다.\n\n형이 무엇을 알고 있는지 알 수 없었다. 그러나 짐작만으로 상대를 탓할 수는 없었다.',3:'알렉은 동생이 물러서려는 것을 보고 조용히 불렀다. “잠깐만, 다니엘.”\n\n형제 사이에 길어진 침묵이 있었다. 다니엘은 아직 자신의 감정을 어떻게 설명해야 할지 몰랐다.'};
+ const lines={1:'알렉은 동생의 표정을 잠시 살폈다. “다니엘, 오늘은 무슨 일이 있느냐?”\n\n그 물음이 다정한지 엄격한지 판단하기도 전에 다니엘은 자세를 바로잡았다.',2:'“요즘 네가 말을 아끼는구나.” 알렉의 말에 다니엘은 손끝을 굳혔다.\n\n형님이 무엇을 알고 계신지 알 수 없었다. 그러나 짐작만으로 상대를 탓할 수는 없었다.',3:'알렉은 동생이 물러서려는 것을 보고 조용히 불렀다. “잠깐만, 다니엘.”\n\n형제 사이에 길어진 침묵이 있었다. 다니엘은 오래 숨겨 온 감정을 형님께 어떻게 설명해야 할지 알 수 없었다.'};
  v25Remember('alex_scene_'+tier,'형제 사이에 남은 말 · '+tier+'단계',lines[tier]);
  return v18Scene('v25alex','알렉 레온하르트',lines[tier],[{text:'“……제가 불안한 일이 조금 있습니다.”',next:'explore',effects:{resolve:1},v25Alex:'truth'},{text:'“형님 말씀을 듣겠습니다.”',next:'explore',effects:{trust:1},v25Alex:'listen'},{text:'“죄송합니다. 지금은 말씀드리기 어렵습니다.”',next:'explore',effects:{risk:1},v25Alex:'avoid'}]);
 }
@@ -1180,7 +1230,7 @@ function v29Alex(loc){
  if(pending){pending.done=true;const good=pending.mode==='reconcile';const txt=good?'알렉은 동생이 먼저 말을 꺼낼 때까지 기다렸다. 다니엘은 형의 시선을 피하지 않으려 애썼다. 형제 사이의 어색함이 모두 사라진 것은 아니었으나, 적어도 서로의 말을 들을 여지는 남아 있었다.':'알렉과 마주친 순간 다니엘은 지난번 대화를 떠올렸다. 형의 짧은 인사에는 거리가 남아 있었다. 다니엘은 그 침묵이 자신이 미뤄 둔 말에서 비롯되었음을 알았다.';v29Memory('alex_'+pending.day+'_'+d.alex.indexOf(pending),'알렉 · 남겨진 형제의 말',txt,'관계','알렉');return v18Scene('v29_alex','알렉 레온하르트',txt,[{text:'“형님, 제 말을 들어 주시겠습니까?”',next:'explore',effects:{resolve:1}},{text:'“오늘은 인사만 드리겠습니다.”',next:'explore',effects:{trust:1}}]);}
  if(d.seen['alexOffer_'+state.day]||socialProgress().alexTension<3)return false;
  d.seen['alexOffer_'+state.day]=true;
- return v18Scene('v29_alex','알렉 레온하르트','알렉은 다니엘을 불러 세웠다. “네가 요즘 무슨 생각을 하는지 궁금하구나.”\n\n다니엘은 목을 가다듬었다. 형이 무엇을 알고 있는지 짐작할 수 없었다.',[{text:'“형님께서 걱정하실 만한 행동은 삼가겠습니다.”',next:'explore',effects:{resolve:1},v29Alex:'reconcile'},{text:'“죄송합니다. 지금은 말씀드릴 수 없습니다.”',next:'explore',effects:{risk:1},v29Alex:'withdraw'}]);
+ return v18Scene('v29_alex','알렉 레온하르트','알렉은 다니엘을 불러 세웠다. “네가 요즘 무슨 생각을 하는지 궁금하구나.”\n\n다니엘은 목을 가다듬었다. 형님이 무엇을 알고 계신지 짐작할 수 없었다.',[{text:'“형님께서 걱정하실 만한 행동은 삼가겠습니다.”',next:'explore',effects:{resolve:1},v29Alex:'reconcile'},{text:'“죄송합니다. 지금은 말씀드릴 수 없습니다.”',next:'explore',effects:{risk:1},v29Alex:'withdraw'}]);
 }
 function v29Npc(loc){
  const d=v29Data(),profile=V19_NPC_PROFILES[loc],npc=v19Data().npc[loc];if(!profile||!npc)return false;
@@ -1928,7 +1978,7 @@ function v45Record(id,title,body,person,category,parent){const d=v45Data(),key='
 function v45Choice(c){let kind,mode,loc,person;if(c.v45Miguel){kind='miguel';mode=c.v45Miguel;person='미겔';}else if(c.v45Alex){kind='alex';mode=c.v45Alex;person='알렉';}else if(c.v45Npc){kind='npc';mode=c.v45Mode;loc=c.v45Npc;person=V19_NPC_PROFILES[loc]?.name||'황궁 사람';}else return;const d=v45Data(),parent=v45Record('decision_'+state.day+'_'+d.arcs.length,person+' · 남겨 둔 말',kind==='miguel'?(mode==='distance'?'다니엘은 미겔의 약혼과 선택을 존중하며 거리를 지켰다.':'다니엘은 자신의 마음을 인정하되 어떤 답도 요구하지 않았다.'):kind==='alex'?(mode==='repair'?'다니엘은 형의 말을 끝까지 듣고 자신의 잘못도 인정했다.':'다니엘은 의심을 숨기지 않고 형에게 확인을 청했다.'):(mode==='verify'?'다니엘은 확인된 사실만 전하기로 했다.':'다니엘은 소문을 옮기지 않고 당사자를 보호하기로 했다.'),person,'선택');d.arcs.push({id:'v45_arc_'+state.day+'_'+d.arcs.length,kind,mode,loc,stage:0,due:state.day+2,parent});d.echo[kind]=(d.echo[kind]||0)+1;if(kind==='miguel'){const m=v34Data().miguel;if(mode==='distance')m.restraint=(m.restraint||0)+1;else m.warmth=(m.warmth||0)+1;}else if(kind==='alex'){const a=v34Data().alex;if(mode==='repair')a.trust=(a.trust||0)+1;else a.doubt=(a.doubt||0)+1;}else{for(const other of Object.keys(V19_NPC_PROFILES)){const change=other===loc?1:(mode==='verify'?1:0);d.network[other]=(d.network[other]||0)+change;}const n=v19Data().npc?.[loc];if(n)n.rapport=Math.min(10,Math.max(0,(n.rapport||0)+1));}}
 function v45Follow(kind,loc){const d=v45Data(),a=d.arcs.find(x=>x&&x.kind===kind&&x.stage<4&&x.due<=state.day&&(kind!=='npc'||x.loc===loc));if(!a)return false;a.stage++;a.due=state.day+2;let person,body;if(kind==='miguel'){person='미겔';body=[null,'미겔은 다니엘의 걸음소리를 알아듣고 서류에서 시선을 들었다. “레온하르트 경.”',a.mode==='distance'?'“지켜 주신 예의는 기억하고 있습니다.” 미겔은 더 이상의 약속을 하지 않았다.':'“솔직한 말씀을 가볍게 여기지 않습니다. 그러나 제 처지는 달라지지 않았습니다.”','두 사람은 말보다 긴 침묵 속에서 서로의 경계를 확인했다.','다니엘은 마음을 감추는 일과 타인의 결정을 존중하는 일이 같지 않음을 깨달았다.'][a.stage];}else if(kind==='alex'){person='알렉';body=[null,'알렉은 잠시 다니엘을 바라보다 먼저 자리를 내주었다.',a.mode==='repair'?'“형님. 제 말도 끝까지 들어 주십시오.” 다니엘은 어렵게 입을 열었다.':'“형님, 저는 아직 이해하지 못했습니다.” 다니엘은 물러서지 않았다.',a.mode==='repair'?'두 형제는 서로 다른 기억을 하나씩 맞추어 보았다.':'대답이 모두 주어진 것은 아니었다. 그러나 침묵으로 덮어 둘 수도 없었다.',a.mode==='repair'?'완전한 화해는 아니었지만 다음 대화의 약속이 남았다.':'의심은 여전히 남았지만 다니엘은 자신의 판단을 스스로 책임지기로 했다.'][a.stage];}else{person=V19_NPC_PROFILES[loc]?.name||'황궁 사람';body=[null,'복도 끝에서 시작된 말은 다른 장소에 닿을 때마다 조금씩 달라졌다.',a.mode==='verify'?'다니엘이 확인한 사실을 전하자 궁인들은 추측을 거두기 시작했다.':'다니엘이 말을 옮기지 않자 적어도 새로운 소문 하나는 멈추었다.','다른 궁인들도 다니엘의 태도를 이야기했다. 소문을 믿는 이와 경계하는 이가 나뉘었다.','황궁의 소문은 완전히 사라지지 않았다. 그러나 다니엘의 선택은 몇 사람의 기억에 남았다.'][a.stage];}const id=v45Record('follow_'+a.id+'_'+a.stage,person+' · '+(a.stage===4?'오래 남은 결과':'후속 장면 '+a.stage),body,person,a.stage===4?'결말':'후속',a.parent);a.parent=id;return v18Scene('v45_follow',person,body,[{text:'그날의 일을 기록한다.',next:'explore'}]);}
 function v45Miguel(loc){if(v45Follow('miguel',loc))return true;const d=v45Data(),source=v44Data().arcs.find(a=>a.kind==='miguel'&&a.stage===3&&!d.seen['source_'+a.id]);if(!source)return false;d.seen['source_'+source.id]=true;const m=v34Data().miguel,body=(m.restraint||0)>=(m.warmth||0)?'미겔은 잠시 다니엘을 바라보았다. “경께서 거리를 지켜 주셨다는 것을 압니다.”':'미겔은 다니엘의 걸음소리를 알아챘다. “지난번 말씀을 잊지 않았습니다. 그렇지만 제 선택은 제가 하겠습니다.”';return v18Scene('v45_miguel','미겔',body,[{text:'그녀의 약혼과 결정을 존중하며 물러선다.',v45Miguel:'distance',next:'explore'},{text:'대답을 바라지 않고 마음을 인정한다.',v45Miguel:'honest',next:'explore'}]);}
-function v45Alex(loc){if(v45Follow('alex',loc))return true;const d=v45Data(),source=v44Data().arcs.find(a=>a.kind==='alex'&&a.stage===3&&!d.seen['source_'+a.id]);if(!source)return false;d.seen['source_'+source.id]=true;const a=v34Data().alex,body=(a.trust||0)>=(a.doubt||0)?'“다니엘. 이번에는 서로 말을 끊지 말자.” 알렉은 의자를 가리켰다.':'“다니엘, 아직 내 말을 믿지 못하겠느냐.” 알렉의 물음에 다니엘은 선뜻 대답하지 못했다.';return v18Scene('v45_alex','알렉',body,[{text:'형의 말을 듣고 오해를 풀어 본다.',v45Alex:'repair',next:'explore'},{text:'남은 의심을 직접 확인한다.',v45Alex:'question',next:'explore'}]);}
+function v45Alex(loc){if(v45Follow('alex',loc))return true;const d=v45Data(),source=v44Data().arcs.find(a=>a.kind==='alex'&&a.stage===3&&!d.seen['source_'+a.id]);if(!source)return false;d.seen['source_'+source.id]=true;const a=v34Data().alex,body=(a.trust||0)>=(a.doubt||0)?'“다니엘. 이번에는 서로 말을 끊지 말자.” 알렉은 의자를 가리켰다.':'“다니엘, 아직 내 말을 믿지 못하겠느냐.” 알렉의 물음에 다니엘은 선뜻 대답하지 못했다.';return v18Scene('v45_alex','알렉',body,[{text:'형님의 말씀을 듣고 오해를 풀어 본다.',v45Alex:'repair',next:'explore'},{text:'남은 의심을 직접 확인한다.',v45Alex:'question',next:'explore'}]);}
 function v45Npc(loc){if(v45Follow('npc',loc))return true;const d=v45Data(),source=v44Data().arcs.find(a=>a.kind==='npc'&&a.loc===loc&&a.stage===3&&!d.seen['source_'+a.id]);if(!source)return false;d.seen['source_'+source.id]=true;const p=V19_NPC_PROFILES[loc];if(!p)return false;const network=(d.network[loc]||0)+(v44Data().rumors[loc]||0);return v18Scene('v45_npc',p.name,network>0?'“다른 곳에서도 경께서 소문을 바로잡으셨다고 들었습니다.”':'“궁 안의 이야기가 어디까지 사실인지 모르겠습니다.”',[{text:'출처를 확인하고 사실만 전한다.',v45Npc:loc,v45Mode:'verify',next:'explore'},{text:'확인되지 않은 말은 옮기지 않는다.',v45Npc:loc,v45Mode:'protect',next:'explore'}]);}
 function v45Daily(){const d=v45Data(),key='day_'+state.day;if(d.seen[key])return;d.seen[key]=true;const a=d.arcs.find(x=>x.stage<4&&x.due<=state.day);if(a)v45Record('day_'+state.day,'DAY '+state.day+' · 아직 남은 대화','다니엘은 '+(a.kind==='miguel'?'미겔':a.kind==='alex'?'형':'황궁 사람들')+'과의 대화가 끝나지 않았음을 떠올렸다.','다니엘','일지',a.parent);}
 function v45Chronicle(){const wrap=document.createElement('div'),intro=document.createElement('p');intro.className='hint';intro.textContent='선택의 원인과 후속 갈래를 함께 확인합니다. 사건을 선택하면 선행 경로와 직접 이어진 사건을 보여 줍니다.';wrap.append(intro);const search=document.createElement('input');search.placeholder='인물·제목·내용 검색';wrap.append(search);const select=(arr)=>{const e=document.createElement('select');for(const [v,t] of arr){const o=document.createElement('option');o.value=v;o.textContent=t;e.append(o);}wrap.append(e);return e;};const person=select(['전체','미겔','알렉','다니엘','황궁 NPC'].map(x=>[x,x])),kind=select(['전체','선택','후속','결말','일지'].map(x=>[x,x])),order=select([['new','최신순'],['old','오래된순'],['title','제목순']]);const result=document.createElement('div');wrap.append(result);const all=[...(v16Data().memories||[])];for(let i=27;i<=45;i++){const a=state['v'+i]?.events;if(Array.isArray(a))all.push(...a);}const unique=[...new Map(all.filter(x=>x&&typeof x==='object').map((x,i)=>[x.id||'legacy_'+i,x])).values()],index=new Map(unique.filter(x=>x.id).map(x=>[x.id,x]));const children=new Map();for(const e of unique)if(e.parent){const list=children.get(e.parent)||[];list.push(e);children.set(e.parent,list);}const name=x=>x.person||(/미겔/.test(x.title||'')?'미겔':/알렉/.test(x.title||'')?'알렉':/다니엘/.test(x.title||'')?'다니엘':'황궁 NPC');function detail(x){const chain=[],visited=new Set();let cur=x;while(cur&&!visited.has(cur.id)&&chain.length<50){chain.unshift(cur);visited.add(cur.id);cur=index.get(cur.parent);}const box=document.createElement('div');const h=document.createElement('p');h.textContent='선행 선택 경로 ('+chain.length+'단계)';box.append(h);for(const e of chain){const b=document.createElement('button');b.textContent='DAY '+(e.day||'?')+' · '+(e.title||'기록');b.onclick=()=>detail(e);box.append(b);const p=document.createElement('p');p.textContent=e.text||'';box.append(p);}const descendants=children.get(x.id)||[];const sub=document.createElement('p');sub.textContent='이 사건에서 이어진 직접 후속 '+descendants.length+'건';box.append(sub);for(const e of descendants){const b=document.createElement('button');b.textContent='↳ DAY '+(e.day||'?')+' · '+(e.title||'기록');b.onclick=()=>detail(e);box.append(b);}modal('v45 · 선택 경로',box);}function update(){result.replaceChildren();const q=search.value.trim().toLowerCase();const list=unique.filter(x=>(person.value==='전체'||name(x)===person.value)&&(kind.value==='전체'||x.category===kind.value)&&(!q||[x.title,x.text,name(x),x.category].some(t=>String(t||'').toLowerCase().includes(q))));list.sort((a,b)=>order.value==='title'?String(a.title||'').localeCompare(String(b.title||''),'ko'):order.value==='old'?(a.day||0)-(b.day||0):(b.day||0)-(a.day||0));const c=document.createElement('p');c.className='hint';c.textContent=list.length+'건 / 전체 '+unique.length+'건';result.append(c);for(const x of list.slice(0,180)){const b=document.createElement('button');b.textContent='DAY '+(x.day||'?')+' · '+(x.title||'기록')+' ['+(x.category||'기타')+']';b.onclick=()=>detail(x);result.append(b);}}search.oninput=update;person.onchange=kind.onchange=order.onchange=update;update();modal('v45 · 통합 회상 연대기',wrap);}
@@ -1966,13 +2016,13 @@ function v47Board(){const d=v47Data();modal('v47 · 관계의 파문','미겔 '+
 
 // v48: 정식 엔딩과 회차 독립 엔딩 도감. 기존 저장 구조를 변경하지 않는다.
 const V48_ENDINGS=[
- {id:'miguel_respect',name:'노란 장미의 약속',group:'미겔',desc:'미겔의 결정을 존중하고 마음을 지키는 결말',need:'미겔과의 재회 및 절제',text:'다니엘은 노란 장미 앞에서 오래 머물지 않았다. 미겔은 서류를 접으며 조용히 고개를 끄덕였다. “다니엘, 네가 지켜 준 거리를 나도 가볍게 여기지는 않을 거야.”\n\n그것은 연인의 약속이 아니었다. 하지만 그가 지킨 예의는 보랏빛 밤의 끝까지 남았다.'},
+ {id:'miguel_respect',name:'노란 장미의 약속',group:'미겔',desc:'미겔의 결정을 존중하고 마음을 지키는 결말',need:'미겔과의 재회 및 절제',text:'다니엘은 노란 장미 앞에서 오래 머물지 않았다. 미겔은 서류를 접으며 조용히 고개를 끄덕였다. “다니엘, 네가 지켜 준 거리를 나도 가볍게 여기지는 않는단다.”\n\n그것은 연인의 약속이 아니었다. 하지만 그가 지킨 예의는 보랏빛 밤의 끝까지 남았다.'},
  {id:'miguel_confession',name:'대답 없는 고백',group:'미겔',desc:'답을 강요하지 않고 진심을 전하는 열린 결말',need:'미겔과의 깊은 감정',text:'“……대답하지 않으셔도 됩니다.” 다니엘의 목소리는 떨렸다. 미겔은 한참 뒤 짧게 말했다. “네 마음을 가벼이 여기지는 않아. 하지만 내가 지켜야 할 약속도 있다는 걸 이해해 주겠니?”\n\n두 사람은 서로의 마음을 알게 되었지만, 그날 밤 어떤 관계도 새로 맺지 않았다.'},
  {id:'miguel_separation',name:'장미가 지는 계절',group:'미겔',desc:'미겔을 향한 마음을 정리하고 떠나는 결말',need:'미겔과의 만남과 거리 두기',text:'다니엘은 미겔을 찾아가지 않았다. 대신 전하지 못한 인사를 편지에 적어 봉했다.\n\n보랏빛 밤이 지나고, 그 편지는 끝내 보내지지 않았다. 마음을 접는 일 또한 자신의 선택이었다.'},
  {id:'alex_reconcile',name:'형제의 새벽',group:'알렉',desc:'알렉과 오해를 풀고 관계를 회복하는 결말',need:'알렉과의 신뢰',text:'알렉은 오래 침묵하다 동생에게 자리를 내주었다. “앉아라, 다니엘.”\n\n말끔한 화해는 아니었다. 그러나 다니엘은 처음으로 자신의 말을 끝까지 전했고, 형은 그 말을 끝까지 들었다.'},
  {id:'alex_fracture',name:'닫힌 문 너머',group:'알렉',desc:'형제의 갈등을 해결하지 못한 결말',need:'알렉과의 깊은 의심',text:'“형님, 저는……” 다니엘은 말을 끝맺지 못했다. 알렉은 대답 없이 문을 닫았다.\n\n같은 성을 가진 두 사람 사이에 남은 것은 아직 풀리지 않은 질문이었다.'},
  {id:'court_guardian',name:'황궁의 작은 등불',group:'황궁',desc:'소문을 바로잡고 사람들을 보호하는 결말',need:'평판과 황궁 인연',text:'다니엘은 이름 모를 시종의 증언을 기록하고 거짓 소문을 멈추게 했다. 누군가는 그의 이름을 기억했다.\n\n커다란 훈장도 칭송도 없었지만, 그가 지킨 작은 신뢰가 황궁의 밤을 밝혔다.'},
- {id:'secret',name:'달빛 아래의 비밀',group:'미겔',desc:'드러내지 않은 마음을 간직하는 열린 결말',need:'깊은 감정과 조심스러운 절제',text:'다니엘과 미겔은 사람들 앞에서 언제나 예의를 지켰다. 두 사람만 아는 말 한마디가 남았지만, 그 말이 연애를 뜻하지는 않았다.\n\n알렉과 미겔의 약혼은 계속되었다. 비밀은 누군가를 속이기 위한 약속이 아니라, 아직 이름 붙이지 못한 감정이었다.'},
+ {id:'secret',name:'달빛 아래의 비밀',group:'미겔',desc:'드러내지 않은 마음을 간직하는 열린 결말',need:'깊은 감정과 조심스러운 절제',text:'다니엘과 미겔은 사람들 앞에서 언제나 예의를 지켰다. 두 사람만 아는 말 한마디가 남았지만, 그 말이 연애를 뜻하지는 않았다.\n\n알렉과 미겔의 약혼은 계속되었다. 비밀은 누군가를 속이기 위한 약속이 아니라, 이미 오래전부터 알고도 끝내 입 밖에 내지 못한 감정이었다.'},
  {id:'independent',name:'나만의 보랏빛 밤',group:'독립',desc:'누구의 사랑도 택하지 않고 스스로의 길을 걷는 결말',need:'7일차 이후',text:'세 개의 달이 서서히 자취를 감췄다. 다니엘은 누구의 대답도 기다리지 않고 황궁을 떠났다.\n\n그에게도 스스로 정할 내일이 있었다. 보랏빛 밤은 끝났지만, 그의 이야기는 끝나지 않았다.'}
 ];
 const V48_GALLERY_KEY='delharsha_purple_night_ending_gallery_v1';
@@ -2040,7 +2090,7 @@ function v51Choice(c){if(!c.v51Miguel)return;const d=v51Data(),mode=c.v51Miguel,
 function v51Miguel(loc){const d=v51Data(),isPrivate=loc==='garden';
  const pending=d.pending.find(x=>x&&x.stage<2&&state.day>=x.due);
  if(pending&&isPrivate){pending.stage++;pending.due=state.day+2;const text=pending.stage===1?
- '인적이 드문 정원 길에서 미겔은 걸음을 늦추었다. “다니엘, 지난번 네가 해 준 말을 생각했어. 고맙구나. 하지만 고마움과 약속은 별개의 일이란다.” 그녀는 노란 장미의 잎을 가만히 살폈다. “그러니 네 마음도 소홀히 여기지 말렴.”':
+ '인적이 드문 정원 길에서 미겔은 걸음을 늦추었다. “다니엘, 지난번 네가 해 준 말을 생각했단다. 고맙구나. 하지만 고마움과 약속은 별개의 일이야.” 그녀는 노란 장미의 잎을 가만히 살폈다. “그러니 네 마음도 소홀히 여기지 말렴.”':
  '미겔은 다니엘을 조용히 불렀다. “이리 오렴. 이쪽은 바람이 덜 차가워.” 그녀는 웃음을 머금었지만, 손을 내밀거나 약속을 바꾸지는 않았다. “세상에는 서둘러 결론짓지 않아도 되는 마음이 있단다. 너도 언젠가는 알게 될 거야.”';
  v51Remember('follow_'+pending.id+'_'+pending.stage,'미겔 · '+(pending.stage===2?'정원의 여운':'다시 만난 날'),text,pending.stage===1?pending.id:'v51_follow_'+pending.id+'_1');
  return v18Scene('v51_miguel_follow','미겔',text,[{text:'그녀의 말을 마음에 새긴다.',next:'explore'}]);}
@@ -2533,10 +2583,49 @@ function v57DeveloperMenu(){
 function v82SceneMusic(node){
  document.dispatchEvent(new CustomEvent('delharsha:scene',{detail:{id:state.node,chapter:node?.chapter||'',speaker:node?.speaker||'',text:(node?.text||'').slice(0,220),explore:!!node?.explore}}));
 }
+
+// v111 — independent royal letter scene; state.node remains cinematic_moons until normal Next.
+const v111Letter={phase:-1,token:0,timer:null,locked:false};
+function v111LetterClear(){
+ v111Letter.token++;clearTimeout(v111Letter.timer);v111Letter.timer=null;
+ const old=document.getElementById('v111LetterOverlay');if(old)old.remove();
+ document.body.classList.remove('v111-letter-active','v111-letter-thought');
+}
+function v111LetterRenderGate(){
+ if(state.node!=='cinematic_moons'){v111LetterClear();v111Letter.phase=-1;return;}
+ if(v111Letter.phase<0){v111Letter.phase=0;v111LetterMount();}
+ else if(!document.getElementById('v111LetterOverlay'))v111LetterMount();
+}
+function v111LetterAdvanceGate(){
+ if(state.node!=='cinematic_moons')return false;
+ if(v111Letter.phase<4)return true;
+ v111LetterClear();v111Letter.phase=-1;return false;
+}
+function v111LetterMount(){
+ v111LetterClear();const token=v111Letter.token;
+ const root=document.createElement('section');root.id='v111LetterOverlay';root.className='v111-letter-overlay';
+ root.setAttribute('aria-label','아셀 왕실 초대장');
+ root.innerHTML=`<div class="v111-letter-vignette"></div><div class="v111-letter-desk"></div>
+ <div class="v111-letter-envelope" aria-hidden="true"><div class="v111-letter-flap"></div><div class="v111-letter-monogram">ASEL · ROYAL COURT</div><div class="v111-letter-wax">♛</div></div>
+ <article class="v111-letter-paper" aria-label="왕실 초청장"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><h2>왕실 초청장</h2><p>레온하르트 가문에<br>아셀 왕국의 일곱 날을 초대합니다.</p><p class="v111-letter-detail">일곱 날의 연회<br>마지막 밤의 대무도회</p><div class="v111-letter-emblem">♛</div><small>BY ORDER OF THE ROYAL COURT</small></article>
+ <div class="v111-letter-narration" aria-live="polite"></div>
+ <button type="button" class="v111-letter-action" aria-label="왕실 봉랍을 눌러 편지를 개봉하기">봉랍을 눌러 개봉하기　✦</button>
+ <button type="button" class="v111-letter-continue" aria-label="편지를 다 읽고 다음으로">편지를 접는다　›</button>`;
+ const screen=document.getElementById('game')||document.querySelector('main')||document.body;
+ screen.append(root);document.body.classList.add('v111-letter-active');
+ const narration=root.querySelector('.v111-letter-narration');
+ const advance=(phase,delay=0)=>{clearTimeout(v111Letter.timer);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=phase;root.dataset.phase=String(phase);if(phase===1)narration.textContent='아셀 왕국에서 편지가 도착했다.';if(phase===2)narration.textContent='보랏빛 봉랍 아래, 일곱 날의 초대가 기다리고 있었다.';if(phase===3)narration.textContent='';if(phase===4){document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';}},delay)};
+ root.dataset.phase='0';advance(1,850);
+ v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=2;root.dataset.phase='2';narration.textContent='봉랍을 눌러 초대장을 펼쳐 주세요.';},1900);
+ root.querySelector('.v111-letter-action').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==2||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=3;root.dataset.phase='3';narration.textContent='';advance(3,650);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token)return;v111Letter.locked=false;root.dataset.phase='3';},650);});
+ root.querySelector('.v111-letter-continue').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==3||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=4;root.dataset.phase='4';document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';v111Letter.locked=false;});
+}
+
 function renderStage(node){
  const area=$('stagePortraits'),cap=$('stageCaption');
  if(!area||!cap)return;
  area.replaceChildren();
+ if(state.node!=='cinematic_moons')area.classList.remove('v110-letter-stage');
  const id=state.node;
  cap.textContent=id==='explore'?'황궁 · 행방을 찾아서':
  /miguel|found_|explore_found|explore_finish|wine_/.test(id)||node.speaker==='미겔 코트리먼'
@@ -2552,7 +2641,7 @@ function v67RenderNarrative(node){
  if(node.thought){const thought=document.createElement('span');thought.className='v67-inner-thought';thought.textContent='('+node.thought+')';target.append(thought);}
 }
 
-function render(){if(v49Finished()){v49RenderCompleted();return;}const node=NODES[state.node]||NODES.intro;v82SceneMusic(node);renderStage(node);$('speaker').textContent=node.speaker;v67RenderNarrative(node);$('day').textContent='DAY '+state.day;$('chapter').textContent=node.chapter||'PROLOGUE';$('choices').replaceChildren();$('nextBtn').classList.toggle('hidden',!!node.choices);if(node.explore){renderExplore();return;}(node.choices||[]).forEach(choice=>{const b=document.createElement('button');b.textContent='✧ '+choice.text;b.onclick=()=>{if(choice.action==='home'){show('home');return;}if(choice.action==='restartExplore'){resetNight();state.node='explore';render();return;}if(choice.action==='nextDay'){nextDay();return;}if(choice.reset)state=fresh();else{state.history.push(state.node);for(const [k,v] of Object.entries(choice.effects||{}))if(k in state.stats)state.stats[k]=Math.max(0,Math.min(100,state.stats[k]+v));}if(choice.v16Quest){if(choice.v17Ending)v17QuestEnding(choice.v16Quest,choice.v17Ending==='help'?'finish_help':'finish_quiet');const q=v16Data().quests[choice.v16Quest];if(q){if(choice.v16Mode==='advance'){q.step=Math.min(2,q.step+1);q.choice='accept';}else if(choice.v16Mode==='decline'){q.choice='decline';}else if(choice.v16Mode==='finish'){q.done=true;v16Data().memories.push({id:'quest_'+choice.v16Quest,title:V16_QUESTS.find(x=>x.id===choice.v16Quest)?.title||'황궁 사건',text:'황궁의 작은 의뢰를 해결했다.',day:state.day});}}}if(choice.v38Miguel||choice.v38Alex||choice.v38Npc)v38Choice(choice);v39Choice(choice);v40Choice(choice);v41Choose(choice);v42Choice(choice);v43Choice(choice);v44Choice(choice);v45Choice(choice);v46Choice(choice);v47Choice(choice);v51Choice(choice);v52Choice(choice);v53Choice(choice);v55Choice(choice);if(choice.v37Miguel||choice.v37Alex||choice.v37Npc)v37Choice(choice);if(choice.v36Miguel||choice.v36Alex||choice.v36Npc)v36Choice(choice);if(choice.v35Miguel||choice.v35Alex||choice.v35Npc)v35Choice(choice);if(choice.v34Miguel||choice.v34Alex||choice.v34Npc)v34Choice(choice);if(choice.v33Miguel||choice.v33Alex||choice.v33Npc)v33Choice(choice);if(choice.v32Miguel||choice.v32Alex||choice.v32Npc)v32Choice(choice);if(choice.v31Miguel||choice.v31Alex||choice.v31Npc)v31Choice(choice);if(choice.v30Miguel||choice.v30Alex||choice.v30Npc)v30Choice(choice);if(choice.v28Feeling||choice.v28Alex||choice.v28Npc)v28OnChoice(choice);if(choice.v29Miguel||choice.v29Alex||choice.v29Npc)v29OnChoice(choice);if(choice.v25Secret||choice.v25Bond||choice.v25Alex){v25Outcome(choice);v26Outcome(choice);v27OnChoice(choice);}if(choice.v26Secret){const q=v26Data().secret[choice.v26Secret];if(q)q.response=choice.v26Mode;}if(choice.v27Alex){v26Data().alex.trust=Math.max(-10,Math.min(10,v26Data().alex.trust+(choice.v27Alex==='repair'?2:-1)));}if(choice.v26Alex){v26Data().alex.trust=Math.max(-10,Math.min(10,v26Data().alex.trust+(choice.v26Alex==='apologize'?1:0)));}if(choice.v24Choice)v24Choice(choice.v24Choice,choice.v24Mode);if(choice.v23EmotionChoice){const d=v23Data();d.emotionChoices[choice.v23EmotionChoice]={day:state.day,mode:choice.v23Emotion};v23Remember('emotion_'+choice.v23EmotionChoice,'다니엘의 선택 · DAY '+state.day,NODES.explore_v18_event?.text||'다니엘은 자신의 마음을 돌아보았다.');}if(choice.v23Alex){v23Data().lastAlexChoice=choice.v23Alex;}if(choice.v22Rumor){const d=v22Data();d.rumorResponses[choice.v22Rumor]={day:state.day,mode:choice.v22RumorMode};const change=choice.v22RumorMode==='correct'?-2:choice.v22RumorMode==='protect'?-1:0;v20Data().rumorImpact=Math.max(-20,Math.min(20,v20Data().rumorImpact+change));v22Record('rumor_'+choice.v22Rumor,'소문에 대한 다니엘의 대응',NODES.explore_v18_event?.text||'소문을 조심스럽게 다루었다.','기타');}if(choice.v22Npc){v22Data().npcDeep[choice.v22Npc].choice=choice.v22NpcMode;const npc=v19Data().npc[choice.v22Npc];if(npc&&choice.v22NpcMode==='warm')npc.rapport=Math.min(10,(npc.rapport||0)+1);}if(choice.v22Alex){v22Data().lastAlexResponse=choice.v22Alex;if(choice.v22Alex==='hesitate')socialProgress().alexTension=Math.min(100,socialProgress().alexTension+1);}if(choice.v22Choice){v22Data().lastPromiseResponse=choice.v22Choice;}if(choice.v21Echo){v21Data().lastEchoChoice=choice.v21Echo;}if(choice.v20Errand){const q=v20Data().errands[choice.v20Errand];if(q){q.status=choice.v20ErrandMode;const def=V20_ERRANDS[choice.v20Errand];v20Record('errand_'+choice.v20Errand,def.title,choice.v20ErrandMode==='help'?def.good:'다니엘은 정중히 사양하고 자신의 일을 계속했다.','의뢰');if(choice.v20ErrandMode==='help'){const npc=v19Data().npc[choice.v20Errand];if(npc)npc.rapport=Math.min(10,npc.rapport+1);}}}if(choice.v20Renew){v20Data().promiseRenewals++;v18Data().promise={day:state.day+1,loc:'terrace',turn:3,status:'accepted'};v19Data().promiseAfter=null;v20Record('renew_'+state.day,'다시 청한 약속','다니엘은 다음 날 테라스에서 인사할 기회를 다시 청했다.','관계');}if(choice.v20Alex){const d=v20Data();d.lastAlexChoice=choice.v20Alex;if(choice.v20Alex==='confess')socialProgress().alexTension=Math.min(100,socialProgress().alexTension+1);v20Record('alex_'+state.day+'_'+exploration().turn,'형 앞에서의 대답',NODES.explore_v18_event?.text||'형과의 짧은 대화를 떠올렸다.','관계');}if(choice.v18Emotion)v18Data().emotion=Math.max(-10,Math.min(10,v18Data().emotion+choice.v18Emotion));if(choice.v19Feeling)v19Data().feelings=Math.max(-10,Math.min(10,v19Data().feelings+choice.v19Feeling));if(choice.v19Npc){const npc=v19Data().npc[choice.v19Npc];if(npc){npc.rapport=Math.min(10,(npc.rapport||0)+(choice.v19Rapport||0));if(npc.rapport===2)v19Record('npc_'+choice.v19Npc,'황궁의 인연 · '+V19_NPC_PROFILES[choice.v19Npc].name,V19_NPC_PROFILES[choice.v19Npc].warm,'관계');}}if(choice.v19Rumor){const r=v19Data().rumors.find(x=>x.id===choice.v19Rumor&&x.day===state.day);if(r)r.verified=true;}if(choice.v18Promise){v18Data().promise=choice.v18Promise==='accept'?{day:state.day+1,loc:'terrace',turn:3,status:'accepted'}:{day:state.day+1,status:'declined'};}if(choice.v18Serial!==undefined){const x=v18Data().serial[choice.v18Serial];if(x){if(choice.v18Mode==='advance'){if(x.stage===0)x.startDay=state.day;x.stage=Math.min(2,x.stage+1);}else if(choice.v18Mode.startsWith('finish')){x.done=true;const q=V18_SERIAL[choice.v18Serial];v18Remember('v18_serial_'+choice.v18Serial,q.title+' · 해결',q.end,'의뢰');}}}if(choice.questStep){const q=questProgress();q.step=Math.max(q.step,choice.questStep);if(q.step>=3){q.done=true;recordGallery('quest_done_v15');}}if(choice.ambientReply){NODES.explore_ambient_reply={speaker:'SYSTEM',text:choice.ambientReply,chapter:'CHAPTER 01',next:'explore'};}state.node=choice.v17Ending?'explore_v17_ending':choice.next;render();};$('choices').append(b);});}
+function render(){v111LetterRenderGate();if(v49Finished()){v49RenderCompleted();return;}const node=NODES[state.node]||NODES.intro;v82SceneMusic(node);renderStage(node);$('speaker').textContent=node.speaker;v67RenderNarrative(node);$('day').textContent='DAY '+state.day;$('chapter').textContent=node.chapter||'PROLOGUE';$('choices').replaceChildren();$('nextBtn').classList.toggle('hidden',!!node.choices);if(node.explore){renderExplore();return;}(node.choices||[]).forEach(choice=>{const b=document.createElement('button');b.textContent='✧ '+choice.text;b.onclick=()=>{if(choice.action==='home'){show('home');return;}if(choice.action==='restartExplore'){resetNight();state.node='explore';render();return;}if(choice.action==='nextDay'){nextDay();return;}if(choice.reset)state=fresh();else{state.history.push(state.node);for(const [k,v] of Object.entries(choice.effects||{}))if(k in state.stats)state.stats[k]=Math.max(0,Math.min(100,state.stats[k]+v));}if(choice.v16Quest){if(choice.v17Ending)v17QuestEnding(choice.v16Quest,choice.v17Ending==='help'?'finish_help':'finish_quiet');const q=v16Data().quests[choice.v16Quest];if(q){if(choice.v16Mode==='advance'){q.step=Math.min(2,q.step+1);q.choice='accept';}else if(choice.v16Mode==='decline'){q.choice='decline';}else if(choice.v16Mode==='finish'){q.done=true;v16Data().memories.push({id:'quest_'+choice.v16Quest,title:V16_QUESTS.find(x=>x.id===choice.v16Quest)?.title||'황궁 사건',text:'황궁의 작은 의뢰를 해결했다.',day:state.day});}}}if(choice.v38Miguel||choice.v38Alex||choice.v38Npc)v38Choice(choice);v39Choice(choice);v40Choice(choice);v41Choose(choice);v42Choice(choice);v43Choice(choice);v44Choice(choice);v45Choice(choice);v46Choice(choice);v47Choice(choice);v51Choice(choice);v52Choice(choice);v53Choice(choice);v55Choice(choice);if(choice.v37Miguel||choice.v37Alex||choice.v37Npc)v37Choice(choice);if(choice.v36Miguel||choice.v36Alex||choice.v36Npc)v36Choice(choice);if(choice.v35Miguel||choice.v35Alex||choice.v35Npc)v35Choice(choice);if(choice.v34Miguel||choice.v34Alex||choice.v34Npc)v34Choice(choice);if(choice.v33Miguel||choice.v33Alex||choice.v33Npc)v33Choice(choice);if(choice.v32Miguel||choice.v32Alex||choice.v32Npc)v32Choice(choice);if(choice.v31Miguel||choice.v31Alex||choice.v31Npc)v31Choice(choice);if(choice.v30Miguel||choice.v30Alex||choice.v30Npc)v30Choice(choice);if(choice.v28Feeling||choice.v28Alex||choice.v28Npc)v28OnChoice(choice);if(choice.v29Miguel||choice.v29Alex||choice.v29Npc)v29OnChoice(choice);if(choice.v25Secret||choice.v25Bond||choice.v25Alex){v25Outcome(choice);v26Outcome(choice);v27OnChoice(choice);}if(choice.v26Secret){const q=v26Data().secret[choice.v26Secret];if(q)q.response=choice.v26Mode;}if(choice.v27Alex){v26Data().alex.trust=Math.max(-10,Math.min(10,v26Data().alex.trust+(choice.v27Alex==='repair'?2:-1)));}if(choice.v26Alex){v26Data().alex.trust=Math.max(-10,Math.min(10,v26Data().alex.trust+(choice.v26Alex==='apologize'?1:0)));}if(choice.v24Choice)v24Choice(choice.v24Choice,choice.v24Mode);if(choice.v23EmotionChoice){const d=v23Data();d.emotionChoices[choice.v23EmotionChoice]={day:state.day,mode:choice.v23Emotion};v23Remember('emotion_'+choice.v23EmotionChoice,'다니엘의 선택 · DAY '+state.day,NODES.explore_v18_event?.text||'다니엘은 자신의 마음을 돌아보았다.');}if(choice.v23Alex){v23Data().lastAlexChoice=choice.v23Alex;}if(choice.v22Rumor){const d=v22Data();d.rumorResponses[choice.v22Rumor]={day:state.day,mode:choice.v22RumorMode};const change=choice.v22RumorMode==='correct'?-2:choice.v22RumorMode==='protect'?-1:0;v20Data().rumorImpact=Math.max(-20,Math.min(20,v20Data().rumorImpact+change));v22Record('rumor_'+choice.v22Rumor,'소문에 대한 다니엘의 대응',NODES.explore_v18_event?.text||'소문을 조심스럽게 다루었다.','기타');}if(choice.v22Npc){v22Data().npcDeep[choice.v22Npc].choice=choice.v22NpcMode;const npc=v19Data().npc[choice.v22Npc];if(npc&&choice.v22NpcMode==='warm')npc.rapport=Math.min(10,(npc.rapport||0)+1);}if(choice.v22Alex){v22Data().lastAlexResponse=choice.v22Alex;if(choice.v22Alex==='hesitate')socialProgress().alexTension=Math.min(100,socialProgress().alexTension+1);}if(choice.v22Choice){v22Data().lastPromiseResponse=choice.v22Choice;}if(choice.v21Echo){v21Data().lastEchoChoice=choice.v21Echo;}if(choice.v20Errand){const q=v20Data().errands[choice.v20Errand];if(q){q.status=choice.v20ErrandMode;const def=V20_ERRANDS[choice.v20Errand];v20Record('errand_'+choice.v20Errand,def.title,choice.v20ErrandMode==='help'?def.good:'다니엘은 정중히 사양하고 자신의 일을 계속했다.','의뢰');if(choice.v20ErrandMode==='help'){const npc=v19Data().npc[choice.v20Errand];if(npc)npc.rapport=Math.min(10,npc.rapport+1);}}}if(choice.v20Renew){v20Data().promiseRenewals++;v18Data().promise={day:state.day+1,loc:'terrace',turn:3,status:'accepted'};v19Data().promiseAfter=null;v20Record('renew_'+state.day,'다시 청한 약속','다니엘은 다음 날 테라스에서 인사할 기회를 다시 청했다.','관계');}if(choice.v20Alex){const d=v20Data();d.lastAlexChoice=choice.v20Alex;if(choice.v20Alex==='confess')socialProgress().alexTension=Math.min(100,socialProgress().alexTension+1);v20Record('alex_'+state.day+'_'+exploration().turn,'형 앞에서의 대답',NODES.explore_v18_event?.text||'형과의 짧은 대화를 떠올렸다.','관계');}if(choice.v18Emotion)v18Data().emotion=Math.max(-10,Math.min(10,v18Data().emotion+choice.v18Emotion));if(choice.v19Feeling)v19Data().feelings=Math.max(-10,Math.min(10,v19Data().feelings+choice.v19Feeling));if(choice.v19Npc){const npc=v19Data().npc[choice.v19Npc];if(npc){npc.rapport=Math.min(10,(npc.rapport||0)+(choice.v19Rapport||0));if(npc.rapport===2)v19Record('npc_'+choice.v19Npc,'황궁의 인연 · '+V19_NPC_PROFILES[choice.v19Npc].name,V19_NPC_PROFILES[choice.v19Npc].warm,'관계');}}if(choice.v19Rumor){const r=v19Data().rumors.find(x=>x.id===choice.v19Rumor&&x.day===state.day);if(r)r.verified=true;}if(choice.v18Promise){v18Data().promise=choice.v18Promise==='accept'?{day:state.day+1,loc:'terrace',turn:3,status:'accepted'}:{day:state.day+1,status:'declined'};}if(choice.v18Serial!==undefined){const x=v18Data().serial[choice.v18Serial];if(x){if(choice.v18Mode==='advance'){if(x.stage===0)x.startDay=state.day;x.stage=Math.min(2,x.stage+1);}else if(choice.v18Mode.startsWith('finish')){x.done=true;const q=V18_SERIAL[choice.v18Serial];v18Remember('v18_serial_'+choice.v18Serial,q.title+' · 해결',q.end,'의뢰');}}}if(choice.questStep){const q=questProgress();q.step=Math.max(q.step,choice.questStep);if(q.step>=3){q.done=true;recordGallery('quest_done_v15');}}if(choice.ambientReply){NODES.explore_ambient_reply={speaker:'SYSTEM',text:choice.ambientReply,chapter:'CHAPTER 01',next:'explore'};}state.node=choice.v17Ending?'explore_v17_ending':choice.next;render();};$('choices').append(b);});}
 function fresh(){return{node:'cinematic_moons',day:1,social:{miguelMeetings:0,alexTension:0},stats:{affection:0,trust:0,resolve:0,reputation:50,risk:0},history:[],exploration:{turn:0,clues:[],visited:[],found:false,sceneCounts:{}}};}
 function save(){try{v41SafeBackup();localStorage.setItem(SAVE_KEY,JSON.stringify({...state,ambientSnapshot:['explore_ambient','explore_ambient_reply','explore_special_v14','explore_repeat_v14','explore_clue_v14','explore_quest_v15','explore_v16_quest','explore_v16_bond','explore_v16_alex','explore_v17_bond','explore_v17_thought','explore_v17_ending','explore_v18_event'].includes(state.node)?{scene:NODES.explore_ambient,reply:NODES.explore_ambient_reply,special:NODES.explore_special_v14,repeat:NODES.explore_repeat_v14,clue:NODES.explore_clue_v14,quest:NODES.explore_quest_v15,v16quest:NODES.explore_v16_quest,v16bond:NODES.explore_v16_bond,v16alex:NODES.explore_v16_alex,v17bond:NODES.explore_v17_bond,v17thought:NODES.explore_v17_thought,v17ending:NODES.explore_v17_ending,v18event:NODES.explore_v18_event}:null}));modal('저장 완료','현재 진행 상황을 이 브라우저에 저장했습니다.');}catch{modal('저장 실패','브라우저 저장 공간을 사용할 수 없습니다.');}}
 function load(){try{const raw=localStorage.getItem(SAVE_KEY);if(!raw){modal('불러오기','저장된 진행 상황이 없습니다.');return;}const data=JSON.parse(raw);if(!data||(!['explore_ambient','explore_ambient_reply','explore_special_v14','explore_repeat_v14','explore_clue_v14','explore_quest_v15','explore_v16_quest','explore_v16_bond','explore_v16_alex','explore_v17_bond','explore_v17_thought','explore_v17_ending','explore_v18_event'].includes(data.node)&&!NODES[data.node])||!data.stats||typeof data.stats!=='object')throw Error('invalid');if(['explore_ambient','explore_ambient_reply','explore_special_v14','explore_repeat_v14','explore_clue_v14','explore_quest_v15','explore_v16_quest','explore_v16_bond','explore_v16_alex','explore_v17_bond','explore_v17_thought','explore_v17_ending','explore_v18_event'].includes(data.node)){const snap=data.ambientSnapshot||{};if(data.node==='explore_ambient'&&!snap.scene)throw Error('missing ambient');if(snap.scene)NODES.explore_ambient=snap.scene;if(snap.reply)NODES.explore_ambient_reply=snap.reply;if(snap.special)NODES.explore_special_v14=snap.special;if(snap.repeat)NODES.explore_repeat_v14=snap.repeat;if(snap.clue)NODES.explore_clue_v14=snap.clue;if(snap.quest)NODES.explore_quest_v15=snap.quest;if(snap.v16quest)NODES.explore_v16_quest=snap.v16quest;if(snap.v16bond)NODES.explore_v16_bond=snap.v16bond;if(snap.v16alex)NODES.explore_v16_alex=snap.v16alex;if(snap.v17bond)NODES.explore_v17_bond=snap.v17bond;if(snap.v17thought)NODES.explore_v17_thought=snap.v17thought;if(snap.v17ending)NODES.explore_v17_ending=snap.v17ending;if(snap.v18event)NODES.explore_v18_event=snap.v18event;if(!NODES[data.node])throw Error('missing event');}state={...fresh(),...data,social:{miguelMeetings:0,alexTension:0,...(data.social||{})},stats:{...fresh().stats,...data.stats},exploration:{...fresh().exploration,...(data.exploration||{})}};show('game');render();closeModal();}catch{modal('불러오기 실패','저장 데이터가 올바르지 않습니다.');}}
@@ -2667,7 +2756,7 @@ function loreLibrary(){
  modal('📚 설정 자료실',wrap);
  menu.firstChild.click();
 }
-$('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');render();};$('continueBtn').onclick=()=>{if(!v80Transitioning)load();};$('loadHomeBtn').onclick=()=>{if(!v80Transitioning)load();};$('loadBtn').onclick=load;$('saveBtn').onclick=save;$('statusBtn').onclick=status;$('journalBtn').onclick=journal;$('charactersBtn').onclick=characters;$('charactersHomeBtn').onclick=characters;$('galleryBtn').onclick=gallery;$('settingsBtn').onclick=settings;$('titleBtn').onclick=()=>show('home');$('nextBtn').onclick=()=>{const next=NODES[state.node]?.next;if(next){state.history.push(state.node);state.node=next;render();}};$('closeModal').onclick=closeModal;$('modal').onclick=e=>{if(e.target===$('modal'))closeModal();};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+$('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');render();};$('continueBtn').onclick=()=>{if(!v80Transitioning)load();};$('loadHomeBtn').onclick=()=>{if(!v80Transitioning)load();};$('loadBtn').onclick=load;$('saveBtn').onclick=save;$('statusBtn').onclick=status;$('journalBtn').onclick=journal;$('charactersBtn').onclick=characters;$('charactersHomeBtn').onclick=characters;$('galleryBtn').onclick=gallery;$('settingsBtn').onclick=settings;$('titleBtn').onclick=()=>show('home');$('nextBtn').onclick=()=>{if(v111LetterAdvanceGate())return;const next=NODES[state.node]?.next;if(next){state.history.push(state.node);state.node=next;render();}};$('closeModal').onclick=closeModal;$('modal').onclick=e=>{if(e.target===$('modal'))closeModal();};document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 $('loreHomeBtn').onclick=loreLibrary;$('loreBtn').onclick=loreLibrary;
 
@@ -2858,7 +2947,7 @@ $('loreHomeBtn').onclick=loreLibrary;$('loreBtn').onclick=loreLibrary;
 // v88 — KARMA: explicit consequence choices, persistent state and additional endings.
 // All preexisting story IDs, saves and endings are preserved.
 const V88_ENDINGS=[
- {id:'blood_vow',title:'피로 물든 맹세',kind:'BAD',text:'다니엘은 미겔을 잃는 두려움을 사랑이라고 불렀다. 그가 돌이킬 수 없는 선택을 내린 밤, 장미 화원에는 더 이상 두 사람의 미래가 남지 않았다.\n\n미겔은 마지막까지 그를 똑바로 바라보았다.\n\n“이것이 당신이 바라던 영원인가요?”',thought:'영원히 내 곁에 있을 거라고 믿었는데.'},
+ {id:'blood_vow',title:'피로 물든 맹세',kind:'BAD',text:'다니엘은 미겔을 잃는 두려움을 사랑이라고 불렀다. 그가 돌이킬 수 없는 선택을 내린 밤, 장미 화원에는 더 이상 두 사람의 미래가 남지 않았다.\n\n미겔은 마지막까지 그를 똑바로 바라보았다.\n\n“이것이 네가 바라던 영원이니, 다니엘?”',thought:'영원히 내 곁에 있을 거라고 믿었는데.'},
  {id:'three_moons',title:'세 번째 달이 지는 밤',kind:'TRAGIC',text:'도망칠 길이 끊어진 탑 위, 미겔과 다니엘은 서로의 손을 놓지 않았다. 세 개의 달은 여전히 하늘에 떠 있었다.\n\n다음 날, 사람들은 두 사람의 행방을 찾지 못했다. 남은 것은 창가에 놓인 노란 장미 한 송이뿐이었다.',thought:'다음 생에는 평범한 밤을 함께 걷고 싶었다.'},
  {id:'brother_funeral',title:'형제의 장례식',kind:'BAD',text:'알렉스는 끝까지 가문과 약혼자를 지키려 했다. 다니엘은 그 앞에서 칼을 거두지 않았다.\n\n장례식 날, 남색과 금색의 깃발이 내려왔다. 다니엘은 형이 없는 집에서 처음으로 자신의 죄를 똑바로 보았다.',thought:'형님이 없으면 모든 게 해결될 줄 알았어.'},
  {id:'lie_of_love',title:'사랑하지 않았다는 거짓말',kind:'BITTER',text:'미겔은 다니엘을 살리기 위해 그를 사랑한 적 없다고 말했다.\n\n그녀는 정중하게 미소 지었고, 다니엘은 그 말이 거짓이라는 사실을 평생 알지 못했다.',thought:'차라리 진실을 몰랐으면 좋겠다고 생각했다.'},
@@ -3095,4 +3184,601 @@ function v90Activity(){const d=v90Data();const wrap=document.createElement('div'
   }
   modal('운명의 조건','');document.getElementById('modalContent')?.replaceChildren(wrap);
  });hud.append(b);}
+})();
+
+
+// V94 — Persistent consequences of the greenhouse choice.
+// State is stored in the existing save object, preserving legacy saves.
+(function(){
+ const defaultRecord=()=>({path:null,response:null,firstDay:null,echoSeen:false,alexSeen:false,miguelSeen:false});
+ function record(){if(!state.v94||typeof state.v94!=='object')state.v94=defaultRecord();return state.v94;}
+ const choiceRoot=document.getElementById('choices');
+ const primary={v93_reason:'reason',v93_instinct:'instinct',v93_crossed_line:'boundary'};
+ const secondary={v93_accept:'accept',v93_linger:'linger',v93_crossed_apology:'apology',v93_crossed_silence:'silence'};
+ if(choiceRoot)choiceRoot.addEventListener('click',function(event){
+  const button=event.target.closest('button');if(!button||!choiceRoot.contains(button)||button.disabled)return;
+  const node=NODES[state.node];if(!node||!Array.isArray(node.choices))return;
+  const buttons=Array.from(choiceRoot.children).filter(x=>x.tagName==='BUTTON');
+  const choice=node.choices[buttons.indexOf(button)];if(!choice)return;
+  const r=record();if(primary[choice.next]){r.path=primary[choice.next];r.firstDay=state.day||1;r.response=null;}
+  if(secondary[choice.next])r.response=secondary[choice.next];
+ },true);
+ // Old save games that are already inside a V93 branch are reconstructed safely.
+ function infer(){const r=record(),id=String(state.node||'');if(r.path)return r;
+  if(id==='v93_reason')r.path='reason';else if(['v93_instinct','v93_instinct_accept','v93_accept','v93_linger'].includes(id))r.path='instinct';
+  else if(['v93_crossed_line','v93_crossed_choice','v93_crossed_apology','v93_crossed_silence'].includes(id))r.path='boundary';
+  return r;
+ }
+ const node=(speaker,chapter,text,thought,next,choices)=>({speaker,chapter,text,thought,...(choices?{choices}:{next})});
+ NODES.v94_morning=node('서술','CHAPTER 02 · 장미가 진 자리',
+ '밤이 지나자 온실의 장미 향은 기억으로만 남았다. 그러나 다니엘이 내린 선택은 아침이 되었다고 희미해지지 않았다.\n\n알렉스가 서재로 다니엘을 불렀다. 평소와 같은 목소리였다. 그 평범함이 오히려 두려웠다.',
+ '형님은 아무것도 모르실까. 아니면 이미 알고 계실까.',null,[
+ {text:'형님을 찾아가 대화한다.',next:'v94_alex_intro'},
+ {text:'먼저 미겔에게 예의를 갖춘 편지를 쓴다.',next:'v94_letter'}]);
+ NODES.v94_letter=node('다니엘 레온하르트','CHAPTER 02 · 보내지 않은 문장',
+ '책상 위에 편지지를 펼쳤다. 다니엘은 첫 문장을 쓰고, 다시 지웠다. 자신이 듣고 싶은 대답을 강요하는 문장이 되어서는 안 됐다.\n\n편지는 한 장뿐이었다. 마음은 길었지만, 상대의 시간을 빼앗지 않도록 짧게 썼다.',
+ '편지를 쓰는 일과 보내는 일은 달라. 답장을 요구할 권리는 없어.', 'v94_alex_intro');
+ NODES.v94_alex_intro=node('알렉스 레온하르트','CHAPTER 02 · 형의 시선',
+ '서재 창문에는 아침빛이 길게 걸려 있었다. 알렉스는 서류를 덮고 다니엘을 맞았다.\n\n“어제는 늦게까지 있었더구나. 무도회는 즐거웠어?”\n\n익숙한 미소였다. 다니엘은 그 미소가 조금도 가볍지 않다는 것을 알았다.',
+ '형님은 내게 늘 다정하셨다. 내가 그 다정함을 배신한 건 아닐까.', 'v94_alex_branch');
+ NODES.v94_alex_branch=node('서술','CHAPTER 02 · 대답의 무게',
+ '알렉스는 다니엘의 침묵을 재촉하지 않았다. 동생이 말을 고르는 동안, 그저 맞은편 의자를 당겨 주었다.',
+ '무슨 말을 해야 하지. 어젯밤의 나는 어떤 사람이었을까.',null,[]);
+ NODES.v94_alex_respect=node('알렉스 레온하르트','CHAPTER 02 · 지켜 낸 거리',
+ '“네가 스스로 물러설 줄 알았다면 그걸로 충분해.” 알렉스는 다니엘의 어깨를 가볍게 두드렸다.\n\n“미겔은 누군가의 소유물이 아니야. 나와 약혼했다는 이유로 네게 무례해도 되는 사람도 아니고. 우리는 모두 각자의 선택을 책임져야 하지.”\n\n다니엘은 형의 말을 오래 기억했다.',
+ '형님이 믿어 주시는 만큼, 나도 믿음을 지키고 싶어.', 'v94_miguel_intro');
+ NODES.v94_alex_confession=node('알렉스 레온하르트','CHAPTER 02 · 솔직한 고백',
+ '“좋아하는 마음을 가졌다는 사실만으로 널 미워할 생각은 없어.” 알렉스는 한참 만에 말했다.\n\n“하지만 그 마음 때문에 미겔이 곤란해진다면 이야기는 달라지겠지. 내 동생이라서가 아니라, 누구든 상대의 대답을 존중해야 하니까.”\n\n다니엘은 대답 대신 고개를 끄덕였다.',
+ '내 마음을 들켰어. 하지만 형님이 지키려는 건 체면이 아니라 그분의 뜻이구나.', 'v94_miguel_intro');
+ NODES.v94_alex_boundary=node('알렉스 레온하르트','CHAPTER 02 · 형의 경고',
+ '알렉스의 미소가 사라졌다. “미겔이 불편해했다는 말을 들었어.”\n\n그는 목소리를 높이지 않았다. “다니엘, 네가 내 동생이라는 사실은 네 행동을 정당화하지 않아. 미겔이 원치 않는 접촉을 했다면, 그건 분명히 잘못된 일이야.”\n\n다니엘은 의자 끝을 움켜쥐었다. 형은 자신의 감정보다 미겔의 안전과 의사를 먼저 물었다.',
+ '형님이 화를 내시는 게 당연해. 변명하면 더 비겁해질 뿐이야.', 'v94_boundary_choice');
+ NODES.v94_boundary_choice=node('다니엘 레온하르트','CHAPTER 02 · 책임',
+ '“저는…….” 다니엘은 말을 멈췄다. 잘못을 인정하는 것과 용서를 요구하는 것은 다른 일이었다.',
+ '내가 할 수 있는 건 사실을 인정하고, 다시는 반복하지 않는 것뿐이야.',null,[
+ {text:'변명 없이 잘못을 인정하고 거리를 지키겠다고 약속한다.',next:'v94_boundary_account',v91Moral:'virtue'},
+ {text:'그 순간만큼은 어쩔 수 없었다고 변명한다.',next:'v94_boundary_excuse',v91Moral:'karma'}]);
+ NODES.v94_boundary_account=node('알렉스 레온하르트','CHAPTER 02 · 남는 기록',
+ '“말이 아니라 행동으로 보여 줘.” 알렉스는 단호하게 말했다. “미겔에게 용서를 재촉하지 마. 그 사람에게는 네 사과를 받아들이지 않을 자유도 있어.”\n\n다니엘은 고개를 숙였다. 책임을 받아들인다고 해서 어젯밤이 사라지는 것은 아니었다.',
+ '잘못은 남아. 그래도 다음 선택까지 잘못할 이유는 없어.', 'v94_miguel_intro');
+ NODES.v94_boundary_excuse=node('알렉스 레온하르트','CHAPTER 02 · 닫힌 문',
+ '“그만.” 알렉스가 처음으로 말을 끊었다. “네 충동이 그 사람의 거절보다 중요할 수는 없어.”\n\n서재는 조용했다. 다니엘은 형의 눈을 마주하지 못했다. 관계의 균열은 한 번의 사과로 봉합되지 않았다.',
+ '나는 지금도 내 마음만 변호하고 있어. 이대로라면 아무것도 달라지지 않겠지.', 'v94_miguel_intro');
+ NODES.v94_miguel_intro=node('서술','CHAPTER 02 · 미겔의 대답',
+ '며칠 뒤, 코트리먼가의 노란 장미가 장식된 응접실에서 미겔을 다시 만났다. 그녀는 다니엘을 마주 보고 앉았지만, 전날 밤과 같은 거리를 허락하지는 않았다.\n\n“다니엘, 우리 이야기를 조금 해도 되겠니?”\n\n그녀의 목소리는 부드러웠으나 대답은 분명할 것 같았다.',
+ '그분의 말을 끝까지 듣자. 내가 원하는 대답이 아니더라도.', 'v94_miguel_branch');
+ NODES.v94_miguel_branch=node('미겔 코트리먼','CHAPTER 02 · 선택 이후',
+ '미겔은 다니엘의 표정을 살핀 뒤 천천히 말을 꺼냈다.',
+ '그분의 다정함을 또다시 내 마음대로 해석하지 말자.',null,[]);
+ NODES.v94_miguel_respect=node('미겔 코트리먼','CHAPTER 02 · 존중의 온도',
+ '“어젯밤 네가 내 뜻을 존중해 줘서 고마웠어.” 미겔이 말했다.\n\n“그렇다고 네 마음을 몰랐다는 뜻은 아니야. 하지만 나는 알렉스와 함께하기로 약속했고, 그 약속을 소중하게 생각해.”\n\n다니엘은 조금 아팠지만, 그녀가 자신에게 솔직하다는 사실을 알았다.',
+ '좋아한다는 이유로 곁에 있어야 하는 건 아니야. 거리를 지키는 것도 내 선택이야.', 'v94_epilogue');
+ NODES.v94_miguel_instinct=node('미겔 코트리먼','CHAPTER 02 · 고백의 여운',
+ '“네 고백을 가볍게 여기지는 않아.” 미겔은 찻잔을 내려놓았다.\n\n“하지만 다니엘, 내 친절을 미래의 약속으로 받아들이지는 않았으면 해. 나는 알렉스의 약혼자이고, 그 사실을 숨길 생각도 없단다.”\n\n다니엘은 처음으로 그녀의 다정함이 반드시 희망을 뜻하지 않는다는 사실을 온전히 받아들였다.',
+ '대답은 이미 들었어. 이제 그 답을 어떻게 살아 낼지가 남았지.', 'v94_epilogue');
+ NODES.v94_miguel_boundary=node('미겔 코트리먼','CHAPTER 02 · 허락의 경계',
+ '“그날 네가 내 손목을 잡았을 때, 나는 무서웠어.” 미겔은 시선을 피하지 않았다.\n\n“사과를 들었든 듣지 못했든, 나는 그 일을 기억할 거야. 당분간 단둘이 만나지 않는 편이 좋겠어.”\n\n다니엘은 그 요구를 받아들였다. 미겔의 용서는 이야기의 보상이 아니었다.',
+ '그분이 정한 거리를 지키자. 그건 최소한의 책임이야.', 'v94_epilogue');
+ NODES.v94_epilogue=node('서술','CHAPTER 02 · 선택이 남긴 것',
+ '다니엘은 복도를 걸으며 창밖을 보았다. 장미는 여전히 피어 있었고, 누구도 어젯밤을 되돌릴 수 없었다.\n\n앞으로의 삶에는 또 다른 선택이 기다리고 있었다. 선행은 선행대로, 잘못은 잘못대로 남는다. 다니엘은 그 무게를 지고 다음 날로 걸어갔다.',
+ '내가 무엇을 느꼈는가보다, 이제 무엇을 할 것인가가 중요해.', 'explore');
+ // Insert this chapter after the greenhouse scene without destroying original narrative.
+ NODES.v93_afterglow.next='v94_morning';
+ function refreshBranches(){const r=infer();
+  const alex=r.path==='boundary'?'v94_alex_boundary':r.path==='instinct'?'v94_alex_confession':'v94_alex_respect';
+  const miguel=r.path==='boundary'?'v94_miguel_boundary':r.path==='instinct'?'v94_miguel_instinct':'v94_miguel_respect';
+  NODES.v94_alex_branch.next=alex;
+  NODES.v94_miguel_branch.next=miguel;
+  // Text reflects whether Daniel accepted her answer, lingered, apologized, or stayed silent.
+  const after={accept:'그녀의 거절을 받아들인 밤이었다.',linger:'그는 그녀의 친절에 오래 머물렀던 밤을 떠올렸다.',apology:'사과했지만 잘못은 남았다.',silence:'사과조차 하지 못한 침묵이 남았다.'};
+  NODES.v94_miguel_branch.thought=(after[r.response]||'그 밤의 선택을 다시 떠올렸다.')+' 그분의 뜻을 존중해야 해.';
+ }
+ const previousRender=render;
+ render=function(){if(String(state.node||'').startsWith('v94_'))refreshBranches();previousRender();};
+})();
+
+
+// V95 — CHAPTER 03: The cost of a name. Branches preserve V94 decisions and V90 ledgers.
+(function(){
+ const mk=(speaker,chapter,text,thought,next,choices)=>({speaker,chapter,text,thought,...(choices?{choices}:{next})});
+ const ch='CHAPTER 03 · 이름의 무게';
+ const ensure=()=>{if(!state.v95||typeof state.v95!=='object')state.v95={rumor:null,brother:null,miguel:null,petition:null,visited:false};return state.v95;};
+ const history=()=>state.v94&&typeof state.v94==='object'?state.v94:{};
+ const path=()=>history().path||'reason';
+ NODES.v95_invitation=mk('서술',ch,
+  '황궁에서 온 봉투에는 레온하르트가의 사자 문장과 황실의 인장이 나란히 찍혀 있었다.\n\n“황실 자선 기금의 운영과 코트리먼가의 토지 기부에 관하여, 관계자 전원의 출석을 명한다.”\n\n겉보기에는 자선 사업에 관한 회의였다. 그러나 봉투 안쪽에는 다른 문장이 적혀 있었다.\n\n“귀족 가문 간 약혼을 둘러싼 불미스러운 풍문에 대해서도 사실관계를 확인한다.”\n\n다니엘은 봉투를 접었다. 어젯밤의 선택이 이제 세 사람만의 일이 아니게 되었다.',
+  '누군가 우리의 이름을 이용하려 한다. 그렇다고 그분의 선택을 대신할 수는 없어.','v95_brother');
+ NODES.v95_brother=mk('알렉스 레온하르트',ch,
+  '서재에 들어서자 알렉스는 다니엘에게 의자를 내밀었다. 책상에는 황실에서 보낸 서류가 펼쳐져 있었다.\n\n“가문의 체면보다 먼저 확인할 게 있어.” 형은 평소보다 낮은 목소리로 말했다. “네가 그날 미겔에게 어떤 태도를 보였는지, 그리고 지금 그 일을 어떻게 생각하는지.”\n\n알렉스는 다니엘을 몰아세우지 않았다. 다만 답을 대신 정해 주지도 않았다.',
+  '형님은 나를 지키고 싶으실 거야. 하지만 형님도 그분도 나 대신 대답할 수는 없어.','v95_brother_branch');
+ NODES.v95_brother_branch=mk('서술',ch,'알렉스는 동생의 대답을 기다렸다. 창밖에서는 황궁의 종이 세 번 울렸다.',
+  '우리가 형제라는 사실은 변하지 않아. 그 믿음을 내가 어떻게 다룰지가 문제야.',null,[]);
+ NODES.v95_brother_reason=mk('알렉스 레온하르트',ch,
+  '“그날 네가 물러섰다고 들었어.” 알렉스는 잠시 안도한 듯 미소 지었다. “그건 누구에게 보여 주기 위한 행동이 아니었겠지.”\n\n“하지만 황궁 사람들은 선의를 명예를 위한 거래로 바꾸려 해. 미겔의 뜻을 먼저 듣자. 네가 옳은 일을 했다는 이유로 그분의 선택권을 얻은 건 아니니까.”',
+  '형님은 내가 옳았다고 말하면서도, 아무런 대가를 약속하지 않으셔. 그게 옳아.','v95_brother_choice');
+ NODES.v95_brother_instinct=mk('알렉스 레온하르트',ch,
+  '“네 마음을 들었을 때 솔직히 놀랐어.” 알렉스가 말했다. “그렇지만 네가 내 동생이라는 사실까지 부정하고 싶지는 않아.”\n\n그는 다니엘을 똑바로 보았다. “좋아한다는 감정과 그 감정을 행동으로 옮길 권리는 달라. 미겔이 대답한 말을 기억해. 나는 그 사람과 약속을 지키려 해.”',
+  '형님은 내 고백을 알고도 나를 동생으로 대하신다. 그게 얼마나 어려운 일인지 이제 알아.','v95_brother_choice');
+ NODES.v95_brother_boundary=mk('알렉스 레온하르트',ch,
+  '“미겔이 불편함을 느꼈다는 사실을 잊지 마.” 알렉스의 표정은 단호했다. “그분이 거리를 원한다면 우리 둘 다 그 결정을 존중해야 해.”\n\n“형님은 저를 용서하실 수 있습니까?” 다니엘이 묻자 알렉스는 고개를 저었다. “내가 대신 용서할 일이 아니야. 네가 바꿀 수 있는 건 앞으로의 행동뿐이지.”',
+  '형님의 신뢰가 무너졌어도 그분의 의사는 형님의 소유가 아니야.','v95_brother_choice');
+ NODES.v95_brother_choice=mk('다니엘 레온하르트',ch,
+  '황궁은 곧 공개적인 답변을 요구할 것이다. 다니엘은 형에게 어떤 태도를 취할지 결정해야 했다.',
+  '형님을 지키겠다는 말이 누군가를 침묵시키는 구실이 되어서는 안 돼.',null,[
+   {text:'형과 함께 사실을 확인한다.',next:'v95_brother_together',v95Effect:'together'},
+   {text:'혼자 해결하겠다고 말한다.',next:'v95_brother_alone',v95Effect:'alone'}]);
+ NODES.v95_brother_together=mk('알렉스 레온하르트',ch,
+  '“고맙다.” 알렉스는 짧게 답했다. “다만 미겔이 원하지 않는다면 그분을 우리 계획에 끌어들이지는 말자.”\n\n다니엘은 고개를 끄덕였다. 형제가 같은 편에 서는 일은 누군가를 배제할 권리를 얻는 일이 아니었다.',
+  '함께한다는 건 서로의 잘못까지 덮어 준다는 뜻이 아니야.','v95_miguel_meeting');
+ NODES.v95_brother_alone=mk('알렉스 레온하르트',ch,
+  '“혼자 모든 책임을 짊어지겠다는 말은 멋있게 들리지.” 알렉스는 서류를 덮었다. “하지만 다른 사람의 이야기를 네 결심 하나로 끝내지는 마.”\n\n그는 동생을 붙잡지 않았다. 다니엘은 그 침묵이 허락도, 단절도 아니라는 것을 알았다.',
+  '혼자 나서더라도 그분의 목소리를 빼앗아서는 안 돼.','v95_miguel_meeting');
+ NODES.v95_miguel_meeting=mk('서술',ch,
+  '코트리먼가에서 보낸 답신에는 미겔의 친필이 있었다.\n\n“황실 자선 사업에 관한 제 입장은 제가 직접 밝히겠습니다. 두 가문 중 어느 쪽도 제 대변인이 되어 주실 필요는 없습니다.”\n\n다니엘은 그 문장을 두 번 읽었다. 미겔은 약혼자의 보호를 기다리는 사람이 아니었다. 그녀는 자신의 이름으로 서명하고, 자신의 땅과 재산을 어떻게 쓸지 결정할 수 있었다.',
+  '그분은 누구의 이야기 속 보상이 아니야. 스스로 이야기를 쓰고 계셔.','v95_miguel_branch');
+ NODES.v95_miguel_branch=mk('미겔 코트리먼',ch,
+  '황궁 회의실 앞에서 미겔이 다니엘을 마주했다. 노란 장미가 수놓인 하얀 장갑을 낀 손에는 서류가 들려 있었다.',
+  '이제는 그분의 말을 끝까지 듣자.',null,[]);
+ NODES.v95_miguel_reason=mk('미겔 코트리먼',ch,
+  '“다니엘, 네가 내 말을 들어 준 건 고마운 일이야.” 미겔은 차분하게 말했다. “그렇지만 나는 오늘 알렉스의 약혼자이자 코트리먼가의 대표로 온 거란다.”\n\n“자선 기금에 대한 내 결정은 내가 내릴 거야. 네가 도와주고 싶다면 내게 무엇이 필요한지 먼저 물어봐 줘.”',
+  '다정함을 돌려받으려고 돕는 건 도움이라고 할 수 없어.','v95_miguel_choice');
+ NODES.v95_miguel_instinct=mk('미겔 코트리먼',ch,
+  '“네 고백은 기억하고 있어.” 미겔은 다니엘과 눈을 맞췄다. “하지만 그날 내가 한 대답도 그대로야. 나는 알렉스와의 약속을 소중히 여겨.”\n\n“그렇다고 네가 오늘 옳은 일을 하지 못한다는 뜻은 아니란다. 다만 그 일이 내 마음을 얻기 위한 거래가 되지 않았으면 좋겠어.”',
+  '고백은 끝났지만 선택은 계속돼. 그분의 답을 바꾸려 들지 말자.','v95_miguel_choice');
+ NODES.v95_miguel_boundary=mk('미겔 코트리먼',ch,
+  '미겔은 다니엘과 일정한 거리를 둔 채 말했다. “나는 오늘 공적인 자리에서만 이야기하고 싶어. 그날 일에 대해서는 아직 생각할 시간이 필요해.”\n\n“네가 이 회의에서 어떤 선택을 하든, 그것이 나의 용서를 사는 일은 아니야. 내 결정은 내가 내릴 거란다.”',
+  '내가 할 수 있는 건 거리를 지키고 그분의 일을 방해하지 않는 것뿐이야.','v95_miguel_choice');
+ NODES.v95_miguel_choice=mk('서술',ch,
+  '황실 재무관은 미겔의 토지 기부를 레온하르트가의 공적으로 기록하려 했다. 서류의 맨 위에는 미겔의 이름이 빠져 있었다.\n\n다니엘은 눈앞의 문서를 바라보았다. 아무 말도 하지 않으면 회의는 더 쉽게 끝날 것이다.',
+  '편리한 침묵과 옳은 침묵은 다르지.',null,[
+   {text:'문서의 명의를 바로잡도록 요청한다.',next:'v95_miguel_voice',v95Effect:'voice'},
+   {text:'회의 진행에 맡기고 물러난다.',next:'v95_miguel_silence',v95Effect:'silence'}]);
+ NODES.v95_miguel_voice=mk('미겔 코트리먼',ch,
+  '“제 토지와 제 서명입니다.” 미겔이 먼저 입을 열었다. 다니엘은 그 뒤에 서서 잘못된 문서 표기를 조용히 지적했다.\n\n재무관은 불쾌한 기색을 숨기지 못했지만 서류를 고쳤다. 미겔은 다니엘에게 작은 고갯짓만 보냈다. 그것은 약속도 용서도 아니었다.',
+  '그분의 말을 대신한 게 아니라, 지워진 이름을 되돌렸어.','v95_court');
+ NODES.v95_miguel_silence=mk('미겔 코트리먼',ch,
+  '“그 문서는 제 뜻과 다릅니다.” 미겔이 직접 말을 끊었다. 그녀는 서류를 돌려보내고 수정본을 요구했다.\n\n다니엘은 그녀가 자신이 없어도 스스로를 지킬 수 있다는 것을 보았다. 동시에 자신이 쉬운 길을 골랐다는 사실도 기억했다.',
+  '그분은 나 없이도 말할 수 있어. 그래도 내가 침묵한 사실은 남아.','v95_court');
+ NODES.v95_court=mk('서술',ch,
+  '회의가 끝날 무렵 황실 재무관이 다른 문서를 꺼냈다.\n\n“최근 궁정에서 유포된 소문이 자선 기금의 신뢰를 해치고 있습니다. 레온하르트가가 이를 부인한다면, 코트리먼가의 기부는 예정대로 승인될 것입니다.”\n\n그 말은 제안처럼 들렸지만 사실상 협박이었다. 소문을 잠재우는 대가로 한 사람의 이름을 걸라는 뜻이었다.',
+  '이건 진실을 묻는 자리가 아니야. 누군가의 침묵을 사려는 자리야.','v95_rumor_choice');
+ NODES.v95_rumor_choice=mk('다니엘 레온하르트',ch,
+  '서류에는 하급 시종 한 명이 소문의 출처로 지목되어 있었다. 증거는 없었다. 다니엘이 서명하면 회의는 즉시 끝난다.',
+  '이 사람을 희생시키면 편해질 거야. 그 편리함을 선택할 수는 없어.',null,[
+   {text:'증거를 요구하고 서명을 거절한다.',next:'v95_rumor_truth',v95Effect:'truth'},
+   {text:'문서에 서명해 회의를 끝낸다.',next:'v95_rumor_cover',v95Effect:'cover'},
+   {text:'결정을 미루고 자료를 조사한다.',next:'v95_rumor_inquiry',v95Effect:'inquiry'}]);
+ NODES.v95_rumor_truth=mk('서술',ch,
+  '다니엘은 펜을 내려놓았다. “이 사람을 지목한 증거가 없습니다.”\n\n회의실이 술렁였다. 재무관은 불쾌해했지만 알렉스는 동생의 말을 막지 않았다. 미겔은 별도로 기부 승인 절차의 공정성을 요구했다.\n\n회의는 연기되었다. 아무도 승리하지 못했지만, 적어도 한 사람을 거짓 죄인으로 만들지는 않았다.',
+  '진실을 요구하는 일은 생각보다 외로워. 그래도 서명하지 않길 잘했어.','v95_aftermath');
+ NODES.v95_rumor_cover=mk('서술',ch,
+  '다니엘이 서명하자 재무관은 미소 지었다. 회의는 끝났다.\n\n복도에서 알렉스가 서류를 받아 들었다. “이 사람의 인생을 확인해 봤니?”\n\n미겔은 다니엘에게 묻지 않았다. 대신 자신의 기부 승인에 이 문서를 사용하지 않겠다고 분명히 밝혔다. 쉬운 결말은 누구에게도 평온을 주지 못했다.',
+  '내가 고른 건 평화가 아니라 누군가의 침묵이었어.','v95_aftermath');
+ NODES.v95_rumor_inquiry=mk('서술',ch,
+  '다니엘은 서명 대신 기록 열람을 요청했다. 서기관은 당황했지만 황실 규정에 따라 접수증을 내주었다.\n\n며칠의 유예가 생겼다. 소문은 사라지지 않았고 기부도 보류되었다. 다니엘은 시간을 번 만큼 사실을 확인해야 했다.',
+  '미루는 것도 선택이야. 이제 그 시간에 무엇을 하느냐가 중요해.','v95_aftermath');
+ NODES.v95_aftermath=mk('서술',ch,
+  '황궁을 나서는 길, 세 사람은 같은 복도를 걸었지만 같은 마음을 품지는 않았다.\n\n알렉스는 형으로서 다니엘을 걱정했고, 미겔은 자신의 이름과 약속을 지키려 했다. 다니엘은 그 사이에서 처음으로 깨달았다.\n\n가문을 지키는 일과 옳은 일을 하는 일은 언제나 같은 길이 아니었다.',
+  '오늘의 선택도 남겠지. 다음에 나는 어떤 사람이 될까.','v95_final_branch');
+ NODES.v95_final_branch=mk('서술',ch,'다니엘은 마지막으로 황궁의 문을 돌아보았다. 자신의 선택이 남긴 표정들이 머릿속을 스쳤다.',
+  '결말은 아직 오지 않았어. 하지만 무언가는 이미 달라졌어.',null,[]);
+ NODES.v95_ending_truth=mk('다니엘 레온하르트',ch,
+  '“형님, 조사 기록이 나오면 함께 읽어 주세요.”\n\n알렉스는 동생의 어깨를 두드렸다. 미겔은 멀리서 두 사람을 바라보다 자신이 준비한 새 서류를 들고 먼저 걸어갔다. 세 사람의 길은 달랐지만, 적어도 누구도 다른 사람의 이름을 대신 쓰지 않았다.',
+  '이건 용서도 보상도 아니야. 내가 선택한 다음 걸음일 뿐이야.','explore');
+ NODES.v95_ending_cover=mk('다니엘 레온하르트',ch,
+  '서명은 철회할 수 있을지 몰라도 이미 번진 소문을 거둘 수는 없었다. 알렉스는 조사에 나섰고, 미겔은 코트리먼가의 이름으로 독자적인 구호 사업을 진행하겠다고 밝혔다.\n\n다니엘은 아무 말도 하지 못했다. 자신이 남긴 기록을 외면할 수 없었다.',
+  '지나간 선택은 사라지지 않아. 이제 그 책임을 피하지 말아야 해.','explore');
+ NODES.v95_ending_inquiry=mk('다니엘 레온하르트',ch,
+  '다니엘은 서기관에게 받은 접수증을 접어 품에 넣었다. 알렉스는 가문 기록 보관소를 열어 주겠다고 했고, 미겔은 자신의 기부 사업을 조사와 분리해 진행하겠다고 통보했다.\n\n시간은 벌었다. 그 시간을 어떻게 쓰는지가 다음 이야기의 시작이었다.',
+  '모든 답을 오늘 찾을 순 없어. 그렇지만 내일도 같은 질문을 피할 수는 없어.','explore');
+ // V94's chapter completion is the only new entry point; existing chapter routes stay intact.
+ NODES.v94_epilogue.next='v95_invitation';
+ const root=document.getElementById('choices');
+ if(root)root.addEventListener('click',function(ev){
+  const btn=ev.target.closest('button');if(!btn||!root.contains(btn)||btn.disabled)return;
+  const node=NODES[state.node];if(!node||!Array.isArray(node.choices))return;
+  const i=Array.from(root.children).filter(e=>e.tagName==='BUTTON').indexOf(btn),c=node.choices[i];if(!c||!c.v95Effect)return;
+  const d=ensure(),key=String(state.node)+'#'+i;
+  d.seen=d.seen||{};if(d.seen[key])return;d.seen[key]=true;
+  const effects={together:['brother','together','virtue',2],alone:['brother','alone',null,0],voice:['miguel','voice','virtue',4],silence:['miguel','silence',null,0],truth:['rumor','truth','virtue',7],cover:['rumor','cover','karma',9],inquiry:['rumor','inquiry','virtue',2]};
+  const e=effects[c.v95Effect];if(!e)return;d[e[0]]=e[1];if(e[2])v90Add(e[2],e[3],'황궁의 선택 · '+c.text);
+ },true);
+ function route(){const p=path(),d=ensure();
+  NODES.v95_brother_branch.next=p==='boundary'?'v95_brother_boundary':p==='instinct'?'v95_brother_instinct':'v95_brother_reason';
+  NODES.v95_miguel_branch.next=p==='boundary'?'v95_miguel_boundary':p==='instinct'?'v95_miguel_instinct':'v95_miguel_reason';
+  NODES.v95_final_branch.next=d.rumor==='cover'?'v95_ending_cover':d.rumor==='inquiry'?'v95_ending_inquiry':'v95_ending_truth';
+  const note={apology:'그날 사과했지만 그녀의 거리는 그대로 남아 있다.',silence:'그날 침묵했던 일이 아직도 마음에 남아 있다.',linger:'거절 이후에도 미련을 놓지 못했던 자신을 기억한다.',accept:'그녀의 대답을 받아들이겠다고 결심했던 밤을 기억한다.'};
+  NODES.v95_miguel_branch.thought=(note[history().response]||'온실에서 있었던 일을 기억한다.')+' 그녀의 결정을 존중하자.';
+ }
+ const prior=render;render=function(){if(String(state.node||'').startsWith('v95_'))route();prior();};
+})();
+
+
+// v96 — The forbidden volume: discoverable only when accumulated wrongdoing is high.
+// This event never removes karma or virtue and does not reveal the scales in the first run.
+(function(){
+ const LIMIT=35;
+ function record(){if(!state.v96Library||typeof state.v96Library!=='object')state.v96Library={found:false,read:false,refused:false,used:false};return state.v96Library;}
+ function eligible(){return Number(v90Data().karma||0)>=LIMIT;}
+ function chapter(){return 'CHAPTER 04 · 금서의 속삭임';}
+ function node(speaker,text,thought,next,choices){return {speaker,chapter:chapter(),text,thought,next,choices};}
+ NODES.v96_library_entry=node('서술','황궁 서고는 늦은 밤에도 촛불이 꺼지지 않았다. 먼지 낀 장부와 봉인된 서책이 층층이 쌓여 있었다.\n\n다니엘은 황실 재무관이 감춘 기록을 찾으려 책장을 훑었다. 그때 가장 안쪽의 책 한 권이 손끝에 걸렸다. 책등에는 제목도, 저자도 없었다.','왜 이 책만 유난히 차갑지?','v96_library_gate');
+ NODES.v96_library_gate=node('서술','책갈피 아래에는 누군가 긁어 지운 문장이 남아 있었다.\n\n「타인의 뜻을 꺾어 운명을 바꾸려는 자에게, 대가는 반드시 돌아온다.」\n\n다니엘의 손바닥에 오래된 문양이 희미하게 떠올랐다.','책이 나를 부르는 건가. 아니면 내가 이런 걸 찾고 있었던 건가.',null,[
+  {text:'책을 펼쳐 금지된 마법의 기록을 읽는다',next:'v96_library_read',v96Action:'read'},
+  {text:'봉인을 되돌리고 서고를 떠난다',next:'v96_library_refuse',v96Action:'refuse'}
+ ]);
+ NODES.v96_library_read=node('서술','책은 사람의 마음을 묶는 금지된 의식에 관해 서술하고 있었다. 그러나 완성된 주문은 찢겨 있었고, 남은 글은 대가와 실패한 사례뿐이었다.\n\n다니엘은 한 장의 여백에서 익숙한 가문의 문장을 발견했다. 이것이 누구의 기록인지 알아내기 전에는 함부로 손댈 수 없었다.','원하는 것을 얻는 방법이 아니라, 무엇을 잃게 되는지 적혀 있어.','v96_library_decision');
+ NODES.v96_library_decision=node('다니엘 레온하르트','책을 덮으려는 순간, 촛불이 기울었다. 누군가 문밖에서 발소리를 멈췄다.','이걸 알렉스 형님께 말해야 할까. 미겔에게는 더더욱 숨겨선 안 되겠지.',null,[
+  {text:'금서를 봉인하고 형에게 조사 사실을 알린다',next:'v96_library_report',v96Action:'report'},
+  {text:'금서의 존재를 숨기고 혼자 보관한다',next:'v96_library_hide',v96Action:'hide'}
+ ]);
+ NODES.v96_library_refuse=node('서술','다니엘은 책을 원래 자리에 돌려놓고 봉인된 끈을 묶었다. 촛불이 다시 똑바로 섰다.\n\n서고를 나서면서도 손끝의 냉기는 가시지 않았다.','읽지 않았다고 해서 책이 없었던 일이 되는 건 아니야.','explore');
+ NODES.v96_library_report=node('알렉스 레온하르트','“금서라고?”\n\n알렉스는 장난기 없는 얼굴로 동생의 설명을 들었다. “네가 발견한 걸 숨기지 않은 건 잘한 일이야. 하지만 누군가의 마음을 바꾸는 마법이라면, 그건 누구를 위해서든 써선 안 돼.”\n\n미겔은 기록의 출처를 확인하되 자신의 이름을 허락 없이 끌어들이지 말라고 분명히 했다.','둘 다 내 말을 들어줬어. 그러니 나도 그들의 뜻을 들어야 해.','explore');
+ NODES.v96_library_hide=node('서술','다니엘은 낡은 표지를 망토 안에 감추었다. 책의 모서리가 심장 가까이에 닿자 한기가 스몄다.\n\n아무도 그가 무엇을 가져왔는지 몰랐다. 그러나 책은 여전히 아무것도 약속하지 않았다.','지금은 말하지 않을 거야. 그게 누구를 위한 침묵인지는 나도 모르겠어.','explore');
+ const root=document.getElementById('choices');
+ if(root)root.addEventListener('click',function(ev){const b=ev.target.closest('button');if(!b||!root.contains(b))return;const n=NODES[state.node];if(!n||!n.choices)return;const index=Array.from(root.children).filter(x=>x.tagName==='BUTTON').indexOf(b);const c=n.choices[index];if(!c||!c.v96Action)return;const r=record();if(c.v96Action==='read'){r.read=true;r.found=true;}if(c.v96Action==='refuse')r.refused=true;if(c.v96Action==='report'){r.reported=true;v90Add('virtue',3,'금서의 위험을 알리고 봉인함');}if(c.v96Action==='hide'){r.hidden=true;v90Add('karma',6,'금서의 존재를 숨김');}save();},true);
+ function visit(){const r=record();if(!eligible()){modal('황궁 서고','책장마다 오래된 기록이 쌓여 있다. 오늘은 특별한 것이 눈에 띄지 않는다.');return;}if(r.found||r.refused){modal('황궁 서고','차가운 책이 있던 자리는 조용하다. 이미 마주한 선택은 기록되어 있다.');return;}state.node='v96_library_entry';save();render();}
+ const hud=document.querySelector('#game .hud');if(hud&&!document.getElementById('v96LibraryBtn')){const b=document.createElement('button');b.id='v96LibraryBtn';b.type='button';b.textContent='▤ 서고 방문';b.addEventListener('click',visit);hud.append(b);}
+ // Connect the chapter-three inquiry route to the library without replacing any existing story nodes.
+ if(NODES.v95_ending_inquiry&&Array.isArray(NODES.v95_ending_inquiry.choices)){
+  NODES.v95_ending_inquiry.choices.unshift({text:'황궁 서고에서 조사 기록을 찾는다',next:'v96_library_entry',v96Entry:true});
+ }
+ const prevRender=render;
+ render=function(){if(state.node==='v96_library_entry'&&!eligible()){state.node='explore';}prevRender();};
+})();
+
+
+// v97 — Absolute disposition: two independent, irreversible moral ledgers.
+// At 100, Daniel cannot choose acts aligned with the opposite disposition.
+// The first playthrough never discloses which side of the scales is responsible.
+(function(){
+ const MAX=100;
+ const originalAdd=v90Add;
+ v90Add=function(kind,amount,label){
+  if(kind!=='karma'&&kind!=='virtue')return;
+  const d=v90Data();
+  const before=Math.max(0,Math.min(MAX,Number(d[kind])||0));
+  d[kind]=before;
+  const increment=Math.min(MAX-before,Math.max(0,Number(amount)||0));
+  if(increment>0)originalAdd(kind,increment,label);
+ };
+ function disposition(){
+  const d=v90Data(),v=Number(d.virtue)||0,k=Number(d.karma)||0;
+  // Legacy saves with both values at/above 100 cannot retroactively lose records.
+  // Whichever reached 100 first takes precedence, as recorded by the event ledger.
+  if(v>=MAX&&k>=MAX){
+   let a=0,b=0;
+   for(const e of (d.events||[])){
+    if(e.kind==='virtue'&&a<MAX)a+=Number(e.amount)||0;
+    if(e.kind==='karma'&&b<MAX)b+=Number(e.amount)||0;
+    if(a>=MAX&&b<MAX)return 'virtue';
+    if(b>=MAX&&a<MAX)return 'karma';
+   }
+   return 'virtue';
+  }
+  return v>=MAX?'virtue':k>=MAX?'karma':null;
+ }
+ const harmful=/물통.{0,12}(차|엎|걷어)|발로.{0,12}(차|걷어)|괴롭|모욕|협박|강요|위협|배신|누명|책임을 떠넘|거짓 증언|조작|훔치|빼앗|해치|짓밟|짓궂게|손목을 붙잡|억지로|무시하고 밀어붙|금서의 존재를 숨기|금서를 숨기/;
+ const helpful=/돕|구하|구조|기부|기도|치료|보호|사과|존중|진실을 밝|사실 확인|책임을 인정|잘못을 인정|봉인하고 형에게|증거를 요구|서명 거절|명의 바로잡|위로|구호|용서|사실을 알리/;
+ function tendency(choice){
+  if(!choice||choice.reset||choice.action==='home'||choice.action==='restartExplore'||choice.action==='nextDay')return null;
+  if(choice.v97Moral==='karma'||choice.v97Moral==='virtue')return choice.v97Moral;
+  if(choice.v91Moral==='karma'||choice.v91Moral==='virtue')return choice.v91Moral;
+  const v95={together:'virtue',voice:'virtue',truth:'virtue',cover:'karma',inquiry:'virtue'};
+  if(v95[choice.v95Effect])return v95[choice.v95Effect];
+  if(choice.v96Action==='hide')return 'karma';
+  if(choice.v96Action==='report')return 'virtue';
+  if(['ignoredMiguel','sharedFate','defiedAlex'].includes(choice.v88Flag))return 'karma';
+  if(['respectedMiguel','apologizedAlex','choseFreedom'].includes(choice.v88Flag))return 'virtue';
+  const t=String(choice.text||'');
+  if(harmful.test(t))return 'karma';
+  if(helpful.test(t))return 'virtue';
+  return null;
+ }
+ function prohibited(choice){const side=disposition(),kind=tendency(choice);return !!side&&!!kind&&side!==kind;}
+ function refusal(){
+  const d=v90Data(),side=disposition();
+  const line=side==='virtue'?'그럴 생각이 들지 않는다.':'그런 행동을 할 마음이 들지 않는다.';
+  // Do not expose the hidden nature or numeric threshold on the first run.
+  const msg=d.revealed?(side==='virtue'?'선행의 무게가 다니엘의 행동을 붙잡는다. ':'업보의 무게가 다니엘의 행동을 붙잡는다. ')+line:line;
+  if(typeof v90Flash==='function')v90Flash(msg);
+  else if(typeof modal==='function')modal('선택할 수 없습니다',msg);
+ }
+ // Capture on document (before #choices and its older v91/v95/v96 handlers),
+ // preventing blocked choices from modifying flags, stats, or story navigation.
+ document.addEventListener('click',function(event){
+  const target=event.target;
+  if(!target||!target.closest)return;
+  const b=target.closest('button');if(!b)return;
+  const root=document.getElementById('choices');
+  if(root&&root.contains(b)){
+   const n=NODES[state.node];if(!n||!Array.isArray(n.choices))return;
+   const idx=Array.from(root.children).filter(el=>el.tagName==='BUTTON').indexOf(b);
+   const c=n.choices[idx];
+   if(prohibited(c)){
+    event.preventDefault();event.stopImmediatePropagation();refusal();
+   }
+   return;
+  }
+  // Prevent even zero-cost charitable activity when karma is fully dominant.
+  if(disposition()==='karma'&&b.closest('.v90-activities')&&/기도한다|기부한다|사람을 돕는다/.test(b.textContent||'')){
+   event.preventDefault();event.stopImmediatePropagation();refusal();
+  }
+ },true);
+ const prevRender=render;
+ render=function(){
+  prevRender();
+  const n=NODES[state.node],root=document.getElementById('choices');
+  if(!n||!Array.isArray(n.choices)||!root)return;
+  const buttons=Array.from(root.children).filter(el=>el.tagName==='BUTTON');
+  for(let i=0;i<buttons.length;i++){
+   const b=buttons[i],c=n.choices[i];
+   if(prohibited(c)){
+    b.classList.add('v97-moral-locked');
+    b.setAttribute('aria-label',(c.text||'선택지')+' · 선택할 수 없음');
+    b.setAttribute('aria-disabled','true');
+    // Deliberately not disabled: clicking reveals Daniel's inner refusal.
+   }else{
+    b.classList.remove('v97-moral-locked');
+    b.removeAttribute('aria-disabled');
+   }
+  }
+ };
+ const css=document.createElement('style');
+ css.textContent='#choices button.v97-moral-locked{opacity:.55;filter:grayscale(.6);border-style:dashed;cursor:not-allowed}#choices button.v97-moral-locked:focus-visible{outline:2px solid #c4a2db;outline-offset:2px}';
+ document.head.appendChild(css);
+ // Also stop the two scales from simultaneously maxing out through future gains.
+ const cappedAdd=v90Add;
+ v90Add=function(kind,amount,label){
+  const side=disposition();
+  if(side&&side!==kind)return;
+  cappedAdd(kind,amount,label);
+ };
+})();
+
+
+// v98 — The Doll Bride. Mind control is an irreversible bad-ending choice.
+(function(){
+ const CH='HIDDEN BAD END · 인형 신부';
+ const make=(speaker,text,thought,next,choices)=>({speaker,chapter:CH,text,thought,next,choices});
+ function book(){return state.v96Library&&typeof state.v96Library==='object'?state.v96Library:null;}
+ function available(){const b=book();return !!(b&&b.read&&b.hidden&&!b.reported&&!b.used);}
+ NODES.v98_spell_temptation=make('서술',
+  '금서의 마지막 장은 이전과 달리 온전했다. 빛바랜 문장은 다른 사람의 마음을 자신의 뜻에 묶는 금지 마법을 기록하고 있었다.\n\n그것은 사랑을 얻는 마법이 아니었다. 사랑할 수 있는 능력 자체를 앗아가는 마법이었다.\n\n다니엘은 미겔이 자신의 뜻을 분명히 밝혔던 순간을 떠올렸다. 그녀는 알렉스의 약혼자였고, 누구의 소유물도 아니었다.',
+  '그분이 내게 웃어 준다면… 아니. 웃음마저 내 명령이 된다면 그건 무엇이지?',null,[
+   {text:'금서를 봉인한다. 미겔의 마음은 미겔의 것이다.',next:'v98_spell_reject',v98Action:'reject',v97Moral:'virtue'},
+   {text:'금지 마법으로 미겔의 마음을 지배한다.',next:'v98_spell_cast',v98Action:'cast',v97Moral:'karma'}
+  ]);
+ NODES.v98_spell_reject=make('다니엘 레온하르트',
+  '다니엘은 책을 닫았다. 손끝에 남은 문양은 천천히 희미해졌다.\n\n“나를 바라보지 않아도 괜찮습니다. 당신이 당신으로 남아 있는 편이 더 중요하니까요.”\n\n미겔에게 이 고백이 닿을 일은 없었다. 하지만 이번만큼은 다니엘 자신이 들었다.',
+  '사랑을 빼앗는 순간, 사랑은 사라진다.','explore');
+ NODES.v98_spell_cast=make('서술',
+  '다니엘은 마지막 구절을 읽었다. 검은 문양이 촛불을 타고 번졌다.\n\n미겔은 잠시 눈을 감았다가 다시 떴다. 그녀의 눈에는 공포도 분노도 없었다. 다니엘을 향해 언제나처럼 예의 바른 미소를 지었지만, 그 미소에는 아무런 선택도 담겨 있지 않았다.\n\n“다니엘 님이 바라시는 대로 하겠습니다.”\n\n다니엘은 자신이 듣고 싶었던 말이 얼마나 텅 비어 있는지 깨달았다.',
+  '그분이 내 이름을 불렀어. 그런데 왜… 아무도 나를 바라보지 않는 것 같지?', 'v88_ending_doll_bride');
+ NODES.v88_ending_doll_bride=make('서술',
+  '혼례의 종이 세 번 울렸다. 세 개의 달이 떠오른 밤, 미겔은 하얀 베일 아래에서 한 치의 흐트러짐 없이 미소 지었다.\n\n“행복하십니까?” 다니엘이 물었다.\n\n“다니엘 님이 행복하시다면 저도 행복합니다.”\n\n그녀는 한 번도 자신이 원하는 것을 말하지 않았다. 노란 장미를 좋아하던 미겔, 가문의 땅을 지키려던 미겔, 자신의 이름으로 서명하던 미겔은 어디에도 없었다.\n\n알렉스는 혼례에 오지 않았다. 그는 마지막 편지에 단 한 줄을 남겼다. 「네가 사랑한 사람은 네가 지웠다.」\n\n다니엘은 신부의 손을 잡았다. 따뜻했다. 살아 있었다. 하지만 손을 놓아도 그녀는 돌아서지 않았다.\n\n그날부터 다니엘은 원하는 모든 대답을 들었다. 단 한 번도 진심을 듣지 못한 채.',
+  '이제 영원히 함께야. 그런데… 왜 이렇게 조용하지?',null,[]);
+ // The story is an immediate terminal ending: never route through the generic explore scene.
+ const root=document.getElementById('choices');
+ if(root)root.addEventListener('click',function(ev){
+  const btn=ev.target.closest('button');if(!btn||!root.contains(btn))return;
+  const n=NODES[state.node];if(!n||!Array.isArray(n.choices))return;
+  const idx=Array.from(root.children).filter(e=>e.tagName==='BUTTON').indexOf(btn);
+  const c=n.choices[idx];if(!c||!c.v98Action)return;
+  const b=book();if(!b)return;
+  if(c.v98Action==='cast'){
+   b.used=true;b.usedOnMiguel=true;b.outcome='doll_bride';
+   if(typeof v90Add==='function')v90Add('karma',20,'미겔의 자유의지를 금지 마법으로 빼앗음');
+  }else{
+   b.sealed=true;b.hidden=false;
+   if(typeof v90Add==='function')v90Add('virtue',4,'마음 조종 금서를 봉인함');
+  }
+  save();
+ },true);
+ const hud=document.querySelector('#game .hud');
+ if(hud&&!document.getElementById('v98SpellBtn')){
+  const btn=document.createElement('button');btn.id='v98SpellBtn';btn.type='button';btn.textContent='✧ 금서의 마지막 장';
+  btn.addEventListener('click',function(){
+   if(!available()){modal('금서의 마지막 장','금서를 읽고 은닉한 뒤에만 이 장을 확인할 수 있습니다.');return;}
+   state.node='v98_spell_temptation';save();render();
+  });hud.append(btn);
+ }
+ const previousRender=render;
+ render=function(){
+  const btn=document.getElementById('v98SpellBtn');if(btn)btn.hidden=!available();
+  if(state.node==='v88_ending_doll_bride'){
+   if(typeof v90Complete==='function')v90Complete('doll_bride');
+   if(typeof v88Record==='function')v88Record('doll_bride');
+  }
+  previousRender();
+ };
+ const css=document.createElement('style');css.textContent='#v98SpellBtn[hidden]{display:none!important}';document.head.append(css);
+})();
+
+// v99 — Extended literary Doll Bride route. Original v98 access checks and save hooks remain intact.
+(function(){
+const chapter="HIDDEN BAD END · 인형 신부";
+if(NODES.v98_spell_temptation){NODES.v98_spell_temptation.text="황궁의 서고가 잠든 시각, 마지막 촛불은 책상 위에 아주 작은 황금빛 원을 그렸다. 다니엘은 손등에 묻은 먼지를 털지도 못한 채 금서의 마지막 장을 내려다보았다. 책장을 넘길 때마다 들리던 마른 종이의 소리가 이 페이지에서만 멎었다. 마치 종이가 아니라 누군가의 피부를 만지는 듯한 감촉이었다.\n\n그는 이 책을 발견한 날을 기억했다. 그때만 해도 자신이 금지된 지식을 읽는 이유를 호기심이라고 불렀다. 미겔이 정중히 거절한 고백을 떠올리며 밤을 새운 것도, 알렉스의 얼굴을 똑바로 바라보지 못한 것도, 그저 시간이 지나면 괜찮아질 일이라고 여겼다. 그러나 마지막 장에는 핑계가 통하지 않았다.";NODES.v98_spell_temptation.thought="나는 그분을 사랑하는 걸까. 아니면 그분이 내 뜻대로 움직이기를 바라는 걸까.";}
+NODES["v99_grimoire"]={speaker:"서술",chapter:chapter,text:"책의 여백에는 오래된 필체로 짧은 주석이 남아 있었다. 「이 술식은 사랑을 심지 않는다. 저항할 수 있는 자리를 비울 뿐이다.」\n\n다니엘은 그 문장을 세 번 읽었다. 마음을 바꾸는 마법이라면, 미겔이 자신을 사랑하게 되는 것이라고 믿을 수도 있었을 것이다. 그러나 금서는 잔인할 만큼 정확했다. 시전자가 얻는 것은 사랑이 아니라 복종. 상대의 기쁨이나 슬픔을 지우는 대신, 그것을 스스로 선택할 권리를 먼저 앗아가는 술식이었다.\n\n그런데도 다니엘은 책을 덮지 못했다. 마음 한구석에서는 이미 답을 알고 있었기 때문이다.",thought:"안 된다는 걸 알아. 그런데 왜 손이 떨어지지 않지?",next:"v99_before_choice",choices:[]};
+NODES["v99_before_choice"]={speaker:"서술",chapter:chapter,text:"창밖에서는 세 개의 달이 서로 다른 높이로 떠올랐다. 다니엘은 미겔이 코트리먼 영지의 노란 장미를 이야기하던 오후를 떠올렸다. 자신이 직접 돌보는 땅의 이름을 말할 때 그녀의 목소리는 유난히 또렷해졌다. 알렉스와 미래를 의논할 때의 미소도 그러했다. 다니엘이 사랑했던 것은 바로 그런 미겔이었다.\n\n그녀가 자기 의지로 살아가는 사람이라는 사실을 알면서도, 그는 그 의지를 빼앗을 수 있는 주문 앞에 서 있었다. 책은 아무것도 재촉하지 않았다. 마지막 선택만큼은 오롯이 다니엘의 것이었다.",thought:"여기서 멈추면 아직 돌아갈 수 있어.",next:"v98_spell_cast",choices:[]};
+Object.assign(NODES.v98_spell_cast,{text:"다니엘은 손가락 끝으로 검은 활자를 따라갔다. 낯선 글자들은 읽는 법을 배운 적도 없는데 혀끝에 얹혔다. 글자와 소리가 서로 다른 시대에서 건너온 것처럼, 발음할 때마다 입안에 차가운 쇳맛이 번졌다.\n\n“에르 바엘 시아, 노에르 이사렌. 벨라트 오르, 미라 세르엔. 아샤 르 벤, 이르 나에.”\n\n마지막 음절이 떨어지자 촛불은 꺼지지 않고 검게 변했다. 금서의 표지에는 아주 작은 글씨가 새겨졌다. 「대가: 되돌아오지 않는 응답.」 다니엘은 그 문장을 보았으나, 이해하려 들지 않았다.",thought:"한 번만. 단 한 번만 그분이 나를 선택해 준다면.",next:"v99_spell_price"});
+NODES["v99_spell_price"]={speaker:"서술",chapter:chapter,text:"주문은 미겔의 몸을 인형으로 바꾸지 않았다. 그녀는 여전히 숨을 쉬고, 아침이면 눈을 뜨고, 꽃향기를 구분할 수 있었다. 그러나 마음속에서 어떤 선택이 태어나려는 순간마다, 보이지 않는 손이 그것을 먼저 접어 버렸다.\n\n미겔은 온실에서 다니엘과 마주했다. 평소라면 두 사람 사이에 적당한 거리를 두고, 필요하다면 분명한 말로 경계를 그었을 것이다. 그날 그녀는 그저 기다렸다. 다니엘이 말을 꺼낼 때까지, 무엇을 원하는지 알려 줄 때까지.\n\n“미겔 님, 저와 함께 있어 주시겠습니까?”\n“네, 다니엘 님.”\n\n대답은 너무도 매끄러웠다. 다니엘은 한순간 기뻤다가, 그 기쁨이 어째서 이렇게 부끄러운지 알 수 없었다.",thought:"그분이 대답했어. 그런데… 질문이 끝나기도 전에.",next:"v99_empty_answer",choices:[]};
+NODES["v99_empty_answer"]={speaker:"미겔 코트리먼",chapter:chapter,text:"“오늘은 무엇을 하고 싶으십니까?”\n\n미겔은 잠시 눈을 내리깔았다. 무슨 말을 골라야 할지 고민하는 사람의 표정과 흡사했다. 그러나 그녀의 입에서 나온 것은 자신이 원하는 일이 아니었다.\n\n“다니엘 님께서 원하시는 일을 하겠습니다.”\n\n“아니요. 제 뜻 말고, 미겔 님의 뜻을 묻는 겁니다.”\n\n“제 뜻은 다니엘 님을 기쁘게 해 드리는 것입니다.”\n\n그녀는 공손하게 웃었다. 누구에게나 친절했지만 누구 앞에서도 자신을 잃지 않던 여자의 미소였다. 겉모습만은.",thought:"왜 저렇게 웃는 거지. 내가 원한 건 저런 표정이 아니었는데.",next:"v99_rose",choices:[]};
+NODES["v99_rose"]={speaker:"서술",chapter:chapter,text:"며칠 뒤 다니엘은 온실에 노란 장미를 한 아름 가져왔다. 코트리먼가의 화원을 기억해 낸 작은 배려였다. 미겔은 꽃을 받아 들고 감사하다고 말했다.\n\n“어느 꽃이 가장 마음에 드십니까?”\n“다니엘 님께서 고르신 꽃이요.”\n\n그는 일부러 꽃 한 송이를 바닥에 내려놓았다. 줄기가 꺾여도 그녀는 눈썹 하나 움직이지 않았다. 예전의 미겔이라면 꽃을 함부로 다루지 말라고, 부드럽지만 단호하게 꾸짖었을 것이다.\n\n다니엘은 몸을 굽혀 꽃을 주웠다. 꽃잎 사이에 맺힌 물방울이 손가락으로 떨어졌다. 차가웠다. 마치 자신이 되돌릴 수 없는 무언가를 처음으로 만진 것 같았다.",thought:"화를 내 주세요. 한 번만이라도.",next:"v99_alex",choices:[]};
+NODES["v99_alex"]={speaker:"알렉스 레온하르트",chapter:chapter,text:"알렉스는 미겔을 보자마자 이상을 알아차렸다. 수많은 연회와 협상 자리에서 사람의 표정을 읽어 온 남자였다. 무엇보다 그는 미겔이 원하지 않는 것을 거절할 때 어떤 눈빛을 하는지 알고 있었다.\n\n“미겔. 코트리먼 영지로 돌아가고 싶습니까?”\n\n그녀는 다니엘을 바라보았다. 허락을 기다리는 듯한 시선이었다.\n\n알렉스의 표정에서 익숙한 여유가 사라졌다.\n\n“다니엘.” 그가 낮게 불렀다. “네가 무슨 짓을 했는지 말해.”\n\n다니엘은 대답하지 못했다. 알렉스는 다시 묻지 않았다. 그 침묵만으로 충분했기 때문이다.",thought:"형은 알아버렸어. 내가 무슨 짓을 했는지.",next:"v99_brother",choices:[]};
+NODES["v99_brother"]={speaker:"서술",chapter:chapter,text:"알렉스는 동생의 멱살을 잡지 않았다. 분노보다 먼저 찾아온 것은 이해할 수 없다는 표정이었다. 다니엘이 어릴 적 잘못을 저지르면 자신에게 먼저 달려와 털어놓던 모습을 기억하는 사람의 얼굴이었다.\n\n“네가 좋아했던 건 미겔의 어떤 모습이었지?”\n\n다니엘은 입술을 달싹였다. 영리함, 다정함, 때로는 자신을 똑바로 꾸짖던 태도. 그 모든 것을 말할 수 있었다.\n\n“그런데 네 손으로 그걸 없앴어.” 알렉스가 말했다. “내 약혼자를 빼앗은 게 아니야. 한 사람을 그 사람 자신에게서 빼앗은 거지.”\n\n그날 이후 알렉스는 다니엘을 이름으로 부르지 않았다.",thought:"형이 나를 미워해도 돼. 하지만 저 말만은 틀렸다고 하고 싶어.",next:"v99_court",choices:[]};
+NODES["v99_court"]={speaker:"서술",chapter:chapter,text:"황궁에는 곧 소문이 돌았다. 코트리먼 영애가 갑자기 레온하르트가의 막내와 혼인하겠다고 나섰다는 이야기였다. 그러나 미겔은 한 번도 스스로 그 뜻을 밝힌 적이 없었다. 귀족들은 이해관계에 따라 그 침묵을 해석했다. 누군가는 로맨스라고 불렀고, 누군가는 두 가문의 거래라고 불렀다.\n\n미겔의 부모는 딸을 데려가려 했다. 다니엘은 그녀에게 누구와 함께 있고 싶은지 물었다. 미겔은 대답하기 전에 그의 얼굴을 살폈다. 그리고 그가 듣고 싶어 할 말을 골라 말했다.\n\n다니엘은 그 대답을 황실에 제출했다. 종이 위에 찍힌 서명은 분명 미겔의 필체였다. 하지만 그 서명이 가리키는 뜻은 그녀의 것이 아니었다.",thought:"이제 모든 사람이 믿을 거야. 우리 둘이 서로를 선택했다고.",next:"v99_wedding",choices:[]};
+NODES["v99_wedding"]={speaker:"서술",chapter:chapter,text:"혼례는 세 개의 달이 뜨는 밤에 치러졌다. 레온하르트가의 남색과 금색 장식 사이로 코트리먼가의 흰 리본과 초록 잎이 엮였다. 제단 앞에는 노란 장미가 놓였다. 꽃은 아름다웠고, 성당의 종소리는 맑았다. 하객들은 그럴듯한 축복의 말을 건넸다.\n\n하얀 베일 아래 미겔은 한 치의 흐트러짐도 없이 웃었다. 다니엘은 그 미소를 보는 순간 가슴이 벅차올랐다. 그러고는 문득 깨달았다. 그녀는 지금까지 단 한 번도 이 결혼을 원한다고 말하지 않았다는 사실을.\n\n“미겔 님.” 그가 속삭였다. “정말 괜찮으십니까?”\n\n“다니엘 님이 바라신다면요.”\n\n축복의 종이 세 번 울렸다. 아무도 그 대답을 이상하게 여기지 않았다.",thought:"이제 와서 멈출 수는 없어. 그렇지?",next:"v99_vows",choices:[]};
+NODES["v99_vows"]={speaker:"서술",chapter:chapter,text:"주례는 서로를 존중하고 기쁠 때나 슬플 때나 함께하겠느냐고 물었다. 다니엘은 대답했다. 미겔도 대답했다. 목소리는 맑고 흔들림이 없었다.\n\n그러나 두 사람의 맹세는 같은 무게가 아니었다. 한 사람은 스스로 선택했고, 다른 한 사람은 선택할 수 없었다. 제단의 촛불은 그 차이를 비추지 않았다.\n\n혼례가 끝난 뒤 다니엘은 신부의 손을 잡았다. 따뜻했다. 맥박도 뛰었다. 다니엘은 그 따뜻함에 매달렸다. 살아 있으니 괜찮다고, 웃고 있으니 행복할 것이라고, 그가 바란 모든 것이 마침내 이루어졌다고.",thought:"행복하다고 말해 주세요. 이번에는 내가 묻기 전에.",next:"v99_after",choices:[]};
+NODES["v99_after"]={speaker:"서술",chapter:chapter,text:"결혼 후의 나날은 놀라울 만큼 평온했다. 미겔은 다니엘이 좋아하는 차를 내왔고, 그가 돌아오면 문 앞에서 맞이했다. 의견이 부딪히는 일도, 오해로 밤을 지새우는 일도 없었다. 다니엘이 어떤 말을 하든 그녀는 이해한다고 대답했다.\n\n어느 저녁 다니엘은 일부러 말도 안 되는 제안을 했다. 내일이면 코트리먼의 장미 화원을 모두 베어 버리겠다고. 미겔은 잠시 침묵하더니 고개를 숙였다.\n\n“다니엘 님께 필요하시다면 그렇게 하세요.”\n\n그 순간 다니엘은 자신이 사랑했던 여자가 더는 이 방에 없다는 것을 알았다. 그녀는 여전히 그의 앞에 앉아 있었다. 그 사실이 오히려 더 잔인했다.",thought:"그만해. 제발 나를 말려 줘.",next:"v99_letter",choices:[]};
+NODES["v99_letter"]={speaker:"서술",chapter:chapter,text:"알렉스에게서 편지가 도착한 것은 겨울의 초입이었다. 봉투에는 레온하르트가의 인장이 찍혀 있었으나, 편지에는 형제 사이의 안부가 없었다.\n\n「네가 사랑한 사람은 네가 지웠다. 네 곁에 남은 것은 그녀의 동의가 아니라 네 명령의 메아리다. 그 사실을 잊지 마라.」\n\n다니엘은 편지를 접어 서랍 깊숙이 넣었다. 태워 버릴 수도 있었지만 그러지 못했다. 글씨를 볼 때마다 형의 목소리가 들리는 것 같았다. 분노보다 더 깊은 실망, 동생을 되찾을 수 없다고 깨달은 사람의 목소리였다.",thought:"형이 틀렸다고 말해 줘요, 미겔 님. 제발.",next:"v99_last_question",choices:[]};
+NODES["v99_last_question"]={speaker:"다니엘 레온하르트",chapter:chapter,text:"“미겔 님. 저를 사랑하십니까?”\n\n“네, 다니엘 님.”\n\n“제가 무슨 말을 하든 그렇게 대답하시겠습니까?”\n\n“다니엘 님이 원하신다면요.”\n\n다니엘은 웃으려 했다. 웃을 수 없었다.\n\n“그럼… 저를 사랑하지 않는다고 말해 보세요.”\n\n미겔은 조금도 망설이지 않았다.\n\n“저는 다니엘 님을 사랑하지 않습니다.”\n\n다니엘의 손에서 찻잔이 미끄러졌다. 깨진 도자기 소리가 고요한 방을 갈랐다. 방금 전의 사랑 고백과 지금의 부정은 똑같이 진실이 아니었다. 그녀에게 남은 것은 오직 그의 말을 따르는 능력뿐이었다.",thought:"사랑한다고도, 사랑하지 않는다고도 말할 수 있어. 그러면 무엇이 진짜지?",next:"v99_final",choices:[]};
+NODES["v99_final"]={speaker:"서술",chapter:chapter,text:"그날 밤 다니엘은 서고의 금서를 다시 펼쳤다. 주문을 거꾸로 읽어 보았고, 찢어진 여백을 맞추었으며, 책등의 실밥까지 풀어 보았다. 어디에도 되돌리는 방법은 없었다. 마지막 장의 주석만이 처음과 똑같은 글씨로 남아 있었다. 「빼앗은 뜻은 돌려줄 수 없다.」\n\n그는 새벽이 올 때까지 책 앞에 앉아 있었다. 방으로 돌아왔을 때 미겔은 창가에서 기다리고 있었다. 그녀는 그를 보고 환하게 웃었다. 다니엘이 오래도록 바라 왔던 미소였다.\n\n“어서 오세요, 다니엘 님.”\n\n그는 미겔을 안았다. 그녀는 저항하지 않았다. 그가 팔을 풀어도 먼저 다가오지 않았다. 창밖에서 세 개의 달이 서서히 빛을 잃었다.\n\n다니엘은 마침내 자신이 무엇을 얻었는지 알았다. 거절하지 않는 신부. 떠나지 않는 신부. 그리고 영원히 돌아오지 않을 미겔.\n\n그날부터 그는 원하는 모든 대답을 들었다. 단 한 번도 진심을 듣지 못한 채.",thought:"내가 원한 건 당신이었는데. 내가 남긴 건… 나를 바라보는 인형뿐이야.",next:"v88_ending_doll_bride",choices:[]};
+NODES.v98_spell_temptation.choices.forEach(c=>{if(c.v98Action==="cast")c.next="v99_grimoire";});
+NODES.v99_before_choice.next="v98_spell_cast";
+NODES.v98_spell_cast.next="v99_spell_price";
+NODES.v99_final.next="v88_ending_doll_bride";
+Object.assign(NODES.v88_ending_doll_bride,{text:"BAD END — 인형 신부\n\n세 개의 달 아래 맺어진 맹세는 완성되었다. 그러나 그날의 신부는 한 번도 스스로 맹세하지 않았다.\n\nTHE END",thought:"사랑을 얻었다고 믿었던 순간, 나는 사랑할 수 있는 사람을 잃었다.",next:null,choices:[]});
+})();
+
+
+// v100 — Doll Bride final cut: the forbidden name, the erasure of first-person speech,
+// the brother's witness, and the unanswered wedding vow. Narrative-only overrides;
+// v98/v99 route gates, karma bookkeeping and NG+ visibility remain unchanged.
+(function(){
+ const CH='HIDDEN BAD END · 인형 신부';
+ const scene=(speaker,text,thought,next)=>({speaker,chapter:CH,text,thought,next,choices:[]});
+ NODES.v98_spell_cast=scene('서술',
+ `서고의 문을 닫자 궁전의 소음이 멀어졌다. 창문 너머 세 개의 달은 저마다 다른 높이에 걸려 있었다. 하나는 은빛으로, 하나는 옅은 자줏빛으로, 가장 낮은 하나는 붉은 유리 너머를 보는 듯 어두운 빛으로 젖어 있었다. 달의 색이 변한 것은 아니었다. 촛불이 흔들릴 때마다 낡은 창의 색유리가 밤을 그렇게 왜곡하고 있을 뿐이었다.
+
+다니엘은 책의 마지막 장을 펼쳤다. '이 술식은 마음을 얻지 않는다. 마음이 거절할 자리를 없앤다.' 몇 번이고 읽은 경고였다. 그는 이해하지 못한 것이 아니었다. 이해했기 때문에 더 오래 망설였고, 끝내 그 망설임마저 자신의 불행을 핑계 삼아 버렸다.
+
+문가에 선 코트리먼이 그의 손에 들린 책을 알아보았다.
+
+“다니엘, 그 책을 내려놓으세요. 무슨 일을 하려는지 알고 계시잖아요.”
+
+그녀의 말에는 떨림이 없었다. 두려움보다 먼저 상황을 판단하는 사람의 목소리였다. 다니엘이 수없이 사랑했다고 믿었던 바로 그 목소리.
+
+“코트리먼.”
+
+그는 평소처럼 그녀를 불렀다. 서로의 가문과 약속, 그리고 형의 이름까지 그 짧은 호칭 사이에 있었다.
+
+“제게는 안 된다고 말씀하시면서, 형에게는 웃어 주셨죠.”
+
+“제 웃음은 누구에게 허락을 받아야 하는 물건이 아니에요. 그리고 당신의 아픔이 제 선택을 대신할 수도 없어요.”
+
+그녀는 똑바로 그를 바라보았다. 그 말이 옳다는 것을 다니엘은 알고 있었다. 그 사실이 그를 멈추게 하지는 못했다.
+
+책의 글자가 낯선 소리로 풀렸다.
+
+“에르 바엘 시아, 노에르 이사렌.”
+
+촛불의 심지가 한순간 검게 굽었다.
+
+“벨라트 오르, 미라 세르엔.”
+
+코트리먼은 뒤로 물러서면서도 시선을 피하지 않았다. “지금 멈추세요. 아직 당신이 선택할 수 있어요.”
+
+“아샤 르 벤, 이르 나에.”
+
+마지막 음절은 사람의 말이라기보다 문이 잠기는 소리에 가까웠다.
+
+다니엘은 입술을 열었다. 익숙한 성을 부르려다가, 끝내 삼켰다.
+
+“……미겔.”
+
+허락받은 적 없는 이름이 두 사람 사이에 떨어졌다.
+
+“도망치지 마, 미겔.”`,
+ '그 이름을 부르는 순간부터, 나는 그녀의 대답을 기다리지 않았다.','v100_resistance');
+ NODES.v100_resistance=scene('미겔 코트리먼',
+ `“그렇게 부르지 마세요.”
+
+그녀가 즉시 대답했다. 다니엘은 그 말에 잠깐 숨을 멈췄다. 아직 그녀는 자기 이름이 어떻게 불리기를 원하는지 말할 수 있었다.
+
+“당신이 저를 어떻게 생각하든, 저는 당신의 것이 아닙니다. 알렉스와의 약속 때문만이 아니에요. 제 삶은 처음부터 제 것이었으니까요.”
+
+그녀는 책상 위의 금서를 덮으려 손을 뻗었다. 그러나 손끝이 표지에 닿기 직전, 움직임이 끊겼다. 마치 자신이 내린 명령이 손가락까지 도착하지 못한 것처럼.
+
+“……손이…….”
+
+미겔은 눈썹을 찌푸렸다. 고개를 숙여 자신의 손을 살폈다가, 다시 다니엘을 보았다.
+
+“이걸…… 멈추세요. 저는…… 이런 걸 원하지…….”
+
+말끝이 사라졌다. 두려움이 사라진 것이 아니었다. 두려움을 표현하기 위해 고르던 단어가 하나씩 그녀의 것이 아니게 되고 있었다.
+
+“저는…….”
+
+그녀가 다시 시작했다.
+
+“저는…….”
+
+다니엘은 처음으로 자신이 무엇을 빼앗고 있는지 똑똑히 들었다. 그녀는 문장을 완성하지 못했다. '저는' 뒤에 와야 할 생각이 더 이상 그녀에게 허락되지 않았기 때문이다.`,
+ '멈추라는 말을 들었다. 나는 끝내 멈추지 않았다.','v100_name');
+ NODES.v100_name=scene('다니엘 레온하르트',
+ `“미겔. 나를 봐.”
+
+그녀의 시선이 움직였다. 조금 전까지는 그를 바라볼지 말지 스스로 정하던 눈이었다. 이제는 이름이 불린 방향으로 정확히 돌아왔다.
+
+“제 이름을 불러 줘.”
+
+“……다니엘.”
+
+“내 곁에 있을 거지?”
+
+“네. 곁에 있겠습니다.”
+
+그녀는 묻지 않았다. 왜 그래야 하는지, 언제까지여야 하는지. 질문을 잃은 사람이 대답만을 남겼다.
+
+다니엘은 떨리는 손을 뻗었다가 멈췄다. 미겔은 그의 손을 피하지 않았다. 그렇다고 먼저 잡지도 않았다. 그녀는 명령이 오기를 기다리고 있었다.
+
+그가 원했던 것은 자신의 이름을 불러 주는 목소리였다. 하지만 지금 들리는 목소리에는 그를 선택한 사람이 없었다.`,
+ '미겔. 다시 한 번 나를 꾸짖어 줘. 아니, 그런 말을 할 자리가 아직 남아 있기는 할까.','v99_spell_price');
+ NODES.v99_spell_price.text=`금지 마법은 미겔의 몸을 바꾸지 않았다. 그녀는 숨을 쉬고, 온기를 지니고, 노란 장미의 향기를 구분했다. 다만 어떤 생각이 자기 안에서 시작되려 할 때마다 그것을 붙잡아 말로 옮길 수 없었다.
+
+온실에서 다니엘이 물었다. “미겔, 오늘은 어디로 가고 싶어?”
+
+“원하시는 곳으로 가겠습니다.”
+
+“네가 원하는 곳을 묻는 거야.”
+
+“……다니엘 님이 원하시는 곳입니다.”
+
+그녀의 말에서 '저는'이 사라진 뒤, 그 빈자리는 다시 채워지지 않았다. 다니엘은 원하는 대답을 들었다. 단 한 번도 그녀의 대답을 듣지 못한 채.`;
+ NODES.v99_spell_price.thought='나는 이름을 얻었다. 그 이름으로 대답하던 사람은 잃었다.';
+ NODES.v99_wedding.text=`혼례는 세 개의 달이 떠오른 밤에 치러졌다. 레온하르트가의 남색과 금빛 장식 사이로 코트리먼가의 흰 리본과 초록 잎이 엮였다. 제단에는 노란 장미가 놓였다. 미겔이 한때 스스로 가꾸고 지키던 꽃들이었다.
+
+알렉스의 자리는 비어 있었다. 형은 동생을 위해 준비했던 축복을 끝내 건네지 않았다. 그의 마지막 말만이 다니엘의 귓가에 남았다. “네가 사랑한 건 그 사람이었잖아. 그런데 네 손으로 그 사람을 지웠어.”
+
+하얀 베일 아래 미겔은 아름답게 웃었다. 하객들은 그 미소를 행복의 증거라고 여겼다. 다니엘은 알고 있었다. 그것은 그가 부탁한 표정이었다.
+
+주례가 신부에게 물었다. “미겔 코트리먼. 그대는 자신의 자유로운 의지로 이 혼인을 받아들이겠습니까?”
+
+침묵이 흘렀다.
+
+그녀는 대답할 수 없는 사람이 아니었다. 다만 무엇을 대답해야 하는지, 다니엘이 알려 주지 않았을 뿐이었다.
+
+“……받아들인다고 말해, 미겔.”
+
+“받아들입니다.”
+
+그 말은 승낙의 형태를 하고 있었다. 그러나 승낙은 아니었다. 다니엘이 자신에게 되돌려 들려준 말에 불과했다.
+
+성당의 종이 세 번 울렸다. 하객들은 일어나 박수를 쳤다. 아무도 두 사람의 맹세가 서로 다른 곳에서 시작되었다는 사실을 알아차리지 못했다.`;
+ NODES.v99_wedding.thought='모두가 축복하고 있어. 그런데 왜 그녀의 대답은 내 목소리처럼 들리지?';
+ NODES.v99_last_question.text=`“미겔. 나를 사랑해?”
+
+“네, 다니엘 님.”
+
+“……그럼 사랑하지 않는다고 말해 봐.”
+
+“사랑하지 않습니다, 다니엘 님.”
+
+그녀의 표정에는 아무 변화도 없었다. 긍정과 부정이 똑같은 무게로 떨어졌다. 둘 중 어느 쪽에도 그녀의 마음은 들어 있지 않았다.
+
+다니엘은 한참 동안 말이 없었다. 그에게는 아직 무엇이든 말할 자유가 있었다. 그녀에게는 그 말을 따르는 일만 남아 있었다.
+
+창밖의 세 개의 달은 묵묵히 빛났다. 그 빛 아래에서 다니엘은 마지막으로 명령하지 않는 질문을 해 보려 했다.
+
+“미겔…… 네가 정말 원하는 건 뭐야?”
+
+“무엇을 원하시나요, 다니엘 님?”
+
+그것이 대답이었다.`;
+ NODES.v99_last_question.thought='내가 질문할 때마다 그녀는 나를 되묻는다. 그녀 자신은 어디에도 없다.';
+ NODES.v99_final.text=`그날 밤 다니엘은 서고의 금서를 다시 펼쳤다. 주문을 거꾸로 읽고, 지워진 여백을 맞추고, 책등의 실밥까지 풀었다. 되돌리는 구절은 없었다. 마지막 장에는 처음과 같은 경고가 남아 있었다. '빼앗은 뜻은 돌려줄 수 없다.'
+
+방으로 돌아왔을 때 미겔은 창가에 서 있었다. 그가 원하던 미소를 지으며, 그가 원하던 목소리로 인사했다.
+
+“어서 오세요, 다니엘 님.”
+
+다니엘은 그녀의 손을 잡았다. 손은 따뜻했다. 그러나 그가 놓자 그녀는 다음 명령을 기다리듯 가만히 있었다.
+
+세 개의 달이 차례로 구름 뒤에 가려졌다. 다니엘은 문득 예전의 호칭을 떠올렸다. 코트리먼. 그 이름을 부르면 자신의 뜻을 똑바로 말하던 여자. 이제 그는 '미겔'이라고 부를 수 있었지만, 그 이름의 주인에게서 어떤 대답도 받을 수 없었다.
+
+그는 거절하지 않는 신부를 얻었다. 그리고 거절할 수 있었기에 사랑했던 사람을 영원히 잃었다.
+
+그날부터 다니엘은 원하는 모든 대답을 들었다. 단 한 번도 진심을 듣지 못한 채.`;
+ NODES.v99_final.thought='내가 원한 건 당신이었는데. 내가 남긴 건… 나를 바라보는 인형뿐이야.';
 })();

@@ -1,0 +1,3 @@
+DELHARSA v104: 초반 본편 스크립트 1차 정합성 교정
+자세한 내용: lore/V104_SCRIPT_AUDIT_KO.md
+원본: v103 / 저장 데이터 키와 자산 유지
