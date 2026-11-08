@@ -1,0 +1,47 @@
+/* DELHARSA v141: enlarged, anchored character nameplate. */
+#game .dialogue { position:relative!important; overflow:visible!important; }
+#game .dialogue #speaker.speaker {
+  position:absolute!important;
+  box-sizing:border-box!important;
+  top:-36px!important;
+  left:clamp(4px, 2.2vw, 24px)!important;
+  right:auto!important;
+  bottom:auto!important;
+  margin:0!important;
+  width:clamp(240px, 27vw, 300px)!important;
+  min-width:0!important;
+  max-width:min(78vw, 300px)!important;
+  height:68px!important;
+  min-height:68px!important;
+  padding:10px 28px 12px!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  background-color:transparent!important;
+  background-image:url("assets/ui/ui_nameplate.png")!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:100% 100%!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  font-size:clamp(1.05rem, 1.8vw, 1.35rem)!important;
+  line-height:1.25!important;
+  white-space:nowrap!important;
+  text-align:center!important;
+  z-index:3!important;
+  transform:none!important;
+  transition:none!important;
+}
+@media(max-width:600px){
+  #game .dialogue #speaker.speaker {
+    top:-28px!important;
+    left:6px!important;
+    width:min(64vw, 260px)!important;
+    max-width:64vw!important;
+    height:56px!important;
+    min-height:56px!important;
+    padding:8px 22px 10px!important;
+    font-size:clamp(.85rem,3.7vw,1.1rem)!important;
+  }
+}

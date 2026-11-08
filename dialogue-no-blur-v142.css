@@ -1,0 +1,9 @@
+/* DELHARSA v142 — remove backdrop blur behind dialogue only. */
+#game .dialogue,
+#game .dialogue::before,
+#game .dialogue::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+/* Preserve the ornate dialogue panel, text, and v141 nameplate. */
