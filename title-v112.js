@@ -8,9 +8,10 @@ const ENDINGS=[
  ['alex_reconcile','알렉 · 화해'],['alex_fracture','알렉 · 균열'],['court_guardian','왕궁 · 수호'],
  ['secret','비밀의 밤'],['independent','독립의 밤']
 ];
+const AVAILABLE_ENDING_ART=new Set(); // No ending title illustrations are included in this release.
 const $=id=>document.getElementById(id);
 function unlocked(){let ids=[];try{const x=JSON.parse(localStorage.getItem(GALLERY)||'[]');if(Array.isArray(x))ids=x.map(y=>y&&y.id).filter(Boolean)}catch{};
- const list=[BASE];for(const [id,name] of ENDINGS){if(ids.includes(id))list.push({id,name,url:'assets/title-endings/'+id+'.webp'})}return list;
+ const list=[BASE];for(const [id,name] of ENDINGS){if(ids.includes(id)&&AVAILABLE_ENDING_ART.has(id))list.push({id,name,url:'assets/title-endings/'+id+'.webp'})}return list;
 }
 function showArt(){const list=unlocked();let selected='default';try{selected=localStorage.getItem(CHOICE)||'default'}catch{};
  let i=list.findIndex(x=>x.id===selected);if(i<0)i=list.length-1;
@@ -18,7 +19,7 @@ function showArt(){const list=unlocked();let selected='default';try{selected=loc
  const candidate=new Image();candidate.onload=()=>{if(target.dataset.request===art.id)target.style.backgroundImage='url("'+art.url+'")'};
  candidate.onerror=()=>{if(target.dataset.request===art.id)target.style.backgroundImage='url("'+BASE.url+'")'};
  target.dataset.request=art.id;candidate.src=art.url;
- if(counter){counter.textContent=String(i+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');counter.title=art.name+(art.id!=='default'?' · 이미지 에셋 추가 시 표시':'')}
+ if(counter){counter.textContent=String(i+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');counter.title=art.name}
  if($('v112Prev'))$('v112Prev').disabled=list.length<2;
  if($('v112Next'))$('v112Next').disabled=list.length<2;
 }
