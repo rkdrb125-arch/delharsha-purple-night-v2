@@ -13,3 +13,6 @@ body.badend-video-active{overflow:hidden!important}
 .badend-video-fallback p{line-height:1.6;margin:0 0 12px}
 #badEndVideoPlay{min-width:160px;touch-action:manipulation}
 @media(max-width:600px){.badend-video-modal{justify-content:center}.badend-video-bar{font-size:12px}#badEndVideo{width:100%;height:auto;max-height:65dvh}.badend-video-fallback:not([hidden]){bottom:max(16px,env(safe-area-inset-bottom))}}
+
+/* v153: separate visible reward from original opening. */
+#badEndRewardButton{grid-column:1/-1;min-height:44px;touch-action:manipulation}#badEndRewardButton:disabled{opacity:.7;cursor:default}#badEndRewardButton:not(:disabled){box-shadow:0 0 14px rgba(196,154,234,.32)}

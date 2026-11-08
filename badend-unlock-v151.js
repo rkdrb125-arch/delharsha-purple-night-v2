@@ -2,7 +2,7 @@
 (()=>{
 'use strict';
 const GALLERY_KEY='delharsha_v88_karma_gallery';
-const SHOWN_KEY='delharsha_v152_all_bad_end_video_seen';
+const SHOWN_KEY='delharsha_v153_all_bad_end_video_seen';
 const REQUIRED=['blood_vow','brother_funeral','heavy_crown','doll_bride'];
 const home=document.getElementById('home');
 const modal=document.getElementById('badEndVideoModal');
@@ -10,14 +10,18 @@ const video=document.getElementById('badEndVideo');
 const closeButton=document.getElementById('badEndVideoClose');
 const fallback=document.getElementById('badEndVideoFallback');
 const playButton=document.getElementById('badEndVideoPlay');
+const rewardButton=document.getElementById('badEndRewardButton');
 if(!home||!modal||!video||!closeButton||!fallback||!playButton)return;
 let active=false,playing=false,lastFocus=null,launching=false;
+function collected(){try{const ids=JSON.parse(localStorage.getItem(GALLERY_KEY)||'[]');return Array.isArray(ids)?ids:[];}catch(_){return [];}}
+function updateButton(){if(!rewardButton)return;const ids=collected();const count=REQUIRED.filter(id=>ids.includes(id)).length;rewardButton.textContent=count===4?'✦ BAD END 특전 영상 보기':'◇ BAD END 특전 · '+count+'/4 수집';rewardButton.disabled=count!==4;rewardButton.title=count===4?'해금된 특전 영상 재생':'BAD END 4종을 모두 수집하면 해금됩니다';}
 function complete(){try{const ids=JSON.parse(localStorage.getItem(GALLERY_KEY)||'[]');return Array.isArray(ids)&&REQUIRED.every(id=>ids.includes(id));}catch(_){return false;}}
 function seen(){try{return localStorage.getItem(SHOWN_KEY)==='1';}catch(_){return false;}}
 function markSeen(){try{localStorage.setItem(SHOWN_KEY,'1');}catch(_){}}
 function close(mark=true){
  if(!active)return;
  if(mark)markSeen();
+ updateButton();
  active=false;playing=false;launching=false;
  video.pause();try{video.currentTime=0;}catch(_){}
  modal.hidden=true;modal.setAttribute('aria-hidden','true');fallback.hidden=true;
@@ -36,8 +40,9 @@ async function play(){
  catch(_){showPlay('모바일 브라우저에서 자동 재생이 제한되었습니다. ▶ 영상 재생을 눌러주세요.');}
  finally{launching=false;}
 }
-function open(){
- if(active||seen()||!complete()||!home.classList.contains('active'))return;
+function open(force=false){
+ updateButton();
+ if(active||(!force&&seen())||!complete()||!home.classList.contains('active'))return;
  active=true;lastFocus=document.activeElement;
  document.dispatchEvent(new Event('delharsha:game-audio-stop'));
  const opening=document.getElementById('openingVideo');if(opening)opening.pause();
@@ -48,6 +53,7 @@ function open(){
  showPlay('BAD END를 모두 수집했습니다! 영상을 소리와 함께 보려면 ▶ 영상 재생을 눌러주세요.');
  if(!(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)))play();
 }
+if(rewardButton)rewardButton.addEventListener('click',()=>open(true));
 closeButton.addEventListener('click',()=>close(true));
 playButton.addEventListener('click',()=>{play();});
 video.addEventListener('playing',()=>{playing=true;fallback.hidden=true;});
@@ -56,5 +62,8 @@ video.addEventListener('error',()=>showPlay('영상을 불러오지 못했습니
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&active){e.preventDefault();close(true);}});
 new MutationObserver(()=>{if(home.classList.contains('active'))open();else if(active)close(false);}).observe(home,{attributes:true,attributeFilter:['class']});
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',open,{once:true});else queueMicrotask(open);
-window.addEventListener('pageshow',open);
+window.addEventListener('pageshow',()=>open());
+window.addEventListener('storage',updateButton);
+document.addEventListener('delharsha:ending',updateButton);
+updateButton();
 })();
