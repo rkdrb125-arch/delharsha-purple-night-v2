@@ -2707,7 +2707,7 @@ function gallery(){
  }
  modal('회상 갤러리',wrap);
 }
-function settings(){const wrap=document.createElement('div');const p=document.createElement('p');p.className='hint';p.textContent='DELHARSA : 보라색의 밤 · 황궁 일상 125종 · 날짜별 특별 이벤트 · v24 장기 결과와 감정 흐름\n게임은 브라우저의 로컬 저장소에 진행 상황을 보관합니다.';wrap.append(p);const btn=document.createElement('button');btn.textContent='저장 데이터 초기화';btn.onclick=()=>{if(confirm('저장 데이터를 삭제할까요?')){localStorage.removeItem(SAVE_KEY);modal('초기화 완료','저장 데이터가 삭제되었습니다.');}};wrap.append(btn);const dev=document.createElement('button');dev.textContent='⚙ 개발자 도구 · 이전 기록';dev.onclick=()=>{closeModal();if(state.node==='explore'){v56Go('archive',0);}else{modal('개발자 도구','황궁 탐색 화면에서 열 수 있습니다.');}};wrap.append(dev);modal('설정',wrap);}
+function settings(){const wrap=document.createElement('div');const p=document.createElement('p');p.className='hint';p.textContent='DELHARSA : 보라색의 밤 · 황궁 일상 125종 · 날짜별 특별 이벤트 · v24 장기 결과와 감정 흐름\n게임은 브라우저의 로컬 저장소에 진행 상황을 보관합니다.';wrap.append(p);const btn=document.createElement('button');btn.textContent='저장 데이터 초기화';btn.dataset.royalDanger='true';btn.onclick=()=>{if(confirm('저장 데이터를 삭제할까요?')){localStorage.removeItem(SAVE_KEY);modal('초기화 완료','저장 데이터가 삭제되었습니다.');}};wrap.append(btn);const dev=document.createElement('button');dev.textContent='⚙ 개발자 도구 · 이전 기록';dev.onclick=()=>{closeModal();if(state.node==='explore'){v56Go('archive',0);}else{modal('개발자 도구','황궁 탐색 화면에서 열 수 있습니다.');}};wrap.append(dev);modal('설정',wrap);}
 // v11: 게임 내 설정 자료실 — Markdown 원본을 그대로 열람하고 개별 파일로 이동할 수 있습니다.
 const LORE_FILES=[
  ['목차 및 정리 원칙','00_설정집_목차.md'],

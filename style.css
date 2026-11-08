@@ -520,3 +520,42 @@ body.v111-letter-thought #game .dialogue,body.v111-letter-thought #game .hud{vis
 /* v123: automatic invitation sequence, no visible action controls */
 .v111-letter-action,.v111-letter-continue{display:none!important}
 .v111-letter-overlay,.v111-letter-overlay *{user-select:none!important;-webkit-user-select:none!important;-webkit-touch-callout:none!important}
+
+/* v124 — unified small royal controls, without changing title or story controls */
+.modal-panel #modalContent button,
+.modal-panel .modal-actions button,
+#game .hud button,
+#game .choice-pager button,
+#bgmPanel button,
+#openingPanel button,
+#settingsBtn {
+  color:#f7e9f3!important;
+  background:linear-gradient(180deg,#56345f 0%,#321d3e 55%,#24152f 100%)!important;
+  border:1px solid #c4a477!important;
+  border-radius:3px!important;
+  box-shadow:inset 0 0 0 1px #e8d0a52b, inset 0 1px 0 #fff3cf29, 0 3px 10px #08040d55!important;
+  font-family:Georgia,'Noto Serif KR',serif;
+  font-weight:400;
+  letter-spacing:.035em;
+  text-shadow:0 1px 2px #10091a;
+  transition:filter .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.modal-panel #modalContent button:hover,
+.modal-panel .modal-actions button:hover,
+#game .hud button:hover,
+#game .choice-pager button:hover,
+#bgmPanel button:hover,
+#openingPanel button:hover,
+#settingsBtn:hover {filter:brightness(1.14);border-color:#f0d8a8!important;box-shadow:inset 0 0 0 1px #f2d9b166,0 0 13px #b58c6b55!important}
+.modal-panel #modalContent button:focus-visible,
+.modal-panel .modal-actions button:focus-visible,
+#game .hud button:focus-visible,
+#game .choice-pager button:focus-visible,
+#bgmPanel button:focus-visible,
+#openingPanel button:focus-visible,
+#settingsBtn:focus-visible {outline:2px solid #f2d49d;outline-offset:3px}
+.modal-panel #modalContent button{margin:5px 7px 5px 0;padding:11px 17px;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.modal-panel #modalContent button[data-royal-danger="true"]{border-color:#c79a94!important;background:linear-gradient(180deg,#624052,#39232f)!important}
+.modal-head #closeModal{color:#e8d2ad;border:1px solid #9d8065;border-radius:2px;width:36px;height:36px;padding:3px;background:#2a1a36}
+@media(max-width:600px){.modal-panel #modalContent button{font-size:clamp(12px,3.5vw,15px);padding:10px 12px;margin:4px 4px 4px 0}}
+@media(prefers-reduced-motion:reduce){.modal-panel #modalContent button,#game .hud button{transition:none}}
