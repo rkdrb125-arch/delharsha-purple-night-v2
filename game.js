@@ -2610,7 +2610,8 @@ function v111LetterMount(){
  <article class="v111-letter-paper" aria-label="왕실 초청장"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><h2>왕실 초청장</h2><p>레온하르트 가문에<br>아셀 왕국의 일곱 날을 초대합니다.</p><p class="v111-letter-detail">일곱 날의 연회<br>마지막 밤의 대무도회</p><div class="v111-letter-emblem">♛</div><small>BY ORDER OF THE ROYAL COURT</small></article>
  <div class="v111-letter-narration" aria-live="polite"></div>
  <button type="button" class="v111-letter-action" aria-label="왕실 봉랍을 눌러 편지를 개봉하기">봉랍을 눌러 개봉하기　✦</button>
- <button type="button" class="v111-letter-continue" aria-label="편지를 다 읽고 다음으로">편지를 접는다　›</button>`;
+ <button type="button" class="v111-letter-continue" aria-label="편지를 다 읽고 다음으로">편지를 접는다　›</button>
+`;
  const screen=document.getElementById('game')||document.querySelector('main')||document.body;
  screen.append(root);document.body.classList.add('v111-letter-active');
  const narration=root.querySelector('.v111-letter-narration');
@@ -2619,12 +2620,28 @@ function v111LetterMount(){
  v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token||state.node!=='cinematic_moons')return;v111Letter.phase=2;root.dataset.phase='2';narration.textContent='봉랍을 눌러 초대장을 펼쳐 주세요.';},1900);
  root.querySelector('.v111-letter-action').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==2||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=3;root.dataset.phase='3';narration.textContent='';advance(3,650);v111Letter.timer=setTimeout(()=>{if(token!==v111Letter.token)return;v111Letter.locked=false;root.dataset.phase='3';},650);});
  root.querySelector('.v111-letter-continue').addEventListener('click',e=>{e.stopPropagation();if(v111Letter.phase!==3||v111Letter.locked)return;v111Letter.locked=true;v111Letter.phase=4;root.dataset.phase='4';document.body.classList.add('v111-letter-thought');narration.textContent='미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.';v111Letter.locked=false;});
- // v118: the final thought must accept a click/tap to advance the real story.
- root.addEventListener('click',e=>{
-  if(v111Letter.phase!==4||v111Letter.locked||e.target.closest('button'))return;
+ // v119: advance directly, independent of hidden dialogue and overlay stacking.
+ const finishInvitation=()=>{
+  if(state.node!=='cinematic_moons'||v111Letter.phase!==4||v111Letter.locked)return;
+  const next=NODES[state.node]?.next;
+  if(!next)return;
+  v111Letter.locked=true;
+  state.history.push(state.node);
+  state.node=next;
+  v111LetterClear();v111Letter.phase=-1;
+  render();
+ };
+ // v120: the entire final cinematic frame is a tap surface, with no visible UI.
+ // Capture on the game screen as well as the overlay to avoid a higher dialogue layer stealing taps.
+ const tapToContinue=e=>{
+  if(v111Letter.phase!==4||state.node!=='cinematic_moons'||v111Letter.locked)return;
+  if(e.type==='click' && root.dataset.tapHandled==='1')return;
   e.preventDefault();e.stopPropagation();
-  document.getElementById('nextBtn')?.click();
- });
+  root.dataset.tapHandled='1';finishInvitation();
+ };
+ root.addEventListener('pointerup',tapToContinue,true);
+ root.addEventListener('click',tapToContinue,true);
+
 }
 
 function renderStage(node){
