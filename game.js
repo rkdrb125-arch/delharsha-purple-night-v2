@@ -2612,7 +2612,7 @@ function v111LetterMount(){
  root.setAttribute('aria-label','아셀 왕실 초대장');
  root.innerHTML=`<div class="v111-letter-vignette"></div><div class="v111-letter-desk"></div>
  <div class="v111-letter-envelope" aria-hidden="true"><div class="v111-letter-flap"></div><div class="v111-letter-monogram">ASEL · ROYAL COURT</div><div class="v111-letter-wax">♛</div></div>
- <article class="v111-letter-paper" aria-label="왕실 초청장"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><h2>왕실 초청장</h2><p>레온하르트 가문에<br>아셀 왕국의 일곱 날을 초대합니다.</p><p class="v111-letter-detail">일곱 날의 연회<br>마지막 밤의 대무도회</p><div class="v111-letter-emblem">♛</div><small>BY ORDER OF THE ROYAL COURT</small></article>
+ <article class="v111-letter-paper" aria-label="아셀 왕국 왕실 초청 서한"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><div class="v149-letter-scroll" tabindex="0" role="region" aria-label="초청 서한 전문"><h2>아셀 왕국 왕실 초청 서한</h2><p class="v149-letter-subtitle">아셀 왕국 왕실 문장 아래</p><p>존귀하신 레온하르트 백작 각하와 그 일가에,</p><p>아셀 왕국의 왕실은 오랜 세월 이어져 온 양국의 우호와 신의를 기리며, 레온하르트 가문에 깊은 경의와 변함없는 친선의 뜻을 전합니다.</p><p>다가오는 계절의 끝자락, 아셀 왕궁에서는 왕실의 이름으로 일곱 날에 걸친 성대한 연회를 개최하고자 합니다.</p><p>이번 연회는 양국의 귀족과 사절들이 한자리에 모여 지난날의 우의를 되새기고, 앞으로 이어질 평화와 번영을 축원하는 자리입니다. 이에 왕실은 레온하르트 백작 각하와 그 일가를 특별한 귀빈으로 정중히 초청하는 바입니다.</p><p>연회는 왕궁의 대연회장에서 시작되어, 일곱 날 동안 음악과 만찬, 교류와 축하의 자리로 이어질 것입니다.</p><p>마지막 일곱 번째 밤에는 왕실이 주관하는 대무도회가 열릴 예정입니다.</p><p>세 개의 달이 아셀의 하늘을 밝히는 그 밤, 왕궁의 문은 초대받은 귀빈들을 위하여 열릴 것이며, 보랏빛 등불 아래 펼쳐지는 축제는 오래도록 기억될 영예로운 자리가 될 것입니다.</p><p>레온하르트 가문의 참석은 아셀 왕실에 더없는 기쁨이자 영광이 될 것입니다.</p><p>부디 왕실의 초청을 너그러이 받아 주시어, 귀 가문의 고귀한 발걸음으로 이 자리를 빛내 주시기를 바랍니다.</p><p>귀 가문의 안녕과 번영을 기원하며, 아셀 왕국의 이름으로 깊은 존경을 표합니다.</p><p class="v149-letter-signature">아셀 왕국 왕실의 명에 따라<br>왕실 의전관실<br>왕실 인장 날인</p></div><button type="button" class="v149-letter-finish">서한을 접는다</button></article>
  <div class="v111-letter-narration" aria-live="polite"></div>`;
  const screen=document.getElementById('game')||document.querySelector('main')||document.body;
  screen.append(root);document.body.classList.add('v111-letter-active');
@@ -2624,16 +2624,15 @@ function v111LetterMount(){
  schedule(850,()=>phase(1,'아셀 왕국에서 편지가 도착했다.'));
  schedule(1900,()=>phase(2,'보랏빛 봉랍 아래, 일곱 날의 초대가 기다리고 있었다.'));
  schedule(3600,()=>phase(3,''));
- schedule(7600,()=>{phase(4,'미겔 코트리먼. 형님의 약혼녀. 삼 년 동안 숨겨 온 이름.');document.body.classList.add('v111-letter-thought');});
- schedule(11900,()=>{
-  if(v111Letter.locked)return;
-  const next=NODES[state.node]?.next;
-  if(!next)return;
-  v111Letter.locked=true;
-  state.history.push(state.node);
-  state.node=next;
-  v111LetterClear();v111Letter.phase=-1;
-  render();
+ schedule(7600,()=>{phase(4,'');});
+ const finish=root.querySelector('.v149-letter-finish');
+ finish.addEventListener('pointerup',e=>e.stopPropagation());
+ finish.addEventListener('click',e=>{
+  e.preventDefault();e.stopPropagation();
+  if(!valid()||v111Letter.locked||v111Letter.phase<3)return;
+  const next=NODES[state.node]?.next;if(!next)return;
+  v111Letter.locked=true;state.history.push(state.node);state.node=next;
+  v111LetterClear();v111Letter.phase=-1;render();
  });
 }
 

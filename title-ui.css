@@ -1,0 +1,96 @@
+/* DELHARSA v148 — one authoritative title layout; supplied PNG artwork only.
+   The source ui_choice_frame.png is 2172x724 (3:1). Keep each button at 3:1. */
+#home.screen.active {
+ display:flex!important;position:relative!important;align-items:stretch!important;
+ padding:0!important;margin:0!important;min-height:100dvh!important;
+ overflow:hidden!important;box-sizing:border-box!important;
+}
+#home.screen.active .v112-art {position:absolute!important;inset:0!important;z-index:0!important;pointer-events:none!important;}
+#home.screen.active .v112-side {
+ position:relative!important;z-index:3!important;box-sizing:border-box!important;
+ display:flex!important;flex-direction:column!important;align-items:center!important;
+ justify-content:center!important;gap:0!important;
+ flex:0 0 min(40%,540px)!important;width:min(40%,540px)!important;
+ min-width:350px!important;max-width:540px!important;margin-left:auto!important;
+ padding:20px clamp(16px,3vw,44px)!important;overflow:visible!important;
+ transform:none!important;animation:none!important;
+}
+#home.screen.active .title-logo-wrap {
+ flex:0 0 auto!important;width:min(85%,310px)!important;height:clamp(100px,19dvh,200px)!important;
+ margin:0 auto 8px!important;transform:none!important;
+}
+#home.screen.active .title-logo {width:100%!important;height:100%!important;object-fit:contain!important;}
+#home.screen.active .menu {
+ position:relative!important;display:flex!important;flex-direction:column!important;
+ align-items:center!important;justify-content:center!important;
+ width:min(100%,330px)!important;max-width:330px!important;
+ gap:clamp(2px,.35dvh,6px)!important;margin:0 auto!important;
+ transform:none!important;animation:none!important;
+}
+#home.screen.active .menu button {
+ position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+ box-sizing:border-box!important;flex:none!important;width:100%!important;
+ height:auto!important;min-height:0!important;max-height:none!important;aspect-ratio:3 / 1!important;
+ margin:0!important;padding:12px 26px!important;
+ border:0!important;border-image:none!important;border-radius:0!important;
+ background-color:transparent!important;
+ background-image:url('assets/ui/ui_choice_frame.png')!important;
+ background-position:center!important;background-repeat:no-repeat!important;background-size:100% 100%!important;
+ box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ color:#f8e9dc!important;text-shadow:0 2px 3px #190d22,0 0 5px #190d22!important;
+ font-family:var(--delharsha-display-font)!important;
+ font-size:clamp(14px,1.15vw,19px)!important;font-weight:700!important;
+ letter-spacing:.025em!important;line-height:1.2!important;white-space:normal!important;
+ overflow-wrap:break-word!important;word-break:keep-all!important;text-align:center!important;
+ transform:none!important;filter:none!important;animation:none!important;
+ transition:filter .16s ease,color .16s ease!important;
+ cursor:pointer!important;touch-action:manipulation!important;
+}
+#home.screen.active .menu button::before,#home.screen.active .menu button::after {content:none!important;display:none!important;}
+#home.screen.active .menu button:hover:not(:disabled),
+#home.screen.active .menu button:focus-visible:not(:disabled),
+#home.screen.active .menu button.v113-selected:not(:disabled) {
+ filter:brightness(1.17)!important;color:#fff5dc!important;
+ letter-spacing:.025em!important;transform:none!important;
+}
+#home.screen.active .menu button:disabled {opacity:.56!important;filter:grayscale(.25)!important;cursor:not-allowed!important;}
+#home.screen.active .menu button.hidden {display:none!important;}
+#home.screen.active .v112-art-picker {margin:4px auto 0!important;flex:0 0 auto!important;}
+#home.screen.active .foot {margin:3px auto 0!important;text-align:center!important;}
+/* On phones, 3:1 image buttons in two columns keep their real proportions.
+   The menu is intentionally allowed to scroll only on exceptionally short screens. */
+@media(max-width:760px) {
+ #home.screen.active {height:100dvh!important;min-height:100dvh!important;}
+ #home.screen.active .v112-side {
+  flex:0 0 100%!important;width:100%!important;min-width:0!important;max-width:none!important;
+  padding:56px 14px max(12px,env(safe-area-inset-bottom))!important;
+  justify-content:center!important;overflow-y:auto!important;overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+ }
+ #home.screen.active .title-logo-wrap {
+  width:min(60vw,250px)!important;height:clamp(95px,16dvh,150px)!important;
+  margin:0 auto clamp(6px,1dvh,12px)!important;
+ }
+ #home.screen.active .menu {
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  align-items:start!important;justify-items:stretch!important;
+  width:min(94vw,440px)!important;max-width:440px!important;
+  gap:clamp(4px,.9dvh,10px) 8px!important;
+ }
+ #home.screen.active .menu button {
+  width:100%!important;min-width:0!important;aspect-ratio:3 / 1!important;
+  height:auto!important;min-height:0!important;max-height:none!important;
+  padding:5px 13px!important;font-size:clamp(12px,3.2vw,16px)!important;
+  letter-spacing:0!important;
+ }
+ #home.screen.active .menu button:nth-child(n+7) {grid-column:1 / -1!important;width:min(100%,320px)!important;justify-self:center!important;}
+ #home.screen.active .menu button.hidden {display:none!important;}
+ #home.screen.active .v112-art-picker {display:none!important;}
+ #home.screen.active .foot {display:none!important;}
+}
+@media(max-width:760px) and (max-height:660px) {
+ #home.screen.active .v112-side {justify-content:flex-start!important;padding-top:52px!important;}
+ #home.screen.active .title-logo-wrap {height:82px!important;margin-bottom:3px!important;}
+ #home.screen.active .menu {gap:3px 7px!important;}
+}
+@media(prefers-reduced-motion:reduce){#home.screen.active .menu button{transition:none!important;}}

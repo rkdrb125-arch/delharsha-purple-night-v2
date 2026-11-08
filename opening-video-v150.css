@@ -1,0 +1,9 @@
+/* v150: Real user-provided video with its embedded audio. */
+.opening-video-modal[hidden]{display:none!important}
+.opening-video-modal{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,3,13,.98);padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));box-sizing:border-box}
+.opening-video-bar{display:flex;align-items:center;justify-content:space-between;width:min(100%,1200px);color:#e5ca98;font-family:inherit;font-size:clamp(12px,2vw,16px);margin-bottom:12px;gap:16px}
+#openingVideoClose{cursor:pointer;border:1px solid #c6a66e;border-radius:8px;background:#281a36;color:#fff2d7;padding:10px 16px;min-height:44px;font:inherit}
+#openingVideo{display:block;width:min(100%,1200px);height:auto;max-height:calc(100dvh - 105px);aspect-ratio:16/9;object-fit:contain;background:#000}
+.opening-video-error{color:#ffe3db;text-align:center}
+body.opening-video-active{overflow:hidden!important}
+@media(max-width:600px){.opening-video-bar{margin-bottom:8px}#openingVideo{max-height:calc(100dvh - 85px)}}
