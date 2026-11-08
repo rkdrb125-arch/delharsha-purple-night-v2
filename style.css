@@ -562,7 +562,7 @@ body.v111-letter-thought #game .dialogue,body.v111-letter-thought #game .hud{vis
 
 /* DELHARSA v125: Royal amethyst mouse pointer */
 @media (hover:hover) and (pointer:fine) {
- html, body, body *, button, a, summary, select, input, label, [role="button"] {cursor:url("assets/ui/royal-amethyst-cursor-v125.png") 2 2, auto !important;}
+ html, body, body *, button, a, summary, select, input, label, [role="button"] {cursor:url("assets/ui/royal-amethyst-cursor-v125.png") 17 5, auto !important;}
  input[type="text"],input[type="search"],textarea,[contenteditable="true"] {cursor:text !important;}
 }
 #v125-glitter {position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none!important;z-index:2147483646;contain:strict;}

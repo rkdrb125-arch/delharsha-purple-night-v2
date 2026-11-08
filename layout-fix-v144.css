@@ -1,0 +1,68 @@
+/* v144: stable title buttons and clean dialogue layout. No game logic changed. */
+/* Title: original 3:1 choice artwork was vertically squashed in 40px buttons.
+   Use a compact, CSS-drawn gold frame rather than distort that artwork. */
+#home.screen.active .menu{width:min(84vw,320px)!important;max-width:320px!important;gap:clamp(6px,1.1dvh,12px)!important;}
+#home.screen.active .menu button{
+  position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  width:100%!important;min-height:clamp(42px,5.5dvh,51px)!important;
+  margin:0!important;padding:8px 17px!important;box-sizing:border-box!important;
+  border:1px solid #c4a26a!important;border-image:none!important;border-radius:2px!important;
+  background:linear-gradient(100deg,rgba(34,13,48,.94),rgba(61,26,73,.96) 50%,rgba(34,13,48,.94))!important;
+  box-shadow:inset 0 0 0 2px rgba(227,192,133,.22),0 2px 9px rgba(23,9,31,.27)!important;
+  color:#f5e7d5!important;text-shadow:0 1px 3px #100819!important;
+  font-size:clamp(13px,1.1vw,17px)!important;line-height:1.25!important;
+  letter-spacing:.07em!important;white-space:normal!important;
+  transform:none!important;filter:none!important;animation:none!important;
+  transition:background-color .18s ease,color .18s ease,box-shadow .18s ease!important;
+}
+#home.screen.active .menu button::before,#home.screen.active .menu button::after{
+  content:'✦'!important;display:block!important;position:absolute!important;
+  top:50%!important;left:9px!important;right:auto!important;transform:translateY(-50%)!important;
+  color:#c9a66c!important;font-size:10px!important;line-height:1!important;
+  pointer-events:none!important;
+}
+#home.screen.active .menu button::after{left:auto!important;right:9px!important;}
+#home.screen.active .menu button:hover:not(:disabled),
+#home.screen.active .menu button:focus-visible:not(:disabled),
+#home.screen.active .menu button.v113-selected:not(:disabled){
+  color:#fff6db!important;letter-spacing:.07em!important;transform:none!important;filter:none!important;
+  background:linear-gradient(100deg,#351944,#593263 50%,#351944)!important;
+  box-shadow:inset 0 0 0 2px rgba(241,211,160,.42),0 0 12px rgba(226,186,115,.28)!important;
+}
+#home.screen.active .menu button:disabled{opacity:.52!important;filter:none!important;}
+/* Dialogue: keep supplied gold border art and the enlarged nameplate; remove
+   surplus backdrop around the artwork and reserve space for the floating name. */
+#game .dialogue:not(:has(#choices > button)){
+  box-sizing:border-box!important;
+  background:transparent!important;background-color:transparent!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+  padding:17px clamp(16px,2.3vw,29px) 15px!important;
+  min-height:112px!important;
+  overflow:visible!important;
+}
+#game .dialogue:not(:has(#choices > button)) #line{
+  position:relative!important;display:block!important;
+  margin:0!important;padding:2px 0 0!important;
+  color:#f8effa!important;line-height:1.7!important;
+  overflow-wrap:break-word!important;white-space:pre-wrap!important;
+  max-height:min(33dvh,270px)!important;overflow-y:auto!important;
+}
+#game .dialogue:not(:has(#choices > button)) #speaker.speaker{
+  top:-42px!important;left:clamp(8px,2vw,22px)!important;
+  margin:0!important;z-index:5!important;
+}
+@media(max-width:760px){
+ #home.screen.active .v112-side{justify-content:center!important;}
+ #home.screen.active .title-logo-wrap{height:clamp(75px,15dvh,135px)!important;}
+ #home.screen.active .menu{width:min(82vw,320px)!important;gap:clamp(5px,.85dvh,9px)!important;}
+ #home.screen.active .menu button{min-height:clamp(38px,5.2dvh,47px)!important;font-size:clamp(12px,3.4vw,15px)!important;padding:6px 20px!important;}
+ #game .dialogue:not(:has(#choices > button)){padding:13px 14px 12px!important;min-height:100px!important;}
+ #game .dialogue:not(:has(#choices > button)) #speaker.speaker{top:-34px!important;left:6px!important;}
+ #game .dialogue:not(:has(#choices > button)) #line{line-height:1.65!important;max-height:32dvh!important;}
+}
+@media(max-height:620px){
+ #home.screen.active .menu{gap:3px!important;}
+ #home.screen.active .menu button{min-height:34px!important;padding:3px 16px!important;}
+ #home.screen.active .title-logo-wrap{height:clamp(55px,11dvh,90px)!important;}
+}

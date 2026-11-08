@@ -2951,7 +2951,13 @@ $('loreHomeBtn').onclick=loreLibrary;$('loreBtn').onclick=loreLibrary;
   if(typing)finish();else if(double&&page<pages.length-1){page++;showPage();}
  });
  // Prevent choice activation while text is still being revealed.
- choices.addEventListener('click',e=>{if(typing||page<pages.length-1){e.preventDefault();e.stopImmediatePropagation();if(typing)finish();}},true);
+ // v146: Choices must remain clickable when rendered. The old capture listener
+ // cancelled the user's selection if the narrative typewriter was still active.
+ // Finish the current text visually without swallowing the choice click.
+ choices.addEventListener('click',e=>{
+  if(!e.target.closest('button'))return;
+  if(typing)finish();
+ },true);
  const indicator=document.createElement('span');indicator.id='v87PageCount';indicator.setAttribute('aria-label','문단 진행도');
  next.parentElement?.insertBefore(indicator,next);
  // New node rendering may insert choice buttons after the narrative; keep them hidden until appropriate.
