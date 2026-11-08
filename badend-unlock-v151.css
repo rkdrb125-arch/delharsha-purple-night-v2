@@ -1,0 +1,15 @@
+/* v151: Special video unlocked by the four BAD endings. */
+.badend-video-modal[hidden],.badend-video-fallback[hidden]{display:none!important}
+.badend-video-modal{position:fixed;inset:0;z-index:100001;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(5,3,13,.98);padding:max(10px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));box-sizing:border-box}
+.badend-video-bar{display:flex;align-items:center;justify-content:space-between;width:min(100%,1200px);color:#e5ca98;font-size:clamp(12px,2vw,16px);margin-bottom:12px;gap:16px}
+#badEndVideoClose,#badEndVideoPlay{cursor:pointer;border:1px solid #c6a66e;border-radius:8px;background:#281a36;color:#fff2d7;padding:10px 16px;min-height:44px;font:inherit}
+#badEndVideo{display:block;width:min(100%,1200px);height:auto;max-height:calc(100dvh - 110px);aspect-ratio:16/9;object-fit:contain;background:#000}
+.badend-video-fallback{text-align:center;color:#fff2d7;padding:12px}
+body.badend-video-active{overflow:hidden!important}
+@media(max-width:600px){.badend-video-bar{margin-bottom:8px}#badEndVideo{max-height:calc(100dvh - 90px)}}
+
+/* v152: fallback must stay visible and touch-accessible on mobile. */
+.badend-video-fallback:not([hidden]){position:absolute;inset:auto 12px max(20px,env(safe-area-inset-bottom));z-index:2;background:rgba(18,10,31,.94);border:1px solid #b99a65;border-radius:12px;max-width:560px;width:calc(100% - 24px);box-sizing:border-box;box-shadow:0 6px 30px #0009}
+.badend-video-fallback p{line-height:1.6;margin:0 0 12px}
+#badEndVideoPlay{min-width:160px;touch-action:manipulation}
+@media(max-width:600px){.badend-video-modal{justify-content:center}.badend-video-bar{font-size:12px}#badEndVideo{width:100%;height:auto;max-height:65dvh}.badend-video-fallback:not([hidden]){bottom:max(16px,env(safe-area-inset-bottom))}}
