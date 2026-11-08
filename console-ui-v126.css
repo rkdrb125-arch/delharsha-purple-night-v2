@@ -1,0 +1,16 @@
+/* v126: cinematic VN presentation. Keep underlying buttons functional. */
+#game .v126-hud{display:flex!important;position:static!important;flex-wrap:wrap!important;gap:8px!important;max-height:48vh;overflow:auto;justify-content:center;padding:12px!important;background:transparent!important;box-shadow:none!important;border:0!important}
+#game .v126-tools{position:absolute;top:18px;right:20px;z-index:35;display:flex;gap:5px;align-items:center;padding:5px 7px;border:1px solid #bca07165;border-radius:3px;background:#1b1027a8;backdrop-filter:blur(9px);box-shadow:0 4px 20px #12091a55}
+#game .v126-tool{width:35px;height:35px;padding:0!important;border:0!important;border-radius:2px!important;background:transparent!important;color:#ead3a5!important;font:20px Georgia,serif!important;box-shadow:none!important;text-shadow:0 0 8px #d2a87555;cursor:pointer}
+#game .v126-tool:hover,#game .v126-tool:focus-visible{background:#8b65924d!important;color:#fff0c8!important}
+#game .v126-menu{position:absolute;top:71px;right:20px;z-index:36;width:min(480px,calc(100vw - 40px));max-height:60vh;overflow:auto;background:linear-gradient(160deg,#301b40f2,#160e21f5);border:1px solid #bda276;border-radius:4px;box-shadow:0 12px 45px #09030dcc;padding:8px}
+#game .v126-menu[hidden]{display:none!important}
+#game .scene-top{opacity:.55;pointer-events:none;font-size:.73rem!important;letter-spacing:.14em}
+#game .stage-caption{opacity:.32}
+#game .dialogue{cursor:pointer}
+#game .dialogue #nextBtn,#game .dialogue #v87PageCount{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;opacity:0!important;pointer-events:none!important;padding:0!important;margin:0!important;border:0!important;clip-path:inset(50%)!important}
+#game .dialogue .v126-advance{position:absolute;right:25px;bottom:18px;font-size:13px;color:#ead4a3;text-shadow:0 0 10px #e9b96d;animation:v126Glow 1.8s ease-in-out infinite;pointer-events:none}
+#game .dialogue:has(#choices button:not(.hidden):not([style*="display: none"])) .v126-advance{display:none}
+@keyframes v126Glow{0%,100%{opacity:.35;transform:translateY(0)}50%{opacity:1;transform:translateY(3px)}}
+@media(max-width:700px){#game .v126-tools{top:12px;right:10px;gap:1px;padding:3px}#game .v126-tool{width:30px;height:32px;font-size:17px!important}#game .v126-menu{top:55px;right:10px;width:calc(100vw - 20px)}}
+@media(prefers-reduced-motion:reduce){#game .v126-advance{animation:none}}
