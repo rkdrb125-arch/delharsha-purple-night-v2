@@ -1,0 +1,48 @@
+/* v193: preserve existing ornate image assets; repair placement only. */
+body.ui164 #app #game.screen .dialogue {
+  position:relative!important;
+  overflow:visible!important;
+  padding-top:clamp(26px,3vw,38px)!important;
+}
+body.ui164 #app #game.screen .dialogue #speaker.speaker {
+  left:clamp(6px,1.5vw,22px)!important;
+  right:auto!important;
+  transform:none!important;
+  text-align:center!important; /* text centered within the left-aligned decorative image */
+}
+#game .dialogue #line {text-align:left!important;}
+#game .dialogue .dialogue-footer-v193 {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-end;
+  gap:clamp(8px,1.2vw,16px);
+  width:100%;
+  margin-top:8px;
+  flex-shrink:0;
+}
+#game .dialogue .dialogue-footer-v193 #v87PageCount {
+  position:static!important;
+  display:inline-flex;
+  align-items:center;
+  align-self:auto!important;
+  margin:0!important;
+  min-width:3.5em;
+  color:#d8c39e;
+  font-variant-numeric:tabular-nums;
+  text-align:right;
+  white-space:nowrap;
+}
+#game .dialogue .dialogue-footer-v193 #nextBtn {
+  position:static!important;
+  align-self:auto!important;
+  flex:0 0 auto;
+  margin:0!important;
+}
+@media(max-width:600px){
+ body.ui164 #app #game.screen .dialogue {padding-top:22px!important;}
+ body.ui164 #app #game.screen .dialogue #speaker.speaker {left:4px!important;}
+ #game .dialogue .dialogue-footer-v193 {gap:8px;margin-top:5px;}
+ #game .dialogue .dialogue-footer-v193 #v87PageCount {font-size:.72rem;}
+ #game .dialogue .dialogue-footer-v193 #nextBtn {min-height:40px;}
+}
