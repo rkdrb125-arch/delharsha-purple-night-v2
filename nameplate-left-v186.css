@@ -1,5 +1,5 @@
 /* v186: one large left-aligned speaker nameplate, no central duplicate. */
-body.ui164 #app #game.screen .dialogue{position:relative!important;overflow:visible!important;}
+/* v198: speaker stylesheet must not override dialogue positioning. */
 body.ui164 #app #game.screen .dialogue #speaker.speaker,
 body.ui164 #app #game.screen .dialogue:not(:has(#choices > button)) #speaker.speaker{
  position:absolute!important;top:-60px!important;left:clamp(0px,1.2vw,18px)!important;

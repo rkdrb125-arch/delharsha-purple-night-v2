@@ -1,0 +1,57 @@
+/* v198 · PC dialogue placement repair. Preserve original gold frame and game logic. */
+@media (min-width: 761px) {
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+    position: fixed !important;
+    inset: auto auto max(18px, env(safe-area-inset-bottom, 0px)) 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0 !important;
+    width: min(880px, calc(100vw - 36px)) !important;
+    max-height: min(42dvh, 440px) !important;
+    height: auto !important;
+    min-height: 148px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+    overflow: visible !important;
+    z-index: 35 !important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+    text-align: left !important;
+    margin: 0 !important;
+    width: 100% !important;
+    overflow-y: auto !important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-prose,
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-inner-thought {
+    text-align: left !important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #speaker.speaker {
+    position: absolute !important;
+    top: -60px !important;
+    left: clamp(0px, 1.2vw, 18px) !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    width: 100% !important;
+    flex: 0 0 auto !important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #v87PageCount,
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #nextBtn {
+    position: static !important;
+    inset: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+  }
+}
+/* Avoid turning hidden controls visible. */
+body.ui164 #app #game.screen .dialogue #speaker[hidden],
+body.ui164 #app #game.screen .dialogue #nextBtn.hidden,
+body.ui164 #app #game.screen .dialogue #v87PageCount.hidden { display: none !important; }
