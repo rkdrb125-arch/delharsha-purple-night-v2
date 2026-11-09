@@ -1,5 +1,7 @@
 /* Preserve authored text; paginate at sentences, then clauses or word boundaries. */
 function readingPages160(text,thought=false,speaker=null,options={}){
+ // Inner monologue is one continuous page, preserving authored paragraph breaks.
+ if(thought){const whole=String(text||'').trim();return whole?[{text:whole,thought:true,speaker:null}]:[];}
  const line=document.getElementById('line');
  const viewport=options.viewport??window.innerWidth;
  const font=options.font??(parseFloat(getComputedStyle(line).fontSize)||15);

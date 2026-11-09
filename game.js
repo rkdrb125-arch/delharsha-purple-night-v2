@@ -2231,9 +2231,10 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  }
  function finish(){if(!typing)return;stop();line.textContent='';const span=document.createElement('span');span.className=pages[page].thought?'v67-inner-thought':'v67-prose';span.textContent=pages[page].text;line.append(span);syncNavigation();}
  function showPage(){
-  stop();line.replaceChildren();position=0;
+  stop();line.replaceChildren();line.scrollTop=0;position=0;
   const item=pages[page];if(typeof nameplate159==='function')nameplate159(item?.speaker);if(!item){syncNavigation();return;}
   const span=document.createElement('span');span.className=item.thought?'v67-inner-thought':'v67-prose';line.append(span);
+  if(item.thought){span.textContent=item.text;syncNavigation();return;}
   letters=graphemes(item.text);typing=true;const current=token;
   syncNavigation();
   function tick(){if(current!==token)return;

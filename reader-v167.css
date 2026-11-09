@@ -1,0 +1,14 @@
+/* Horizontal left alignment; retain the existing vertically centred flex layout. */
+body.ui164 #app #game.screen .dialogue #line,
+body.ui164 #app #game.screen #line .v67-prose,
+body.ui164 #app #game.screen #line .v67-inner-thought{text-align:left!important}
+body.ui164 #app #game.screen .dialogue #line{overscroll-behavior:contain!important;scrollbar-width:thin!important;scroll-padding:8px!important}
+@media(max-width:760px) and (min-height:501px){
+ body.ui164 #app #game.screen .dialogue{min-height:180px!important;max-height:48dvh!important;padding:32px 20px 24px!important;justify-content:center!important}
+ body.ui164 #app #game.screen .dialogue #line{max-height:calc(48dvh - 80px)!important;line-height:1.85!important}
+}
+/* In short landscape viewports, reserve room for the scene and navigation. */
+@media(max-height:500px){
+ body.ui164 #app #game.screen .dialogue{min-height:108px!important;max-height:48dvh!important;padding:16px 22px 14px!important}
+ body.ui164 #app #game.screen .dialogue #line{max-height:calc(48dvh - 54px)!important;line-height:1.6!important}
+}
