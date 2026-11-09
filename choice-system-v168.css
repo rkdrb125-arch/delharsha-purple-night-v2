@@ -1,0 +1,77 @@
+/* Sole framed-action policy. Nine-slice artwork retains ornaments and alpha;
+   the central purple area grows with text instead of clipping or scaling text. */
+body.ui164 #app #game.screen #choices>button,
+body.ui164 #app #home.screen.active .menu button,
+body.ui164 #app #modal.modal #modalContent button,
+body.ui164 #app #game.screen #choicePager button,
+body.ui164 #app header #settingsBtn,
+body.ui164 #app #openingPanel .opening-inner button,
+body.ui164 #v111LetterOverlay .v149-letter-finish{
+ box-sizing:border-box!important;position:relative!important;display:block!important;
+ flex:0 0 auto!important;min-width:0!important;max-width:100%!important;
+ height:auto!important;min-height:76px!important;max-height:none!important;
+ border:solid transparent!important;border-width:26px 32px!important;
+ border-image:url('assets/ui/ui_choice_frame.png') 260 220 280 220 fill / 26px 32px / 0 stretch!important;
+ border-radius:0!important;background:none!important;box-shadow:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important;
+ padding:4px 8px!important;margin:0!important;overflow:visible!important;
+ white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;
+ font-size:var(--reader-size,15px)!important;line-height:1.65!important;letter-spacing:0!important;
+ text-align:center!important;color:#fff3e5!important;text-shadow:0 1px 2px #14091b!important;
+ transform:none!important;animation:none!important;touch-action:manipulation!important;
+}
+body.ui164 #app #game.screen #choices>button::before,
+body.ui164 #app #game.screen #choices>button::after,
+body.ui164 #app #home.screen.active .menu button::before,
+body.ui164 #app #home.screen.active .menu button::after,
+body.ui164 #app #modal.modal #modalContent button::before,
+body.ui164 #app #modal.modal #modalContent button::after,
+body.ui164 #app #game.screen #choicePager button::before,
+body.ui164 #app #game.screen #choicePager button::after,
+body.ui164 #app header #settingsBtn::before,
+body.ui164 #app header #settingsBtn::after,
+body.ui164 #app #openingPanel .opening-inner button::before,
+body.ui164 #app #openingPanel .opening-inner button::after,
+body.ui164 #v111LetterOverlay .v149-letter-finish::before,
+body.ui164 #v111LetterOverlay .v149-letter-finish::after{content:none!important;display:none!important}
+body.ui164 #app #game.screen #choices>button[hidden],
+body.ui164 #app #home.screen.active .menu button[hidden],
+body.ui164 #app #modal.modal #modalContent button[hidden],
+body.ui164 #app #game.screen #choicePager button[hidden],
+body.ui164 #app header #settingsBtn[hidden],
+body.ui164 #app #openingPanel .opening-inner button[hidden],
+body.ui164 #v111LetterOverlay .v149-letter-finish[hidden],body.ui164 #app #game.screen #choices>button.hidden,body.ui164 #app #home.screen.active .menu button.hidden,body.ui164 #app #modal.modal #modalContent button.hidden,body.ui164 #app #game.screen #choicePager button.hidden,body.ui164 #app header #settingsBtn.hidden,body.ui164 #app #openingPanel .opening-inner button.hidden,body.ui164 #v111LetterOverlay .v149-letter-finish.hidden{display:none!important}
+body.ui164 #app #game.screen #choices>button:disabled,
+body.ui164 #app #home.screen.active .menu button:disabled,
+body.ui164 #app #modal.modal #modalContent button:disabled,
+body.ui164 #app #game.screen #choicePager button:disabled,
+body.ui164 #app header #settingsBtn:disabled,
+body.ui164 #app #openingPanel .opening-inner button:disabled,
+body.ui164 #v111LetterOverlay .v149-letter-finish:disabled{opacity:.55!important;cursor:not-allowed!important}
+body.ui164 #app #game.screen #choices>button:focus-visible,
+body.ui164 #app #home.screen.active .menu button:focus-visible,
+body.ui164 #app #modal.modal #modalContent button:focus-visible,
+body.ui164 #app #game.screen #choicePager button:focus-visible,
+body.ui164 #app header #settingsBtn:focus-visible,
+body.ui164 #app #openingPanel .opening-inner button:focus-visible,
+body.ui164 #v111LetterOverlay .v149-letter-finish:focus-visible{outline:2px solid #ffe2a3!important;outline-offset:-10px!important}
+body.ui164 #app #game.screen.choices-ready .dialogue{display:none!important}
+body.ui164 #app #game.screen.choices-ready #choices{
+ position:fixed!important;inset:112px max(12px,env(safe-area-inset-right)) 82px max(12px,env(safe-area-inset-left))!important;
+ width:min(680px,calc(100% - 24px))!important;height:auto!important;min-height:0!important;max-height:none!important;
+ margin:0 auto!important;padding:8px 2px!important;transform:none!important;display:flex!important;
+ flex-direction:column!important;justify-content:flex-start!important;justify-content:safe center!important;
+ gap:10px!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;
+ background:none!important;border:0!important;border-image:none!important;box-shadow:none!important;
+ backdrop-filter:none!important;-webkit-backdrop-filter:none!important;filter:none!important;z-index:30!important;
+ touch-action:pan-y!important;scroll-padding:8px!important;scrollbar-width:thin!important;
+}
+body.ui164 #app #game.screen #choices::before,body.ui164 #app #game.screen #choices::after{content:none!important;display:none!important}
+body.ui164 #app #game.screen #choices:empty,body.ui164 #app #game.screen #choices.v87-waiting{display:none!important}
+body.ui164 #app #game.screen.explore-ready #choices{top:174px!important}
+body.ui164 #app #game.screen #choicePager{background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;padding:0!important;gap:6px!important;bottom:max(8px,env(safe-area-inset-bottom))!important}
+body.ui164 #app #game.screen #choicePager button{min-height:58px!important;border-width:18px 22px!important;border-image-width:18px 22px!important;padding:2px 6px!important;font-size:13px!important}
+body.ui164 #app #modal .settings-grid{grid-template-columns:1fr!important;gap:6px!important}
+body.ui164 #app #modal #modalContent button{width:100%!important;margin:4px 0!important}
+body.ui164 #app header #settingsBtn{min-height:48px!important;border-width:14px 18px!important;border-image-width:14px 18px!important;padding:2px 5px!important;font-size:12px!important}
+@media(max-height:500px){body.ui164 #app #game.screen.choices-ready #choices{top:98px!important;bottom:72px!important}body.ui164 #app #game.screen.explore-ready #choices{top:146px!important}}

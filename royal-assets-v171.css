@@ -1,0 +1,12 @@
+body.ui164 #app #game.screen .dialogue #advance170{width:60px!important;min-height:44px!important;height:44px!important;bottom:2px!important;gap:1px!important;padding:2px!important;background:transparent!important;border-color:transparent!important;border-radius:22px!important}
+#advance170 img{display:block;width:30px;height:38px;object-fit:contain;flex:none;animation:gem171 1.8s ease-in-out infinite}
+#advance170 span{font-size:8px;letter-spacing:0;white-space:nowrap}
+@keyframes gem171{50%{opacity:.55;translate:0 2px}}
+body.ui164 #v111LetterOverlay .v111-letter-ornament{flex:none!important;height:84px!important;margin:0!important;padding:0!important}
+.v111-letter-ornament img{display:block;width:100%;height:100%;object-fit:contain}
+body.ui164 #v111LetterOverlay .v111-letter-wax{background:none!important;border:0!important;box-shadow:none!important;border-radius:0!important;width:86px!important;height:86px!important;padding:0!important}
+.v111-letter-wax img{width:100%;height:100%;object-fit:contain}
+.v111-letter-wax::before,.v111-letter-wax::after{content:none!important}
+@media(max-height:500px){body.ui164 #v111LetterOverlay .v111-letter-ornament{height:48px!important}}
+@media(prefers-reduced-motion:reduce){#advance170 img{animation:none!important}}
+body.reduce-effects #advance170 img{animation:none!important}

@@ -2016,8 +2016,8 @@ function v111LetterMount(){
  root.id='v111LetterOverlay';root.className='v111-letter-overlay';
  root.setAttribute('aria-label','아셀 왕실 초대장');
  root.innerHTML=`<div class="v111-letter-vignette"></div><div class="v111-letter-desk"></div>
- <div class="v111-letter-envelope" aria-hidden="true"><div class="v111-letter-flap"></div><div class="v111-letter-monogram">ASEL · ROYAL COURT</div><div class="v111-letter-wax">♛</div></div>
- <article class="v111-letter-paper" aria-label="아셀 왕국 왕실 초청 서한"><div class="v111-letter-ornament">✦　✧　✦</div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><div class="v149-letter-scroll" tabindex="0" role="region" aria-label="초청 서한 전문"></div><button type="button" class="v149-letter-finish">서한을 접는다</button></article>
+ <div class="v111-letter-envelope" aria-hidden="true"><div class="v111-letter-flap"></div><div class="v111-letter-monogram">ASEL · ROYAL COURT</div><div class="v111-letter-wax"><img src="assets/ui/asel-wax.png" alt=""></div></div>
+ <article class="v111-letter-paper" aria-label="아셀 왕국 왕실 초청 서한"><div class="v111-letter-ornament"><img src="assets/ui/asel-crest.png" alt="아셀 왕실 문장"></div><div class="v111-letter-label">THE ROYAL COURT OF ASEL</div><div class="v111-letter-rule"></div><div class="v149-letter-scroll" tabindex="0" role="region" aria-label="초청 서한 전문"></div><button type="button" class="v149-letter-finish">서한을 접는다</button></article>
  <div class="v111-letter-narration" aria-live="polite"></div>`;
  const letter=root.querySelector('.v149-letter-scroll');for(const [i,text] of NODES.invitation.text.split('\n\n').entries()){const part=document.createElement(i===0?'h2':'p');part.textContent=text;part.style.whiteSpace='pre-line';letter.append(part);}
  const screen=document.getElementById('game')||document.querySelector('main')||document.body;
@@ -2228,6 +2228,8 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
   choices.classList.toggle('v87-waiting',hasMore||typing);
   const indicator=document.getElementById('v87PageCount');
   if(indicator)indicator.textContent=pages.length>1?(page+1)+' / '+pages.length:'';
+  window.DELHARSA_READING={node:state.node,token,page,ready:!typing,more:hasMore,text:pages[page]?.text||'',canAdvance:hasMore||!!NODES[state.node]?.next};
+  window.dispatchEvent(new CustomEvent('delharsa-reading',{detail:window.DELHARSA_READING}));
  }
  function finish(){if(!typing)return;stop();line.textContent='';const span=document.createElement('span');span.className=pages[page].thought?'v67-inner-thought':'v67-prose';span.textContent=pages[page].text;line.append(span);syncNavigation();}
  function showPage(){

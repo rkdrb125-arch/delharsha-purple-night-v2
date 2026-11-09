@@ -1,0 +1,20 @@
+/* Original DELHARSA styling, edge placement inspired by the supplied reference. */
+body.ui164:has(#game.active) #app>header{display:none!important}
+body.ui164 #app #game .edge-tab{position:fixed;z-index:80;display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin:0;padding:10px;color:#f5dfb6;background:linear-gradient(110deg,#3b214c,#1f102e);border:1px solid #c4a374;box-shadow:inset 0 0 0 3px #241432,inset 0 0 0 4px #94754a,0 3px 12px #09031066;font:14px var(--delharsha-display-font,serif);letter-spacing:.12em;touch-action:manipulation;transition:color .2s,background .2s}
+body.ui164 #app #game .edge-tab:focus-visible{outline:2px solid #ffe1a1;outline-offset:3px}
+body.ui164 #app #game #edgeHistory169{left:0;top:max(8px,env(safe-area-inset-top));width:84px;border-left:0;border-radius:0 0 18px 0}
+body.ui164 #app #game #edgeMenu169{right:0;top:35%;width:44px;min-height:106px;writing-mode:vertical-rl;border-right:0;border-radius:18px 0 0 18px}
+body.ui164 #app #game #edgeHide169{right:0;top:calc(35% + 116px);width:44px;min-height:70px;writing-mode:vertical-rl;border-right:0;border-radius:14px 0 0 14px;font-size:12px}
+body.ui164 #app #game.ui-hidden169 .dialogue,body.ui164 #app #game.ui-hidden169 #choices,body.ui164 #app #game.ui-hidden169 #choicePager,body.ui164 #app #game.ui-hidden169 .scene-top,body.ui164 #app #game.ui-hidden169 #choiceContext164,body.ui164 #app #game.ui-hidden169 #v90Flash{visibility:hidden!important;pointer-events:none!important}
+body.ui164.v111-letter-active #game .edge-tab,body.opening-video-active #game .edge-tab{display:none!important}
+body.ui164 #app #game.screen.choices-ready #choices{left:12px!important;right:58px!important;width:min(680px,calc(100% - 70px))!important}
+body.ui164 #modal.modal.edge-menu,body.ui164 #modal.modal.edge-history{padding:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#10081980!important;justify-content:flex-end!important}
+body.ui164 #modal.modal.edge-history{justify-content:flex-start!important}
+body.ui164 #modal.modal.edge-menu .modal-panel,body.ui164 #modal.modal.edge-history .modal-panel{width:min(440px,92vw)!important;height:100dvh!important;max-height:100dvh!important;margin:0!important;border-radius:14px 0 0 14px!important;padding:max(18px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom))!important;animation:edge-in169 .22s ease-out!important}
+body.ui164 #modal.modal.edge-history .modal-panel{border-radius:0 14px 14px 0!important;animation-name:history-in169!important}
+@keyframes edge-in169{from{translate:100% 0;opacity:.4}to{translate:0 0;opacity:1}}
+@keyframes history-in169{from{translate:-100% 0;opacity:.4}to{translate:0 0;opacity:1}}
+@media(prefers-reduced-motion:reduce){body.ui164 #modal.modal.edge-menu .modal-panel,body.ui164 #modal.modal.edge-history .modal-panel{animation:none!important}}
+body.ui164.reduce-effects #modal.modal.edge-menu .modal-panel,body.ui164.reduce-effects #modal.modal.edge-history .modal-panel{animation:none!important}
+
+body.ui164 #app #game.screen.ui-hidden169 .dialogue #line,body.ui164 #app #game.screen.ui-hidden169 .dialogue #speaker.speaker{visibility:hidden!important;pointer-events:none!important}
