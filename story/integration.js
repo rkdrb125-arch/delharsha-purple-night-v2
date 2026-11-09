@@ -72,7 +72,7 @@ function story155Move(loc){
   if(!story155Arc('miguel',loc)&&!v18OfferPromise()){
    // Greeting, confession and reconciliation are no longer reset on every meeting.
    const privatePlace=['garden','terrace'].includes(loc);
-   NODES.story155_meeting={speaker:'미겔 코트리먼',chapter:'PROLOGUE · 아셀의 7일',text:privatePlace?'인적이 드문 길에서 미겔이 발걸음을 늦추었다.\n\n“다니엘, 또 만났구나. 잠시 쉬어 가렴.”\n\n나는 그녀의 걸음에 보폭을 맞췄다. 함께 걷는 시간을 더 큰 약속으로 바꾸지 않으려 애쓰면서.':'미겔은 지나가는 귀빈에게 인사를 마친 뒤 나를 향해 고개를 끄덕였다.\n\n“레온하르트 경, 편안히 지내고 계신지요.”\n\n나는 정중히 답하고 그녀의 다음 인사를 방해하지 않도록 길을 비켰다.',next:'explore'};state.node='story155_meeting';
+   NODES.story155_meeting={speaker:'미겔 코트리먼',chapter:'PROLOGUE · 아셀의 7일',text:privatePlace?'인적이 드문 길에서 미겔이 발걸음을 늦추었다.\n“다니엘, 또 만났구나. 잠시 쉬어 가렴.”\n나는 그녀의 걸음에 보폭을 맞췄다. 함께 걷는 시간을 더 큰 약속으로 바꾸지 않으려 애쓰면서.':'미겔은 지나가는 귀빈에게 인사를 마친 뒤 나를 향해 고개를 끄덕였다.\n“레온하르트 경, 편안히 지내고 계신지요.”\n나는 정중히 답하고 그녀의 다음 인사를 방해하지 않도록 길을 비켰다.',next:'explore'};state.node='story155_meeting';
   }
  }else if(loc===alex){markAlexMeeting();if(!story155Arc('alex',loc)&&!v54FamilyScene(loc))state.node='explore_alex';}
  else if(!story155Arc('court',loc)&&!v19PromiseFollowup(loc)&&!v21NpcFollowup(loc)&&!v21RumorEcho(loc)&&!v20ErrandEvent(loc)&&!v18SerialEvent(loc)&&!v16QuestEvent(loc)&&!questEvent(loc)&&!specialDayEvent(loc)&&!v19NpcEncounter(loc)&&!v19RumorEncounter(loc)&&!v18NpcEvent(loc,turn))ambientScene(loc);
@@ -81,7 +81,7 @@ function story155Move(loc){
 function story155Explore(){
  const ex=exploration();$('choices').replaceChildren();$('nextBtn').classList.add('hidden');
  $('speaker').textContent='아셀 왕궁';$('chapter').textContent='PROLOGUE · 아셀의 7일';
- $('line').textContent='DAY '+state.day+' · '+CLOCK_LABELS[Math.min(ex.turn,7)]+'\n남은 이동 '+Math.max(0,7-ex.turn)+' / 7\n\n연회의 밤, 어디로 향하시겠습니까?';
+ $('line').textContent='DAY '+state.day+' · '+CLOCK_LABELS[Math.min(ex.turn,7)]+'\n남은 이동 '+Math.max(0,7-ex.turn)+' / 7\n연회의 밤, 어디로 향하시겠습니까?';
  for(const loc of LOCATIONS)v56Item(loc.name,()=>moveTo(loc.id));
  v56Item('소문과 흔적을 살핀다',()=>{if(ex.turn<7)clueSearch();else story155EndDay();});
  v56Item('의뢰와 약속',()=>{const wrap=document.createElement('div');for(const [label,fn] of [['의뢰 수첩',v16QuestBoard],['약속과 연속 사건',v18Board],['동선 추리',inferenceV15],['소문 확인',()=>{closeModal();if(ex.turn<7)v20VerifyRumor();}],['약속 장소 정하기',v21PromiseMenu]]){const b=document.createElement('button');b.textContent=label;b.onclick=fn;wrap.append(b);}modal('의뢰와 약속',wrap);});
@@ -92,17 +92,17 @@ function story155Explore(){
  // Latest author decisions supersede obsolete introductions and endless banquet days.
  for(let day=1;day<=7;day++)NODES['v108_day'+day].next=day===1?'v92_court_whispers':'explore';
  for(const id of ['v92_alex_truth','v92_alex_silence','v92_alex_question'])NODES[id].next='explore';
- NODES.v108_day7.text='알렉스 형님은 약속대로 돌아왔다. 왕궁에서는 마지막 대무도회를 준비하고 있었다.\n\n형님과 코트리먼이 함께 입장하던 순간, 기둥의 그늘에 서 있던 내 모습을 떠올렸다. 일주일 동안 쌓인 기억을 안고, 나는 그 밤의 남은 시간을 걸었다.';
+ NODES.v108_day7.text='알렉스 형님은 약속대로 돌아왔다. 왕궁에서는 마지막 대무도회를 준비하고 있었다.\n형님과 코트리먼이 함께 입장하던 순간, 기둥의 그늘에 서 있던 내 모습을 떠올렸다. 일주일 동안 쌓인 기억을 안고, 나는 그 밤의 남은 시간을 걸었다.';
  NODES.v93_afterglow.next='v108_fireworks';
  NODES.v94_morning.day=9;NODES.v95_invitation.day=10;
  // This is a continuous sequel to the estate visit, not a second first meeting.
- NODES.v94_morning.text='코트리먼 영지를 다녀온 뒤에도 온실의 장미 향이 기억에 남았다. 연회에서 내린 선택과 영지에서 나눈 대화는 하나의 마음에 이어져 있었다.\n\n알렉스 형님이 서재로 나를 불렀다. 평소와 같은 목소리였다. 그 평범함이 오히려 두려웠다.';
+ NODES.v94_morning.text='코트리먼 영지를 다녀온 뒤에도 온실의 장미 향이 기억에 남았다. 연회에서 내린 선택과 영지에서 나눈 대화는 하나의 마음에 이어져 있었다.\n알렉스 형님이 서재로 나를 불렀다. 평소와 같은 목소리였다. 그 평범함이 오히려 두려웠다.';
  NODES.v94_alex_intro.text=NODES.v94_alex_intro.text.replace('어제는 늦게까지 있었더구나. 무도회는 즐거웠어?','코트리먼 영지는 어땠어? 미겔을 만나고 왔겠지.');
  for(const [id,n] of Object.entries(NODES))if(id.startsWith('v94_')||id.startsWith('v95_')){
   for(const key of ['text','thought'])if(n[key])n[key]=n[key].replaceAll('어젯밤','그날').replaceAll('전날 밤','연회 마지막 밤');
  }
  for(const id of ['v95_ending_truth','v95_ending_cover','v95_ending_inquiry'])NODES[id].next='story155_resolution';
- NODES.story155_resolution={speaker:'다니엘 레온하르트',chapter:'선택이 남긴 것',text:'연회도, 영지에서의 하루도 지나갔다. 그러나 내가 내린 선택과 그들이 건넨 대답은 아직 남아 있었다.\n\n다음 걸음은 내가 정해야 했다.',choices:[{text:'나의 결말을 돌아본다.',story155Ending:true},{text:'운명의 갈림길로 향한다.',next:'v88_crossroads'},{text:'이야기 기록을 읽는다.',story155Journal:true},{text:'타이틀로 돌아간다.',action:'home'}]};
+ NODES.story155_resolution={speaker:'다니엘 레온하르트',chapter:'선택이 남긴 것',text:'연회도, 영지에서의 하루도 지나갔다. 그러나 내가 내린 선택과 그들이 건넨 대답은 아직 남아 있었다.\n다음 걸음은 내가 정해야 했다.',choices:[{text:'나의 결말을 돌아본다.',story155Ending:true},{text:'운명의 갈림길로 향한다.',next:'v88_crossroads'},{text:'이야기 기록을 읽는다.',story155Journal:true},{text:'타이틀로 돌아간다.',action:'home'}]};
  NODES.story155_meeting={speaker:'미겔 코트리먼',text:'미겔과 나눈 인사를 떠올렸다.',next:'explore'};
  // Unique diplomacy arc fits the latest seven-day royal schedule.
  Object.assign(V68_STORIES.court,{day:2});V68_STORIES.promise.day=4;
