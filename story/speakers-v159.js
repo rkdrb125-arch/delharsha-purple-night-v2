@@ -1336,7 +1336,7 @@ function dialogueSegments159(node,id){
   append(match[0],speaker??null);index++;offset=match.index+match[0].length;
  }
  append(text.slice(offset));
- if(node.thought)append('('+String(node.thought).replace(/^\(|\)$/g,'')+')',null,true);
+ if(node.thought)append('('+String(node.thought).replace(/^\(|\)$/g,'')+')','다니엘 레온하르트',true);
  return segments;
 }
 function nameplate159(speaker){
