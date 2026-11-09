@@ -30,7 +30,7 @@ function story155Journal(){
  const all=[...(Array.isArray(state.v16?.memories)?state.v16.memories:[]),...Object.entries(state).filter(([k])=>/^v\d+$/.test(k)).flatMap(([,v])=>Array.isArray(v?.events)?v.events:[]),...(state.story155?.memories||[])];
  const unique=new Map();for(const e of all){if(!e||typeof e.text!=='string')continue;const text=e.text.replaceAll('황궁','왕궁').replaceAll('황실','왕실').replaceAll('아셀 사절단','방문 사절단');if(!unique.has(text))unique.set(text,{...e,text});}
  const entries=[...unique.values()].sort((a,b)=>(a.day||0)-(b.day||0));
- const paint=()=>{list.replaceChildren();for(const e of entries){if(search.value&&!((e.title||'')+' '+e.text).includes(search.value))continue;const card=document.createElement('div');card.className='journal-entry';const title=document.createElement('strong');title.textContent='DAY '+(e.day||1)+' · '+(e.title||e.speaker||'이야기').replace(/\bv\d+\s*[·:]?\s*/g,'');const body=document.createElement('p');body.textContent=e.text;card.append(title,body);list.append(card);}if(!list.childNodes.length)list.textContent='아직 해당 기록이 없습니다.';};search.oninput=paint;paint();modal('이야기 기록',wrap);
+ const paint=()=>{list.replaceChildren();for(const e of entries){if(search.value&&!((e.title||'')+' '+e.text).includes(search.value))continue;const card=document.createElement('div');card.className='journal-entry';const title=document.createElement('strong');title.textContent=((e.day||1)<=7?'EP.1 · DAY '+(e.day||1):(e.day===8?'EP.2':'EP.3'))+' · '+(e.title||e.speaker||'이야기').replace(/\bv\d+\s*[·:]?\s*/g,'');const body=document.createElement('p');body.textContent=e.text;card.append(title,body);list.append(card);}if(!list.childNodes.length)list.textContent='아직 해당 기록이 없습니다.';};search.oninput=paint;paint();modal('이야기 기록',wrap);
 }
 function story155EndDay(){
  if(v49Finished())return;
@@ -52,8 +52,7 @@ function story155Move(loc){
  if(!LOCATIONS.some(x=>x.id===loc)||v49Finished())return;
  const d=story155Data(),ex=exploration();if(state.day>7){state.node='story155_resolution';render();return;}
  if(ex.turn>=7){story155EndDay();return;}
- const turn=ex.turn++;ex.location=loc;ex.visited.push(loc);state.history.push('explore');
- v18CheckMissedPromise();
+ const turn=ex.turn;v18CheckMissedPromise();ex.turn++;ex.location=loc;ex.visited.push(loc);state.history.push('explore');
  if(v18PromiseEncounter(loc,turn)){v22PromiseScene(loc);render();return;}
  const absent=state.day===5||state.day===6;
  // Non-repeating, authored side stories retain their own dependency chains.
@@ -131,7 +130,7 @@ function story155Explore(){
   const d=story155Data();
   if(state.node==='explore'&&state.day>7)state.node='story155_resolution';
   if(state.node==='explore_timeout'){story155EndDay();return;}
-  if(state.node==='v93_temptation_choice'&&d.introPath){state.v94=state.v94||{};state.v94.path=d.introPath;state.node={reason:'v93_reason',instinct:'v93_instinct',boundary:'v93_crossed_line'}[d.introPath];}
+  if(false&&state.node==='v93_temptation_choice'&&d.introPath){state.v94=state.v94||{};state.v94.path=d.introPath;state.node={reason:'v93_reason',instinct:'v93_instinct',boundary:'v93_crossed_line'}[d.introPath];}
   if(String(state.node).startsWith('rose_')&&!state.v94?.path){state.v94={...(state.v94||{}),path:d.introPath||'reason'};}
   const n=NODES[state.node];
   if(n&&[5,6].includes(state.day)&&n.text)n.text=n.text.replace('알렉스와는 익숙한 눈인사를 나누었으나, 사적인 친밀함을 공적인 언사에 섞지 않았다.','알렉스가 자리를 비운 동안에도 공적인 격식은 흐트러지지 않았다.');

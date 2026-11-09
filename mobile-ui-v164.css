@@ -1,0 +1,108 @@
+/* One layout owner for mobile and desktop dialogue, choices and shared panels. */
+:root{--reader-size:15px;--ui-ink:#fff3e5;--ui-gold:#d6bc8b;--ui-panel:#24132f;color-scheme:dark}
+body.ui164{margin:0;overflow-x:hidden;color:var(--ui-ink)}
+body.ui164 *,body.ui164 *::before,body.ui164 *::after{box-sizing:border-box}
+body.ui164 #app{width:100%!important;max-width:none!important;min-height:100dvh!important;overflow-x:clip!important}
+body.ui164 #app header{position:absolute!important;inset:0 0 auto!important;z-index:50!important;display:flex!important;align-items:center!important;gap:8px!important;min-height:58px!important;padding:8px 12px!important;background:linear-gradient(#150b24d9,#150b2400)!important}
+body.ui164 header .brand{margin-right:auto;min-width:0;max-width:45%;font-size:12px!important;line-height:1.4!important}
+body.ui164 header #settingsBtn{flex:none;min-height:44px!important;padding:8px 12px!important;font-size:13px!important}
+body.ui164 #app #game.screen.active{position:relative!important;width:100%!important;height:100dvh!important;min-height:100dvh!important;padding:0!important;overflow:hidden!important;display:block!important}
+body.ui164 #app #game .scene{position:absolute!important;inset:0!important;height:100%!important;min-height:0!important;border:0!important;margin:0!important;padding:0!important}
+body.ui164 #app #game #stage{position:absolute!important;inset:0!important;min-height:0!important;width:100%!important;height:100%!important;background-size:cover!important;background-position:center!important}
+body.ui164 #app #game .scene-top{position:absolute!important;inset:62px 12px auto!important;display:flex!important;gap:10px!important;justify-content:space-between!important;align-items:center!important;padding:6px 10px!important;font-size:11px!important;line-height:1.5!important;letter-spacing:0!important;color:#f9e8cd!important;background:#1a102b9e!important;border-radius:6px;z-index:3!important}
+body.ui164 #app #game #chapter{min-width:0;overflow-wrap:anywhere}
+body.ui164 #app #game #day{flex:none}
+body.ui164 .v126-tools,body.ui164 .v126-menu,body.ui164 #bgmPanel,body.ui164 #gameSettingsBtn,body.ui164 #v112OptionsBtn,body.ui164 #stageCaption{display:none!important}
+/* Text and thought share one vertically and horizontally centred reading area. */
+body.ui164 #app #game.screen .dialogue{position:absolute!important;left:50%!important;right:auto!important;top:auto!important;bottom:max(18px,env(safe-area-inset-bottom))!important;transform:translateX(-50%)!important;width:min(880px,calc(100% - 24px))!important;height:auto!important;min-height:148px!important;max-height:42dvh!important;margin:0!important;padding:24px 26px 30px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;align-items:center!important;overflow:visible!important;isolation:auto!important;filter:none!important;backdrop-filter:none!important;border:12px solid transparent!important;border-image:url('assets/ui/ui_dialogue_frame.png') 140 155 125 155 fill / 12px 16px / 0 stretch!important;background:none!important;box-shadow:none!important;z-index:12!important}
+body.ui164 #app #game.screen .dialogue::before,body.ui164 #app #game.screen .dialogue::after{content:none!important}
+body.ui164 #app #game.screen .dialogue #line{display:block!important;position:relative!important;width:100%!important;min-width:0!important;min-height:0!important;max-height:28dvh!important;height:auto!important;flex:none!important;margin:auto 0!important;padding:0!important;color:var(--ui-ink)!important;font-size:var(--reader-size)!important;line-height:1.8!important;text-align:center!important;text-indent:0!important;white-space:pre-wrap!important;word-break:keep-all!important;overflow-wrap:anywhere!important;overflow-x:hidden!important;overflow-y:auto!important;letter-spacing:0!important;touch-action:pan-y!important;visibility:visible!important}
+body.ui164 #app #game.screen #line .v67-prose,body.ui164 #app #game.screen #line .v67-inner-thought{display:block!important;position:static!important;transform:none!important;width:100%!important;margin:0!important;padding:0!important;border:0!important;background:none!important;box-shadow:none!important;text-align:center!important;white-space:pre-wrap!important;color:var(--ui-ink)!important}
+body.ui164 #app #game.screen #line .v67-inner-thought{opacity:.8!important;font-style:italic}
+body.ui164 #app #game.screen .dialogue #speaker.speaker{position:absolute!important;left:50%!important;right:auto!important;top:-48px!important;bottom:auto!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;justify-content:center!important;width:min(230px,72vw)!important;max-width:72vw!important;height:46px!important;min-height:46px!important;margin:0!important;padding:8px 24px!important;border:0!important;background:transparent url('assets/ui/ui_nameplate.png') center 46% / 100% 132% no-repeat!important;box-shadow:none!important;color:#fff1d6!important;text-align:center!important;font-size:14px!important;line-height:1.3!important;white-space:nowrap!important;letter-spacing:0!important;visibility:visible!important}
+body.ui164 #app #game.screen #speaker[hidden]{display:none!important}
+body.ui164 #app #game .v126-advance{right:16px!important;bottom:7px!important;font-size:10px!important}
+/* Choice artwork is the supplied PNG, sized independently from transparent margins. */
+body.ui164 #app #game.screen #choices{margin:0!important;padding:0!important}
+body.ui164 #app #game.screen #choices:empty,body.ui164 #app #game.screen #choices.v87-waiting{display:none!important;pointer-events:none!important}
+body.ui164 #app #game.screen.choices-ready .dialogue{background:none!important;border:0!important;border-image:none!important;box-shadow:none!important;pointer-events:none!important}
+body.ui164 #app #game.screen.choices-ready .dialogue #line,body.ui164 #app #game.screen.choices-ready #speaker,body.ui164 #app #game.screen.choices-ready .v126-advance{visibility:hidden!important}
+body.ui164 #app #game.screen.choices-ready #choices{display:flex!important;position:fixed!important;inset:auto!important;left:50%!important;top:calc(50dvh + 12px)!important;transform:translate(-50%,-50%)!important;width:min(680px,calc(100vw - 24px))!important;max-height:calc(100dvh - 190px)!important;height:auto!important;flex-direction:column!important;gap:10px!important;padding:8px 2px!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;pointer-events:auto!important;z-index:60!important;touch-action:pan-y!important}
+body.ui164 #app #game.screen #choices::before{content:none!important}
+body.ui164 #app #game.screen #choices>button{position:relative!important;display:block!important;flex:0 0 auto!important;width:100%!important;max-width:100%!important;min-width:0!important;height:auto!important;min-height:78px!important;max-height:none!important;margin:0!important;padding:20px 32px!important;border:0!important;border-image:none!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:var(--ui-ink)!important;font-size:var(--reader-size)!important;line-height:1.65!important;letter-spacing:0!important;text-align:center!important;white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;text-shadow:0 1px 3px #12091c!important;transform:none!important;isolation:isolate!important;cursor:pointer}
+body.ui164 #app #game.screen #choices>button::before{content:''!important;position:absolute!important;inset:0!important;z-index:-1!important;background:url('assets/ui/ui_choice_frame.png') center 47% / 100% 175% no-repeat!important;pointer-events:none!important}
+body.ui164 #app #game.screen #choices>button::after{content:none!important}
+body.ui164 #app #game.screen #choices>button[hidden]{display:none!important}
+body.ui164 #app #game.screen #choices>button:focus-visible{outline:2px solid #f9dda0!important;outline-offset:-7px!important}
+body.ui164 #app #game.screen #choicePager{position:fixed!important;inset:auto!important;left:50%!important;bottom:max(22px,env(safe-area-inset-bottom))!important;top:auto!important;transform:translateX(-50%)!important;display:flex!important;align-items:center!important;gap:12px!important;max-width:calc(100vw - 24px)!important;pointer-events:auto!important;z-index:65!important;background:#21122feb!important;border-radius:9px!important;padding:4px 8px!important;color:#fff1dc!important}
+body.ui164 #app #game.screen #choicePager.hidden,body.ui164 #app #game.screen:not(.choices-ready) #choicePager{display:none!important}
+body.ui164 #choicePager button{min-height:44px!important;padding:6px 12px!important;font-size:14px!important}
+/* A single modal shell with a fixed close row and a scrolling body. */
+body.ui164 #modal.modal{position:fixed!important;inset:0!important;width:100%!important;height:100dvh!important;padding:12px!important;background:#100819c9!important;backdrop-filter:blur(3px)!important;z-index:1000!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important}
+body.ui164 #modal.modal.hidden{display:none!important}
+body.ui164 #modal.modal .modal-panel{position:relative!important;inset:auto!important;transform:none!important;width:min(560px,100%)!important;min-width:0!important;height:auto!important;max-height:calc(100dvh - 24px)!important;margin:0!important;padding:16px!important;border:1px solid var(--ui-gold)!important;border-image:none!important;border-radius:12px!important;display:flex!important;flex-direction:column!important;overflow:hidden!important;background:linear-gradient(145deg,#382043,#21122e)!important;color:var(--ui-ink)!important;box-shadow:inset 0 0 0 4px #21132e,inset 0 0 0 5px #94764f70,0 20px 65px #0009!important}
+body.ui164 #modal .modal-panel::before,body.ui164 #modal .modal-panel::after{content:none!important}
+body.ui164 #modal .modal-head{position:static!important;flex:none!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;margin:0 0 12px!important;padding:0 0 10px!important;border-bottom:1px solid #c4a87366!important}
+body.ui164 #modal #modalTitle{font-size:20px!important;line-height:1.4!important;margin:0!important;letter-spacing:0!important;color:#f3dbad!important}
+body.ui164 #modal #closeModal{flex:none!important;width:44px!important;height:44px!important;min-height:44px!important;margin:0!important;padding:6px!important;border:1px solid #c4a873!important;border-radius:8px!important;background:#2a1739!important;color:#fff1d6!important;font-size:22px!important}
+body.ui164 #modal #modalContent{flex:1 1 auto!important;min-height:0!important;width:100%!important;max-width:100%!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;overscroll-behavior:contain!important;padding:0 3px 6px!important;line-height:1.8!important;font-size:15px!important;white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;scrollbar-width:thin!important}
+body.ui164 #modal #modalContent p{white-space:pre-wrap!important}
+body.ui164 #modal #modalContent input:not([type=range]),body.ui164 #modal #modalContent select,body.ui164 #modal #modalContent textarea{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;min-height:44px!important;margin:0!important;padding:10px 12px!important;border:1px solid #b99a74!important;border-radius:7px!important;background:#180e24!important;color:#fff2df!important;font:inherit!important;font-size:16px!important;line-height:1.5!important;box-shadow:none!important;color-scheme:dark}
+body.ui164 #modal #modalContent input::placeholder{color:#d3bddb!important;opacity:1!important}
+body.ui164 #modal #modalContent input[type=search]{margin-bottom:16px!important}
+body.ui164 #modal #modalContent option{color:#fff2df;background:#21122e}
+body.ui164 #modal #modalContent button,body.ui164 header #settingsBtn,body.ui164 #choicePager button{min-width:0!important;min-height:44px!important;height:auto!important;max-width:100%!important;padding:10px 12px!important;border:1px solid #bca078!important;border-image:none!important;border-radius:7px!important;background:linear-gradient(#50305c,#2b1839)!important;color:#fff0dc!important;font:inherit!important;font-size:15px!important;line-height:1.5!important;letter-spacing:0!important;white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important;box-shadow:none!important}
+body.ui164 #modal #modalContent button{width:100%!important;margin:4px 0!important}
+body.ui164 #modal :is(button,input,select,textarea):focus-visible{outline:2px solid #f8d794!important;outline-offset:2px!important}
+body.ui164 .settings-section{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid #bea27840}
+body.ui164 .settings-section:last-child{border:0;margin-bottom:0;padding-bottom:0}
+body.ui164 .settings-section h3{font-size:15px;color:#edcc99;margin:0 0 10px}
+body.ui164 .settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 10px}
+body.ui164 .settings-row{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin:12px 0;font-size:14px}
+body.ui164 .volume-row{display:grid;grid-template-columns:1fr auto;gap:8px}
+body.ui164 .volume-row span{grid-column:1/-1}
+body.ui164 .volume-row input{width:100%;min-width:0;min-height:44px;accent-color:#d7b783}
+body.ui164 .volume-row output{align-self:center;min-width:3em;color:#ffefd5}
+body.ui164 #v90Flash{top:110px!important;bottom:auto!important;left:50%!important;transform:translateX(-50%)!important;width:min(86vw,420px)!important;max-height:18dvh!important;padding:8px 12px!important;overflow:auto!important;background:#24152ff2!important;border:1px solid #bca078!important;border-radius:8px!important;color:#f6ead9!important;font-size:12px!important;line-height:1.6!important;z-index:70!important;pointer-events:none!important}
+body.ui164 #v111LetterOverlay{position:fixed!important;inset:0!important;height:100dvh!important;z-index:100!important}
+body.ui164 #v111LetterOverlay .v111-letter-paper{top:12px!important;left:12px!important;transform:none!important;width:calc(100% - 24px)!important;height:calc(100dvh - 24px)!important;max-height:none!important;margin:0!important;padding:18px 18px 12px!important;display:flex!important;flex-direction:column!important;gap:10px!important}
+body.ui164 #v111LetterOverlay .v149-letter-scroll{min-height:0!important;flex:1 1 auto!important;overflow:auto!important;padding:8px 4px!important}
+body.ui164 #v111LetterOverlay .v149-letter-finish{flex:none!important;min-height:52px!important;width:min(100%,320px)!important;margin:0 auto!important;padding:12px 24px!important;color:#fff0dc!important;background:#392044!important;border:1px solid #af9167!important;border-radius:8px!important;font-size:16px!important}
+body.ui164.v111-letter-active header{visibility:hidden!important}
+body.ui164.reduce-effects *,body.ui164.reduce-effects *::before,body.ui164.reduce-effects *::after{animation:none!important;transition:none!important}
+body.ui164.reduce-effects .v75-sparkles,body.ui164.reduce-effects #v125-glitter{display:none!important}
+@media(max-width:760px){
+ body.ui164 #app #game.screen .dialogue{min-height:138px!important;padding:20px 18px 28px!important}
+ body.ui164 #app #game.screen .dialogue #speaker.speaker{width:min(210px,70vw)!important;height:44px!important;min-height:44px!important;top:-45px!important;font-size:13px!important}
+ body.ui164 #home.screen.active .v112-side{padding:66px 14px 28px!important;justify-content:flex-start!important}
+ body.ui164 #home.screen.active .title-logo-wrap{height:110px!important;min-height:110px!important;margin:0 auto 8px!important}
+ body.ui164 #home.screen.active .menu{display:flex!important;flex-direction:column!important;width:min(88vw,340px)!important;gap:6px!important}
+ body.ui164 #home.screen.active .menu button{width:100%!important;height:auto!important;min-height:48px!important;padding:10px 24px!important;font-size:14px!important;line-height:1.5!important}
+ body.ui164 header #openingPanel{max-width:42vw}
+ body.ui164 #modal #modalContent{font-size:14px!important}
+}
+@media(max-height:500px){
+ body.ui164 #app #game.screen .dialogue{min-height:96px!important;max-height:46dvh!important;bottom:8px!important;padding:12px 22px 20px!important}
+ body.ui164 #app #game.screen .dialogue #line{max-height:25dvh!important;line-height:1.55!important}
+ body.ui164 #app #game.screen.choices-ready #choices{top:calc(50dvh + 24px)!important;max-height:calc(100dvh - 150px)!important;gap:6px!important}
+ body.ui164 #app #game.screen #choices>button{min-height:58px!important;padding:14px 30px!important}
+ body.ui164 #app #game.screen #choicePager{bottom:5px!important}
+ body.ui164 #v90Flash{top:100px!important}
+}
+/* Fixed choice layers must not inherit a transformed containing block. */
+body.ui164 #app #game.screen .dialogue{left:0!important;right:0!important;transform:none!important;margin:0 auto!important}
+body.ui164 #app #game.screen:not(.choices-ready) .v126-advance{display:block!important}
+body.ui164 #app #game.screen.choices-ready .v126-advance{display:none!important}
+body.ui164 #app #home.screen.active .menu #v112OptionsBtn[hidden]{display:none!important}
+body.ui164 #home.screen.active{min-height:100dvh!important}
+body.ui164 #modal.modal{padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))!important}
+body.ui164 #modal.modal .modal-panel{max-height:calc(100dvh - max(12px,env(safe-area-inset-top)) - max(12px,env(safe-area-inset-bottom)))!important}
+body.ui164 #app #game.screen .dialogue #speaker.speaker[hidden]{display:none!important}
+body.ui164 #app #game #choiceContext164{position:fixed;top:104px;left:12px;right:12px;max-height:56px;overflow:auto;padding:7px 10px;background:#21122fe8;border:1px solid #bea27866;border-radius:6px;color:#fff0dc;text-align:center;font-size:12px;line-height:1.5;z-index:20}
+body.ui164 #app #game #choiceContext164[hidden]{display:none!important}
+body.ui164 #app #game.screen.explore-ready #choices{top:calc(50dvh + 35px)!important;max-height:calc(100dvh - 250px)!important}
+@media(max-height:500px){body.ui164 #app #game.screen.explore-ready #choices{top:calc(50dvh + 48px)!important;max-height:calc(100dvh - 210px)!important}body.ui164 #app #game #choiceContext164{top:98px;max-height:42px;padding:4px 8px}}
+body.ui164:has(#game.active) header #openingPanel{display:none!important}
+body.ui164:has(#home.active) header .brand{display:none!important}
+body.ui164:has(#home.active) #app header{justify-content:flex-end!important}
+body.ui164 header #openingPanel summary{font-size:12px!important;min-height:44px!important;padding:10px 12px!important;white-space:normal!important}
