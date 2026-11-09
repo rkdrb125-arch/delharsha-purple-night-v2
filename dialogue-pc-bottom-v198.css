@@ -1,21 +1,6 @@
 /* v198 · PC dialogue placement repair. Preserve original gold frame and game logic. */
 @media (min-width: 761px) {
-  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
-    position: fixed !important;
-    inset: auto auto max(18px, env(safe-area-inset-bottom, 0px)) 50% !important;
-    transform: translateX(-50%) !important;
-    margin: 0 !important;
-    width: min(880px, calc(100vw - 36px)) !important;
-    max-height: min(42dvh, 440px) !important;
-    height: auto !important;
-    min-height: 148px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: center !important;
-    overflow: visible !important;
-    z-index: 35 !important;
-  }
+  /* v205: retired PC-only placement; v203 covers choice and ordinary screens. */
   body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
     text-align: left !important;
     margin: 0 !important;

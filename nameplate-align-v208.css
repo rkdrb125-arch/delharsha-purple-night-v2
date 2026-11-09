@@ -1,0 +1,24 @@
+/* v208: align the nameplate to the dialogue's exact left edge.
+   Keep the original ornament artwork and all speaker visibility logic. */
+body.ui164 #app #game.screen.active > .dialogue #speaker.speaker {
+  left:0!important;
+  right:auto!important;
+  transform:none!important;
+  justify-content:flex-start!important;
+  text-align:left!important;
+  padding-left:clamp(36px,4vw,52px)!important;
+  padding-right:20px!important;
+  font-style:normal!important;
+  white-space:nowrap!important;
+}
+body.ui164 #app #game.screen.active > .dialogue #speaker.speaker[hidden],
+body.ui164 #app #game.screen.active > .dialogue #speaker.speaker.hidden {
+  display:none!important;
+}
+@media(max-width:600px){
+ body.ui164 #app #game.screen.active > .dialogue #speaker.speaker {
+   left:0!important;
+   padding-left:clamp(24px,6vw,36px)!important;
+   padding-right:14px!important;
+ }
+}

@@ -1,24 +1,5 @@
 /* v195 emergency layout correction. Keep existing UI art and game mechanics. */
-body.ui164 #app #game.screen.active .dialogue {
-  position:absolute!important;
-  top:auto!important;
-  bottom:max(18px,env(safe-area-inset-bottom,0px))!important;
-  left:0!important;
-  right:0!important;
-  transform:none!important;
-  margin:0 auto!important;
-  width:min(880px,calc(100% - 24px))!important;
-  height:auto!important;
-  min-height:148px!important;
-  max-height:42dvh!important;
-  padding:24px 26px 24px!important;
-  display:flex!important;
-  flex-direction:column!important;
-  justify-content:center!important;
-  align-items:stretch!important;
-  overflow:visible!important;
-  z-index:12!important;
-}
+/* v205: retired emergency container placement; v203 owns active dialogue position. */
 /* Existing gold-frame PNG remains the only dialogue background. */
 body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
   position:absolute!important;

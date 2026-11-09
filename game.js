@@ -2339,7 +2339,8 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
   const hasMore=page<pages.length-1;
   const hasChoices=!!(NODES[state.node]||{}).choices?.length;
   next.classList.toggle('hidden',!hasMore&&hasChoices);
-  next.textContent=hasMore?'다음 문단 ›':'다음 ›';
+  next.textContent='›';
+  next.setAttribute('aria-label',hasMore?'다음 문단으로 진행':'다음 장면으로 진행');
   // Choices become visible only after the last paragraph finishes.
   choices.classList.toggle('v87-waiting',hasMore||typing||hasChoices&&!choicesUnlocked);
   const indicator=document.getElementById('v87PageCount');

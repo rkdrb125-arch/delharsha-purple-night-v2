@@ -1,0 +1,41 @@
+/* v204: precise repairs after v203. Does not change story engine. */
+body.ui164 #app #game.screen.active > .dialogue {
+  box-sizing:border-box!important;
+  justify-content:flex-start!important;
+  padding-bottom:clamp(12px,2vh,22px)!important;
+}
+body.ui164 #app #game.screen.active .dialogue #line {
+  flex:1 1 auto!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  min-height:0!important;
+  scrollbar-gutter:stable;
+}
+body.ui164 #app #game.screen.active .dialogue #choices {
+  flex:0 1 auto!important;
+  min-height:0!important;
+  max-height:min(24dvh,220px)!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 {
+  flex-shrink:0!important;
+  min-height:38px!important;
+}
+body.ui164 #app #game.screen.active .dialogue #speaker[hidden],
+body.ui164 #app #game.screen.active .dialogue #speaker.hidden {
+  display:none!important;
+  visibility:hidden!important;
+}
+body.ui164 #app #game.screen.active .dialogue #nextBtn.hidden {display:none!important;}
+body.ui164 #app #game.screen.active .dialogue #choices button:focus-visible {
+  outline:2px solid #e9d2a3!important;
+  outline-offset:2px!important;
+}
+@media(max-width:760px){
+ body.ui164 #app #game.screen.active .dialogue #choices {max-height:min(28dvh,230px)!important;}
+ body.ui164 #app #game.screen.active .dialogue #choices button {min-height:44px;}
+}
+@media(max-height:500px){
+ body.ui164 #app #game.screen.active > .dialogue {max-height:62dvh!important;}
+}

@@ -1,0 +1,58 @@
+/* v207: stable visual-novel dialogue geometry. Loaded after v204. */
+/* Only active ordinary dialogue; choice screen layout is untouched. */
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+  height:clamp(188px,25dvh,252px)!important;
+  min-height:0!important;
+  max-height:none!important;
+  padding-top:clamp(20px,2.6dvh,29px)!important;
+  padding-bottom:clamp(12px,1.8dvh,18px)!important;
+  box-sizing:border-box!important;
+  justify-content:flex-start!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+  flex:1 1 0!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0 7px 6px 7px!important;
+  line-height:1.8!important;
+  text-align:left!important;
+  white-space:pre-wrap!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  scrollbar-gutter:stable;
+  overflow-wrap:break-word!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-prose,
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-inner-thought {
+  line-height:inherit!important;
+  white-space:pre-line!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-inner-thought {
+  margin-top:.85em!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 {
+  flex:0 0 38px!important;
+  min-height:38px!important;
+  margin-top:0!important;
+}
+@media(max-width:760px){
+ body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+   height:clamp(164px,32dvh,236px)!important;
+   padding-top:19px!important;
+   padding-bottom:9px!important;
+ }
+ body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+   padding:0 3px 4px!important;
+   line-height:1.7!important;
+ }
+}
+@media(max-height:500px){
+ body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+   height:clamp(112px,42dvh,185px)!important;
+   padding-top:12px!important;
+   padding-bottom:5px!important;
+ }
+ body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 {
+   flex-basis:32px!important;min-height:32px!important;
+ }
+}

@@ -1,0 +1,62 @@
+/* v203 — UI conflict consolidation; loaded after v198. */
+/* Preserve the established bottom placement for both ordinary and choice screens. */
+body.ui164 #app #game.screen.active > .dialogue {
+  position:fixed!important;top:auto!important;bottom:max(18px,env(safe-area-inset-bottom,0px))!important;
+  left:50%!important;right:auto!important;transform:translateX(-50%)!important;
+  margin:0!important;width:min(880px,calc(100vw - 28px))!important;
+  max-height:min(42dvh,440px)!important;min-height:148px!important;
+  display:flex!important;flex-direction:column!important;align-items:stretch!important;
+  overflow:visible!important;z-index:35!important;
+}
+/* v126 used 1px clipped invisible navigation; restore the real controls in their footer. */
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 {
+  display:flex!important;align-items:center!important;justify-content:flex-end!important;
+  flex-direction:row!important;gap:10px!important;width:100%!important;flex:0 0 auto!important;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn,
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #v87PageCount {
+  position:static!important;inset:auto!important;transform:none!important;
+  width:auto!important;height:auto!important;overflow:visible!important;
+  opacity:1!important;pointer-events:auto!important;clip-path:none!important;
+  border:revert-layer!important;margin:0!important;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn {
+  display:inline-flex!important;min-width:85px!important;padding:8px 15px!important;
+  border:1px solid #b8912f!important;cursor:pointer!important;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #v87PageCount {
+  display:inline-flex!important;align-items:center!important;min-width:3.5em!important;
+  padding:0!important;border:0!important;pointer-events:none!important;
+}
+/* Never force a button or nameplate visible when the engine hides it. */
+body.ui164 #app #game.screen.active .dialogue #nextBtn.hidden,
+body.ui164 #app #game.screen.active .dialogue #v87PageCount.hidden,
+body.ui164 #app #game.screen.active .dialogue #speaker[hidden],
+body.ui164 #app #game.screen.active .dialogue #speaker.hidden {display:none!important;}
+body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
+  position:absolute!important;top:-60px!important;left:clamp(0px,1.2vw,18px)!important;
+  right:auto!important;bottom:auto!important;transform:none!important;
+}
+/* Keep reading text accessible without expanding the whole dialogue panel. */
+body.ui164 #app #game.screen.active .dialogue #line {
+  min-height:0!important;min-width:0!important;overflow-y:auto!important;
+  text-align:left!important;overscroll-behavior:contain;
+}
+@media(max-width:760px){
+ body.ui164 #app #game.screen.active > .dialogue {
+   bottom:max(8px,env(safe-area-inset-bottom,0px))!important;
+   width:calc(100vw - 16px)!important;max-height:min(58dvh,480px)!important;
+   min-height:138px!important;
+ }
+ body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
+   top:-43px!important;left:2px!important;
+ }
+ body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn {
+   min-width:68px!important;padding:7px 10px!important;
+ }
+}
+@media(max-height:500px){
+ body.ui164 #app #game.screen.active > .dialogue {
+   bottom:8px!important;max-height:55dvh!important;min-height:96px!important;
+ }
+}
