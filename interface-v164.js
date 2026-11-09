@@ -25,6 +25,7 @@
   const extras=[...document.querySelectorAll('#game .hud button')].filter(b=>!excluded.has(b.id)&&!['에피소드','✦ 엔딩 도감','☾ 운명의 갈림길'].includes(b.textContent.trim()));
   if($('game').classList.contains('active')){const other=section(root,'진행 도구');other.append(button('이동',()=>{closeModal();$('moveBtn').click();}));other.append(button('관계 상태',()=>{closeModal();$('statusBtn').click();}));for(const b of extras)other.append(button(b.textContent,()=>{closeModal();b.click();}));}
   const back=section(root,'화면 이동');back.append(button('오프닝 다시 보기',()=>{closeModal();$('openingPlay').click();}),button('타이틀로',()=>{closeModal();show('home');}));
+  const release=document.createElement('p');release.className='release-info';release.textContent='DELHARSA v165 · 본편 4개 에피소드 + 에필로그';root.append(release);
   modal('메뉴 · 설정',root);
  };
  // Intercept before older settings listeners can append another audio menu.

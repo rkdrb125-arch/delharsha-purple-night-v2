@@ -1,0 +1,26 @@
+/* Authoritative title geometry. Explicit axes prevent legacy column flex-basis
+   from shrinking the entire right panel to 40% of the screen height. */
+body.ui164 #app #home.screen.active{display:flex!important;flex-direction:row!important;align-items:stretch!important;justify-content:flex-end!important;gap:0!important;width:100%!important;height:100dvh!important;min-height:100dvh!important;padding:0!important;overflow:hidden!important}
+body.ui164 #app #home.screen.active .v112-side{position:relative!important;inset:auto!important;flex:0 0 42%!important;width:42%!important;min-width:350px!important;max-width:580px!important;height:100%!important;max-height:100%!important;min-height:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;margin:0!important;padding:64px 24px 24px!important;overflow-x:hidden!important;overflow-y:auto!important;overscroll-behavior:contain!important;scrollbar-width:thin!important;z-index:10!important}
+body.ui164 #app #home.screen.active .title-logo-wrap{position:relative!important;inset:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;align-self:center!important;flex:0 0 auto!important;width:min(100%,360px)!important;height:180px!important;min-height:180px!important;max-height:none!important;margin:auto auto 4px!important;padding:0!important;transform:none!important;overflow:visible!important}
+body.ui164 #app #home.screen.active .title-logo{display:block!important;position:relative!important;inset:auto!important;width:100%!important;height:100%!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;opacity:1!important;visibility:visible!important}
+body.ui164 #app #home.screen.active .menu{align-self:center!important;width:min(100%,350px)!important;max-width:350px!important;flex:0 0 auto!important;display:flex!important;flex-direction:column!important;gap:5px!important;margin:0!important;overflow:visible!important}
+body.ui164 #app #home.screen.active .menu button{width:100%!important;height:auto!important;min-height:52px!important;max-height:none!important;padding:14px 30px!important;line-height:1.4!important;font-size:15px!important;background-size:100% 175%!important;background-position:center 47%!important;white-space:normal!important;word-break:keep-all!important;overflow-wrap:anywhere!important}
+body.ui164 #app #home.screen.active .menu button[hidden],body.ui164 #app #home.screen.active .menu button.hidden{display:none!important}
+body.ui164 #app #home.screen.active .v112-art-picker{flex:none!important;margin:2px auto 0!important}
+body.ui164 #app #home.screen.active .foot{flex:none!important;margin:0 auto auto!important;padding:0!important;font-size:11px!important;line-height:1.5!important}
+body.ui164 #app #home.screen.active>.v75-sparkles{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;pointer-events:none!important;z-index:2!important}
+body.ui164 #app #home.screen.active>.v75-sparkles-front{z-index:3!important}
+body.ui164 #home .build-version{position:absolute!important;inset:auto auto 8px 10px!important;z-index:20!important;padding:3px 7px!important;border-radius:4px!important;color:#fff1df!important;background:#180d2bc9!important;font-size:11px!important}
+@media(max-width:760px){
+ body.ui164 #app #home.screen.active .v112-side{flex-basis:100%!important;width:100%!important;min-width:0!important;max-width:none!important;padding:64px 14px max(24px,env(safe-area-inset-bottom))!important;gap:6px!important}
+ body.ui164 #app #home.screen.active .title-logo-wrap{width:min(80vw,310px)!important;height:140px!important;min-height:140px!important;margin:0 auto 2px!important}
+ body.ui164 #app #home.screen.active .menu{width:min(100%,350px)!important;gap:5px!important}
+ body.ui164 #app #home.screen.active .menu button{min-height:48px!important;font-size:14px!important;padding:12px 28px!important}
+ body.ui164 #app #home.screen.active .v112-art-picker,body.ui164 #app #home.screen.active .foot{display:none!important}
+}
+@media(min-width:761px) and (max-height:650px){
+ body.ui164 #app #home.screen.active .v112-side{padding-top:60px!important;gap:4px!important}
+ body.ui164 #app #home.screen.active .title-logo-wrap{height:115px!important;min-height:115px!important}
+ body.ui164 #app #home.screen.active .menu button{min-height:44px!important;padding:10px 26px!important}
+}
