@@ -56,7 +56,7 @@
  boundary:'회랑에서 코트리먼을 만났다. 그녀는 먼저 내 이름을 불렀다.\n\n“다니엘. 요즘 네가 자꾸…… 멀어지는 것 같아.”\n\n“……그럴 리가요.”\n\n“그랬으면 좋겠구나.”\n\n그녀는 손끝으로 숄을 매만졌다. “나는 알렉과의 약속을 지킬 거야. 그건 변하지 않아.”\n\n“……알고 있습니다.”\n\n“그런데 네가 아무 일도 없었다고 말할 때마다, 내가 무엇을 놓치고 있는지 모르겠어.”\n\n그녀는 더 말하지 않았다. 나는 그 침묵을 멋대로 고백이라고 부르지 않기로 했다.'
  };
  NODES.v194_day4_morning={speaker:'다니엘 레온하르트',chapter:'EP.1 · DAY 4 / 믿음의 무게',day:4,text:morning.reason,next:'v194_day4_reunion'};
- NODES.v194_day4_reunion={speaker:'다니엘 레온하르트',chapter:'EP.1 · DAY 4 / 남겨진 말',day:4,text:reunion.reason,next:'explore'};
+ NODES.v194_day4_reunion={speaker:'다니엘 레온하르트',chapter:'EP.1 · DAY 4 / 남겨진 말',day:4,text:reunion.reason,next:'v108_day5'};
  // Original DAY 4 node is still the chapter's entry and can be resumed from old saves.
  NODES.v108_day4.next='v194_day4_morning';
  NODES.v108_day5.text='“영지에 일이 생겼어. 직접 가서 정리하고 오지.”\n\n형님은 성가신 일을 처리하러 가는 사람답게 빠르고 자신 있게 결정을 내렸다.\n\n“다니엘, 내가 없는 동안 미겔이 불편하지 않게 신경 좀 써 줘. 마지막 무도회 전에는 돌아올 테니까.”\n\n“……알겠습니다, 형님.”\n\n그 신뢰가 내게는 잔인했다.\n\n알렉스 형님은 문가에서 돌아보며 웃었다.\n\n“아, 그리고 다니엘. 내가 없는 동안 나쁜 짓은 하지 말라고.”\n\n형님은 호탕하게 웃었다. “농담이야!”\n\n문이 닫혔다.\n\n……농담. 형님은 정말 농담으로 하신 말이다. 내가 형님의 믿음을 저버릴 수 있다고는 상상조차 못 하실 테니까.';

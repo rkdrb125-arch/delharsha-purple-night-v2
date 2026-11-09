@@ -2,18 +2,7 @@
 // User-supplied opening adapted to Daniel's limited first-person perspective.
 (function(){
  const edits={
-  "v108_intro_entrance": {
-    "node": {
-      "text": "연회의 첫날, 나는 대연회장 문 가까이에 서 있었다. 열린 문 너머로 인사와 웃음소리가 흘러나왔다.\n\n온갖 사람들이 다 모였다. 신분을 가리지 않는 자리라고는 해도, 낯선 얼굴들 사이에서 내가 찾는 사람은 하나뿐이었다.",
-      "thought": "",
-      "speaker": "",
-      "next": "asel_entrance_watch",
-      "day": 1,
-      "chapter": "EP.1 · DAY 1 / 연회의 문 앞"
-    },
-    "speakers": []
-  },
-  "asel_entrance_watch": {
+"asel_entrance_watch": {
     "node": {
       "text": "문가에 코트리먼이 서 있었다. 그녀는 홀 안을 한 차례 훑어보고는 눈꺼풀을 조금 내렸다. 손가락이 겹쳐 쥔 손등을 느리게 쓸었다.\n\n기다림에 지친 것처럼 보였다. 아니면 밝은 불빛이 눈에 거슬렸을지도 모른다.\n\n나는 인사를 건네려다 멈췄다. 형님이 그녀의 곁으로 다가가고 있었다.",
       "thought": "",
@@ -106,7 +95,7 @@
       "text": "나는 입가에 힘을 주어 웃었다. 제대로 웃고 있는지 확인할 길은 없었다.\n\n코트리먼의 시선이 내 얼굴에서 내려갔다. 나는 그제야 숨을 내쉬었다.",
       "thought": "",
       "speaker": "",
-      "next": "v108_title"
+      "next": "v108_day1"
     },
     "speakers": []
   },
@@ -115,7 +104,7 @@
       "text": "고개를 들었을 때 코트리먼은 아직 가까이 있었다. 나는 그녀가 내 쪽을 한 번 더 보기를 기다렸다.\n\n눈이 마주치면 무슨 말을 할지는 준비하지 못한 채였다.",
       "thought": "",
       "speaker": "",
-      "next": "v108_title"
+      "next": "v108_day1"
     },
     "speakers": []
   },
@@ -124,7 +113,7 @@
       "text": "나는 내려놓은 잔에서 손을 뗐다. 형님의 손이 닿았던 곳을 자꾸만 보고 있었다.\n\n질투였다. 이름을 안다고 해서 내게 무슨 권리가 생기는 것은 아니었다.",
       "thought": "",
       "speaker": "",
-      "next": "v108_title"
+      "next": "v108_day1"
     },
     "speakers": []
   },
@@ -138,24 +127,6 @@
     },
     "speakers": []
   },
-  "v108_day1": {
-    "node": {
-      "text": "형님이 다른 귀족과 인사를 나누러 자리를 비운 사이, 나는 연회장에 남았다. 사람들은 아까와 같은 목소리로 웃고 있었다.\n\n나는 코트리먼에게 다가갈 말을 생각했다. 도움이 필요하신지 묻는 것쯤은, 형님의 동생으로서도 할 수 있을 터였다.",
-      "thought": "",
-      "speaker": "",
-      "day": 1
-    },
-    "speakers": []
-  },
-  "v108_day5": {
-    "node": {
-      "text": "연회가 시작된 지 며칠이 지났다. 식탁 건너편에서 형님과 대화하는 그녀를 보고서야, 나는 코트리먼을 먼저 찾고 있었다는 것을 깨달았다.\n\n형님이 나를 불러 함께 이야기하자던 첫날이 떠올랐다. 아직 청하지 않은 도움까지 내가 먼저 내밀어도 되는지는 알 수 없었다.",
-      "thought": "",
-      "speaker": "",
-      "day": 5
-    },
-    "speakers": []
-  }
 };
  for(const [id,edit] of Object.entries(edits)){NODES[id]??={};Object.assign(NODES[id],edit.node);SPEAKERS159[id]=edit.speakers;}
 })();
