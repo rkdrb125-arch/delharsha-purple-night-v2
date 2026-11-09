@@ -1,0 +1,14 @@
+/* v196 — remove rectangular choice focus/hover artifacts without replacing frame art. */
+body.ui164 #app #game.screen #choices > button:hover,
+body.ui164 #app #game.screen #choices > button:active,
+body.ui164 #app #game.screen #choices > button:focus,
+body.ui164 #app #game.screen #choices > button:focus-visible {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  /* Retain existing nine-slice frame and do not set border-color/background-image. */
+}
+/* Keyboard focus stays perceptible without an extra rectangular outline. */
+body.ui164 #app #game.screen #choices > button:focus-visible {
+  filter: brightness(1.18) !important;
+}

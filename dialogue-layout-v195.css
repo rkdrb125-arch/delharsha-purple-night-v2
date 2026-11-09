@@ -1,0 +1,89 @@
+/* v195 emergency layout correction. Keep existing UI art and game mechanics. */
+body.ui164 #app #game.screen.active .dialogue {
+  position:absolute!important;
+  top:auto!important;
+  bottom:max(18px,env(safe-area-inset-bottom,0px))!important;
+  left:0!important;
+  right:0!important;
+  transform:none!important;
+  margin:0 auto!important;
+  width:min(880px,calc(100% - 24px))!important;
+  height:auto!important;
+  min-height:148px!important;
+  max-height:42dvh!important;
+  padding:24px 26px 24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+  align-items:stretch!important;
+  overflow:visible!important;
+  z-index:12!important;
+}
+/* Existing gold-frame PNG remains the only dialogue background. */
+body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
+  position:absolute!important;
+  top:-60px!important;
+  left:clamp(0px,1.2vw,18px)!important;
+  right:auto!important;
+  bottom:auto!important;
+  transform:none!important;
+}
+/* Keep original reading font size; left align both prose and inner thought. */
+body.ui164 #app #game.screen.active .dialogue #line,
+body.ui164 #app #game.screen.active #line .v67-prose,
+body.ui164 #app #game.screen.active #line .v67-inner-thought {
+  text-align:left!important;
+}
+/* The existing next button and JS-inserted page count share one row. */
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 {
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  align-self:stretch!important;
+  gap:10px!important;
+  width:100%!important;
+  margin-top:5px!important;
+  flex:0 0 auto!important;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 #v87PageCount {
+  position:static!important;
+  display:inline-block!important;
+  align-self:center!important;
+  margin:0!important;
+  min-width:3.5em!important;
+  text-align:right!important;
+  white-space:nowrap!important;
+  color:#d8c39e!important;
+  font-variant-numeric:tabular-nums!important;
+}
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 #nextBtn {
+  position:static!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  flex:0 0 auto!important;
+  margin:0!important;
+}
+/* Keep hidden next buttons hidden, including choice screens. */
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 #nextBtn.hidden,
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 #v87PageCount.hidden {display:none!important;}
+@media(max-width:760px) {
+ body.ui164 #app #game.screen.active .dialogue {
+   min-height:138px!important;
+   padding:20px 18px 20px!important;
+   width:calc(100% - 16px)!important;
+ }
+ body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
+   top:-43px!important;
+   left:2px!important;
+ }
+ body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 {gap:7px!important;}
+}
+@media(max-height:500px){
+ body.ui164 #app #game.screen.active .dialogue {
+   bottom:8px!important;
+   min-height:96px!important;
+   max-height:46dvh!important;
+   padding:12px 18px 12px!important;
+ }
+}
