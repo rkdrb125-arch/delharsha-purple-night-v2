@@ -1,0 +1,12 @@
+/* Sentence breaks remain visible; Korean words wrap together where space permits. */
+#game .dialogue #line,
+#game .dialogue:not(:has(#choices > button)) #line{
+ white-space:pre-wrap!important;word-break:keep-all!important;overflow-wrap:break-word!important;
+ line-height:1.85!important;text-align:left!important;letter-spacing:0!important;
+}
+#game #line .v67-prose,#game #line .v67-inner-thought{
+ white-space:pre-wrap!important;word-break:keep-all!important;overflow-wrap:break-word!important;
+}
+@media(max-width:760px){
+ #game .dialogue #line,#game .dialogue:not(:has(#choices > button)) #line{line-height:1.8!important;max-height:30dvh!important;}
+}

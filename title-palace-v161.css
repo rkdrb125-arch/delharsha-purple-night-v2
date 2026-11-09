@@ -1,0 +1,9 @@
+/* Supplied palace art. Preserve the original asset and menu behavior. */
+#home.screen.active{background:#130d29!important;}
+#home.screen.active .v112-art{background-image:url('assets/backgrounds/title-palace-v161.png');background-position:40% center!important;}
+#home.screen.active .v112-art-shade{background:linear-gradient(90deg,transparent 40%,#140a2b55 68%,#140a2baa 100%)!important;}
+#home.screen.active .foot,#home.screen.active .v112-art-picker{color:#e4d5f2!important;}
+@media(max-width:760px){
+#home.screen.active .v112-art{background-size:auto min(100dvh,205vw)!important;background-position:34% top!important;background-repeat:no-repeat!important;background-color:#130d29!important;}
+#home.screen.active .v112-art-shade{background:linear-gradient(180deg,#140a2b10,#140a2b55 45%,#140a2ba8)!important;}
+}

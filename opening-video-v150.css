@@ -7,3 +7,9 @@
 .opening-video-error{color:#ffe3db;text-align:center}
 body.opening-video-active{overflow:hidden!important}
 @media(max-width:600px){.opening-video-bar{margin-bottom:8px}#openingVideo{max-height:calc(100dvh - 85px)}}
+/* v162: retain the final frame, then reveal the title beneath the overlay. */
+.opening-video-modal{opacity:1;transition:opacity 1.6s ease;}
+.opening-video-modal.opening-leaving{opacity:0;}
+#openingVideoStart{min-height:48px;margin-top:12px;padding:12px 20px;border:1px solid #c6a66e;border-radius:8px;background:#281a36;color:#fff2d7;font:inherit;cursor:pointer;}
+#openingVideoStart[hidden]{display:none!important;}
+@media(prefers-reduced-motion:reduce){.opening-video-modal{transition-duration:120ms;}}

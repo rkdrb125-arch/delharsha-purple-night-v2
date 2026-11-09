@@ -1,6 +1,6 @@
 /* DELHARSA v112 — independent title art unlock and picker; does not alter save schema */
 (()=>{'use strict';
-const BASE={id:'default',name:'기본 타이틀',url:'assets/backgrounds/title.webp'};
+const BASE={id:'default',name:'기본 타이틀',url:'assets/backgrounds/title-palace-v161.png'};
 const GALLERY='delharsha_purple_night_ending_gallery_v1';
 const CHOICE='delharsha_title_art_choice_v1';
 const ENDINGS=[

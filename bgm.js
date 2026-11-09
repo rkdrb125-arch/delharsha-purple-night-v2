@@ -3,14 +3,14 @@
 'use strict';
 const panel=document.getElementById('bgmPanel'),sel=document.getElementById('bgmTrack'),play=document.getElementById('bgmPlay'),pause=document.getElementById('bgmPause'),vol=document.getElementById('bgmVolume'),status=document.getElementById('bgmStatus'),game=document.getElementById('game');
 if(!panel||!sel||!game)return;
-const tracks={musicbox:'assets/audio/purple_night_musicbox.mp3',piano:'assets/audio/purple_night_piano.mp3',prologue:'assets/audio/scene_prologue.mp3',palace:'assets/audio/scene_palace.mp3',garden:'assets/audio/scene_garden.mp3',ballroom:'assets/audio/scene_ballroom.mp3',library:'assets/audio/scene_library.mp3',romance:'assets/audio/scene_romance.mp3',miguel:'assets/audio/scene_miguel.mp3',daniel:'assets/audio/scene_daniel.mp3'};
-const names={musicbox:'보랏빛 밤 · 오르골',piano:'보랏빛 밤 · 피아노',prologue:'프롤로그',palace:'왕궁',garden:'정원',ballroom:'무도회',library:'도서관',romance:'비밀스러운 사랑',miguel:'미겔',daniel:'다니엘'};
+const tracks={madness:'assets/audio/scene_madness.mp3',psychological:'assets/audio/scene_psychological.mp3',musicbox:'assets/audio/purple_night_musicbox.mp3',piano:'assets/audio/purple_night_piano.mp3',prologue:'assets/audio/scene_prologue.mp3',palace:'assets/audio/scene_palace.mp3',garden:'assets/audio/scene_garden.mp3',ballroom:'assets/audio/scene_ballroom.mp3',library:'assets/audio/scene_library.mp3',romance:'assets/audio/scene_romance.mp3',miguel:'assets/audio/scene_miguel.mp3',daniel:'assets/audio/scene_daniel.mp3'};
+const names={madness:'광기 폭발',psychological:'심리 시리어스',musicbox:'보랏빛 밤 · 오르골',piano:'보랏빛 밤 · 피아노',prologue:'프롤로그',palace:'왕궁',garden:'정원',ballroom:'무도회',library:'도서관',romance:'비밀스러운 사랑',miguel:'미겔',daniel:'다니엘'};
 const channels=[new Audio(),new Audio()];channels.forEach(a=>{a.preload='none';a.loop=true;a.volume=0;});
 const endingAudio=new Audio('assets/audio/purple_night_alt.mp3');endingAudio.preload='none';endingAudio.loop=false;
 const badEndings=new Set(['alex_fracture']);
 let v89Blocked=false,v89Unlocked=false;
 let slot=-1,current='',desired='prologue',lastContext='',generation=0,fadeTimer=null,settleTimer=null,manualPaused=false,ending=false,volume=Number(vol.value)/100,scene=null;
-const active=()=>game.classList.contains('active');
+const active=()=>game.classList.contains('active')&&!document.body.classList.contains('opening-video-active');
 const clamp=x=>Math.max(0,Math.min(1,x));
 const update=s=>{status.textContent=s;};
 function cancelFade(){if(fadeTimer!==null){clearInterval(fadeTimer);fadeTimer=null;}}
@@ -20,6 +20,9 @@ function stopAll(){stopChannels();endingAudio.pause();try{endingAudio.currentTim
 function context(d){
  const id=String(d?.id||'').toLowerCase(),ch=String(d?.chapter||'').toLowerCase(),speaker=String(d?.speaker||'').toLowerCase(),t=String(d?.text||'').toLowerCase();
  const route=id+' '+ch;
+ // Explicit authored scene mapping takes precedence over generic title/speaker matching.
+ if(['v88_ending_blood_vow','v88_ending_brother_funeral','v88_ending_heavy_crown'].includes(id))return 'madness';
+ if(/^v94_/.test(id)||/^v95_/.test(id)||['v93_crossed_line','v93_crossed_choice','v93_crossed_apology','v93_crossed_silence','v88_ending_lie_of_love','v88_ending_survivors_penalty','v88_ending_unsent_letter'].includes(id))return 'psychological';
  // Narrative/scene IDs have priority. A stray keyword in dialogue must not change the score.
  if(/cinematic|intro|prologue|opening|three.moons|서막|프롤로그/.test(route))return 'prologue';
  if(/romance|kiss|confess|intimacy|lover|연애|고백|입맞춤/.test(route))return 'romance';
@@ -92,6 +95,7 @@ document.addEventListener('delharsha:ending',e=>{stopChannels();endingAudio.paus
  if(!ending){update('엔딩 · 배경음악 정지');return;}
  endingAudio.volume=volume;const p=endingAudio.play();update('배드 엔딩 전용곡 재생 중');if(p?.catch)p.catch(()=>update('엔딩곡 재생이 차단되었습니다 · ▶ 재생을 눌러 주세요'));
 });
+document.addEventListener('delharsha:opening-closed',()=>{if(!manualPaused)sync();});
 document.addEventListener('delharsha:game-audio-stop',()=>{stopAll();panel.open=false;});
 const observer=new MutationObserver(()=>{if(!active()){stopAll();panel.open=false;panel.classList.remove('v89-visible');}else if(!ending){manualPaused=false;panel.open=false;panel.classList.remove('v89-visible');queueScene();}});
 observer.observe(game,{attributes:true,attributeFilter:['class']});

@@ -1,0 +1,5 @@
+/* Actual utterances only: hidden must win over older display:flex!important rules. */
+#game .dialogue #speaker.speaker[hidden],
+#game .dialogue:not(:has(#choices > button)) #speaker.speaker[hidden]{display:none!important;visibility:hidden!important;}
+/* Preserve the dialogue box position across narration/speech; only the plate changes. */
+#game .dialogue.has-spoken-dialogue #speaker.speaker:not([hidden]){visibility:visible!important;}

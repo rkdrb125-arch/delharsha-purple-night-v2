@@ -1,0 +1,69 @@
+/* v158 shared amethyst / champagne-gold menus. */
+:root{--royal-ink:#f5e9d5;--royal-gold:#bea278;--royal-panel:#23132f;--reader-size:15px}
+#modal{padding:18px!important;background:#100819bf!important;backdrop-filter:blur(5px);}
+#modal .modal-panel{
+ width:min(540px,100%)!important;max-height:calc(100dvh - 36px)!important;
+ display:flex;flex-direction:column;overflow:hidden!important;
+ padding:18px!important;border:1px solid var(--royal-gold)!important;border-image:none!important;
+ border-radius:12px!important;background:linear-gradient(145deg,#3b224b,#21122e 75%)!important;
+ box-shadow:inset 0 0 0 4px #21132e,inset 0 0 0 5px #94764f70,0 20px 65px #0009!important;
+ color:var(--royal-ink);
+}
+#modal .modal-head{flex:none;gap:12px;padding:2px 2px 12px;margin-bottom:10px;border-bottom:1px solid #bea27866;}
+#modal .modal-head h2{margin:0!important;font-family:var(--delharsha-display-font);font-size:22px!important;letter-spacing:.04em;color:#f0dab1;}
+#modal #closeModal{width:44px!important;height:44px!important;flex:none;border-radius:8px!important;}
+#modal #modalContent{min-height:0;overflow:auto;overscroll-behavior:contain;padding:2px 4px 8px;scrollbar-width:thin;line-height:1.8;white-space:pre-line;}
+#modal #modalContent button,#game .v126-menu button,header #settingsBtn,
+#openingPanel summary,#openingPanel button,#bgmPanel button,#openingVideoClose,#badEndVideoClose,#badEndVideoPlay{
+ min-height:44px!important;box-sizing:border-box!important;
+ border:1px solid #bca078!important;border-image:none!important;border-radius:7px!important;
+ background:linear-gradient(180deg,#51305e,#2b1839)!important;color:#f8ecd6!important;
+ box-shadow:inset 0 0 0 2px #281633,inset 0 0 0 3px #ad8c5650!important;
+ font-family:var(--delharsha-display-font)!important;font-size:15px!important;line-height:1.5!important;
+ padding:10px 14px!important;letter-spacing:.02em!important;word-break:keep-all;white-space:normal!important;
+}
+#modal #modalContent button{margin:5px 0!important;width:100%;}
+#modal button:focus-visible,#modal select:focus-visible,#modal input:focus-visible{outline:2px solid #f0d197!important;outline-offset:3px!important;}
+#modal button:disabled{opacity:.45!important;}
+#modal #modalContent button[data-royal-danger]{background:linear-gradient(#583144,#341b2d)!important;border-color:#c58c87!important;}
+.royal-menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.royal-menu-grid button:last-child{grid-column:1/-1;}
+.settings-section{padding:8px 0 16px;border-bottom:1px solid #bea27840;}
+.settings-section:last-child{border-bottom:0;padding-bottom:0;}
+.settings-section h3{margin:0 0 12px;font-size:16px;color:#e5c99a;}
+.settings-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0;min-height:44px;font-size:14px;}
+.settings-row>span{flex:0 0 110px;}
+.settings-row select{min-width:0;width:58%;min-height:44px;border:1px solid #a78b67;border-radius:6px;background:#21132f;color:#f5e9d5;padding:7px;font:inherit;}
+.settings-row input[type=range]{min-width:0;flex:1;accent-color:#d1b17e;}
+.settings-row output{font-size:12px;min-width:34px;}
+.royal-actions{display:flex;gap:8px;}
+.royal-actions>*{flex:1;}
+#game .v126-tools{border:1px solid #bca078!important;background:#281736ee!important;border-radius:8px!important;backdrop-filter:none!important;}
+#game .v126-menu{border:1px solid #bca078!important;border-radius:10px!important;background:#281736f5!important;}
+#game .v126-hud{display:grid!important;grid-template-columns:1fr 1fr!important;}
+#game .v126-hud button{min-width:0!important;width:100%!important;max-width:none!important;}
+#v111LetterOverlay .v149-letter-finish{
+ width:min(100%,320px)!important;min-height:58px!important;flex:none!important;
+ padding:8px 30px!important;border:0!important;border-radius:0!important;
+ background:transparent url('assets/ui/ui_choice_frame.png') center/100% auto no-repeat!important;
+ box-shadow:none!important;color:#faecd5!important;font-family:var(--delharsha-display-font)!important;font-size:17px!important;text-shadow:0 1px 3px #100716;
+}
+/* A small status banner belongs above the scene, never over its dialogue. */
+#v90Flash{top:112px!important;bottom:auto!important;left:50%!important;width:min(88vw,420px)!important;max-height:15dvh;overflow:hidden;padding:8px 14px!important;border-radius:7px!important;font-size:12px!important;line-height:1.6;text-align:left!important;z-index:40!important;background:#24152fec!important;}
+#game .dialogue #line,#game .dialogue:not(:has(#choices > button)) #line{font-size:var(--reader-size)!important;}
+#game #line .v67-inner-thought{position:static!important;display:block!important;margin:0!important;padding:0!important;background:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;transform:none!important;opacity:.8!important;text-align:left!important;}
+.reduce-effects *, .reduce-effects *::before,.reduce-effects *::after{animation:none!important;transition:none!important;}
+.reduce-effects .v75-sparkles,.reduce-effects #v125-glitter{display:none!important;}
+@media(max-width:760px){
+ #modal{padding:12px!important;}
+ #modal .modal-panel{max-height:calc(100dvh - 24px)!important;padding:16px!important;}
+ #modal .modal-head h2{font-size:20px!important;}
+ .settings-row{gap:8px;flex-wrap:wrap;}
+ .settings-row>span{flex-basis:100px;}
+ .settings-row select{flex:1;width:auto;}
+ #v90Flash{top:156px!important;}
+ #home.screen.active .v112-side{justify-content:flex-start!important;padding-top:60px!important;}
+ #home.screen.active .menu{display:flex!important;gap:5px!important;}
+ #home.screen.active .menu button{height:52px!important;min-height:52px!important;}
+}
+@media(max-height:480px){#v90Flash{top:56px!important;left:12px!important;transform:none!important;width:min(48vw,360px)!important;}}

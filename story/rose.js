@@ -41,7 +41,7 @@ for(const [id,fn] of Object.entries({
  path:()=>({reason:'reason',instinct:'instinct',boundary:'boundary'})[pickPath()]||'reason',
  boundary_extra:()=>info().canal==='hide'?'boundary_hidden':'boundary_plain'
 })){
- Object.defineProperty(NODES['rose_'+id]={speaker:'서술',chapter:'ACT 01 · 노란 장미의 주인',text:'이어지는 장면',},'next',{get(){return 'rose_'+fn();},configurable:true});
+ Object.defineProperty(NODES['rose_'+id]={speaker:"다니엘 레온하르트",chapter:'ACT 01 · 노란 장미의 주인',text:'이어지는 장면',},'next',{get(){return 'rose_'+fn();},configurable:true});
 }
 // Award exact values and retain exclusive branch flags. Capture before older moral classifiers.
 document.addEventListener('click',function(ev){
