@@ -1,0 +1,3 @@
+/* v184: choice buttons are gated until a deliberate extra confirmation */
+#choices.v87-waiting{display:none!important;pointer-events:none!important}
+.v67-inner-thought{white-space:pre-wrap}

@@ -1,0 +1,28 @@
+/* v186: one large left-aligned speaker nameplate, no central duplicate. */
+body.ui164 #app #game.screen .dialogue{position:relative!important;overflow:visible!important;}
+body.ui164 #app #game.screen .dialogue #speaker.speaker,
+body.ui164 #app #game.screen .dialogue:not(:has(#choices > button)) #speaker.speaker{
+ position:absolute!important;top:-60px!important;left:clamp(0px,1.2vw,18px)!important;
+ right:auto!important;bottom:auto!important;transform:none!important;
+ margin:0!important;width:clamp(270px,31vw,390px)!important;
+ max-width:calc(100vw - 36px)!important;min-width:0!important;
+ height:82px!important;min-height:82px!important;
+ padding:13px 34px 17px!important;box-sizing:border-box!important;
+ background:transparent url('assets/ui/ui_nameplate.png') center / 100% 100% no-repeat!important;
+ border:0!important;border-radius:0!important;box-shadow:none!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+ text-align:center!important;color:#fff0d8!important;font-size:clamp(17px,1.7vw,23px)!important;
+ font-weight:700!important;letter-spacing:.025em!important;line-height:1.2!important;
+ white-space:nowrap!important;z-index:9!important;pointer-events:none!important;
+}
+body.ui164 #app #game.screen .dialogue #speaker.speaker[hidden]{display:none!important;}
+body.ui164 #app #game.screen .dialogue #speaker.speaker::before,
+body.ui164 #app #game.screen .dialogue #speaker.speaker::after{content:none!important;display:none!important;}
+@media(max-width:600px){
+ body.ui164 #app #game.screen .dialogue #speaker.speaker,
+ body.ui164 #app #game.screen .dialogue:not(:has(#choices > button)) #speaker.speaker{
+ top:-43px!important;left:2px!important;width:min(72vw,290px)!important;
+ max-width:calc(100vw - 28px)!important;height:60px!important;min-height:60px!important;
+ padding:10px 21px 12px!important;font-size:clamp(13px,3.6vw,17px)!important;
+ }
+}

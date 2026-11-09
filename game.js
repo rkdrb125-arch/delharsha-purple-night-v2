@@ -10,14 +10,23 @@ const NODES={
  read:{speaker:'다니엘',text:'그는 초대장의 마지막 문장을 다시 읽었다. 세 개의 달이 떠오르는 밤이라는 표현이 유독 눈에 걸렸다. 종이 위의 금빛 장식이 촛불을 받아 작게 반짝였다.',thought:'보랏빛 밤이라니. 오늘 밤은 평소와 조금 다를지도 모르겠어.',next:'end'},
  prepare:{speaker:"다니엘 레온하르트",text:'다니엘은 옷장 문을 열고 예복의 주름부터 살폈다. 소매 단추를 가지런히 맞추는 단순한 일에도 생각보다 오랜 시간이 걸렸다.\n거울 속 자신을 바라보다가 그는 어깨를 펴고, 다시 한번 옷깃을 정리했다.',thought:'이 정도면 괜찮겠지. 너무 눈에 띄지도, 무례해 보이지도 않을 거야.',next:'end'},
  reflect:{speaker:'다니엘',text:'창가에 선 다니엘은 저택의 정원을 내려다보았다. 해가 기울고 있었고, 바람에 흔들리는 나뭇잎 사이로 저녁의 서늘함이 스며들었다.',thought:'오늘만은 코트리먼을 찾지 말자. 눈을 마주쳐도 평소처럼 인사하고, 형님 곁에 있는 모습을 견디자. 몇 번이나 다짐했지만 믿음은 가지 않았다.',next:'end'},
- end:{"speaker":"SYSTEM","text":"아셀 왕국의 연회장으로 향할 시간이 되었다. 마차가 준비되었다는 시종의 목소리에 나는 마지막으로 예복의 목깃을 정리했다.","choices":[{"text":"아셀 왕국 연회장으로 향한다.","next":"ball_arrival"},{"text":"처음부터 다시 보기","next":"intro","reset":true},{"text":"타이틀로 돌아가기","action":"home"}]},
+ end:{"speaker":"SYSTEM","text":"아셀 왕국의 연회장으로 향할 시간이 되었다. 마차가 준비되었다는 시종의 목소리에 나는 마지막으로 예복의 목깃을 정리했다.","choices":[{"text":"아셀 왕국 연회장으로 향한다.","next":"day1_royal_arrival_01"},{"text":"처음부터 다시 보기","next":"intro","reset":true},{"text":"타이틀로 돌아가기","action":"home"}]},
+ day1_royal_arrival_01:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 왕궁에 도착하다", "day": 1, "text": "마차에서 내리자, 늦가을의 냉기가 뺨을 얇게 베고 지나갔다.\n\n아셀 왕궁의 정문 앞은 이미 대륙 각지에서 도착한 귀족들의 마차로 혼잡했다.\n\n황금빛 마차 등불이 어둠을 밀어냈고, 정문을 지키는 근위병들의 갑옷 위로 보랏빛 불빛이 어른거렸다. 금실로 치밀하게 수놓은 예복과 보석 장식이 불빛을 받아 번쩍였다. 대리석 계단을 오르내리는 구두 굽 소리, 귀족들의 매끄러운 웃음소리, 도착한 가문의 이름을 알리는 시종들의 목소리가 한데 뒤엉켰다.\n\n모두가 이 밤을 기다려 온 사람들처럼 보였다.\n\n나는 아이보리색 예복의 소맷단을 가만히 쓸어내렸다.\n\n검은 칼라 아래로 회색 문양의 옷깃이 겹쳐졌고, 가슴에 꽂힌 노란 장미는 조금도 흐트러지지 않았다. 목을 단정하게 감싼 셔츠 위에서는 금빛 브로치가 희미하게 반짝였다.\n\n어디 하나 어긋난 곳이 없었다.\n\n완벽했다.\n\n그런데도 나는 손끝을 멈추지 못하고 한 번 더 소맷단을 매만졌다.\n\n조금 더 거칠게.", "thought": "……괜찮다.", "next": "day1_royal_arrival_02"},
+ day1_royal_arrival_02:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 왕궁에 도착하다", "day": 1, "text": "입술 사이로 새어 나온 숨이 서늘한 공기 속에서 하얗게 흩어졌다.\n\n그저 연회일 뿐이다.\n\n가문의 의무를 다하기 위해 몇 번이고 참석했던 귀족들의 사교 행사. 새삼스럽게 심장이 뛸 이유 따위는 없었다.\n\n있어서도 안 되었다.\n\n나는 정문을 지나 왕궁의 현관홀로 들어섰다.\n\n높이 솟은 아치형 창 너머로 세 개의 달이 떠 있었다.\n\n서로 다른 높이에 걸린 달들은 왕궁의 보랏빛 첨탑과 정원의 지붕 너머를 비추고 있었다.\n\n왕궁 안에서 사람들은 저마다 가장 무해하고 아름다운 표정을 연출하고 있었다.\n\n이곳에서 불행한 사람은 없어야 했다.\n\n적어도, 그렇게 보이도록 철저하게 연기하는 법을 배우는 곳이니까.\n\n나 역시 그 완벽한 가면극의 일원이었다.\n\n형님의 약혼녀.\n\n그 여섯 글자가 머릿속을 맴돌았다.\n\n그 사실 하나만으로 이토록 마음이 어지러운 남자가 과연 어떤 얼굴을 하고 연회장으로 걸어 들어가야 하는지.\n\n나는 답을 찾지 못한 채 굳어진 발걸음을 겨우 옮겼다.", "thought": "삼 년.", "next": "day1_royal_arrival_03"},
+ day1_royal_arrival_03:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 왕궁에 도착하다", "day": 1, "text": "누군가에게는 스쳐 지나가는 계절의 반복에 불과할 고작 삼 년.\n\n하지만 타인의 행복을 축복해야 하는 자리에서, 가슴 한구석을 갉아먹는 감정을 숨긴 채 살아가는 사람에게 삼 년은 영겁의 형벌과도 같았다.\n\n나는 연회장으로 이어지는 거대한 이중문 앞에서 멈춰 섰다.\n\n두꺼운 문 너머로 묵직한 왈츠의 선율이 흘러나왔다.\n\n음악은 아직 끝나지 않았다.\n\n저 선율이 절정에 달하기 전에, 나는 어쩌면 홀의 중앙에서 코트리먼을 발견하게 될 것이다.\n\n그녀는 나를 보면 언제나처럼 부드럽게 웃어 줄 것이다.\n\n마치 아무런 비밀도, 아무런 균열도 없다는 얼굴로.\n\n그리고 나는 그 미소가 결코 나만을 위한 것이 아니라는 잔인한 진실을 뼛속까지 자각하면서도, 기괴할 만큼 안도하고 기뻐할 것이다.", "thought": "참으로 구제불능의 멍청이다.", "next": "day1_royal_arrival_04"},
+ day1_royal_arrival_04:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 왕궁에 도착하다", "day": 1, "text": "그런데도 마음속에서는 이 이기적이고 가증스러운 소망이 질기게 고개를 쳐들었다.", "thought": "오늘만큼은…….\n\n그 수많은 시선 속에서, 나를 가장 먼저 발견해 주었으면.", "next": "ball_arrival"},
  ball_arrival:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 아셀의 보랏빛 밤","day":1,"text":"아셀 왕국의 연회장에는 금빛 샹들리에와 보랏빛 휘장이 드리워져 있었다. 높은 창 너머로 세 개의 달이 떠올랐다.\n\n나는 홀로 입장했다. 곁에는 약혼녀도 동행인도 없었다. 차가운 잔을 쥔 채 기둥의 그늘에 멈춰 섰다. 사람들의 인사는 익숙했지만, 시선은 한 사람을 찾아 헤맸다.","thought":"코트리먼. 어디 계십니까.","next":"asel_entrance_watch"},
  ball_daniel:{speaker:'다니엘 레온하르트',text:'다니엘은 소매 끝에 달린 보라색 장식을 조심스럽게 고쳐 매었다. 반듯하게 다듬어진 옷깃과 낯선 향수 냄새가 어쩐지 자기 것이 아닌 듯했다.\n주변의 귀족들은 웃으며 대화를 나누고 있었다. 그들 사이에 서 있자니 자신의 손을 어디에 두어야 할지조차 새삼 의식되었다.',thought:'실수하지 말자. 이 옷이 어색해도 티를 내서는 안 돼. 코트리먼이 이 차림을 본다면 무슨 말을 할까. ……또 그런 생각부터 하는군.',next:'ball_choice',chapter:'CHAPTER 01'},
 
  asel_entrance_watch:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 빛과 그림자","text":"왈츠가 연회장을 채웠다. 나는 보랏빛 휘장과 귀족들의 어깨 너머로 문가를 바라보았다.\n\n그리고 그녀를 발견했다. 미겔 코트리먼. 남들 앞에서 한 치의 흐트러짐도 허락하지 않는, 익숙하고도 낯선 미소.\n\n나는 무의식중에 넥타이를 고쳐 매고 한 걸음을 내디뎠다.","thought":"삼 년이다. 이미 사랑하고 있다는 사실을 알면서도 참아 온 시간이. 오늘은 그저 인사만 하자.","next":"asel_entrance_alex"},
  asel_entrance_alex:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 형님의 자리","text":"그 순간 알렉스 형님이 그녀의 곁에 섰다. 형님은 익숙한 몸짓으로 코트리먼에게 팔을 내밀었다.\n\n“안색이 좋지 않군, 미겔. 불편한가?”\n\n“설마요. 제가 오늘을 얼마나 기다렸는지 모르시나요?”\n\n그녀의 대답은 매끄러웠다. 사교계가 기대하는 정략 약혼녀의 미소. 나는 그것을 알면서도 가슴이 조여 왔다.","thought":"형님께서는 아무렇지도 않게 그녀의 곁에 서신다. 나는 한 걸음 다가가는 것조차 망설이는데.","next":"asel_entrance_announce"},
  asel_entrance_announce:{"speaker":"연회 사회자","chapter":"CHAPTER 01 · 화려한 입장","text":"“귀빈 여러분, 알렉스 레온하르트 님과 미겔 코트리먼 님께서 입장하십니다!”\n\n문이 활짝 열리고 박수가 쏟아졌다. 알렉스 형님은 코트리먼과 팔짱을 낀 채 빛이 쏟아지는 중앙으로 걸어 나갔다.\n\n나는 기둥의 그림자에 남았다. 모두가 두 사람을 축복하는 동안, 내 눈에는 형님의 손과 그녀의 팔이 맞닿은 자리만 보였다.","thought":"그 자리에 서 있는 사람이 왜 나는 아닐까.","next":"asel_entrance_kiss"},
- asel_entrance_kiss:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 입맞춤","text":"“드디어 온 세상에 전하는군. 그대가 내 약혼녀라는 사실을.”\n\n형님이 웃으며 코트리먼의 뺨에 입을 맞췄다. 그녀는 예의 바르게 미소 지었다.\n\n“……그렇지도 몰라요.”\n\n잔의 테두리가 내 손가락을 파고들었다. 환호는 멀어지고, 내 귀에는 심장이 뛰는 소리만 남았다.\n\n그녀가 형님을 사랑하는지 나는 알지 못한다. 다만 형님은 세상의 허락을 받아 그녀에게 닿을 수 있고, 나는 그 장면을 숨죽여 바라봐야 한다.","thought":"형님은 좋으시겠습니다. ……이런 생각을 하는 제가 싫습니다.","next":"asel_entrance_choice"},
+ asel_entrance_kiss:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 입맞춤","text":"“드디어 온 세상에 전하는군. 그대가 내 약혼녀라는 사실을.”\n\n형님이 웃으며 코트리먼의 뺨에 입을 맞췄다. 그녀는 예의 바르게 미소 지었다.\n\n“……그렇지도 몰라요.”\n\n잔의 테두리가 내 손가락을 파고들었다. 환호는 멀어지고, 내 귀에는 심장이 뛰는 소리만 남았다.\n\n그녀가 형님을 사랑하는지 나는 알지 못한다. 다만 형님은 세상의 허락을 받아 그녀에게 닿을 수 있고, 나는 그 장면을 숨죽여 바라봐야 한다.","thought":"형님은 좋으시겠습니다. ……이런 생각을 하는 제가 싫습니다.","next":"day1_fiancee_01"},
+ day1_fiancee_01:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 형님의 약혼녀", "day": 1, "text": "형님의 입술이 코트리먼의 뺨에 닿았다.\n\n그 순간, 기다렸다는 듯 박수갈채가 터져 나왔다.\n\n축복과 환희가 뒤엉킨 소리가 왕궁의 높은 천장에 부딪혀 몇 번이고 되돌아왔다. 보랏빛 휘장 아래로 금빛 샹들리에가 찬란하게 빛났고, 사람들은 저마다 기쁨에 겨운 얼굴로 두 사람을 바라보았다.\n\n나는 그 거대한 소리의 파도 속에서 한 박자, 아니 두 박자쯤 늦게 손을 들어 올렸다.\n\n두 번.\n\n그리고 세 번.\n\n밀려드는 환호에 내 손바닥을 기계적으로 끼워 맞추었다.\n\n손뼉을 치는 일은 어려운 일이 아니었다.\n\n그저 두 손을 마주치면 되는 일이었다.\n\n그런데 어째서인지, 그 단순한 동작 하나가 견딜 수 없이 고통스러웠다.", "next": "day1_fiancee_02"},
+ day1_fiancee_02:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 형님의 약혼녀", "day": 1, "text": "코트리먼은 놀란 기색을 보이지 않았다.\n\n형님의 입맞춤을 받은 그녀는 조금 고개를 돌려 사람들의 축하에 응했다. 연보라색 드레스의 부드러운 주름이 움직임을 따라 흔들렸고, 팔에 걸친 짙은 보라색 숄이 금빛 조명을 받아 은은하게 빛났다.\n\n정교하게 땋아 올린 머리 아래로 금빛 귀걸이가 흔들렸다.\n\n그녀는 평소처럼 차분하고 우아했다.\n\n누군가에게 축복받는 일이 익숙한 사람처럼.\n\n아니.\n\n어쩌면 그저 그런 자리에서 어떻게 행동해야 하는지 잘 알고 있는 것뿐일지도 몰랐다.\n\n나는 그녀가 무슨 생각을 하고 있는지 알지 못했다.\n\n그럼에도 그 자연스러운 몸짓 하나가 가슴 한구석을 날카롭게 그어 내렸다.", "next": "day1_fiancee_03", "thought": "당연하지.\n\n두 사람은 약혼한 사이니까."},
+ day1_fiancee_03:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 형님의 약혼녀", "day": 1, "text": "형님은 그녀의 뺨에 입을 맞출 수 있었다.\n\n수많은 사람 앞에서 손을 잡을 수도, 허리를 감싸 안을 수도 있었다.\n\n그녀의 이름을 부르고, 곁에 서고, 함께 웃을 수 있었다.\n\n누구도 이상하게 생각하지 않을 것이다.\n\n오히려 사람들은 그 모습을 아름답다고 말할 것이다.\n\n코트리먼의 손끝이 형님의 팔 위에 가볍게 얹혀 있었다.\n\n그 사소한 접촉을 바라보는 것만으로도 목 안쪽이 바싹 말랐다.\n\n그녀가 원한다면 얼마든지 형님의 손을 잡을 수 있다는 사실.\n\n형님 역시 아무런 망설임 없이 그 손을 받아 줄 수 있다는 사실.\n\n그 당연한 일들이 어째서 내게는 이토록 잔인하게 느껴지는가.", "next": "day1_fiancee_04", "thought": "나는.\n\n그 무엇도 할 수 없다."},
+ day1_fiancee_04:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 형님의 약혼녀", "day": 1, "text": "나는 군중 사이에 서서 두 사람을 바라보았다.\n\n형님은 특유의 당당한 태도로 사람들의 축하를 받았다. 누군가 농담을 건네자 시원스럽게 웃었고, 곁에 선 코트리먼에게도 무언가 말을 건넸다.\n\n그녀는 고개를 들어 형님을 바라보았다.\n\n그리고 미소 지었다.\n\n그것만으로 충분했다.\n\n누군가 그렇게 말했다.\n\n나는 그 말에 반박할 수 없었다.\n\n실제로 그랬으니까.\n\n서로의 곁에 서는 일이 조금도 부자연스럽지 않은 두 사람.\n\n그 모습을 축복하는 수많은 사람들.\n\n그들 사이에서 오직 나만이 잘못된 감정을 품고 있었다.", "next": "day1_fiancee_05", "thought": "보기 좋은 한 쌍.\n\n축하드립니다, 형님.\n\n진심으로.\n\n그러니 제발.\n\n제가 지금 무슨 생각을 하고 있는지만은 모르셨으면 좋겠습니다."},
+ day1_fiancee_05:{"speaker": "다니엘 레온하르트", "chapter": "CHAPTER 01 · 형님의 약혼녀", "day": 1, "text": "그런데 바로 그때였다.\n\n코트리먼의 시선이 움직였다.\n\n수많은 얼굴 사이를 천천히 지나던 시선이 잠깐 이쪽을 향했다.\n\n나는 숨을 멈췄다.\n\n정말로 나를 본 것인지는 알 수 없었다.\n\n이곳에는 너무나 많은 사람이 있었다.\n\n그녀의 눈길이 우연히 내가 서 있는 방향을 스쳤을 뿐일지도 몰랐다.\n\n하지만 나는 그 짧은 순간을 놓치지 못했다.\n\n나는 시선을 내리지 않았다.\n\n내릴 수 없었다.\n\n그녀가 다시 다른 곳을 바라볼 때까지, 그 짧은 순간이 조금이라도 더 이어지기를 바랐다.\n\n그리고 마침내 코트리먼이 고개를 돌렸을 때.\n\n나는 아무 일도 없었다는 듯 다시 손뼉을 쳤다.\n\n손바닥이 얼얼했다.\n\n언제부터 이렇게 세게 박수를 치고 있었는지조차 알지 못했다.", "next": "asel_entrance_choice", "thought": "보셨습니까.\n\n저도 여기 있습니다.\n\n형님의 행복을 축하하기 위해 이 자리에 왔습니다.\n\n당신을 보러 온 것이 아니라.\n\n……거짓말.\n\n축하드립니다.\n\n두 분 모두.\n\n그 말이 입 밖으로 나오지 않았다는 사실에, 나는 비겁하게도 안도했다."},
  asel_entrance_choice:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 이성 / 본능 / 경계 침범","text":"삼 년 동안 참아 왔다. 형님의 동생으로, 코트리먼의 귀여운 아이로.\n\n그녀가 나를 향해 꾸밈없이 웃어 주던 순간들을 나는 기억한다. 그러나 그 친밀함이 그녀를 내 것으로 만들어 주지는 않는다.\n\n지금 내 안에서 무언가가 끊어질 듯 팽팽해졌다. 나는 이 감정을 어떻게 다룰 것인가.","thought":"사랑은 이미 시작되었다. 이제 남은 건, 그 마음으로 무엇을 하느냐뿐이다.","choices":[{"text":"【이성】 아무렇지 않은 얼굴로 축복한다.","next":"asel_reason","v91Moral":"virtue","effects":{"resolve":2}},{"text":"【본능】 그녀가 나를 보기를 바라며 빛 쪽으로 걸어간다.","next":"asel_instinct","effects":{"risk":2}},{"text":"【경계 침범】 두 사람 사이를 갈라놓을 명분을 찾는다.","next":"asel_boundary","v91Moral":"karma","effects":{"risk":4}}]},
  asel_reason:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 이성","text":"나는 잔을 내려놓고 천천히 숨을 골랐다. 형님의 약혼을 축하하는 박수에 조용히 손을 보탰다.\n\n손바닥이 아팠다. 코트리먼의 웃음을 바라보는 것보다, 그 웃음이 내게 향하지 않는다는 사실을 인정하는 것이 더 아팠다.","thought":"그녀가 행복할 권리와 내가 그녀를 사랑하는 마음은 별개다. 그 사실을 잊지 말자.","next":"v108_title"},
  asel_instinct:{"speaker":"다니엘 레온하르트","chapter":"CHAPTER 01 · 본능","text":"나는 기둥의 그림자에서 나와 사람들 사이로 한 걸음 옮겼다. 코트리먼이 나를 발견할 수 있는 자리였다.\n\n그녀의 시선이 이쪽을 스친 듯했다. 우연일지도 모른다. 그럼에도 나는 그 짧은 순간을 놓지 못했다.","thought":"한 번만. 형님의 약혼녀가 아니라, 나를 아는 코트리먼으로 나를 봐 주시면 안 됩니까.","next":"v108_title"},
@@ -27,7 +36,50 @@ const NODES={
  v108_prologue_invite:{"speaker": "아셀 왕실의 초대장", "chapter": "PROLOGUE · 아셀의 7일", "text": "처음 아셀의 편지를 받았던 날이 떠올랐다. 일주일간의 연회, 그리고 마지막 날의 대무도회.\n\n봉투를 내려놓고 여행 채비를 시작했다. 그곳에서 그녀를 마주할 일곱 날을 생각하며.", "next": "v108_day1", "day": 1},
  v108_day1:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 1 / 개막", "text": "아셀의 보랏빛 휘장 아래, 귀족들은 저마다의 가면을 쓰고 인사했다. 나는 사람들 사이에서 코트리먼을 보았다.\n\n그녀는 완벽하게 웃었다. 누구에게나 공평하게, 속내를 조금도 드러내지 않는 미소였다.", "next": "v108_day2", "day": 1},
  v108_day2:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 2 / 오래된 기억", "text": "그녀의 목소리를 듣자 삼 년 전의 기억이 떠올랐다. 그때 나는 그저 형님의 약혼녀를 예의 바르게 대하려 했다.\n\n하지만 어느 순간부터 그녀가 내 이름을 부르는 방식과, 다른 이들이 떠난 뒤 조금 느슨해지는 표정을 기다리게 되었다.\n\n어느 한순간의 기적이 아니라, 되풀이되는 작은 순간들이 나를 바꾸었다.", "next": "v108_day3", "day": 2},
- v108_day3:{"speaker": "미겔 코트리먼", "chapter": "PROLOGUE · DAY 3 / 가면 아래", "text": "사람들이 떠난 작은 회랑에서 코트리먼이 어깨를 가볍게 풀었다.\n\n“아아, 오늘도 긴 하루였구나. 다니엘, 너는 아직도 그렇게 반듯하게 서 있을 셈이니?”\n\n나는 웃음을 참았다. 사교계가 아는 영애와 내 앞의 그녀는 조금 달랐다. 그 사실이 내게 어떤 권리도 주지 않는다는 것을 알면서도.", "next": "v108_day4", "day": 3},
+ v108_day3:{"speaker": "미겔 코트리먼", "chapter": "PROLOGUE · DAY 3 / 가면 아래", "text": "사람들이 떠난 작은 회랑에서 코트리먼이 어깨를 가볍게 풀었다.\n\n“아아, 오늘도 긴 하루였구나. 다니엘, 너는 아직도 그렇게 반듯하게 서 있을 셈이니?”\n\n나는 웃음을 참았다. 사교계가 아는 영애와 내 앞의 그녀는 조금 달랐다. 그 사실이 내게 어떤 권리도 주지 않는다는 것을 알면서도.", "next": "ep1d3_moonlight_01", "day": 3},
+
+ // v174: DAY 3 optional internal reactions; the approved 33-scene script remains intact.
+ ep1d3_choice_gossip:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀가 말한 ‘우리’라는 말이 마음에 걸렸다. 나는 어떤 태도로 그 말을 받아들여야 할까.", "choices": [{"text": "【이성】 성급하게 의미를 단정하지 않는다.", "next": "ep1d3_gossip_reason", "effects": {"resolve": 2, "trust": 1, "affection": 1}}, {"text": "【본능】 그 말에 담긴 뜻을 알고 싶어진다.", "next": "ep1d3_gossip_instinct", "effects": {"affection": 2, "risk": 1, "trust": -1}}, {"text": "【침묵】 묻고 싶은 말을 삼킨다.", "next": "ep1d3_gossip_silence", "effects": {"resolve": 1, "affection": -1}}], "day": 3},
+ ep1d3_gossip_reason:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀가 나를 포함해 말했다고 해서, 내가 그 뜻을 모두 이해한 것은 아니다. 나는 섣불리 대답하지 않기로 했다.\n\n*말을 잘못 고르면, 다시는 돌이킬 수 없을지도 몰라.*", "next": "ep1d3_moonlight_12", "day": 3},
+ ep1d3_gossip_instinct:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "왜 하필 내게 그런 말을 하는 걸까. 듣지 않은 척할 수 없었다. 그녀가 내게 허락한 것은 대화뿐인데, 나는 벌써 그 너머를 바라보고 있었다.\n\n*……무엇을 말씀하고 싶으신 겁니까.*", "next": "ep1d3_moonlight_12", "day": 3},
+ ep1d3_gossip_silence:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "나는 입술을 달싹였다가 다물었다. 그녀의 말에 답할 수 없어서가 아니라, 어떤 대답을 해도 내 속내가 드러날 것 같아서였다.\n\n*지금은 듣자. 그분의 말을.*", "next": "ep1d3_moonlight_12", "day": 3},
+ ep1d3_choice_distance:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀는 내게 피하지 말라고 했다. 나는 그 말을 어떻게 받아들여야 할까. 무엇을 선택하든, 그녀의 뜻을 내 마음대로 정할 수는 없다.", "choices": [{"text": "【이성】 움직이지 않고 그녀의 말을 기다린다.", "next": "ep1d3_distance_reason", "effects": {"trust": 2, "resolve": 2, "affection": 2}}, {"text": "【본능】 흔들리는 시선을 피하지 않는다.", "next": "ep1d3_distance_instinct", "effects": {"affection": 3, "risk": 2, "trust": 1}}, {"text": "【망설임】 형님의 얼굴을 떠올린다.", "next": "ep1d3_distance_hesitate", "effects": {"resolve": 1, "risk": 1, "affection": -2, "trust": -1}}], "day": 3},
+ ep1d3_distance_reason:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "나는 한 걸음도 움직이지 않았다. 턱을 붙잡은 손을 밀어내지도, 그 손을 붙잡아 더 가까이 끌어당기지도 않았다.\n\n*……먼저 말씀해 주세요. 저는 듣겠습니다.*", "next": "ep1d3_moonlight_28", "day": 3},
+ ep1d3_distance_instinct:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀가 나를 보고 있었다. 나는 이번만큼은 눈을 돌리지 않았다. 그 시선이 무엇을 뜻하는지 알 수 없으면서도, 도망치고 싶지는 않았다.\n\n*이렇게 바라보는 것마저 죄가 된다면…….*", "next": "ep1d3_temptation_01", "day": 3},
+ ep1d3_distance_hesitate:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "형님의 이름이 머릿속을 스쳤다. 그녀를 마주한 지금도 그 사실은 지워지지 않았다. 그러나 물러서려던 발끝은 이미 멈춰 있었다.\n\n*형님. 저는…….*", "next": "ep1d3_moonlight_28", "day": 3},
+ ep1d3_moonlight_01:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "연회장의 문이 닫히자, 귀를 어지럽히던 음악과 웃음소리가 한 겹 멀어졌다.\n\n테라스에는 밤바람이 불고 있었다. 정원 너머로 세 개의 달이 떠 있었고, 난간 아래로는 정성스럽게 다듬어진 수목들이 검푸른 그림자를 드리우고 있었다.\n\n나는 느슨해진 목깃을 바로잡았다.\n\n잠깐이면 충분했다. 숨을 고르고, 아무 일도 없었다는 얼굴로 돌아가면 그만이었다.\n\n그런데 그곳에 코트리먼이 있었다.\n\n그녀는 난간 가까이에 서서 연회장을 등지고 있었다. 발치에는 드레스 자락이 조용히 흘러내렸고, 어둠에 잠긴 옆얼굴은 평소보다 낯설어 보였다.\n\n가까이 다가가자 그녀가 고개를 조금 돌렸다.", "next": "ep1d3_moonlight_02", "day": 3},
+ ep1d3_moonlight_02:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“여기 대화가 저쪽까지 들리지는 않겠지요.”", "next": "ep1d3_moonlight_03", "day": 3},
+ ep1d3_moonlight_03:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“예, 회장은 시끄러우니 괜찮을 겁니다.”", "next": "ep1d3_moonlight_04", "day": 3},
+ ep1d3_moonlight_04:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀는 대답하지 않았다.\n\n나는 그 침묵이 이상하게 느껴졌다.\n\n코트리먼은 언제나 대화의 끝을 부드럽게 매듭짓는 사람이었다. 상대가 난처해할 만한 침묵을 오래 두지 않았고, 어떤 상황에서도 예의 바른 미소를 잃지 않았다.\n\n하지만 지금은 달랐다.\n\n그녀는 한동안 연회장 쪽을 바라보다가, 아주 희미하게 웃었다.", "next": "ep1d3_moonlight_05", "day": 3},
+ ep1d3_moonlight_05:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“…다니엘, 이 세상은 썩었어.”", "next": "ep1d3_moonlight_06", "day": 3},
+ ep1d3_moonlight_06:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "……뭐?\n\n그녀의 발끝에서 작은 장식 하나가 떨어졌다.\n\n딸각.\n\n대리석 바닥을 건드린 소리가 유난히 또렷했다.\n\n나는 그것을 내려다보다가 천천히 고개를 들었다.", "next": "ep1d3_moonlight_07", "day": 3},
+ ep1d3_moonlight_07:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“코트리먼…… 취하신 것 같습니다.”", "next": "ep1d3_moonlight_08", "day": 3},
+ ep1d3_moonlight_08:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“냉풍도 닿지 못한 구관조들에게 추측성의 가십이…… 우리에겐 현실이고……”", "next": "ep1d3_moonlight_09", "day": 3},
+ ep1d3_moonlight_09:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀는 정원 쪽으로 시선을 돌렸다.", "next": "ep1d3_moonlight_10", "day": 3},
+ ep1d3_moonlight_10:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“그게 아니라면 썩은 건 우리일까……”", "next": "ep1d3_moonlight_11", "day": 3},
+ ep1d3_moonlight_11:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "우리.\n\n그 한 단어가 귓속에 오래 남았다.\n\n나는 무슨 대답을 해야 할지 알 수 없었다.\n\n그녀가 말하는 세상이 귀족들의 허울뿐인 도덕인지, 연회장 안에서 오가는 소문인지, 아니면 다른 무엇인지는 알 수 없었다.\n\n다만 그녀가 그 말에 나를 포함했다는 사실만이 마음에 걸렸다.", "next": "ep1d3_choice_gossip", "day": 3},
+ ep1d3_moonlight_12:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“다니엘, 몰랐던 사실은 아니잖아.”", "next": "ep1d3_moonlight_13", "day": 3},
+ ep1d3_moonlight_13:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀가 나를 돌아보았다.\n\n어둠 속에서 그녀의 눈동자가 빛났다.", "next": "ep1d3_moonlight_14", "day": 3},
+ ep1d3_moonlight_14:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“네가 봤던 것처럼 다른 누군가가 우리를 볼 수 있다는 걸……”", "next": "ep1d3_moonlight_15", "day": 3},
+ ep1d3_moonlight_15:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "순간, 숨이 멎었다.\n\n[회상 — 과거, 레온하르트 저택 · 알렉스의 방]\n\n닫히지 않은 문.\n\n희미하게 새어 나오던 불빛.\n\n나는 그 앞에 서 있었다.\n\n안으로 들어가려던 것도, 누군가를 엿보려던 것도 아니었다.\n\n그렇게 생각하고 싶었다.\n\n그러나 문 너머에서 형님의 목소리가 들렸을 때, 나는 발걸음을 돌리지 않았다.", "next": "ep1d3_moonlight_16", "day": 3},
+ ep1d3_moonlight_16:{"speaker": "알렉스 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“나를 사랑하나? 그렇다면…… 그 귀여운 목소리로 말해보도록 해.”", "next": "ep1d3_moonlight_17", "day": 3},
+ ep1d3_moonlight_17:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "나는 움직이지 못했다.\n\n문틈 사이로 형님과 코트리먼이 보였다.\n\n두 사람의 거리는 지나치게 가까웠다. 형님의 손이 그녀를 감싸고 있었고, 흐트러진 옷자락과 낮은 숨소리가 그곳에서 무슨 일이 벌어지고 있는지 말해 주었다.\n\n그녀는 형님의 약혼녀였다.\n\n나는 그 사실을 알고 있었다.\n\n모를 수가 없었다.", "next": "ep1d3_moonlight_18", "day": 3},
+ ep1d3_moonlight_18:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“저, 저는……”", "next": "ep1d3_moonlight_19", "day": 3},
+ ep1d3_moonlight_19:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그때였다.\n\n그녀가 고개를 돌렸다.\n\n문 쪽으로.\n\n정확히는, 문틈 너머에 서 있는 나를 향해.\n\n시선이 마주쳤다.\n\n……코트리먼?\n\n그녀의 입술이 천천히 움직였다.", "next": "ep1d3_moonlight_20", "day": 3},
+ ep1d3_moonlight_20:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“레온하르트 씨를.”", "next": "ep1d3_moonlight_21", "day": 3},
+ ep1d3_moonlight_21:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "짧은 정적.", "next": "ep1d3_moonlight_22", "day": 3},
+ ep1d3_moonlight_22:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“사랑, 해…… 요.”", "next": "ep1d3_moonlight_23", "day": 3},
+ ep1d3_moonlight_23:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그 순간 형님이 어떤 표정을 지었는지는 기억나지 않는다.\n\n나는 그녀의 얼굴만 보고 있었다.\n\n레온하르트.\n\n그것은 형님의 성이었다.\n\n그리고 나의 성이기도 했다.\n\n…….\n\n질문 하나가 목구멍까지 치밀어 올랐다.\n\n그러나 입 밖으로 나오지 못했다.\n\n애초에 물을 자격도 없었다.\n\n그녀는 형님의 품 안에 있었다.\n\n나는 문밖에 있었다.\n\n그것이 전부였다.\n\n그런데도 그날 이후, 나는 그 말을 잊을 수 없었다.", "next": "ep1d3_moonlight_24", "day": 3},
+ ep1d3_moonlight_24:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "[현재 — 아셀 왕궁 · 테라스]\n\n…….\n\n그녀는 알고 있었다.\n\n그날 내가 그곳에 있었다는 것을.\n\n그저 우연히 시선이 마주친 것이라고 생각했다. 어쩌면 나를 제대로 알아보지 못했을 수도 있다고, 그렇게 스스로를 속였다.\n\n그런데 아니었다.\n\n코트리먼은 기억하고 있었다.\n\n그날…… 분명 나를 봤던 거야.\n\n얼굴이 달아올랐다.\n\n나는 그녀의 눈을 똑바로 바라볼 수 없었다.\n\n그날의 일을 사과해야 할까.\n\n무엇을 보았는지 모른다고 해야 할까.\n\n하지만 어떤 말을 하더라도 결국 내가 그곳에 서 있었다는 사실은 달라지지 않는다.", "next": "ep1d3_moonlight_25", "day": 3},
+ ep1d3_moonlight_25:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "나는 고개를 돌렸다.\n\n테라스 아래, 어둠이 짙게 내려앉은 정원으로 시선을 피했다.\n\n그때였다.\n\n사각.\n\n풀숲에서 무언가 스치는 소리가 들렸다.\n\n나는 반사적으로 몸을 굳혔다.\n\n누군가 있는 걸까.\n\n혹시 우리를 보고 있는 걸까.\n\n불과 조금 전까지 그녀의 말을 이해하지 못했던 내가, 이제는 그 뜻을 너무나 선명하게 알아듣고 있었다.\n\n그날의 나는 문밖에 있었다.\n\n하지만 지금은.\n\n지금 이곳에서 누군가 우리를 본다면.\n\n……안 돼.\n\n한 걸음 물러나려 했다.\n\n그 순간 코트리먼의 표정이 변했다.\n\n조금 전까지 그녀의 얼굴에 남아 있던 미소가 사라졌다.\n\n그녀가 손을 뻗었다.\n\n가느다란 손가락이 내 턱을 붙잡았다.\n\n고개를 돌리려던 움직임이 멎었다.\n\n너무 가까웠다.\n\n숨결이 닿을 만큼.", "next": "ep1d3_moonlight_26", "day": 3},
+ ep1d3_moonlight_26:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“피하지 말아줘.”", "next": "ep1d3_moonlight_27", "day": 3},
+ ep1d3_moonlight_27:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "나는 멈춰 섰다.\n\n그녀가 나를 바라보고 있었다.\n\n그 시선이 무엇을 뜻하는지 알 수 없었다.\n\n원망인지, 두려움인지.\n\n혹은 내가 감히 짐작해서는 안 되는 다른 감정인지.", "next": "ep1d3_choice_distance", "day": 3},
+ ep1d3_moonlight_28:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“물러나지 말아줘.”", "next": "ep1d3_moonlight_29", "day": 3},
+ ep1d3_moonlight_29:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "내 손끝이 떨렸다.\n\n그녀는 형님의 약혼녀였다.\n\n그 사실은 단 한 순간도 달라진 적이 없었다.\n\n나는 그녀를 사랑했다.\n\n오랫동안.\n\n누구에게도 말하지 못한 채.\n\n그녀가 형님의 곁에서 웃는 모습을 보면서도, 언젠가는 이 감정을 버릴 수 있을 거라고 믿었다.\n\n그러나 지금 그녀는 내 앞에 서 있었다.\n\n내가 가장 듣고 싶었던 말과, 가장 들어서는 안 되는 말을 구분할 수 없게 만드는 얼굴로.", "next": "ep1d3_moonlight_30", "day": 3},
+ ep1d3_moonlight_30:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“놓지 말아줘.”", "next": "ep1d3_moonlight_31", "day": 3},
+ ep1d3_moonlight_31:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "손이 맞닿았다.\n\n그녀의 손가락이 내 손을 감쌌고, 나 역시 무의식중에 손을 마주 쥐었다.\n\n단단하게.\n\n마치 어느 한쪽이 힘을 풀면 모든 것이 끝나 버릴 것처럼.\n\n……코트리먼.\n\n나는 그녀를 붙잡고 있었다.\n\n형님의 약혼녀를.\n\n그리고 그녀 역시 내 손을 놓지 않고 있었다.", "next": "ep1d3_moonlight_32", "day": 3},
+ ep1d3_moonlight_32:{"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "“날 비참하게 만들지 마.”", "next": "ep1d3_moonlight_33", "day": 3},
+ ep1d3_moonlight_33:{"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 말하지 못한 것", "text": "그녀의 눈에 눈물이 고였다.\n\n나는 아무 말도 하지 못했다.\n\n사랑한다는 말을 듣고 싶었다.\n\n하지만 그녀는 그런 말을 하지 않았다.\n\n나 역시 할 수 없었다.\n\n그녀가 무엇을 두려워하는지, 무엇을 내게 바라는지, 나는 여전히 알지 못했다.\n\n그저 맞잡은 손에 힘이 들어갔다.\n\n……어떻게 해야 하지.\n\n나는 대체, 어떻게 해야…….\n\n정원 너머에서 바람이 불었다.\n\n멀리 연회장의 음악이 들려왔다.\n\n우리는 여전히 그 자리에 서 있었다.\n\n아무것도 약속하지 않은 채.\n\n아무것도 고백하지 않은 채.\n\n서로의 손만 놓지 못하고 있었다.", "next": "v108_day4", "day": 3},
  v108_day4:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 4 / 사랑의 이름", "text": "삼 년 전, 나는 깨달았다. 그녀를 만나지 못한 날에도 그녀의 말과 표정을 떠올리고 있다는 사실을.\n\n그것을 사랑이라고 부르는 순간, 가장 먼저 떠오른 것은 기쁨이 아니었다. 형님이었다.\n\n그때부터 나는 형님의 동생으로 남기 위해 내 마음을 숨겼다.", "next": "v108_day5", "day": 4},
  v108_day5:{"speaker": "알렉스 레온하르트", "chapter": "PROLOGUE · DAY 5 / 형의 부재", "text": "“영지에 일이 생겼어. 직접 가서 정리하고 오지.”\n\n알렉스 형님은 성가신 일을 처리하러 가는 사람답게 빠르고 자신 있게 결정을 내렸다.\n\n“다니엘, 내가 없는 동안 미겔이 불편하지 않게 신경 좀 써 줘. 마지막 무도회 전에는 돌아올 테니까.”\n\n“……알겠습니다, 형님.”\n\n그 신뢰가 내게는 잔인했다.", "next": "v108_day6", "day": 5},
  v108_day6:{"speaker": "다니엘 레온하르트", "chapter": "PROLOGUE · DAY 6 / 두 사람의 거리", "text": "형님이 없는 동안, 코트리먼과 나는 잠시 정원에 나란히 섰다.\n\n“귀여운 아이. 무슨 걱정이 그리 많니?”\n\n그녀는 남들 앞에서의 미소 대신, 피곤하고 솔직한 얼굴로 나를 바라보았다.\n\n나는 그 얼굴을 사랑했다. 그래서 더욱, 그녀가 허락하지 않은 의미를 멋대로 붙이지 않으려 애썼다.", "next": "v108_day7", "day": 6},
@@ -2211,7 +2263,7 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
 (function(){
  const line=document.getElementById('line'),next=document.getElementById('nextBtn'),choices=document.getElementById('choices');
  if(!line||!next||!choices)return;
- let pages=[],page=0,timer=null,letters=[],position=0,typing=false,token=0,lastTap=0;
+ let pages=[],page=0,timer=null,letters=[],position=0,typing=false,token=0,lastTap=0,choicesUnlocked=false;
  const original=v67RenderNarrative;
  const segmenter=typeof Intl!=='undefined'&&Intl.Segmenter?new Intl.Segmenter('ko',{granularity:'grapheme'}):null;
  const graphemes=s=>segmenter?Array.from(segmenter.segment(s),v=>v.segment):Array.from(s);
@@ -2222,10 +2274,11 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  function stop(){if(timer!==null){clearTimeout(timer);timer=null;}typing=false;token++;}
  function syncNavigation(){
   const hasMore=page<pages.length-1;
-  next.classList.toggle('hidden',!hasMore&&!!(NODES[state.node]||{}).choices);
+  const hasChoices=!!(NODES[state.node]||{}).choices?.length;
+  next.classList.toggle('hidden',!hasMore&&hasChoices);
   next.textContent=hasMore?'다음 문단 ›':'다음 ›';
   // Choices become visible only after the last paragraph finishes.
-  choices.classList.toggle('v87-waiting',hasMore||typing);
+  choices.classList.toggle('v87-waiting',hasMore||typing||hasChoices&&!choicesUnlocked);
   const indicator=document.getElementById('v87PageCount');
   if(indicator)indicator.textContent=pages.length>1?(page+1)+' / '+pages.length:'';
   window.DELHARSA_READING={node:state.node,token,page,ready:!typing,more:hasMore,text:pages[page]?.text||'',canAdvance:hasMore||!!NODES[state.node]?.next};
@@ -2236,7 +2289,6 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
   stop();line.replaceChildren();line.scrollTop=0;position=0;
   const item=pages[page];if(typeof nameplate159==='function')nameplate159(item?.speaker);if(!item){syncNavigation();return;}
   const span=document.createElement('span');span.className=item.thought?'v67-inner-thought':'v67-prose';line.append(span);
-  if(item.thought){span.textContent=item.text;syncNavigation();return;}
   letters=graphemes(item.text);typing=true;const current=token;
   syncNavigation();
   function tick(){if(current!==token)return;
@@ -2249,12 +2301,13 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  v67RenderNarrative=function(node){
   pages=typeof dialogueSegments159==='function'?dialogueSegments159(node,state.node).flatMap(part=>splitText(part.text,part.thought,part.speaker)):[...splitText(node.text,false),...splitText(node.thought? '('+String(node.thought).replace(/^\(|\)$/g,'')+')':'',true)];
   if(!pages.length)pages=[{text:'',thought:false}];
-  page=0;showPage();
+  page=0;choicesUnlocked=false;showPage();
  };
  // Capture prevents the legacy next handler from advancing the story prematurely.
  next.addEventListener('click',function(e){
-  if(typing||page<pages.length-1){e.preventDefault();e.stopImmediatePropagation();
-   if(typing)finish();else{page++;showPage();}
+  if(typing||page<pages.length-1){
+   e.preventDefault();e.stopImmediatePropagation();
+   if(typing)finish();else if(page<pages.length-1){page++;showPage();}
   }
  },true);
  // A quick double tap reveals the entire current paragraph; single tap also reveals while typing.
@@ -2262,7 +2315,8 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  dialog.addEventListener('click',e=>{
   if(e.target.closest('button,a,input,select,textarea'))return;
   const now=Date.now();const double=now-lastTap<360;lastTap=now;
-  if(typing)finish();else if(double&&page<pages.length-1){page++;showPage();}
+  if(typing)finish();else if(page===pages.length-1&&!choicesUnlocked&&!!NODES[state.node]?.choices?.length){choicesUnlocked=true;syncNavigation();}
+  else if(double&&page<pages.length-1){page++;showPage();}
  });
  // Prevent choice activation while text is still being revealed.
  // v146: Choices must remain clickable when rendered. The old capture listener
@@ -2270,7 +2324,7 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  // Finish the current text visually without swallowing the choice click.
  choices.addEventListener('click',e=>{
   if(!e.target.closest('button'))return;
-  if(typing)finish();
+  if(typing||!choicesUnlocked){e.preventDefault();e.stopImmediatePropagation();if(typing)finish();else{choicesUnlocked=true;syncNavigation();}}
  },true);
  const indicator=document.createElement('span');indicator.id='v87PageCount';indicator.setAttribute('aria-label','문단 진행도');
  next.parentElement?.insertBefore(indicator,next);
@@ -2982,4 +3036,84 @@ Object.assign(NODES.v88_ending_doll_bride,{text:"BAD END — 인형 신부\n\n�
  
  
  
+})();
+
+
+// v179 — DAY 3 first temptation branch. Only completed consensual night records BODY COUNT.
+
+ NODES["ep1d3_temptation_01"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "그녀의 시선을 피하지 않았다. 그러자 그제야 깨달았다. 피하지 않는 것과 다가가는 것은 전혀 다른 일이라는 걸.\n\n형님의 약혼녀. 그 사실은 변하지 않았다. 그런데 나는 그 사실을 알면서도 그녀의 손이 닿은 곳에 조금 더 오래 머물고 싶었다.\n\n*한 번만. 이번 한 번만큼은, 나를 용서해 주십시오.*", "day": 3, "next": "ep1d3_temptation_02"};
+ NODES["ep1d3_temptation_02"]={"speaker": "미겔 코트리먼", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "“다니엘.”\n\n그녀가 낮게 이름을 불렀다.\n\n“네가 무슨 생각을 하는지…… 조금은 알 것 같구나. 하지만 내가 널 붙잡았다고 해서, 네게 무엇이든 허락한 건 아니야.”\n\n그녀는 손을 거두지 않았다. 그렇다고 내 쪽으로 더 다가오지도 않았다.\n\n“네가 원한다면, 먼저 말해 주렴.”", "day": 3, "next": "ep1d3_temptation_03"};
+ NODES["ep1d3_temptation_03"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "그 말이 나를 멈춰 세웠다.\n\n내가 원하는 것을 입 밖에 내는 순간, 모르는 척할 수 없게 된다. 그녀도, 나도, 형님도.\n\n지금 돌아서면 오늘 밤은 손을 맞잡았던 기억으로만 남을 것이다.\n\n하지만 돌아서지 않는다면.\n\n*나는 대체 무엇을 선택하려는 걸까.*", "day": 3, "choices": [{"text": "【멈춘다】 그녀의 손을 잡은 채, 더는 다가가지 않는다.", "next": "ep1d3_temptation_stop", "effects": {"resolve": 2, "trust": 2, "affection": 1}}, {"text": "【선을 넘는다】 서로의 뜻을 확인하고, 함께 밤을 보낸다.", "next": "ep1d3_temptation_confirm", "effects": {"affection": 2, "risk": 5, "trust": 0}, "bodyCountEvent": "daniel_miguel_intimacy"}]};
+ NODES["ep1d3_temptation_stop"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "“……아닙니다. 코트리먼.”\n\n내 목소리는 생각보다 거칠었다.\n\n“지금은, 이대로 있고 싶습니다.”\n\n그녀는 잠시 나를 바라보다가 조용히 고개를 끄덕였다.\n\n“그래. 그러면 그러자.”\n\n나는 그녀의 손을 놓지 않았다. 다만 그 이상의 의미를 멋대로 요구하지 않기로 했다.", "day": 3, "next": "ep1d3_moonlight_28"};
+ NODES["ep1d3_temptation_confirm"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "“저는…… 코트리먼과 함께 있고 싶습니다. 오늘 밤, 단둘이.”\n\n그녀는 즉시 대답하지 않았다. 내가 먼저 시선을 피하려 하자, 그녀가 나직이 말했다.\n\n“다니엘, 나를 보렴.”\n\n그녀는 오래도록 나를 살폈다. 그리고 마침내 자신의 뜻으로 고개를 끄덕였다.\n\n“나도 원해. 하지만 후회하게 될지도 몰라.”\n\n“알고 있습니다.”\n\n우리는 다시 한번 서로의 의사를 확인했다. 그 밤에 무슨 일이 일어날지, 어느 쪽도 모르고 선택한 것은 아니었다.", "day": 3, "next": "ep1d3_temptation_night"};
+ NODES["ep1d3_temptation_night"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "연회장의 음악이 멀어졌다.\n\n그날 밤, 우리는 돌아갈 수 있는 마지막 길을 지나쳤다.\n\n이후의 일은 누구에게도 말할 수 없었다. 다만 다음 날 아침, 내가 더 이상 어제의 다니엘이 아니라는 사실만은 분명했다.\n\n*형님.*\n\n*저는 결국…….*", "day": 3, "next": "ep1d3_temptation_aftermath"};
+ NODES["ep1d3_temptation_aftermath"]={"speaker": "다니엘 레온하르트", "chapter": "EP.1 · DAY 3 / 첫 번째 유혹", "text": "그녀가 나를 바라보았다.\n\n“다니엘. 오늘 밤의 일을, 가벼운 일처럼 여기지는 말아 줘.”\n\n“……그러지 않겠습니다.”\n\n우리는 어떤 약속도 하지 않았다. 사랑을 고백하지도 않았다. 그럼에도 한 가지는 바뀌어 있었다. 이제는 모르는 척할 수 없었다.", "day": 3, "next": "v108_day4"};
+
+// v175 — BODY COUNT: Daniel/Miguel intimacy permanently excludes TRUE endings for this playthrough.
+// A future consensual intimacy choice must set bodyCountEvent:'daniel_miguel_intimacy'.
+// Other couples' intimacy, kisses, hand-holding, and DAY 3's flashback do NOT count.
+(function(){
+ const EVENT='daniel_miguel_intimacy';
+ function ledger(){
+   if(!state.bodyCountV175||typeof state.bodyCountV175!=='object')state.bodyCountV175={count:0,events:[],trueLocked:false};
+   const d=state.bodyCountV175;
+   if(!Array.isArray(d.events))d.events=[];
+   d.count=Math.max(0,Number(d.count)||0);
+   d.trueLocked=!!d.trueLocked||d.count>0;
+   return d;
+ }
+ function recordIntimacy(eventId){
+   if(eventId!==EVENT)return false;
+   const d=ledger();
+   const id='daniel_miguel_'+(state.day||1)+'_'+(state.node||'unknown');
+   if(!d.events.some(e=>e.id===id)){
+     d.events.push({id,day:state.day||1,kind:EVENT});
+     d.count+=1;
+     if(typeof v90Add==='function')v90Add('karma',35,'다니엘과 미겔의 잠자리 · 관계의 경계');
+   }
+   d.trueLocked=true;
+   return true;
+ }
+ // Public integration hook for future authored scene scripts. No implicit inference from dialogue.
+ window.DELHARSA_BODY_COUNT={record:recordIntimacy,status:()=>({count:ledger().count,trueLocked:ledger().trueLocked})};
+ const priorFresh=fresh;
+ fresh=function(){const d=priorFresh();d.bodyCountV175={count:0,events:[],trueLocked:false};return d;};
+ const priorCan=v88Can;
+ v88Can=function(id){
+   const ending=V88_ENDINGS.find(e=>e.id===id);
+   if(ending?.kind==='TRUE'&&ledger().trueLocked)return false;
+   return priorCan(id);
+ };
+ const priorRender=render;
+ render=function(){
+   const id=state.node||'';
+   if(id.startsWith('v88_ending_')){
+     const ending=V88_ENDINGS.find(e=>e.id===id.slice('v88_ending_'.length));
+     if(ending?.kind==='TRUE'&&ledger().trueLocked){
+       state.node='v88_crossroads';
+       if(typeof v88Crossroads==='function')v88Crossroads();
+     }
+   }
+   priorRender();
+ };
+ const choices=document.getElementById('choices');
+ if(choices)choices.addEventListener('click',function(ev){
+   const btn=ev.target.closest('button');if(!btn)return;
+   const node=NODES[state.node];if(!node?.choices)return;
+   const idx=Array.from(choices.querySelectorAll('button')).indexOf(btn);
+   const choice=node.choices[idx];
+   if(choice?.bodyCountEvent===EVENT)recordIntimacy(EVENT);
+ },true);
+ const hud=document.querySelector('#game .hud');
+ if(hud){
+   const btn=document.createElement('button');btn.type='button';btn.id='v175BodyCountBtn';btn.textContent='♡ BODY COUNT';
+   btn.addEventListener('click',()=>{
+     const d=ledger();
+     const body=document.createElement('div');
+     const title=document.createElement('p');title.textContent='다니엘 × 미겔 · BODY COUNT: '+d.count;
+     const detail=document.createElement('p');detail.textContent=d.trueLocked?'이 회차에서는 두 사람이 잠자리를 가졌으므로 TRUE END에 도달할 수 없습니다. 다른 엔딩은 기존 조건을 따릅니다.':'이 회차에서 두 사람의 잠자리 기록이 없습니다. TRUE END 가능성은 유지됩니다.';
+     const note=document.createElement('p');note.textContent='잠자리 1회마다 업보 +35. 선행으로 업보는 상쇄되지 않으며 TRUE END는 해당 회차에서 영구 잠금됩니다. 입맞춤·접촉·DAY 3 손잡기 및 알렉스와 미겔의 과거 관계는 집계하지 않습니다. 새 게임에서 초기화됩니다.';
+     body.append(title,detail,note);modal('BODY COUNT · 관계의 경계','');document.getElementById('modalContent')?.replaceChildren(body);
+   });hud.append(btn);
+ }
 })();

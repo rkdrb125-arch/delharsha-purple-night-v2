@@ -1,0 +1,42 @@
+/* v183 · 운명의 저울: 기존 앤티크 UI 이미지 활용 */
+#v90Flash{
+ width:min(440px,calc(100vw - 28px))!important;
+ min-height:82px!important;
+ display:flex!important;align-items:center;justify-content:center;
+ padding:22px 36px!important;
+ border:solid transparent!important;
+ border-width:23px 28px!important;
+ border-image:url('assets/ui/ui_interface_frame.png') 120 115 115 115 fill / 23px 28px / 0 stretch!important;
+ border-radius:0!important;
+ background:#281634!important;
+ box-shadow:0 12px 35px #090411b8!important;
+ color:#fff1d8!important;font-weight:600!important;
+ line-height:1.5!important;text-shadow:0 1px 2px #160b1b!important;
+}
+#modal:has(.v90-scales) .modal-panel{
+ width:min(680px,calc(100vw - 24px))!important;
+ max-height:calc(100dvh - 30px)!important;
+ overflow-y:auto!important;
+}
+#modal .v90-scales{
+ padding:12px clamp(4px,2vw,20px) 20px!important;
+ gap:18px!important;
+}
+#modal .v90-scales .v90-balance{
+ width:min(220px,70vw);min-height:120px;
+ margin:4px auto!important;display:grid;place-items:center;
+ background:url('assets/ui/ui_interface_frame.png') center/100% 100% no-repeat;
+ font-size:3.8rem!important;
+ filter:drop-shadow(0 6px 12px #0006);
+}
+#modal .v90-scales .v90-values>div{
+ border:solid transparent!important;border-width:17px 19px!important;
+ border-image:url('assets/ui/ui_choice_frame.png') 260 220 280 220 fill / 17px 19px / 0 stretch!important;
+ border-radius:0!important;background:#281634!important;
+ padding:12px 6px!important;
+}
+@media(max-width:600px){
+ #v90Flash{padding:17px 27px!important;font-size:13px!important}
+ #modal .v90-scales .v90-values{grid-template-columns:1fr 1fr;gap:5px}
+ #modal .v90-scales .v90-values>div{font-size:12px!important}
+}
