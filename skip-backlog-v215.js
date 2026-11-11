@@ -77,18 +77,5 @@ document.addEventListener('wheel',e=>{
  e.preventDefault();openLog();
 },{passive:false});
 window.addEventListener('pagehide',stop);
-// Invisible next button remains the single navigation action.
-// Provide a visible-free single-click surface without changing reading or save state.
-const dialogue=game.querySelector('.dialogue');
-if(dialogue){
- dialogue.addEventListener('click',e=>{
-  if(e.target.closest('button,a,input,select,textarea,.choices,#choicePager,#v215Toolbar'))return;
-  if(logOpen()||choiceBlocking())return;
-  const reading=window.DELHARSA_READING;
-  if(!reading||!visible(next))return;
-  // Defer until existing text-click handlers have completed.
-  queueMicrotask(()=>{if(visible(next)&&!choiceBlocking())next.click();});
- });
-}
 window.DELHARSA_V215={stop,openLog,closeLog};
 })();
