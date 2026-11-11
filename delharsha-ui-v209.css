@@ -1563,3 +1563,22 @@ body.ui164 #app #game.screen .dialogue .speaker[hidden] {
 body.ui164 #app #game.screen .dialogue:not(.has-spoken-dialogue) #speaker {
   display: none !important;
 }
+
+/* Restore the original console-style navigation: hide the redundant footer counter/button.
+   The next button stays in the DOM for keyboard, SKIP and AUTO logic. */
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #v87PageCount,
+body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn {
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  width:0!important;
+  min-width:0!important;
+  max-width:0!important;
+  height:0!important;
+  min-height:0!important;
+  padding:0!important;
+  margin:0!important;
+  border:0!important;
+  overflow:hidden!important;
+  flex:0 0 0!important;
+}
