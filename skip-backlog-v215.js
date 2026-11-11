@@ -48,7 +48,7 @@ function skipTick(){
  if(logOpen()||!game.classList.contains('active')&&!game.classList.contains('show')&&getComputedStyle(game).display==='none'){stop();return;}
  if(choiceBlocking()){stop();return;}
  const d=window.DELHARSA_READING;
- if(!d||!visible(next)){stop();return;}
+ if(!d||!next.isConnected||next.disabled){stop();return;}
  // At a last page without a next node, never loop or attempt to select a choice.
  if(!d.more&&!d.canAdvance){stop();return;}
  // First click reveals current typing; second click advances the paragraph.
@@ -61,7 +61,7 @@ function start(){
  timer=setInterval(skipTick,95);
  skipTick();
 }
-skipBtn.addEventListener('click',start);
+skipBtn.addEventListener('click',e=>{e.stopPropagation();start();});
 logBtn.addEventListener('click',openLog);
 document.getElementById('v215Close').addEventListener('click',closeLog);
 overlay.addEventListener('click',e=>{if(e.target===overlay)closeLog();});
