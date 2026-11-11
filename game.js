@@ -2153,6 +2153,22 @@ function v111LetterMount(){
   if(!valid()||v111Letter.locked||v111Letter.phase<3)return;
   const next=NODES[state.node]?.next;if(!next)return;
   v111Letter.locked=true;
+  // Start carriage ambience inside the user's click gesture for browser audio permission.
+  const carriageAudio=new Audio('assets/audio/carriage_cabin_ambience_60s.mp3');
+  carriageAudio.preload='auto';
+  carriageAudio.volume=0.48;
+  carriageAudio.play().catch(()=>{ /* Continue the visual transition if audio is blocked. */ });
+  // Fade out the carriage ambience after the new scene has settled.
+  setTimeout(()=>{
+   const initial=carriageAudio.volume;
+   const steps=20;
+   let step=0;
+   const fadeTimer=setInterval(()=>{
+    step++;
+    carriageAudio.volume=Math.max(0,initial*(1-step/steps));
+    if(step>=steps){clearInterval(fadeTimer);carriageAudio.pause();carriageAudio.src='';}
+   },100);
+  },9000);
   // Fade the letter out before changing scenes, then reveal DAY 1 gradually.
   // The overlay is visual only: no saved state, script dependencies or click handlers.
   const veil=document.createElement('div');
@@ -2165,7 +2181,6 @@ function v111LetterMount(){
   document.body.append(veil);
   requestAnimationFrame(()=>requestAnimationFrame(()=>{veil.style.opacity='1';}));
   // Keep the screen fully black for two seconds before revealing the carriage scene.
-  // A carriage SFX can be started here when its actual audio asset is supplied.
   setTimeout(()=>{
    state.history.push(state.node);state.node=next;
    v111LetterClear();v111Letter.phase=-1;render();

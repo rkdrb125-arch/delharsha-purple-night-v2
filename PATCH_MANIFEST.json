@@ -1,0 +1,13 @@
+{
+  "base": "delharsha-purple-night-v2.zip",
+  "status": "누적 작업본, 아직 GitHub 미반영",
+  "patches": [
+    "DELHARSA_carriage_audio_patch.zip",
+    "DELHARSA_DAY1_followup_story_patch.zip"
+  ],
+  "files": {
+    "game.js": "919e08caceed0956136084885a48ba2723c4426f6814f783d95470315c18cc02",
+    "assets/audio/carriage_cabin_ambience_60s.mp3": "0f60e7d3a301219ec9abe50b6405ee837921c41ae45e92d56afbba3fc3b033ca",
+    "story/intro-v166.js": "9b4e009324818df1aa4d4df52c05e84cdf0a86c5614df53749cd0432ba3907ec"
+  }
+}
