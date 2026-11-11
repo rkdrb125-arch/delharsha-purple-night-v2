@@ -1088,7 +1088,7 @@ body.ui164 #app #game.screen .dialogue #advance170[hidden],body.ui164 #app #game
 body.ui164 #app #game.screen.ui-hidden169 .dialogue #advance170{visibility:hidden!important;pointer-events:none!important}
 
 /* ===== ORIGINAL: royal-assets-v171.css ===== */
-body.ui164 #app #game.screen .dialogue #advance170{width:60px!important;min-height:44px!important;height:44px!important;bottom:calc(100% - 12px)!important;gap:1px!important;padding:2px!important;background:transparent!important;border-color:transparent!important;border-radius:22px!important}
+body.ui164 #app #game.screen .dialogue #advance170{width:60px!important;min-height:44px!important;height:44px!important;right:24px!important;bottom:auto!important;top:12px!important;z-index:120!important;gap:1px!important;padding:2px!important;background:transparent!important;border-color:transparent!important;border-radius:22px!important}
 #advance170 img{display:block;width:30px;height:38px;object-fit:contain;flex:none;animation:gem171 1.8s ease-in-out infinite}
 #advance170 span{font-size:8px;letter-spacing:0;white-space:nowrap}
 @keyframes gem171{50%{opacity:.55;translate:0 2px}}

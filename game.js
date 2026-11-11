@@ -2152,8 +2152,29 @@ function v111LetterMount(){
   e.preventDefault();e.stopPropagation();
   if(!valid()||v111Letter.locked||v111Letter.phase<3)return;
   const next=NODES[state.node]?.next;if(!next)return;
-  v111Letter.locked=true;state.history.push(state.node);state.node=next;
-  v111LetterClear();v111Letter.phase=-1;render();
+  v111Letter.locked=true;
+  // Fade the letter out before changing scenes, then reveal DAY 1 gradually.
+  // The overlay is visual only: no saved state, script dependencies or click handlers.
+  const veil=document.createElement('div');
+  veil.setAttribute('aria-hidden','true');
+  Object.assign(veil.style,{
+   position:'fixed',inset:'0',background:'#110b1a',opacity:'0',
+   zIndex:'2147483646',pointerEvents:'none',
+   transition:'opacity 650ms ease-in-out'
+  });
+  document.body.append(veil);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{veil.style.opacity='1';}));
+  // Keep the screen fully black for two seconds before revealing the carriage scene.
+  // A carriage SFX can be started here when its actual audio asset is supplied.
+  setTimeout(()=>{
+   state.history.push(state.node);state.node=next;
+   v111LetterClear();v111Letter.phase=-1;render();
+   setTimeout(()=>{
+    veil.style.transition='opacity 1600ms ease-in-out';
+    veil.style.opacity='0';
+    setTimeout(()=>veil.remove(),1650);
+   },2000);
+  },700);
  });
 }
 
@@ -2338,6 +2359,9 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  function syncNavigation(){
   const hasMore=page<pages.length-1;
   const hasChoices=!!(NODES[state.node]||{}).choices?.length;
+  // The last completed paragraph must release the story choices automatically.
+  // Otherwise a hidden next button leaves the scene permanently locked.
+  if(hasChoices&&!hasMore&&!typing)choicesUnlocked=true;
   next.classList.toggle('hidden',!hasMore&&hasChoices);
   next.textContent='›';
   next.setAttribute('aria-label',hasMore?'다음 문단으로 진행':'다음 장면으로 진행');
@@ -2378,9 +2402,12 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  const dialog=line.closest('.dialogue')||line;
  dialog.addEventListener('click',e=>{
   if(e.target.closest('button,a,input,select,textarea'))return;
-  const now=Date.now();const double=now-lastTap<360;lastTap=now;
-  if(typing)finish();else if(page===pages.length-1&&!choicesUnlocked&&!!NODES[state.node]?.choices?.length){choicesUnlocked=true;syncNavigation();}
-  else if(double&&page<pages.length-1){page++;showPage();}
+  // A single click advances one completed paragraph; the hidden next button
+  // remains the engine's sole navigation target for both click and SKIP.
+  if(typing){finish();return;}
+  if(page<pages.length-1){next.click();return;}
+  if(!choicesUnlocked&&!!NODES[state.node]?.choices?.length){choicesUnlocked=true;syncNavigation();return;}
+  if(!NODES[state.node]?.choices?.length&&NODES[state.node]?.next){next.click();}
  });
  // Prevent choice activation while text is still being revealed.
  // v146: Choices must remain clickable when rendered. The old capture listener
