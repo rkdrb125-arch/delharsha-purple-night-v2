@@ -1,0 +1,77 @@
+/* v216: Dialogue readability and safe footer layout.
+   Only the ordinary dialogue panel is affected. Choice screens and game state remain untouched. */
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+  height:clamp(192px,24dvh,230px)!important;
+  padding:clamp(29px,4dvh,38px) clamp(23px,3.4vw,39px) 13px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  overflow:visible!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+  display:block!important;
+  width:100%!important;
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0 5px 8px!important;
+  font-size:clamp(17px,1.55vw,20px)!important;
+  line-height:1.85!important;
+  letter-spacing:.005em!important;
+  text-align:left!important;
+  overflow-x:hidden!important;
+  overflow-y:auto!important;
+  overflow-wrap:anywhere!important;
+  scrollbar-gutter:auto!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-prose,
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-inner-thought {
+  font-size:inherit!important;
+  line-height:inherit!important;
+  text-align:left!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 {
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  flex:0 0 38px!important;
+  min-height:38px!important;
+  width:100%!important;
+  margin:0!important;
+  gap:10px!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #nextBtn,
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #v87PageCount {
+  position:static!important;
+  inset:auto!important;
+  transform:none!important;
+  margin:0!important;
+}
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #nextBtn.hidden,
+body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 #v87PageCount.hidden {display:none!important;}
+@media (max-width:760px) {
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+    height:clamp(172px,31dvh,224px)!important;
+    padding:27px 19px 9px!important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+    font-size:clamp(15px,3.7vw,18px)!important;
+    line-height:1.72!important;
+    padding:0 2px 6px!important;
+  }
+}
+@media (max-height:500px) {
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue {
+    height:clamp(112px,42dvh,178px)!important;
+    padding:15px 20px 6px!important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
+    font-size:clamp(14px,2.5vh,17px)!important;
+    line-height:1.55!important;
+  }
+  body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue .dialogue-footer-v193 {
+    flex-basis:32px!important;
+    min-height:32px!important;
+  }
+}
