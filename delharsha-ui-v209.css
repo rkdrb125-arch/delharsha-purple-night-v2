@@ -564,7 +564,7 @@ body.v111-letter-thought #game .dialogue,body.v111-letter-thought #game .hud{vis
 
 /* DELHARSA v125: Royal amethyst mouse pointer */
 @media (hover:hover) and (pointer:fine) {
- html, body, body *, button, a, summary, select, input, label, [role="button"] {cursor:url("assets/ui/royal-amethyst-cursor-v125.png") 17 5, auto !important;}
+ html, body, body *, button, a, summary, select, input, label, [role="button"] {cursor:default !important;}
  input[type="text"],input[type="search"],textarea,[contenteditable="true"] {cursor:text !important;}
 }
 #v125-glitter {position:fixed;inset:0;width:100vw;height:100vh;pointer-events:none!important;z-index:2147483646;contain:strict;}
@@ -1088,7 +1088,7 @@ body.ui164 #app #game.screen .dialogue #advance170[hidden],body.ui164 #app #game
 body.ui164 #app #game.screen.ui-hidden169 .dialogue #advance170{visibility:hidden!important;pointer-events:none!important}
 
 /* ===== ORIGINAL: royal-assets-v171.css ===== */
-body.ui164 #app #game.screen .dialogue #advance170{width:60px!important;min-height:44px!important;height:44px!important;bottom:2px!important;gap:1px!important;padding:2px!important;background:transparent!important;border-color:transparent!important;border-radius:22px!important}
+body.ui164 #app #game.screen .dialogue #advance170{width:60px!important;min-height:44px!important;height:44px!important;right:24px!important;bottom:auto!important;top:12px!important;z-index:120!important;gap:1px!important;padding:2px!important;background:transparent!important;border-color:transparent!important;border-radius:22px!important}
 #advance170 img{display:block;width:30px;height:38px;object-fit:contain;flex:none;animation:gem171 1.8s ease-in-out infinite}
 #advance170 span{font-size:8px;letter-spacing:0;white-space:nowrap}
 @keyframes gem171{50%{opacity:.55;translate:0 2px}}
@@ -1374,18 +1374,14 @@ body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 {
 }
 body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn,
 body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #v87PageCount {
-  position:static!important;inset:auto!important;transform:none!important;
-  width:auto!important;height:auto!important;overflow:visible!important;
-  opacity:1!important;pointer-events:auto!important;clip-path:none!important;
-  border:revert-layer!important;margin:0!important;
+  display:none!important;
+  pointer-events:none!important;
 }
 body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn {
-  display:inline-flex!important;min-width:85px!important;padding:8px 15px!important;
-  border:1px solid #b8912f!important;cursor:pointer!important;
+  display:none!important;
 }
 body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #v87PageCount {
-  display:inline-flex!important;align-items:center!important;min-width:3.5em!important;
-  padding:0!important;border:0!important;pointer-events:none!important;
+  display:none!important;
 }
 /* Never force a button or nameplate visible when the engine hides it. */
 body.ui164 #app #game.screen.active .dialogue #nextBtn.hidden,
@@ -1399,6 +1395,7 @@ body.ui164 #app #game.screen.active .dialogue #speaker.speaker {
 /* Keep reading text accessible without expanding the whole dialogue panel. */
 body.ui164 #app #game.screen.active .dialogue #line {
   min-height:0!important;min-width:0!important;overflow-y:auto!important;
+  scrollbar-width:none!important;
   text-align:left!important;overscroll-behavior:contain;
 }
 @media(max-width:760px){
@@ -1411,7 +1408,7 @@ body.ui164 #app #game.screen.active .dialogue #line {
    top:-43px!important;left:2px!important;
  }
  body.ui164 #app #game.screen.active .dialogue .dialogue-footer-v193 > #nextBtn {
-   min-width:68px!important;padding:7px 10px!important;
+   display:none!important;
  }
 }
 @media(max-height:500px){
@@ -1432,7 +1429,7 @@ body.ui164 #app #game.screen.active .dialogue #line {
   overflow-x:hidden!important;
   overflow-y:auto!important;
   min-height:0!important;
-  scrollbar-gutter:stable;
+  scrollbar-gutter:auto;
 }
 body.ui164 #app #game.screen.active .dialogue #choices {
   flex:0 1 auto!important;
@@ -1485,7 +1482,7 @@ body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line {
   white-space:pre-wrap!important;
   overflow-x:hidden!important;
   overflow-y:auto!important;
-  scrollbar-gutter:stable;
+  scrollbar-gutter:auto;
   overflow-wrap:break-word!important;
 }
 body.ui164 #app #game.screen.active:not(.choices-ready) > .dialogue #line .v67-prose,

@@ -2152,8 +2152,44 @@ function v111LetterMount(){
   e.preventDefault();e.stopPropagation();
   if(!valid()||v111Letter.locked||v111Letter.phase<3)return;
   const next=NODES[state.node]?.next;if(!next)return;
-  v111Letter.locked=true;state.history.push(state.node);state.node=next;
-  v111LetterClear();v111Letter.phase=-1;render();
+  v111Letter.locked=true;
+  // Start carriage ambience inside the user's click gesture for browser audio permission.
+  const carriageAudio=new Audio('assets/audio/carriage_cabin_ambience_60s.mp3');
+  carriageAudio.preload='auto';
+  carriageAudio.volume=0.48;
+  carriageAudio.play().catch(()=>{ /* Continue the visual transition if audio is blocked. */ });
+  // Fade out the carriage ambience after the new scene has settled.
+  setTimeout(()=>{
+   const initial=carriageAudio.volume;
+   const steps=20;
+   let step=0;
+   const fadeTimer=setInterval(()=>{
+    step++;
+    carriageAudio.volume=Math.max(0,initial*(1-step/steps));
+    if(step>=steps){clearInterval(fadeTimer);carriageAudio.pause();carriageAudio.src='';}
+   },100);
+  },9000);
+  // Fade the letter out before changing scenes, then reveal DAY 1 gradually.
+  // The overlay is visual only: no saved state, script dependencies or click handlers.
+  const veil=document.createElement('div');
+  veil.setAttribute('aria-hidden','true');
+  Object.assign(veil.style,{
+   position:'fixed',inset:'0',background:'#110b1a',opacity:'0',
+   zIndex:'2147483646',pointerEvents:'none',
+   transition:'opacity 650ms ease-in-out'
+  });
+  document.body.append(veil);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{veil.style.opacity='1';}));
+  // Keep the screen fully black for two seconds before revealing the carriage scene.
+  setTimeout(()=>{
+   state.history.push(state.node);state.node=next;
+   v111LetterClear();v111Letter.phase=-1;render();
+   setTimeout(()=>{
+    veil.style.transition='opacity 1600ms ease-in-out';
+    veil.style.opacity='0';
+    setTimeout(()=>veil.remove(),1650);
+   },2000);
+  },700);
  });
 }
 
@@ -2187,7 +2223,7 @@ function status(){const wrap=document.createElement('div');const labels={affecti
 function journal(){const wrap=document.createElement('div');const p=document.createElement('p');p.className='hint';p.textContent='지금까지 지나온 장면 ('+state.history.length+'개)';wrap.append(p);const entries=[...state.history.slice(-20),state.node];entries.forEach((id,i)=>{const n=NODES[id];if(!n)return;const el=document.createElement('div');el.className='journal-entry';const head=document.createElement('strong');head.textContent=(i+1)+'. '+n.speaker;const body=document.createElement('p');body.textContent=n.text;el.append(head,body);wrap.append(el)});modal('이야기 기록',wrap);}
 function characters(){
  const wrap=document.createElement('div');
- const entries=[{"name": "다니엘 레온하르트", "summary": "25세 · 189cm · 레온하르트 백작가의 막내아들", "details": ["옅은 금발과 단정한 옷차림의 청년. 성실하고 고지식하며, 타인의 평가를 마음에 오래 담아 둔다.", "알렉스의 동생. 형님의 약혼녀인 코트리먼을 삼 년 동안 사랑하며 그 마음을 숨겨 왔다."]}, {"name": "미겔 코트리먼", "summary": "32세 · 153cm · 코트리먼 후작가의 외동딸", "details": ["풍요로운 영지와 노란 장미 화원으로 이름난 코트리먼가의 영애. 우아한 태도와 실용적인 판단을 함께 지녔다.", "알렉스 레온하르트의 약혼녀. 공식 석상에서는 격식을 갖추며, 사적인 자리에서는 한층 편안한 모습을 보인다.", "얼굴보다 옷차림과 체격, 걸음걸이로 사람을 구별하곤 한다."]}, {"name": "알렉스 레온하르트", "summary": "레온하르트 백작가의 차남 · 미겔의 약혼자", "details": ["귀족 사회의 처세에 능하며 여유로운 태도를 지녔다. 가문의 명예와 이익을 중시한다.", "다니엘의 형. 미겔에게는 알렉이라는 이름으로 불린다."]}];
+ const entries=[{"name": "다니엘 레온하르트", "summary": "25세 · 189cm · 레온하르트 백작가의 막내아들", "details": ["옅은 금발과 단정한 옷차림의 청년. 성실하고 고지식하며, 타인의 평가를 마음에 오래 담아 둔다.", "알렉스의 동생. 형님의 약혼녀인 코트리먼을 삼 년 동안 사랑하며 그 마음을 숨겨 왔다."]}, {"name": "미겔 코트리먼", "summary": "32세 · 153cm · 코트리먼 후작가의 외동딸", "details": ["풍요로운 영지와 노란 장미 화원으로 이름난 코트리먼가의 영애. 우아한 태도와 실용적인 판단을 함께 지녔다.", "알렉스 레온하르트의 약혼녀. 공식 석상에서는 격식을 갖추며, 사적인 자리에서는 한층 편안한 모습을 보인다.", "얼굴보다 옷차림과 체격, 걸음걸이로 사람을 구별하곤 한다."]}, {"name": "알렉스 레온하르트", "summary": "33세 · 레온하르트 백작가의 차남 · 미겔의 약혼자", "details": ["귀족 사회의 처세에 능하며 여유로운 태도를 지녔다. 가문의 명예와 이익을 중시한다.", "애덤보다 다섯 살 어린 둘째 아들이자 다니엘의 형. 미겔에게는 알렉이라는 이름으로 불린다."]}, {"name": "애덤 레온하르트", "summary": "38세 · 레온하르트 백작가의 장남 · INTJ", "details": ["레온하르트가의 맏아들. 온화하고 침착한 태도로 상대의 이야기를 끝까지 듣지만, 그 이면에서는 상황의 흐름과 앞으로 일어날 가능성을 신중하게 살핀다.", "다섯 살 아래인 알렉스가 자신감과 친화력으로 사람들 사이에 자연스럽게 녹아든다면, 애덤은 한발 물러선 자리에서 전체를 바라보는 쪽에 가깝다.", "그의 신중함은 무관심에서 비롯된 것이 아니다. 소중히 여기는 사람들과 가문에 닥칠 위험을 미리 헤아리기에 섣불리 판단하거나 행동하지 않는다.", "열세 살 아래인 막내 다니엘을 어린아이처럼 대하지 않으며, 동생이 미처 말하지 않은 고민까지도 조용히 살피려 한다. 다만 모든 것을 알아차린다고 해서 반드시 입 밖으로 꺼내지는 않는다.", "알렉스와는 정확히 다섯 살 차이이며, 서로 다른 성향을 지녔지만 오랜 세월 함께해 온 형제다."]}];
  for(const entry of entries){const card=document.createElement('div');card.className='journal-entry';const h=document.createElement('strong');h.textContent=entry.name;card.append(h);for(const text of [entry.summary,...entry.details]){const p=document.createElement('p');p.textContent=text;card.append(p);}wrap.append(card);}modal('인물 도감',wrap);
 }
 function gallery(){
@@ -2338,6 +2374,9 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  function syncNavigation(){
   const hasMore=page<pages.length-1;
   const hasChoices=!!(NODES[state.node]||{}).choices?.length;
+  // The last completed paragraph must release the story choices automatically.
+  // Otherwise a hidden next button leaves the scene permanently locked.
+  if(hasChoices&&!hasMore&&!typing)choicesUnlocked=true;
   next.classList.toggle('hidden',!hasMore&&hasChoices);
   next.textContent='›';
   next.setAttribute('aria-label',hasMore?'다음 문단으로 진행':'다음 장면으로 진행');
@@ -2378,9 +2417,12 @@ $('newBtn').onclick=()=>{if(v80Transitioning)return;state=fresh();show('game');r
  const dialog=line.closest('.dialogue')||line;
  dialog.addEventListener('click',e=>{
   if(e.target.closest('button,a,input,select,textarea'))return;
-  const now=Date.now();const double=now-lastTap<360;lastTap=now;
-  if(typing)finish();else if(page===pages.length-1&&!choicesUnlocked&&!!NODES[state.node]?.choices?.length){choicesUnlocked=true;syncNavigation();}
-  else if(double&&page<pages.length-1){page++;showPage();}
+  // A single click advances one completed paragraph; the hidden next button
+  // remains the engine's sole navigation target for both click and SKIP.
+  if(typing){finish();return;}
+  if(page<pages.length-1){next.click();return;}
+  if(!choicesUnlocked&&!!NODES[state.node]?.choices?.length){choicesUnlocked=true;syncNavigation();return;}
+  if(!NODES[state.node]?.choices?.length&&NODES[state.node]?.next){next.click();}
  });
  // Prevent choice activation while text is still being revealed.
  // v146: Choices must remain clickable when rendered. The old capture listener
